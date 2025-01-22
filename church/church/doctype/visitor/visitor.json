@@ -1,0 +1,220 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-11-25 14:43:22.546650",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "visitor_detail_section",
+  "naming_series",
+  "salutation",
+  "first_name",
+  "column_break_3gubc",
+  "middle_name",
+  "last_name",
+  "column_break_rnomb",
+  "date_of_visiting",
+  "full_name",
+  "branch",
+  "column_break_nfpqt",
+  "reason_for_visit",
+  "personal_information_section",
+  "mobile_phone",
+  "column_break_ll1ja",
+  "marital_staus",
+  "email",
+  "column_break_czer9",
+  "address",
+  "state",
+  "follow_up_section",
+  "follow_up_history",
+  "section_break_zdo77",
+  "follow_up_count",
+  "column_break_aqpbx",
+  "column_break_t4e9v",
+  "column_break_udtgc",
+  "column_break_vzewl",
+  "column_break_jfnh1"
+ ],
+ "fields": [
+  {
+   "fieldname": "visitor_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Visitor Detail"
+  },
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "First Name"
+  },
+  {
+   "fieldname": "column_break_3gubc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last Name"
+  },
+  {
+   "fieldname": "middle_name",
+   "fieldtype": "Data",
+   "label": "Middle Name"
+  },
+  {
+   "fieldname": "column_break_rnomb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date_of_visiting",
+   "fieldtype": "Date",
+   "label": "Date of Visiting"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "personal_information_section",
+   "fieldtype": "Section Break",
+   "label": "Personal Information"
+  },
+  {
+   "fieldname": "mobile_phone",
+   "fieldtype": "Phone",
+   "label": "Mobile Phone"
+  },
+  {
+   "fieldname": "column_break_ll1ja",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "marital_staus",
+   "fieldtype": "Select",
+   "label": "Marital Staus",
+   "options": "Single\nMarried\nWidow\nNot Applicable"
+  },
+  {
+   "fieldname": "column_break_czer9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Small Text",
+   "label": "Address",
+   "max_height": "100px",
+   "width": "200px"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch"
+  },
+  {
+   "fieldname": "column_break_nfpqt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reason_for_visit",
+   "fieldtype": "Select",
+   "label": "Reason for Visit",
+   "options": "\nPermanent Membership\nVisitation"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fieldname": "follow_up_section",
+   "fieldtype": "Section Break",
+   "label": "Follow Up"
+  },
+  {
+   "fieldname": "follow_up_history",
+   "fieldtype": "Table",
+   "label": "Follow Up History",
+   "options": "Follow Up"
+  },
+  {
+   "fieldname": "section_break_zdo77",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "follow_up_count",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Follow Up Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_aqpbx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_t4e9v",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_udtgc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_vzewl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_jfnh1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "VIS-.DD.-.MM.-.YY.-.####"
+  },
+  {
+   "fieldname": "salutation",
+   "fieldtype": "Link",
+   "label": "Salutation",
+   "options": "Salutation"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-15 20:51:02.613816",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Visitor",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

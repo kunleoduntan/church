@@ -1,0 +1,98 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2025-01-06 10:29:00.004201",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "earnings_chart_detail_section",
+  "naming_series",
+  "chart_description",
+  "lower_value",
+  "column_break_tpvja",
+  "upper_value",
+  "fixed_amount",
+  "column_break_lznfp",
+  "basic",
+  "allow"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series "
+  },
+  {
+   "fieldname": "chart_description",
+   "fieldtype": "Data",
+   "label": "Chart Description"
+  },
+  {
+   "fieldname": "column_break_tpvja",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "lower_value",
+   "fieldtype": "Float",
+   "label": "Lower Value"
+  },
+  {
+   "fieldname": "upper_value",
+   "fieldtype": "Float",
+   "label": "Upper Value"
+  },
+  {
+   "fieldname": "column_break_lznfp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fixed_amount",
+   "fieldtype": "Float",
+   "label": "Fixed Amount"
+  },
+  {
+   "fieldname": "basic",
+   "fieldtype": "Float",
+   "label": "Basic"
+  },
+  {
+   "fieldname": "allow",
+   "fieldtype": "Float",
+   "label": "Allow"
+  },
+  {
+   "fieldname": "earnings_chart_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Earnings Chart Detail"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-01-06 10:38:42.339923",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Pastor Earnings Chart",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

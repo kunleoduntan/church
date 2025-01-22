@@ -1,0 +1,99 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-11-25 09:40:41.415341",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tx_date",
+  "full_name",
+  "column_break_qntb8",
+  "designated_bank_acct",
+  "amount_paid",
+  "column_break_8zwmn",
+  "branch",
+  "is_a_member",
+  "column_break_jruvw",
+  "other_details",
+  "create_receipt"
+ ],
+ "fields": [
+  {
+   "fieldname": "column_break_qntb8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "designated_bank_acct",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Designated Bank Acct"
+  },
+  {
+   "fieldname": "column_break_8zwmn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amount_paid",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Amount Paid"
+  },
+  {
+   "fieldname": "other_details",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Other Details",
+   "width": "105px"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Data",
+   "label": "Branch"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "is_a_member",
+   "fieldtype": "Select",
+   "label": "Is a Member",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "column_break_jruvw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tx_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "create_receipt",
+   "fieldtype": "Check",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Create Receipt"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-12-15 12:45:07.229010",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Vow Installment Analysis",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

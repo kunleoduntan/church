@@ -1,0 +1,82 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-11-25 04:21:27.737715",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "membership_id",
+  "first_name",
+  "last_name",
+  "column_break_fwrne",
+  "full_name",
+  "column_break_boylu",
+  "relationship",
+  "branch"
+ ],
+ "fields": [
+  {
+   "fieldname": "membership_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Membership ID",
+   "options": "Member"
+  },
+  {
+   "fetch_from": "membership_id.first_name",
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "First Name"
+  },
+  {
+   "fetch_from": "membership_id.last_name",
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Last Name"
+  },
+  {
+   "fieldname": "column_break_fwrne",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "membership_id.full_name",
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "column_break_boylu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "relationship",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Relationship",
+   "options": "Relationship"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Branch"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-11-25 09:01:41.148249",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Family",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

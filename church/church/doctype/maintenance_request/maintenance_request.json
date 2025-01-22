@@ -1,0 +1,221 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-12-20 10:33:08.563564",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "maintenance_section",
+  "title",
+  "date",
+  "type_of_maintenance",
+  "is_multiple_assets",
+  "asset_code",
+  "asset_description",
+  "column_break_yuld",
+  "maintenance_detail",
+  "column_break_6bwr",
+  "requesting_department",
+  "cost_center",
+  "last_repair_date",
+  "priority",
+  "column_break_fn9e",
+  "status",
+  "supplier_id",
+  "supplier_name",
+  "days_until_next_service",
+  "next_due_date",
+  "estimated_cost",
+  "section_break_i9ut",
+  "items",
+  "section_break_f7cd",
+  "total",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "maintenance_section",
+   "fieldtype": "Section Break",
+   "label": "Maintenance "
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "read_only": 1
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "type_of_maintenance",
+   "fieldtype": "Select",
+   "label": "Type of Maintenance",
+   "options": "\nAsset Repairs\nGeneral Office Repairs"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_multiple_assets",
+   "fieldtype": "Check",
+   "label": "Is Multiple Assets"
+  },
+  {
+   "depends_on": "eval: doc.is_multiple_assets == 0",
+   "fieldname": "asset_code",
+   "fieldtype": "Link",
+   "label": "Asset Code",
+   "options": "Asset"
+  },
+  {
+   "depends_on": "eval: doc.is_multiple_assets == 0",
+   "fetch_from": "asset_code.asset_name",
+   "fieldname": "asset_description",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Asset Description",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_yuld",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "maintenance_detail",
+   "fieldtype": "Small Text",
+   "label": "Maintenance Detail"
+  },
+  {
+   "fieldname": "column_break_6bwr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval: doc.is_multiple_assets == 0",
+   "fieldname": "requesting_department",
+   "fieldtype": "Link",
+   "label": "Requesting Department",
+   "options": "Department"
+  },
+  {
+   "depends_on": "eval: doc.is_multiple_assets == 0",
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "depends_on": "eval: doc.is_multiple_assets == 0",
+   "fieldname": "last_repair_date",
+   "fieldtype": "Date",
+   "label": "Last Repair Date"
+  },
+  {
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "label": "Priority",
+   "options": "\nHigh\nMedium\nCan't Wait\nLow"
+  },
+  {
+   "fieldname": "column_break_fn9e",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nApproved for Immediate Action\nApproved for Payment\nApproved for Purchases\nApproved and Keep in View\nApproval Pending"
+  },
+  {
+   "depends_on": "eval: doc.status == \"Approved for Purchases\"",
+   "fieldname": "supplier_id",
+   "fieldtype": "Link",
+   "label": "Supplier ID",
+   "mandatory_depends_on": "eval: doc.stautus == \"Approved for Purchases\"",
+   "options": "Supplier"
+  },
+  {
+   "depends_on": "supplier_id",
+   "fetch_from": "supplier_id.supplier_name",
+   "fieldname": "supplier_name",
+   "fieldtype": "Data",
+   "label": "Supplier Name"
+  },
+  {
+   "depends_on": "eval: doc.is_multiple_assets == 0",
+   "fieldname": "days_until_next_service",
+   "fieldtype": "Int",
+   "label": "Days Until Next Service "
+  },
+  {
+   "depends_on": "eval: doc.is_multiple_assets == 0",
+   "fieldname": "next_due_date",
+   "fieldtype": "Date",
+   "label": "Next Due Date"
+  },
+  {
+   "depends_on": "eval: doc.is_multiple_assets == 0",
+   "fieldname": "estimated_cost",
+   "fieldtype": "Currency",
+   "label": "Estimated Cost"
+  },
+  {
+   "fieldname": "section_break_i9ut",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "is_multiple_assets",
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Maintenance Request List",
+   "options": "Maintenance Request List"
+  },
+  {
+   "fieldname": "section_break_f7cd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Currency",
+   "label": "Total"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Maintenance Request",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-12-26 16:43:07.210945",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Maintenance Request",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

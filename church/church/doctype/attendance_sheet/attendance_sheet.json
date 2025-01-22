@@ -1,0 +1,246 @@
+{
+ "actions": [],
+ "allow_events_in_timeline": 1,
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-11-24 19:12:43.911979",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "attendance_detail_section",
+  "naming_series",
+  "reporting_date",
+  "date_from",
+  "date_to",
+  "column_break_hazcl",
+  "branch",
+  "month",
+  "column_break_twcty",
+  "prepared_by",
+  "column_break_w62qh",
+  "report_note",
+  "attendant_list_section",
+  "church_attendance_analysis",
+  "total_section",
+  "column_break_vd4yw",
+  "column_break_jid8w",
+  "total_men",
+  "total_new_men",
+  "total_existing_men",
+  "column_break_aua3j",
+  "total_women",
+  "total_new_women",
+  "total_existing_women",
+  "column_break_tgjrq",
+  "total_children",
+  "total_new_children",
+  "total_existing_children",
+  "column_break_hdt1d",
+  "total_first",
+  "total_second",
+  "total_third"
+ ],
+ "fields": [
+  {
+   "fieldname": "reporting_date",
+   "fieldtype": "Date",
+   "label": "Reporting Date"
+  },
+  {
+   "fieldname": "date_from",
+   "fieldtype": "Date",
+   "label": "Date From"
+  },
+  {
+   "fieldname": "date_to",
+   "fieldtype": "Date",
+   "label": "Date To"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch"
+  },
+  {
+   "fieldname": "month",
+   "fieldtype": "Data",
+   "label": "Month",
+   "read_only": 1
+  },
+  {
+   "fieldname": "prepared_by",
+   "fieldtype": "Link",
+   "label": "Prepared By",
+   "options": "Member"
+  },
+  {
+   "fieldname": "attendance_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Attendance Detail"
+  },
+  {
+   "fieldname": "column_break_hazcl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_twcty",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "attendant_list_section",
+   "fieldtype": "Section Break",
+   "label": "Attendant List"
+  },
+  {
+   "fieldname": "total_section",
+   "fieldtype": "Section Break",
+   "label": "Total"
+  },
+  {
+   "fieldname": "total_men",
+   "fieldtype": "Int",
+   "label": "Total Men",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_new_men",
+   "fieldtype": "Int",
+   "label": "Total New Men",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_aua3j",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_women",
+   "fieldtype": "Int",
+   "label": "Total Women",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_new_women",
+   "fieldtype": "Int",
+   "label": "Total New Women",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_tgjrq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_children",
+   "fieldtype": "Int",
+   "label": "Total Children",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_new_children",
+   "fieldtype": "Int",
+   "label": "Total New Children",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_hdt1d",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_existing_men",
+   "fieldtype": "Int",
+   "label": "Total Existing Men",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_existing_women",
+   "fieldtype": "Int",
+   "label": "Total Existing Women",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_existing_children",
+   "fieldtype": "Int",
+   "label": "Total Existing Children",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_first",
+   "fieldtype": "Int",
+   "label": "Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_second",
+   "fieldtype": "Int",
+   "label": "Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_third",
+   "fieldtype": "Int",
+   "label": "Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "church_attendance_analysis",
+   "fieldtype": "Table",
+   "label": "Church Attendance Analysis",
+   "options": "Church Attendance Analysis"
+  },
+  {
+   "fieldname": "column_break_w62qh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "report_note",
+   "fieldtype": "Small Text",
+   "label": "Report Note",
+   "max_height": "110px",
+   "width": "200px"
+  },
+  {
+   "fieldname": "column_break_vd4yw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_jid8w",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "ATS-.DD.-.MM.-.YY.-.####"
+  }
+ ],
+ "hide_toolbar": 1,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-15 14:04:49.509772",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Attendance Sheet",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

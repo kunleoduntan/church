@@ -1,0 +1,156 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{member_id}-{full_name}",
+ "creation": "2024-11-27 14:03:15.957643",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "member_tithes_section",
+  "member_id",
+  "full_name",
+  "column_break_aw7at",
+  "salutation",
+  "branch",
+  "column_break_c3tdd",
+  "currency",
+  "column_break_tmeaw",
+  "description",
+  "show_detail",
+  "tithes_payment_section",
+  "tithe_payment_schedule",
+  "section_break_glwxq",
+  "column_break_yygqx",
+  "column_break_1pxmu",
+  "column_break_cs4jx",
+  "amount_paid"
+ ],
+ "fields": [
+  {
+   "fetch_from": "member_id.salutation",
+   "fieldname": "salutation",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Salutation"
+  },
+  {
+   "fieldname": "column_break_aw7at",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Branch",
+   "options": "Branch"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "column_break_c3tdd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_tmeaw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "max_height": "105px",
+   "width": "250px"
+  },
+  {
+   "default": "0",
+   "fieldname": "show_detail",
+   "fieldtype": "Check",
+   "label": "Show Detail"
+  },
+  {
+   "depends_on": "show_detail",
+   "fieldname": "tithes_payment_section",
+   "fieldtype": "Section Break",
+   "label": "Tithes Payment"
+  },
+  {
+   "fieldname": "tithe_payment_schedule",
+   "fieldtype": "Table",
+   "label": "Tithe Payment Schedule",
+   "options": "Tithe Payment Schedule"
+  },
+  {
+   "depends_on": "show_detail",
+   "fieldname": "section_break_glwxq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_yygqx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_1pxmu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_cs4jx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amount_paid",
+   "fieldtype": "Float",
+   "label": "Amount Paid",
+   "precision": "2"
+  },
+  {
+   "fieldname": "member_tithes_section",
+   "fieldtype": "Section Break",
+   "label": "Member Tithes"
+  },
+  {
+   "fetch_from": "member_id.full_name",
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "member_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Member ID",
+   "options": "Member"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-21 08:10:12.551213",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Member Tithe Record",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

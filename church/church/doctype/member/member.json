@@ -1,0 +1,245 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-11-24 14:34:48.371242",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "member_detail_section",
+  "naming_series",
+  "salutation",
+  "first_name",
+  "column_break_3gubc",
+  "last_name",
+  "middle_name",
+  "column_break_rnomb",
+  "type",
+  "full_name",
+  "date_of_joining",
+  "personal_information_section",
+  "mobile_phone",
+  "date_of_birth",
+  "column_break_ll1ja",
+  "marital_staus",
+  "gender",
+  "occupation",
+  "column_break_czer9",
+  "address",
+  "section_section",
+  "designation",
+  "is_a_worker",
+  "is_a_pastor",
+  "column_break_f2qxg",
+  "parish",
+  "province",
+  "column_break_851gb",
+  "state",
+  "family_tab",
+  "detail_section",
+  "family",
+  "pastor_information_tab"
+ ],
+ "fields": [
+  {
+   "fieldname": "member_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Member Detail"
+  },
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "First Name"
+  },
+  {
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last Name"
+  },
+  {
+   "fieldname": "middle_name",
+   "fieldtype": "Data",
+   "label": "Middle Name"
+  },
+  {
+   "fieldname": "column_break_3gubc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "parish",
+   "fieldtype": "Data",
+   "label": "Parish"
+  },
+  {
+   "fieldname": "province",
+   "fieldtype": "Data",
+   "label": "Province"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State"
+  },
+  {
+   "fieldname": "column_break_czer9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Small Text",
+   "label": "Address",
+   "max_height": "100px",
+   "width": "200px"
+  },
+  {
+   "fieldname": "mobile_phone",
+   "fieldtype": "Phone",
+   "label": "Mobile Phone"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Membership Type",
+   "options": "Visiting\nPermanent"
+  },
+  {
+   "fieldname": "section_section",
+   "fieldtype": "Section Break",
+   "label": "Section"
+  },
+  {
+   "fieldname": "column_break_f2qxg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_851gb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth"
+  },
+  {
+   "fieldname": "family_tab",
+   "fieldtype": "Tab Break",
+   "label": "Family"
+  },
+  {
+   "fieldname": "detail_section",
+   "fieldtype": "Section Break",
+   "label": "Detail"
+  },
+  {
+   "fieldname": "family",
+   "fieldtype": "Table",
+   "label": "Family",
+   "options": "Family"
+  },
+  {
+   "fieldname": "marital_staus",
+   "fieldtype": "Select",
+   "label": "Marital Staus",
+   "options": "Single\nMarried\nWidow\nNot Applicable"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_a_worker",
+   "fieldtype": "Check",
+   "label": "Is a Worker"
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Link",
+   "label": "Designation",
+   "options": "Designation"
+  },
+  {
+   "fieldname": "occupation",
+   "fieldtype": "Data",
+   "label": "Occupation"
+  },
+  {
+   "fieldname": "date_of_joining",
+   "fieldtype": "Date",
+   "label": "Date of Joining"
+  },
+  {
+   "fieldname": "column_break_rnomb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "personal_information_section",
+   "fieldtype": "Section Break",
+   "label": "Personal Information"
+  },
+  {
+   "fieldname": "column_break_ll1ja",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_a_pastor",
+   "fieldtype": "Check",
+   "label": "Is a Pastor"
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Link",
+   "label": "Gender",
+   "options": "Gender"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "MEM-.ID.-.####"
+  },
+  {
+   "fieldname": "pastor_information_tab",
+   "fieldtype": "Tab Break",
+   "label": "Pastor Information"
+  },
+  {
+   "fieldname": "salutation",
+   "fieldtype": "Link",
+   "label": "Salutation",
+   "options": "Salutation"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-15 21:35:52.314202",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Member",
+ "name_case": "Title Case",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "full_name"
+}

@@ -1,0 +1,86 @@
+{
+ "actions": [],
+ "allow_events_in_timeline": 1,
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "field:offering_type_name",
+ "color": "Green",
+ "creation": "2024-12-01 17:24:39.450734",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "offering_detail_section",
+  "offering_type_name",
+  "column_break_dapf9",
+  "offering_description",
+  "column_break_nmy0y",
+  "income_account"
+ ],
+ "fields": [
+  {
+   "fieldname": "offering_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Offering Detail"
+  },
+  {
+   "fieldname": "offering_type_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Offering Type Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_dapf9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "offering_description",
+   "fieldtype": "Data",
+   "label": "Offering Description",
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_nmy0y",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "income_account",
+   "fieldtype": "Link",
+   "label": "Income Account",
+   "options": "Account"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-01 17:24:39.450734",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Offering Type",
+ "name_case": "Title Case",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "offering_type_name",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "ASC",
+ "states": [],
+ "timeline_field": "income_account",
+ "title_field": "offering_type_name"
+}
