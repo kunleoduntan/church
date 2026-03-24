@@ -1,0 +1,79 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-07-20 07:23:08.023398",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_1",
+  "tax_level_description",
+  "tax_level_amount",
+  "column_break_4",
+  "tax_rate",
+  "tax_amount",
+  "column_break_7",
+  "cum_amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "tax_level_description",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Tax Level Description",
+   "options": "\nFirst 300,000\nNext 300,000\nNext 500,000\nAgain Next 500,000\nNext 1,600,000\nAbove 3,200,000"
+  },
+  {
+   "fieldname": "tax_level_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": " Tax Level Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tax_rate",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Tax Rate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tax_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Tax Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cum_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Cum Amount",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-12-26 17:04:21.314393",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Tax Slab Custom",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

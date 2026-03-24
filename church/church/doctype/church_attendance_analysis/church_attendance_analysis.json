@@ -1,0 +1,238 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-11-26 08:14:45.410675",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "attendance_detail_section",
+  "date",
+  "column_break_ibgbe",
+  "day",
+  "column_break_wmcmr",
+  "programme",
+  "column_break_gxkmw",
+  "branch",
+  "aggregate_attendance_section",
+  "men",
+  "column_break_fxht5",
+  "women",
+  "column_break_dqiso",
+  "children",
+  "column_break_xqtux",
+  "total",
+  "new_comers_attendance_section",
+  "new_men",
+  "column_break_e5mcw",
+  "new_women",
+  "column_break_oj7ig",
+  "new_children",
+  "column_break_tuxmq",
+  "new_total",
+  "existing_member_attendance_section",
+  "existing_men",
+  "column_break_atwws",
+  "existing_women",
+  "column_break_nioqf",
+  "existing_children",
+  "column_break_uenkl",
+  "existing_total"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "day",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Day",
+   "reqd": 1
+  },
+  {
+   "fieldname": "programme",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Programme",
+   "options": "Programme",
+   "reqd": 1
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Branch",
+   "options": "Branch",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "men",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Men"
+  },
+  {
+   "default": "0",
+   "fieldname": "women",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Women"
+  },
+  {
+   "default": "0",
+   "fieldname": "children",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Children"
+  },
+  {
+   "default": "0",
+   "fieldname": "total",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Total"
+  },
+  {
+   "default": "0",
+   "fieldname": "new_men",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "New Men"
+  },
+  {
+   "default": "0",
+   "fieldname": "new_women",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "New Women"
+  },
+  {
+   "default": "0",
+   "fieldname": "new_children",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "New Children"
+  },
+  {
+   "default": "0",
+   "fieldname": "new_total",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "New Total"
+  },
+  {
+   "default": "0",
+   "fieldname": "existing_men",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Existing Men"
+  },
+  {
+   "default": "0",
+   "fieldname": "existing_women",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Existing Women"
+  },
+  {
+   "default": "0",
+   "fieldname": "existing_children",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Existing Children"
+  },
+  {
+   "default": "0",
+   "fieldname": "existing_total",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Existing Total"
+  },
+  {
+   "fieldname": "attendance_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Attendance Detail"
+  },
+  {
+   "fieldname": "column_break_ibgbe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_wmcmr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_gxkmw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_fxht5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_dqiso",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_xqtux",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_e5mcw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_oj7ig",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_tuxmq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_atwws",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_nioqf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_uenkl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "aggregate_attendance_section",
+   "fieldtype": "Section Break",
+   "label": "Aggregate Attendance"
+  },
+  {
+   "fieldname": "new_comers_attendance_section",
+   "fieldtype": "Section Break",
+   "label": "New Comers Attendance"
+  },
+  {
+   "fieldname": "existing_member_attendance_section",
+   "fieldtype": "Section Break",
+   "label": "Existing Member Attendance"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-11-26 19:58:20.615841",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Church Attendance Analysis",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

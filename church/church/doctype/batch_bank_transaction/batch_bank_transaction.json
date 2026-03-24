@@ -1,0 +1,209 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-06-21 19:06:14.002575",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "batch_detail_section",
+  "naming_series",
+  "batch_date",
+  "bank_account",
+  "column_break_nrytw",
+  "bank_account_currency",
+  "bank_gl",
+  "column_break_t0jxq",
+  "company",
+  "batch_owner",
+  "post_batch",
+  "transaction_line_section",
+  "transaction_entry",
+  "total_section",
+  "column_break_5vro",
+  "column_break_poey",
+  "total_inflow",
+  "column_break_2h5qr",
+  "total_outflow",
+  "column_break_gb3jf",
+  "net_amount",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "batch_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Batch Detail"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Naming Series"
+  },
+  {
+   "fieldname": "batch_date",
+   "fieldtype": "Date",
+   "label": "Batch Date"
+  },
+  {
+   "fieldname": "bank_account",
+   "fieldtype": "Link",
+   "label": "Bank Account",
+   "options": "Bank Account"
+  },
+  {
+   "fieldname": "column_break_nrytw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "bank_account.account_currency",
+   "fieldname": "bank_account_currency",
+   "fieldtype": "Data",
+   "label": "Bank Account Currency"
+  },
+  {
+   "fetch_from": "bank_account.account",
+   "fieldname": "bank_gl",
+   "fieldtype": "Data",
+   "label": "Bank GL"
+  },
+  {
+   "fieldname": "column_break_t0jxq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "batch_owner",
+   "fieldtype": "Link",
+   "label": "Batch Owner",
+   "options": "User"
+  },
+  {
+   "default": "0",
+   "fieldname": "post_batch",
+   "fieldtype": "Check",
+   "label": "Post Batch "
+  },
+  {
+   "fieldname": "transaction_line_section",
+   "fieldtype": "Section Break",
+   "label": "Transaction Line"
+  },
+  {
+   "description": "Transfer To = Transfer to the account selected in Party Column from Bank GL A/c (DR (Party A/c) IN and CR (Bank GL) - OUT...)\nTransfer From = Transfer from the account selected in Party Column to Bank GL A/c - (DR (Bank GL) IN and CR (Party A/c) OUT...)",
+   "fieldname": "transaction_entry",
+   "fieldtype": "Table",
+   "label": "Transaction Entry",
+   "options": "Transaction Entry"
+  },
+  {
+   "fieldname": "total_section",
+   "fieldtype": "Section Break",
+   "label": "Total"
+  },
+  {
+   "fieldname": "column_break_5vro",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_poey",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_inflow",
+   "fieldtype": "Currency",
+   "label": "Total Inflow",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_2h5qr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_outflow",
+   "fieldtype": "Currency",
+   "label": "Total Outflow",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_gb3jf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "net_amount",
+   "fieldtype": "Currency",
+   "label": "Net Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Batch Bank Transaction",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-12-26 16:11:00.081639",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Batch Bank Transaction",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_views": 1
+}

@@ -1,0 +1,137 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-12-01 16:59:49.520631",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "date",
+  "transaction_description",
+  "column_break_vqru",
+  "account_to_debit",
+  "column_break_i5tm",
+  "account_to_credit",
+  "period",
+  "revenue_cost_profit_section",
+  "revenue",
+  "material_costs",
+  "column_break_54qk",
+  "overhead",
+  "total_cost",
+  "column_break_9hfl",
+  "profit",
+  "frequency"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Title"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "transaction_description",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Transaction Description"
+  },
+  {
+   "fieldname": "column_break_vqru",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "account_to_debit",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Account To Debit",
+   "options": "Account"
+  },
+  {
+   "fieldname": "column_break_i5tm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "account_to_credit",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Account To Credit",
+   "options": "Account"
+  },
+  {
+   "fieldname": "period",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Period"
+  },
+  {
+   "fieldname": "revenue_cost_profit_section",
+   "fieldtype": "Section Break",
+   "label": "Revenue, Cost Profit"
+  },
+  {
+   "fieldname": "revenue",
+   "fieldtype": "Currency",
+   "label": "Revenue"
+  },
+  {
+   "fieldname": "material_costs",
+   "fieldtype": "Currency",
+   "label": "Material Costs"
+  },
+  {
+   "fieldname": "column_break_54qk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "overhead",
+   "fieldtype": "Currency",
+   "label": "Overhead"
+  },
+  {
+   "fieldname": "total_cost",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Total Cost"
+  },
+  {
+   "fieldname": "column_break_9hfl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "profit",
+   "fieldtype": "Currency",
+   "label": "Profit"
+  },
+  {
+   "fieldname": "frequency",
+   "fieldtype": "Data",
+   "label": "Frequency"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-12-26 17:09:47.621957",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Schedule of Amortization Rc",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

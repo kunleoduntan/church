@@ -1,0 +1,211 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-11-25 17:52:00.387911",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "anonymous_tithes_section",
+  "naming_series",
+  "reporting_date",
+  "start_date",
+  "end_date",
+  "column_break_aw7at",
+  "month",
+  "branch",
+  "designated_bank_acct",
+  "column_break_c3tdd",
+  "bank_gl",
+  "currency",
+  "column_break_tmeaw",
+  "description",
+  "tithes_payment_section",
+  "tithe_transaction_entry_for_anonymous",
+  "section_break_glwxq",
+  "column_break_3vspx",
+  "column_break_yygqx",
+  "column_break_1pxmu",
+  "column_break_cs4jx",
+  "amount_paid",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "month",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Month"
+  },
+  {
+   "fieldname": "column_break_aw7at",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "member_id.parish",
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Branch",
+   "options": "Branch",
+   "reqd": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "column_break_c3tdd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "designated_bank_acct",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Designated Bank Acct",
+   "options": "Bank Account",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_tmeaw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "max_height": "105px",
+   "width": "250px"
+  },
+  {
+   "fieldname": "tithes_payment_section",
+   "fieldtype": "Section Break",
+   "label": "Tithes Payment"
+  },
+  {
+   "fieldname": "tithe_transaction_entry_for_anonymous",
+   "fieldtype": "Table",
+   "label": "Tithe Transaction Entry for Anonymous",
+   "options": "Tithe Transaction Entry for Anonymous"
+  },
+  {
+   "fieldname": "section_break_glwxq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_yygqx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_1pxmu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_cs4jx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amount_paid",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Amount Paid",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Anonymous Tithes Batch Update",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Anonymous Tithes Batch Update",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "bank_gl",
+   "fieldtype": "Data",
+   "label": "Bank GL"
+  },
+  {
+   "fieldname": "reporting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Reporting Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "End Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "anonymous_tithes_section",
+   "fieldtype": "Section Break",
+   "label": "Anonymous Tithes"
+  },
+  {
+   "fieldname": "column_break_3vspx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "ATB-.DD.-.MM.-.YY.-.####"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-12-15 14:25:31.388361",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Anonymous Tithes Batch Update",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

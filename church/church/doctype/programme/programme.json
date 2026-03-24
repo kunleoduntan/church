@@ -1,0 +1,93 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:programme_name",
+ "color": "Green",
+ "creation": "2024-11-24 19:23:50.979160",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "programme_detail_section",
+  "programme_name",
+  "programme_description",
+  "start_date",
+  "column_break_l4mqk",
+  "end_date",
+  "column_break_nmy0y",
+  "detail_about_programme"
+ ],
+ "fields": [
+  {
+   "fieldname": "programme_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Programme Detail"
+  },
+  {
+   "fieldname": "programme_description",
+   "fieldtype": "Data",
+   "label": "Programme Description",
+   "unique": 1
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "column_break_l4mqk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date"
+  },
+  {
+   "fieldname": "column_break_nmy0y",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "detail_about_programme",
+   "fieldtype": "Small Text",
+   "label": "Detail About Programme"
+  },
+  {
+   "fieldname": "programme_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Programme Name",
+   "reqd": 1,
+   "unique": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-01 18:55:05.325605",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Programme",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "programme_name",
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "programme_name"
+}

@@ -1,0 +1,59 @@
+{
+ "actions": [],
+ "allow_events_in_timeline": 1,
+ "allow_rename": 1,
+ "creation": "2024-02-18 04:53:12.994750",
+ "default_view": "List",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "plan_type",
+  "plan_description",
+  "title"
+ ],
+ "fields": [
+  {
+   "fieldname": "plan_type",
+   "fieldtype": "Data",
+   "label": "Plan Type"
+  },
+  {
+   "fieldname": "plan_description",
+   "fieldtype": "Data",
+   "label": "Plan Description"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-26 16:26:06.794885",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "HMO Plan",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title"
+}

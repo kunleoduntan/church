@@ -1,0 +1,214 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-12-07 18:57:09.210293",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "posting_date",
+  "transaction_date",
+  "party_type",
+  "column_break_amfa",
+  "credit_amount",
+  "debit_amount",
+  "account",
+  "party",
+  "column_break_lbjr",
+  "account_currency",
+  "cheque_no",
+  "debit_amount_in_account_currency",
+  "column_break_zxyp",
+  "debit_amount_in_transaction_currency",
+  "section_break_iofx",
+  "column_break_tmwn",
+  "voucher_type",
+  "voucher_no",
+  "voucher_detail_no",
+  "column_break_237s",
+  "transaction_currency",
+  "transaction_exchange_rate",
+  "column_break_ubtt",
+  "remarks",
+  "rec",
+  "amount",
+  "pay_name",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Posting Date"
+  },
+  {
+   "fieldname": "transaction_date",
+   "fieldtype": "Date",
+   "hidden": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Transaction Date"
+  },
+  {
+   "fieldname": "party_type",
+   "fieldtype": "Data",
+   "label": "Party Type"
+  },
+  {
+   "fieldname": "column_break_amfa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "credit_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Credit Amount"
+  },
+  {
+   "fieldname": "debit_amount",
+   "fieldtype": "Currency",
+   "label": "Debit Amount"
+  },
+  {
+   "fieldname": "account",
+   "fieldtype": "Data",
+   "label": "Account"
+  },
+  {
+   "fieldname": "party",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Party"
+  },
+  {
+   "fieldname": "column_break_lbjr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "account_currency",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Account Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "cheque_no",
+   "fieldtype": "Data",
+   "label": "Cheque No"
+  },
+  {
+   "fieldname": "debit_amount_in_account_currency",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Credit Amount in Account Currency"
+  },
+  {
+   "fieldname": "column_break_zxyp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "debit_amount_in_transaction_currency",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Credit Amount in Transaction Currency"
+  },
+  {
+   "fieldname": "section_break_iofx",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_tmwn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "voucher_type",
+   "fieldtype": "Data",
+   "label": "Voucher Type"
+  },
+  {
+   "fieldname": "voucher_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Voucher No"
+  },
+  {
+   "fieldname": "voucher_detail_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Voucher Detail No"
+  },
+  {
+   "fieldname": "column_break_237s",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "transaction_currency",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Transaction Currency"
+  },
+  {
+   "fieldname": "transaction_exchange_rate",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Transaction Exchange Rate"
+  },
+  {
+   "fieldname": "column_break_ubtt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Remarks"
+  },
+  {
+   "default": "0",
+   "fieldname": "rec",
+   "fieldtype": "Check",
+   "label": "Rec"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount"
+  },
+  {
+   "fieldname": "pay_name",
+   "fieldtype": "Data",
+   "label": "Pay Name"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nYes\nNo"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-12-26 17:04:20.326847",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Bank Statement",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,596 @@
+{
+ "actions": [],
+ "allow_events_in_timeline": 1,
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "color": "Green",
+ "creation": "2024-02-26 18:48:07.490724",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "transaction_detail_section",
+  "naming_series",
+  "title",
+  "transaction_date",
+  "column_break_a3gqx",
+  "transaction_type",
+  "column_break_7fq6f",
+  "member_id",
+  "received_from",
+  "source",
+  "column_break_bxo1t",
+  "member_full_name",
+  "branch",
+  "section_break_2mvpc",
+  "receipt_currency",
+  "exchange_rate",
+  "column_break_rbnba",
+  "company",
+  "column_break_94cdw",
+  "church_department",
+  "special_programme",
+  "column_break_req8v",
+  "create_accounting_entries",
+  "amortize",
+  "transactions_detail_section",
+  "amount_paid",
+  "amount_paid_in_fc",
+  "mode_of_payment",
+  "column_break_e1fvs",
+  "transaction_purposes",
+  "column_break_iyr5",
+  "reference_no",
+  "account_to_credit",
+  "column_break_wkuqa",
+  "amount_in_words",
+  "amortization_settings_section",
+  "frequency",
+  "start_date",
+  "charge_amount",
+  "column_break_zh9k0",
+  "no_of_days",
+  "end_date",
+  "column_break_pnig6",
+  "deferred_revenue_account",
+  "revenue_account",
+  "signature_section",
+  "column_break_dpr3j",
+  "issued_by",
+  "column_break_vkub",
+  "date",
+  "section_break_ap6t",
+  "authorised_by",
+  "column_break_b8hs",
+  "auth_date",
+  "section_break_4wot",
+  "approved_by",
+  "column_break_g6wm",
+  "app_date",
+  "accounting_tab",
+  "banking_detail_section",
+  "remittance_bank",
+  "column_break_zpm14",
+  "bank_gl",
+  "column_break_6zu0m",
+  "bank_account_currency",
+  "column_break_shcbv",
+  "referenced_document_no",
+  "processed",
+  "schedule_tab",
+  "amortization_section",
+  "amortization_schedule",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "transaction_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Transaction Detail"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "RCP-.DD.-.MM.-.YY.-.####"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Title"
+  },
+  {
+   "fieldname": "transaction_date",
+   "fieldtype": "Date",
+   "label": "Transaction Date"
+  },
+  {
+   "fieldname": "column_break_a3gqx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "transaction_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Transaction Type",
+   "options": "\nMember Tithe\nAnonymous Tithe\nChurch Department\nSpecial Programme\nRevenue\nTransfer In"
+  },
+  {
+   "fieldname": "column_break_7fq6f",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.transaction_type == 'Member Tithe'",
+   "fieldname": "member_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Member ID",
+   "options": "Member"
+  },
+  {
+   "depends_on": "eval:doc.transaction_type != 'Member Tithe'",
+   "fieldname": "received_from",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Received from",
+   "mandatory_depends_on": "eval:doc.transaction_type != 'Member Tithe'"
+  },
+  {
+   "fieldname": "column_break_bxo1t",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.transaction_type == 'Member Tithe'",
+   "fetch_from": "member_id.full_name",
+   "fieldname": "member_full_name",
+   "fieldtype": "Data",
+   "label": "Member Full Name"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch"
+  },
+  {
+   "fieldname": "section_break_2mvpc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "receipt_currency",
+   "fieldtype": "Link",
+   "label": "Receipt Currency",
+   "options": "Currency"
+  },
+  {
+   "depends_on": "eval:doc.receipt_currency != 'NGN'",
+   "fieldname": "exchange_rate",
+   "fieldtype": "Float",
+   "label": "Exchange Rate",
+   "mandatory_depends_on": "eval:doc.receipt_currency != 'NGN'",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_rbnba",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "column_break_94cdw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.transaction_type == 'Church Department'",
+   "fieldname": "church_department",
+   "fieldtype": "Link",
+   "label": "Church Department",
+   "mandatory_depends_on": "eval:doc.transaction_type == 'Church Department'",
+   "options": "Church Department"
+  },
+  {
+   "depends_on": "eval:doc.transaction_type == 'Special Programme'",
+   "fieldname": "special_programme",
+   "fieldtype": "Link",
+   "label": "Special Programme",
+   "mandatory_depends_on": "eval:doc.transaction_type == 'Special Programme'",
+   "options": "Programme"
+  },
+  {
+   "fieldname": "column_break_req8v",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "create_accounting_entries",
+   "fieldtype": "Check",
+   "label": "Create Accounting Entries"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.transaction_type == 'Revenue'",
+   "fieldname": "amortize",
+   "fieldtype": "Check",
+   "label": "Amortize"
+  },
+  {
+   "fieldname": "transactions_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Transactions Detail",
+   "mandatory_depends_on": "doc.customer_type"
+  },
+  {
+   "depends_on": "eval:doc.receipt_currency == 'NGN'",
+   "fieldname": "amount_paid",
+   "fieldtype": "Float",
+   "label": "Amount Paid",
+   "options": "Company:company:default_currency",
+   "precision": "2"
+  },
+  {
+   "depends_on": "eval:doc.receipt_currency != 'NGN'",
+   "fieldname": "amount_paid_in_fc",
+   "fieldtype": "Float",
+   "label": "Amount Paid In FC",
+   "options": "currency",
+   "precision": "2"
+  },
+  {
+   "fieldname": "mode_of_payment",
+   "fieldtype": "Link",
+   "label": "Mode of Payment",
+   "options": "Mode of Payment"
+  },
+  {
+   "fieldname": "column_break_e1fvs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "transaction_purposes",
+   "fieldtype": "Small Text",
+   "label": "Transaction Purposes",
+   "max_height": "100px",
+   "width": "200px"
+  },
+  {
+   "fieldname": "column_break_iyr5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reference_no",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Cheque / Ref No",
+   "length": 10
+  },
+  {
+   "description": "Enter Revenue Ac. if transaction is not amortised else enter Deferred Revenue Account",
+   "fieldname": "account_to_credit",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Account To Credit",
+   "options": "Account"
+  },
+  {
+   "fieldname": "column_break_wkuqa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amount_in_words",
+   "fieldtype": "Small Text",
+   "label": "Amount In Words",
+   "max_height": "100px",
+   "width": "200px"
+  },
+  {
+   "fieldname": "amortization_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Amortization Settings",
+   "mandatory_depends_on": "eval:doc.amortise == 1"
+  },
+  {
+   "fieldname": "frequency",
+   "fieldtype": "Select",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Frequency",
+   "options": "\nMonthly\nQuarterly"
+  },
+  {
+   "depends_on": "frequency",
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Start Date",
+   "mandatory_depends_on": "frequency"
+  },
+  {
+   "depends_on": "frequency",
+   "fieldname": "charge_amount",
+   "fieldtype": "Currency",
+   "label": "Charged Amount",
+   "read_only": 1,
+   "read_only_depends_on": "frequency"
+  },
+  {
+   "fieldname": "column_break_zh9k0",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "frequency",
+   "fieldname": "no_of_days",
+   "fieldtype": "Int",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "No of Days"
+  },
+  {
+   "depends_on": "frequency",
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "End Date"
+  },
+  {
+   "fieldname": "column_break_pnig6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "frequency",
+   "fieldname": "deferred_revenue_account",
+   "fieldtype": "Link",
+   "label": "Deferred Revenue Account",
+   "mandatory_depends_on": "frequency",
+   "options": "Account"
+  },
+  {
+   "depends_on": "frequency",
+   "fieldname": "revenue_account",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Revenue Account",
+   "mandatory_depends_on": "frequency",
+   "options": "Account"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "signature_section",
+   "fieldtype": "Section Break",
+   "label": "Signature"
+  },
+  {
+   "fieldname": "column_break_dpr3j",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "issued_by",
+   "fieldtype": "Link",
+   "label": "Issued By",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_vkub",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "signature_section",
+   "fieldname": "section_break_ap6t",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "authorised_by",
+   "fieldtype": "Link",
+   "label": "Authorised By",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "column_break_b8hs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "auth_date",
+   "fieldtype": "Date",
+   "label": "Auth Date"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_4wot",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "column_break_g6wm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "app_date",
+   "fieldtype": "Date",
+   "label": "App Date"
+  },
+  {
+   "fieldname": "accounting_tab",
+   "fieldtype": "Tab Break",
+   "label": "Banking Detail"
+  },
+  {
+   "fieldname": "banking_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Banking Detail",
+   "mandatory_depends_on": "doc.customer_type"
+  },
+  {
+   "fieldname": "remittance_bank",
+   "fieldtype": "Link",
+   "label": "Remittance Bank",
+   "mandatory_depends_on": "customer_type",
+   "options": "Bank Account"
+  },
+  {
+   "fieldname": "column_break_zpm14",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_6zu0m",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "remittance_bank.account_currency",
+   "fieldname": "bank_account_currency",
+   "fieldtype": "Data",
+   "label": "Bank Account Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_shcbv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "referenced_document_no",
+   "fieldtype": "Data",
+   "label": "Referenced Doc No"
+  },
+  {
+   "fieldname": "processed",
+   "fieldtype": "Data",
+   "label": "Processed"
+  },
+  {
+   "fieldname": "schedule_tab",
+   "fieldtype": "Tab Break",
+   "label": "Schedule"
+  },
+  {
+   "fieldname": "amortization_section",
+   "fieldtype": "Section Break",
+   "label": "Amortization"
+  },
+  {
+   "fieldname": "amortization_schedule",
+   "fieldtype": "Table",
+   "label": "Amortization Schedule",
+   "options": "Schedule of Receipt Amortization"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Receipts",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "source",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Source"
+  },
+  {
+   "fetch_from": "remittance_bank.account",
+   "fieldname": "bank_gl",
+   "fieldtype": "Data",
+   "label": "Remittance Bank GL",
+   "mandatory_depends_on": "customer_type",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-12-26 21:10:43.670721",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Receipts",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts User",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "show_name_in_global_search": 1,
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title"
+}

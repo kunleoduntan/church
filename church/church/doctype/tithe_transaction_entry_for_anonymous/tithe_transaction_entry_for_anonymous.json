@@ -1,0 +1,104 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-11-25 17:49:25.528104",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "full_name",
+  "column_break_qntb8",
+  "designated_bank_acct",
+  "branch",
+  "currency",
+  "column_break_8zwmn",
+  "amount_paid",
+  "exchange_rate",
+  "amount_in_lc",
+  "column_break_wbbbr",
+  "other_details"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "column_break_qntb8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "designated_bank_acct",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Designated Bank Acct"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Data",
+   "label": "Branch"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "column_break_8zwmn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amount_paid",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Amount Paid",
+   "precision": "2"
+  },
+  {
+   "fieldname": "amount_in_lc",
+   "fieldtype": "Currency",
+   "label": "Amount in Lc"
+  },
+  {
+   "default": "1.00",
+   "fieldname": "exchange_rate",
+   "fieldtype": "Float",
+   "label": "Exchange Rate",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_wbbbr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "other_details",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Other Details",
+   "width": "105px"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-11-27 13:28:17.871077",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Tithe Transaction Entry for Anonymous",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

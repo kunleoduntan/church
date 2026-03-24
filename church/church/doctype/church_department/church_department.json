@@ -1,0 +1,104 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:department_name",
+ "creation": "2024-11-25 04:40:32.732726",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "department_name",
+  "branch",
+  "date_founded",
+  "column_break_vlkzg",
+  "hod_member_id",
+  "full_name",
+  "column_break_klorl",
+  "total",
+  "member_list_section",
+  "members"
+ ],
+ "fields": [
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch"
+  },
+  {
+   "fieldname": "column_break_vlkzg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "hod_member_id.full_name",
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "column_break_klorl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "member_list_section",
+   "fieldtype": "Section Break",
+   "label": "Member List"
+  },
+  {
+   "fieldname": "members",
+   "fieldtype": "Table",
+   "label": "Members",
+   "options": "Departmental Member"
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Int",
+   "label": "Total Number of Member",
+   "read_only": 1
+  },
+  {
+   "fieldname": "date_founded",
+   "fieldtype": "Date",
+   "label": "Date Founded"
+  },
+  {
+   "fieldname": "department_name",
+   "fieldtype": "Data",
+   "label": "Departmentt Name",
+   "unique": 1
+  },
+  {
+   "fieldname": "hod_member_id",
+   "fieldtype": "Link",
+   "label": "HOD Member ID",
+   "options": "Member"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-16 06:43:10.131617",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Church Department",
+ "name_case": "Title Case",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,116 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-11-28 16:28:39.373733",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "day",
+  "member_id",
+  "column_break_g754j",
+  "full_name",
+  "follow_up_activities",
+  "column_break_me06c",
+  "response",
+  "willingness",
+  "column_break_7vedj",
+  "visitor_full_name",
+  "branch",
+  "method"
+ ],
+ "fields": [
+  {
+   "fieldname": "member_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Member ID",
+   "options": "Member"
+  },
+  {
+   "fieldname": "column_break_g754j",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "member_id.full_name",
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Visited By",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_me06c",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "follow_up_activities",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Follow Up Activities",
+   "options": "Follow up Activity"
+  },
+  {
+   "fieldname": "column_break_7vedj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "response",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Response",
+   "options": "Follow Up Response"
+  },
+  {
+   "fieldname": "willingness",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Willingness"
+  },
+  {
+   "fieldname": "visitor_full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Visitor Full Name"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date"
+  },
+  {
+   "fieldname": "day",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Day"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Branch",
+   "options": "Branch"
+  },
+  {
+   "fieldname": "method",
+   "fieldtype": "Link",
+   "label": "Method",
+   "options": "Follow Up Method"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-12-15 16:05:18.405133",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Follow Up",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

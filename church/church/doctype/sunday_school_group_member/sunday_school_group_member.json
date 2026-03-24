@@ -1,0 +1,191 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-12-01 15:53:30.445355",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "general_information_section",
+  "member_id",
+  "full_name",
+  "column_break_zr1ov",
+  "age",
+  "class_name",
+  "date_of_birth",
+  "gender",
+  "column_break_4sbyl",
+  "branch",
+  "class_full_description",
+  "personal_information_section",
+  "phone_no",
+  "column_break_byixi",
+  "email",
+  "column_break_h4d0f",
+  "date_of_joining",
+  "column_break_cccc9",
+  "date_of_promotion",
+  "teacher_detail_section",
+  "salutation",
+  "column_break_1gcqa",
+  "teacher_name",
+  "other_information"
+ ],
+ "fields": [
+  {
+   "fieldname": "member_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Member ID",
+   "options": "Member",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fetch_from": "member_id.full_name",
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "column_break_zr1ov",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "class_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Class Name"
+  },
+  {
+   "fieldname": "class_full_description",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Class Full Description",
+   "max_height": "105px",
+   "width": "200px"
+  },
+  {
+   "fieldname": "personal_information_section",
+   "fieldtype": "Section Break",
+   "label": "Personal Information"
+  },
+  {
+   "fieldname": "phone_no",
+   "fieldtype": "Phone",
+   "in_list_view": 1,
+   "label": "Phone No"
+  },
+  {
+   "fieldname": "column_break_byixi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Email"
+  },
+  {
+   "fieldname": "column_break_h4d0f",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date_of_joining",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date of Joining"
+  },
+  {
+   "fieldname": "column_break_cccc9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date_of_promotion",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date of Promotion"
+  },
+  {
+   "fieldname": "teacher_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Teacher Detail"
+  },
+  {
+   "fetch_from": "teacher.salutaion",
+   "fieldname": "salutation",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Salutation"
+  },
+  {
+   "fetch_from": "teacher.full_name",
+   "fieldname": "teacher_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Teacher Name"
+  },
+  {
+   "fieldname": "general_information_section",
+   "fieldtype": "Section Break",
+   "label": "General Information"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Branch",
+   "options": "Branch"
+  },
+  {
+   "fieldname": "column_break_4sbyl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_1gcqa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "other_information",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Other Information"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date of Birth"
+  },
+  {
+   "fieldname": "age",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Age",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "member_id.gender",
+   "fieldname": "gender",
+   "fieldtype": "Data",
+   "label": "Gender"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-12-02 19:15:24.507574",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Sunday School Group Member",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

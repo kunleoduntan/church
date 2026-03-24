@@ -1,0 +1,182 @@
+{
+ "actions": [],
+ "allow_events_in_timeline": 1,
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-11-24 20:32:13.574017",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "offering_detail_section",
+  "naming_series",
+  "reporting_date",
+  "date_from",
+  "date_to",
+  "month",
+  "column_break_hazcl",
+  "bank_account",
+  "bank_gl",
+  "currency",
+  "column_break_twcty",
+  "branch",
+  "prepared_by",
+  "attendant_list_section",
+  "offering",
+  "total_section",
+  "column_break_0ynby",
+  "column_break_4tzkw",
+  "total",
+  "column_break_aua3j",
+  "total_new_men",
+  "column_break_1q1sz",
+  "total_existing_men"
+ ],
+ "fields": [
+  {
+   "fieldname": "offering_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Offering Detail"
+  },
+  {
+   "fieldname": "reporting_date",
+   "fieldtype": "Date",
+   "label": "Reporting Date"
+  },
+  {
+   "fieldname": "date_from",
+   "fieldtype": "Date",
+   "label": "Date From"
+  },
+  {
+   "fieldname": "date_to",
+   "fieldtype": "Date",
+   "label": "Date To"
+  },
+  {
+   "fieldname": "column_break_hazcl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch"
+  },
+  {
+   "fieldname": "month",
+   "fieldtype": "Data",
+   "label": "Month"
+  },
+  {
+   "fieldname": "column_break_twcty",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "prepared_by",
+   "fieldtype": "Link",
+   "label": "Prepared By",
+   "options": "Member"
+  },
+  {
+   "fieldname": "attendant_list_section",
+   "fieldtype": "Section Break",
+   "label": "Offering List"
+  },
+  {
+   "fieldname": "offering",
+   "fieldtype": "Table",
+   "label": "Offering",
+   "options": "Offerings"
+  },
+  {
+   "fieldname": "total_section",
+   "fieldtype": "Section Break",
+   "label": "Total"
+  },
+  {
+   "fieldname": "column_break_aua3j",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_new_men",
+   "fieldtype": "Float",
+   "label": "Total New Men"
+  },
+  {
+   "fieldname": "column_break_1q1sz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_existing_men",
+   "fieldtype": "Float",
+   "label": "Total Existing Men"
+  },
+  {
+   "fetch_from": "bank_account.account_currency",
+   "fieldname": "currency",
+   "fieldtype": "Data",
+   "label": "Currency"
+  },
+  {
+   "fieldname": "bank_account",
+   "fieldtype": "Link",
+   "label": "Bank Account",
+   "options": "Bank Account"
+  },
+  {
+   "fetch_from": "bank_account.account",
+   "fieldname": "bank_gl",
+   "fieldtype": "Data",
+   "label": "Bank GL"
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Float",
+   "label": "Total Amount Received"
+  },
+  {
+   "fieldname": "column_break_0ynby",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_4tzkw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series"
+  }
+ ],
+ "hide_toolbar": 1,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-15 14:02:06.924108",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Offering Sheet",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

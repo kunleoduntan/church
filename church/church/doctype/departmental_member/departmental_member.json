@@ -1,0 +1,168 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-11-25 08:27:25.318222",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "personal_data_section",
+  "member_id",
+  "full_name",
+  "last_name",
+  "column_break_3gubc",
+  "marital_staus",
+  "date_of_birth",
+  "mobile_phone",
+  "column_break_pn5yz",
+  "address",
+  "state",
+  "membership_detail_section",
+  "designation",
+  "salutation",
+  "column_break_czer9",
+  "date_of_joining",
+  "column_break_yfinl",
+  "occupation",
+  "is_a_worker",
+  "branch"
+ ],
+ "fields": [
+  {
+   "fieldname": "personal_data_section",
+   "fieldtype": "Section Break",
+   "label": "Personal Data"
+  },
+  {
+   "fieldname": "member_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Member ID",
+   "options": "Member"
+  },
+  {
+   "fetch_from": "member_id.full_name",
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name"
+  },
+  {
+   "fetch_from": "member_id.last_name",
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Last Name"
+  },
+  {
+   "fieldname": "column_break_3gubc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "member_id.marital_staus",
+   "fieldname": "marital_staus",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Marital Staus",
+   "options": "Single\nMarried\nWidow\nNot Applicable"
+  },
+  {
+   "fetch_from": "member_id.date_of_birth",
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date of Birth"
+  },
+  {
+   "fetch_from": "member_id.mobile_phone",
+   "fieldname": "mobile_phone",
+   "fieldtype": "Phone",
+   "in_list_view": 1,
+   "label": "Mobile Phone"
+  },
+  {
+   "fieldname": "column_break_pn5yz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "member_id.address",
+   "fieldname": "address",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Address",
+   "max_height": "100px",
+   "width": "200px"
+  },
+  {
+   "fetch_from": "member_id.state",
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "State"
+  },
+  {
+   "fieldname": "membership_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Membership Detail"
+  },
+  {
+   "default": "0",
+   "fetch_from": "member_id.is_a_worker",
+   "fieldname": "is_a_worker",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is a Worker"
+  },
+  {
+   "fieldname": "column_break_czer9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date_of_joining",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date of Joining"
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Designation",
+   "options": "Designation"
+  },
+  {
+   "fieldname": "column_break_yfinl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "occupation",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Occupation"
+  },
+  {
+   "fieldname": "salutation",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Salutation",
+   "options": "Salutation"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Data",
+   "label": "Branch"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-11-25 09:00:21.633612",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Departmental Member",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

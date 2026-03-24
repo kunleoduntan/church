@@ -1,0 +1,511 @@
+{
+ "actions": [],
+ "allow_events_in_timeline": 1,
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "format:INVEST-{MM}-{YY}-{#####}",
+ "creation": "2023-07-29 08:42:04.595901",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "name_of_company",
+  "posting_date",
+  "column_break_fnycj",
+  "email_id",
+  "phone_number",
+  "contact_person",
+  "column_break_0umco",
+  "address",
+  "investment_detail_section",
+  "investment_option",
+  "market_asset_class",
+  "investment_amount",
+  "tenure_in_days",
+  "column_break_vvt2x",
+  "interest_type",
+  "interest_rate",
+  "returns",
+  "amount_realisable_on_liquidation",
+  "column_break_i61mm",
+  "start_date",
+  "end_date",
+  "frequency_of_income_recognition",
+  "monthly_interest_income",
+  "column_break_25",
+  "description",
+  "book_investment",
+  "accounting_and_booking_section",
+  "principal_account",
+  "bank_gl",
+  "column_break_zs70x",
+  "bank_account",
+  "column_break_g0xx7",
+  "cheque_no",
+  "column_break_wbiwo",
+  "recognise_income",
+  "amortise_income",
+  "accounting_section",
+  "column_break_md9uu",
+  "interest_income_account",
+  "column_break_38",
+  "accrued_interest_income_account",
+  "column_break_ziof",
+  "cost_center",
+  "column_break_bprg",
+  "department",
+  "risk_measure_section",
+  "liquidity_ratio",
+  "rate_of_inflation",
+  "column_break_xdtst",
+  "risk_profile",
+  "investment_duration",
+  "tax_implication_section",
+  "tax_type",
+  "column_break_zcl53",
+  "tax_amount",
+  "column_break_pgpg9",
+  "net_amount",
+  "column_break_kpit4",
+  "interest_tax_account",
+  "interest_tab",
+  "schedule_of_interest",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series"
+  },
+  {
+   "fieldname": "name_of_company",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Name of Company"
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date"
+  },
+  {
+   "fieldname": "column_break_fnycj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "email_id",
+   "fieldtype": "Data",
+   "label": "Email ID"
+  },
+  {
+   "fieldname": "phone_number",
+   "fieldtype": "Phone",
+   "label": "Phone Number"
+  },
+  {
+   "fieldname": "contact_person",
+   "fieldtype": "Data",
+   "label": "Contact Person"
+  },
+  {
+   "fieldname": "column_break_0umco",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Small Text",
+   "label": "Address"
+  },
+  {
+   "fieldname": "investment_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Investment Detail"
+  },
+  {
+   "fieldname": "investment_option",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Investment Option",
+   "options": "Investment Option"
+  },
+  {
+   "fieldname": "market_asset_class",
+   "fieldtype": "Select",
+   "label": "Market / Asset Class",
+   "options": "\nQuoted\nUnquoted"
+  },
+  {
+   "fieldname": "investment_amount",
+   "fieldtype": "Currency",
+   "label": "Investment Amount"
+  },
+  {
+   "fieldname": "tenure_in_days",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Tenure In Days"
+  },
+  {
+   "fieldname": "column_break_vvt2x",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "interest_type",
+   "fieldtype": "Select",
+   "label": "Interest Type",
+   "options": "\nSimple Interest\nCompound Interest\nFlat Rate"
+  },
+  {
+   "fieldname": "interest_rate",
+   "fieldtype": "Percent",
+   "label": "Interest Rate",
+   "precision": "2"
+  },
+  {
+   "fieldname": "returns",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Returns",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amount_realisable_on_liquidation",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Realisable on Liquidation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_i61mm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "Maturity Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "frequency_of_income_recognition",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Frequency of Income Recognition",
+   "options": "\nMonthly",
+   "reqd": 1
+  },
+  {
+   "fieldname": "monthly_interest_income",
+   "fieldtype": "Currency",
+   "label": "Amortised Interest Income",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_25",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "mandatory_depends_on": "investment_amount"
+  },
+  {
+   "default": "0",
+   "fieldname": "book_investment",
+   "fieldtype": "Check",
+   "label": "Book Investment"
+  },
+  {
+   "depends_on": "book_investment",
+   "fieldname": "accounting_and_booking_section",
+   "fieldtype": "Section Break",
+   "label": "Accounting and Booking"
+  },
+  {
+   "fieldname": "principal_account",
+   "fieldtype": "Link",
+   "label": "Investment Account",
+   "options": "Account"
+  },
+  {
+   "depends_on": "bank_account",
+   "fetch_from": "bank_account.account",
+   "fieldname": "bank_gl",
+   "fieldtype": "Data",
+   "label": "Bank GL",
+   "read_only_depends_on": "bank_account"
+  },
+  {
+   "fieldname": "column_break_zs70x",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "book_investment",
+   "fieldname": "bank_account",
+   "fieldtype": "Link",
+   "label": "Bank Account ",
+   "mandatory_depends_on": "book_investment",
+   "options": "Bank Account"
+  },
+  {
+   "fieldname": "column_break_g0xx7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cheque_no",
+   "fieldtype": "Data",
+   "label": "Cheque No",
+   "length": 5,
+   "mandatory_depends_on": "book_investment",
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_wbiwo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "recognise_income",
+   "fieldtype": "Check",
+   "label": "Recognise Income"
+  },
+  {
+   "default": "0",
+   "fieldname": "amortise_income",
+   "fieldtype": "Check",
+   "label": "Amortise Income"
+  },
+  {
+   "depends_on": "amortise_income",
+   "fieldname": "accounting_section",
+   "fieldtype": "Section Break",
+   "label": "Accounting"
+  },
+  {
+   "fieldname": "column_break_md9uu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "interest_income_account",
+   "fieldtype": "Link",
+   "label": "Interest Income Account ",
+   "mandatory_depends_on": "amortise_income",
+   "options": "Account"
+  },
+  {
+   "fieldname": "column_break_38",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "accrued_interest_income_account",
+   "fieldtype": "Link",
+   "label": "Accrued Interest Income Account",
+   "mandatory_depends_on": "amortise_income",
+   "options": "Account"
+  },
+  {
+   "fieldname": "column_break_ziof",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "mandatory_depends_on": "amortise_income",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "column_break_bprg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "mandatory_depends_on": "amortise_income",
+   "options": "Department"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "risk_measure_section",
+   "fieldtype": "Section Break",
+   "label": "Risk Profile"
+  },
+  {
+   "fieldname": "liquidity_ratio",
+   "fieldtype": "Percent",
+   "label": "Liquidity Ratio"
+  },
+  {
+   "fieldname": "rate_of_inflation",
+   "fieldtype": "Percent",
+   "label": "Rate of Inflation",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_xdtst",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "risk_profile",
+   "fieldtype": "Select",
+   "label": "Risk Profile",
+   "options": "\nLow Risk\nModerate Risk\nHigh Risk"
+  },
+  {
+   "fieldname": "investment_duration",
+   "fieldtype": "Select",
+   "label": "Investment Duration",
+   "options": "\nShort-Term (1-3 years)\nMedium-Term (3-5 years)\nLong-Term (5+ years)"
+  },
+  {
+   "fieldname": "tax_implication_section",
+   "fieldtype": "Section Break",
+   "label": "Tax Implication"
+  },
+  {
+   "fieldname": "tax_type",
+   "fieldtype": "Select",
+   "label": "Tax Type",
+   "options": "\n5% WHT\n10% WHT"
+  },
+  {
+   "fieldname": "column_break_zcl53",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tax_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Tax Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_pgpg9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "net_amount",
+   "fieldtype": "Currency",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Net Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_kpit4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "tax_type",
+   "fieldname": "interest_tax_account",
+   "fieldtype": "Link",
+   "label": "Interest Tax Account",
+   "mandatory_depends_on": "tax_type",
+   "options": "Account"
+  },
+  {
+   "fieldname": "interest_tab",
+   "fieldtype": "Tab Break",
+   "label": "Interest",
+   "show_dashboard": 1
+  },
+  {
+   "fieldname": "schedule_of_interest",
+   "fieldtype": "Table",
+   "label": "Schedule of Interest",
+   "options": "schedule of Interest"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Investments",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-12-26 16:46:59.517329",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Investments",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts User",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "name_of_company"
+}

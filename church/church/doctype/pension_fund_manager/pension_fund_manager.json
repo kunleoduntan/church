@@ -1,0 +1,233 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:name_of_pension_manager",
+ "creation": "2023-08-28 00:43:12.287906",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "information_tab",
+  "pfa_detail_section",
+  "name_of_pension_manager",
+  "rc_number",
+  "column_break_pp7z6",
+  "email_address",
+  "phone",
+  "contact_and_address_section",
+  "o\ufb03ce_address",
+  "state",
+  "country",
+  "column_break_likcf",
+  "contact",
+  "salutation",
+  "name_of_contact_person",
+  "column_break_l4qn9",
+  "email_id",
+  "column_break_mwzcm",
+  "mobile_phone",
+  "bank_detail_tab",
+  "name_of_bank",
+  "account_no",
+  "column_break_nqa2q",
+  "sort_code"
+ ],
+ "fields": [
+  {
+   "fieldname": "information_tab",
+   "fieldtype": "Tab Break",
+   "label": "Information"
+  },
+  {
+   "fieldname": "pfa_detail_section",
+   "fieldtype": "Section Break",
+   "label": "PFA Detail"
+  },
+  {
+   "fieldname": "name_of_pension_manager",
+   "fieldtype": "Data",
+   "label": "Name of Pension Manager",
+   "unique": 1
+  },
+  {
+   "fieldname": "rc_number",
+   "fieldtype": "Data",
+   "label": "RC Number"
+  },
+  {
+   "fieldname": "column_break_pp7z6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "email_address",
+   "fieldtype": "Data",
+   "label": "Email Address"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Phone",
+   "label": "Phone"
+  },
+  {
+   "fieldname": "contact_and_address_section",
+   "fieldtype": "Section Break",
+   "label": "Contact and Address"
+  },
+  {
+   "fieldname": "o\ufb03ce_address",
+   "fieldtype": "Small Text",
+   "label": "O\ufb03ce Address"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Select",
+   "label": "State",
+   "options": "\nAbuja\nAbia State\nAdamawa State\nAkwa Ibom State\nAnambra State\nBauchi State\nBayelsa State\nBenue State\nBorno State\nCross River State\nDelta State\nEbonyi State\nEdo State\nEkiti State\nEnugu State\nGombe State\nImo State\nJigawa State\nKaduna State\nKano State\nKatsina State\nKebbi State\nKogi State\nKwara State\nLagos State\nNasarawa State\nNiger State\nOgun State\nOndo State\nOsun State\nOyo State\nPlateau State\nRivers State\nSokoto State\nTaraba State\nYobe State\nZamfara State"
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country"
+  },
+  {
+   "fieldname": "column_break_likcf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contact",
+   "fieldtype": "Data",
+   "label": "Contact"
+  },
+  {
+   "fieldname": "salutation",
+   "fieldtype": "Link",
+   "label": "Salutation",
+   "options": "Salutation"
+  },
+  {
+   "fieldname": "name_of_contact_person",
+   "fieldtype": "Data",
+   "label": "Name of Contact Person"
+  },
+  {
+   "fieldname": "column_break_l4qn9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "email_id",
+   "fieldtype": "Data",
+   "label": "Email ID"
+  },
+  {
+   "fieldname": "column_break_mwzcm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mobile_phone",
+   "fieldtype": "Phone",
+   "label": "Mobile Phone"
+  },
+  {
+   "fieldname": "bank_detail_tab",
+   "fieldtype": "Tab Break",
+   "label": "Bank Detail"
+  },
+  {
+   "fieldname": "name_of_bank",
+   "fieldtype": "Link",
+   "label": "Name of Bank",
+   "options": "Bank"
+  },
+  {
+   "fieldname": "account_no",
+   "fieldtype": "Data",
+   "label": "Account No"
+  },
+  {
+   "fieldname": "column_break_nqa2q",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "name_of_bank.sort_code",
+   "fieldname": "sort_code",
+   "fieldtype": "Data",
+   "label": "Sort Code"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-26 18:24:36.873826",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Pension Fund Manager",
+ "name_case": "Title Case",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

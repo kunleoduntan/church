@@ -1,0 +1,242 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:class_name",
+ "creation": "2024-12-01 15:27:11.958719",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "class_name",
+  "class_desc",
+  "branch",
+  "column_break_zr1ov",
+  "class_full_description",
+  "column_break_h4d0f",
+  "member_age_group",
+  "teacher_tab",
+  "teacher_detail_section",
+  "teacher",
+  "teacher_name",
+  "salutation",
+  "column_break_byixi",
+  "phone_no",
+  "email",
+  "column_break_uplsx",
+  "start_date",
+  "end_date",
+  "assistant_teacher_tab",
+  "assistant_teacher_detail_section",
+  "assist_teacher_id",
+  "assistant_teacher_name",
+  "column_break_qoyrf",
+  "assistant_teacher_phone_no",
+  "assistant_teacher_email",
+  "column_break_fudmr",
+  "assistant_teacher_start_date",
+  "assistant_teacher_end_date",
+  "members_tab",
+  "class_member_section",
+  "sunday_school_group_member",
+  "member_count"
+ ],
+ "fields": [
+  {
+   "fieldname": "class_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Class Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_zr1ov",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "class_full_description",
+   "fieldtype": "Small Text",
+   "label": "Class Full Description",
+   "max_height": "105px",
+   "width": "200px"
+  },
+  {
+   "fieldname": "column_break_h4d0f",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "teacher",
+   "fieldtype": "Link",
+   "label": "Teacher ",
+   "options": "Member"
+  },
+  {
+   "fetch_from": "teacher.full_name",
+   "fieldname": "teacher_name",
+   "fieldtype": "Data",
+   "label": "Teacher Name"
+  },
+  {
+   "fieldname": "column_break_byixi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "phone_no",
+   "fieldtype": "Phone",
+   "label": "Phone No"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date"
+  },
+  {
+   "fetch_from": "teacher.salutaion",
+   "fieldname": "salutation",
+   "fieldtype": "Data",
+   "label": "Salutation"
+  },
+  {
+   "fieldname": "assistant_teacher_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Assistant Teacher Detail"
+  },
+  {
+   "fetch_from": "assist_teacher_id.full_name",
+   "fieldname": "assistant_teacher_name",
+   "fieldtype": "Data",
+   "label": "Assistant Teacher Name"
+  },
+  {
+   "fieldname": "column_break_qoyrf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "assistant_teacher_phone_no",
+   "fieldtype": "Phone",
+   "label": "Assistant Teacher Phone No"
+  },
+  {
+   "fieldname": "assistant_teacher_email",
+   "fieldtype": "Data",
+   "label": "Assistant Teacher Email"
+  },
+  {
+   "fieldname": "column_break_fudmr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "assistant_teacher_start_date",
+   "fieldtype": "Date",
+   "label": "Assistant Teacher Start Date"
+  },
+  {
+   "fieldname": "assistant_teacher_end_date",
+   "fieldtype": "Date",
+   "label": "Assistant Teacher End Date"
+  },
+  {
+   "fieldname": "assist_teacher_id",
+   "fieldtype": "Link",
+   "label": "Assist Teacher ID",
+   "options": "Member"
+  },
+  {
+   "fieldname": "member_age_group",
+   "fieldtype": "Select",
+   "label": "Member Age Group",
+   "options": "Age 11 - 19\nAge 20 - 29"
+  },
+  {
+   "fieldname": "class_member_section",
+   "fieldtype": "Section Break",
+   "label": "Class Member "
+  },
+  {
+   "fieldname": "sunday_school_group_member",
+   "fieldtype": "Table",
+   "label": "Sunday School Group Member",
+   "options": "Sunday School Group Member"
+  },
+  {
+   "fieldname": "member_count",
+   "fieldtype": "Int",
+   "label": "Member Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "teacher_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Teacher Detail"
+  },
+  {
+   "fieldname": "column_break_uplsx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "teacher_tab",
+   "fieldtype": "Tab Break",
+   "label": "Teacher"
+  },
+  {
+   "fieldname": "assistant_teacher_tab",
+   "fieldtype": "Tab Break",
+   "label": "Assistant Teacher"
+  },
+  {
+   "fieldname": "members_tab",
+   "fieldtype": "Tab Break",
+   "label": "Members"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch"
+  },
+  {
+   "fieldname": "class_desc",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Class Desc"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-02 19:11:23.522063",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Sunday School Class",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "class_name"
+}

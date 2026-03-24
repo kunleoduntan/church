@@ -1,0 +1,458 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-11-22 20:18:26.635428",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "detail_section",
+  "title",
+  "posting_date",
+  "from_date",
+  "to_date",
+  "column_break_46lt",
+  "bank_account",
+  "bank_gl",
+  "account_currency",
+  "column_break_a1bl",
+  "statement_ending_balance",
+  "cash_book_balance",
+  "column_break_qejv",
+  "column_break_lan9",
+  "status",
+  "get_balance",
+  "transaction_section",
+  "bank_account_entry",
+  "section_break_n2rf",
+  "column_break_5per",
+  "column_break_pipn",
+  "column_break_rxzf",
+  "column_break_zgay",
+  "total_debit",
+  "column_break_bmlj",
+  "total_credit",
+  "unpresented_transactions_section",
+  "get_unpre",
+  "unpresented_cheques",
+  "section_break_ndzu",
+  "column_break_vfuy",
+  "column_break_yyyh",
+  "column_break_reiv",
+  "column_break_otae",
+  "column_break_6wkj",
+  "total_unpresented_cheque",
+  "uncredited_transactions_section",
+  "get_uncre",
+  "uncredited_cheques",
+  "section_break_pgjr",
+  "column_break_svdx",
+  "column_break_dasz",
+  "column_break_7vdo",
+  "column_break_9dqu",
+  "column_break_jkxr",
+  "total_uncredited_cheque",
+  "reconciling_item_tab",
+  "direct_withdrawal_transactions_section",
+  "get_dw",
+  "direct_withdrawal",
+  "section_break_raqj",
+  "column_break_fr5g",
+  "column_break_6s3t",
+  "column_break_9j1x",
+  "column_break_oroi",
+  "column_break_qzxs",
+  "total_direct_withdrawal",
+  "direct_lodgments_transactions_section",
+  "get_dl",
+  "direct_lodgment",
+  "section_break_x7jk",
+  "column_break_qm0w",
+  "column_break_esda",
+  "column_break_bkaw",
+  "column_break_pakn",
+  "column_break_7v8y",
+  "total_direct_lodgment",
+  "statements_tab",
+  "section_break_4xog",
+  "match",
+  "bank_statement",
+  "balance_per_cash_book"
+ ],
+ "fields": [
+  {
+   "fieldname": "detail_section",
+   "fieldtype": "Section Break",
+   "label": "Detail"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Title"
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date"
+  },
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "End Date"
+  },
+  {
+   "fieldname": "column_break_46lt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "bank_account",
+   "fieldtype": "Link",
+   "label": "Bank Account",
+   "options": "Bank Account"
+  },
+  {
+   "fetch_from": "bank_account.account",
+   "fieldname": "bank_gl",
+   "fieldtype": "Data",
+   "label": "Bank GL"
+  },
+  {
+   "fetch_from": "bank_account.account_currency",
+   "fieldname": "account_currency",
+   "fieldtype": "Data",
+   "label": "Account Currency"
+  },
+  {
+   "fieldname": "column_break_a1bl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "statement_ending_balance",
+   "fieldtype": "Currency",
+   "label": "Statement Ending Balance"
+  },
+  {
+   "fieldname": "cash_book_balance",
+   "fieldtype": "Currency",
+   "label": "Cash Book Balance"
+  },
+  {
+   "fieldname": "column_break_qejv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_lan9",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nReconciled\nNot Reconciled"
+  },
+  {
+   "fieldname": "get_balance",
+   "fieldtype": "Button",
+   "label": "Get Balance"
+  },
+  {
+   "fieldname": "transaction_section",
+   "fieldtype": "Section Break",
+   "label": "Reconciling Transaction"
+  },
+  {
+   "fieldname": "bank_account_entry",
+   "fieldtype": "Table",
+   "label": "Bank Account Entry",
+   "options": "Bank Account Entry"
+  },
+  {
+   "fieldname": "section_break_n2rf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_5per",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_pipn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_rxzf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_zgay",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_debit",
+   "fieldtype": "Currency",
+   "label": "Total Debit (Inflow)"
+  },
+  {
+   "fieldname": "column_break_bmlj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_credit",
+   "fieldtype": "Currency",
+   "label": "Total Credit (Outflow)"
+  },
+  {
+   "fieldname": "unpresented_transactions_section",
+   "fieldtype": "Section Break",
+   "label": "Unpresented Transactions"
+  },
+  {
+   "fieldname": "get_unpre",
+   "fieldtype": "Button",
+   "label": "Get Unpre"
+  },
+  {
+   "fieldname": "unpresented_cheques",
+   "fieldtype": "Table",
+   "label": "Unpresented Cheques",
+   "options": "Unpresented Cheque"
+  },
+  {
+   "fieldname": "section_break_ndzu",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_vfuy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_yyyh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_reiv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_otae",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_6wkj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_unpresented_cheque",
+   "fieldtype": "Currency",
+   "label": "Total Amount"
+  },
+  {
+   "fieldname": "uncredited_transactions_section",
+   "fieldtype": "Section Break",
+   "label": "Uncredited Transactions"
+  },
+  {
+   "fieldname": "get_uncre",
+   "fieldtype": "Button",
+   "label": "Get Uncre"
+  },
+  {
+   "fieldname": "uncredited_cheques",
+   "fieldtype": "Table",
+   "label": "Uncredited Cheques",
+   "options": "Uncredited Cheque"
+  },
+  {
+   "fieldname": "section_break_pgjr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_svdx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_dasz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_7vdo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_9dqu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_jkxr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_uncredited_cheque",
+   "fieldtype": "Currency",
+   "label": "Total"
+  },
+  {
+   "fieldname": "reconciling_item_tab",
+   "fieldtype": "Tab Break",
+   "label": "Reconciling Item"
+  },
+  {
+   "fieldname": "direct_withdrawal_transactions_section",
+   "fieldtype": "Section Break",
+   "label": "Direct Withdrawal Transactions"
+  },
+  {
+   "fieldname": "get_dw",
+   "fieldtype": "Button",
+   "label": "Get Dw"
+  },
+  {
+   "fieldname": "direct_withdrawal",
+   "fieldtype": "Table",
+   "label": "Direct Withdrawal",
+   "options": "Direct Withdrawal"
+  },
+  {
+   "fieldname": "section_break_raqj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_fr5g",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_6s3t",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_9j1x",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_oroi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_qzxs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_direct_withdrawal",
+   "fieldtype": "Currency",
+   "label": "Total"
+  },
+  {
+   "fieldname": "direct_lodgments_transactions_section",
+   "fieldtype": "Section Break",
+   "label": "Direct Lodgments Transactions"
+  },
+  {
+   "fieldname": "get_dl",
+   "fieldtype": "Button",
+   "label": "Get DL"
+  },
+  {
+   "fieldname": "direct_lodgment",
+   "fieldtype": "Table",
+   "label": "Direct Lodgment",
+   "options": "Direct Lodgment"
+  },
+  {
+   "fieldname": "section_break_x7jk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_qm0w",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_esda",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_bkaw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_pakn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_7v8y",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_direct_lodgment",
+   "fieldtype": "Currency",
+   "label": "Total"
+  },
+  {
+   "fieldname": "statements_tab",
+   "fieldtype": "Tab Break",
+   "label": "Statements"
+  },
+  {
+   "fieldname": "section_break_4xog",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "match",
+   "fieldtype": "Button",
+   "label": "Match"
+  },
+  {
+   "fieldname": "bank_statement",
+   "fieldtype": "Table",
+   "label": "Bank Statement",
+   "options": "Bank Statement"
+  },
+  {
+   "fieldname": "balance_per_cash_book",
+   "fieldtype": "Currency",
+   "label": "Balance Per Cash Book"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-26 17:04:15.750043",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Bank Reconciliation",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
