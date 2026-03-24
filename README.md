@@ -1,1 +1,7 @@
-# church
+## church
+
+Church Management
+
+#### License
+
+Mit
