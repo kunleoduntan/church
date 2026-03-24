@@ -1,0 +1,193 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-03-07 15:40:08.140531",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "registration_section",
+  "member_id",
+  "full_name",
+  "column_break_member",
+  "registration_date",
+  "status",
+  "column_break_event",
+  "event",
+  "event_name",
+  "payment_section",
+  "payment_status",
+  "payment_amount",
+  "column_break_payment",
+  "payment_date",
+  "payment_reference",
+  "notes_section",
+  "notes",
+  "check_in_section",
+  "checked_in",
+  "check_in_time"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "EREG-.YYYY.-.####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "registration_section",
+   "fieldtype": "Section Break",
+   "label": "Registration Details"
+  },
+  {
+   "fieldname": "member_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Member",
+   "options": "Member",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "member_id.full_name",
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_member",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "registration_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Registration Date",
+   "reqd": 1
+  },
+  {
+   "default": "Registered",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Registered\nConfirmed\nAttended\nCancelled\nNo Show"
+  },
+  {
+   "fieldname": "column_break_event",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "event",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Event",
+   "options": "Church Event",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "event.event_name",
+   "fieldname": "event_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Event Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "payment_section",
+   "fieldtype": "Section Break",
+   "label": "Payment"
+  },
+  {
+   "default": "Not Required",
+   "fieldname": "payment_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Payment Status",
+   "options": "Not Required\nPending\nPaid\nWaived"
+  },
+  {
+   "default": "0",
+   "fieldname": "payment_amount",
+   "fieldtype": "Currency",
+   "label": "Payment Amount"
+  },
+  {
+   "fieldname": "column_break_payment",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "payment_date",
+   "fieldtype": "Date",
+   "label": "Payment Date"
+  },
+  {
+   "fieldname": "payment_reference",
+   "fieldtype": "Data",
+   "label": "Payment Reference"
+  },
+  {
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "check_in_section",
+   "fieldtype": "Section Break",
+   "label": "Event Check-in"
+  },
+  {
+   "default": "0",
+   "fieldname": "checked_in",
+   "fieldtype": "Check",
+   "label": "Checked In"
+  },
+  {
+   "fieldname": "check_in_time",
+   "fieldtype": "Datetime",
+   "label": "Check-in Time"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-03-07 15:40:24.641459",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Event Registration",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

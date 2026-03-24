@@ -1,4 +1,4 @@
-# Copyright (c) 2024, kunle and Contributors
+# Copyright (c) 2026, kunle and Contributors
 # See license.txt
 
 # import frappe

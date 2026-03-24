@@ -1,0 +1,105 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-05-18 14:49:20.841997",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "test_type",
+  "risk_threshold",
+  "administered_by",
+  "column_break_4qybu",
+  "result",
+  "normal_range",
+  "column_break_jkt3k",
+  "date_administered",
+  "prescription",
+  "column_break_bzwbi",
+  "recommendations",
+  "hemoglobin_by_agegender"
+ ],
+ "fields": [
+  {
+   "fieldname": "test_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Test Type",
+   "options": "Test Type"
+  },
+  {
+   "fieldname": "administered_by",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Administered By"
+  },
+  {
+   "fieldname": "result",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Result"
+  },
+  {
+   "fieldname": "date_administered",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date Administered"
+  },
+  {
+   "fieldname": "prescription",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Prescription",
+   "max_height": "80px"
+  },
+  {
+   "fieldname": "recommendations",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Recommendations"
+  },
+  {
+   "fieldname": "column_break_4qybu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_jkt3k",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_bzwbi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "test_type.normal_range",
+   "fieldname": "normal_range",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Normal Range",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "test_type.risk_threshold",
+   "fieldname": "risk_threshold",
+   "fieldtype": "Data",
+   "label": "Risk Threshold"
+  },
+  {
+   "fieldname": "hemoglobin_by_agegender",
+   "fieldtype": "Data",
+   "label": "Hemoglobin by Age/Gender"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-05-18 17:11:09.305437",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Medical Checkup Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

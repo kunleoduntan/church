@@ -1,0 +1,125 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2026-02-01 12:00:00",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "default": "Last 30 Days",
+   "fieldname": "period",
+   "fieldtype": "Select",
+   "label": "\ud83d\udcc5 Period",
+   "mandatory": 0,
+   "options": "\nToday\nYesterday\nThis Week\nLast Week\nThis Month\nLast Month\nThis Quarter\nLast Quarter\nThis Year\nLast Year\nLast 7 Days\nLast 30 Days\nLast 90 Days\nYear to Date",
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "\ud83d\udcc6 From Date",
+   "mandatory": 0,
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "\ud83d\udcc6 To Date",
+   "mandatory": 0,
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "service_instance",
+   "fieldtype": "Link",
+   "label": "\u26ea Service Instance",
+   "mandatory": 0,
+   "options": "Service Instance",
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "year",
+   "fieldtype": "Select",
+   "label": "\ud83d\uddd3\ufe0f Year",
+   "mandatory": 0,
+   "options": "\n2026\n2025\n2024\n2023\n2022\n2021\n2020",
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "month",
+   "fieldtype": "Select",
+   "label": "\ud83d\udcc5 Month",
+   "mandatory": 0,
+   "options": "\nJanuary\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember",
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "week",
+   "fieldtype": "Select",
+   "label": "\ud83d\udcc6 Week Number",
+   "mandatory": 0,
+   "options": "\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52",
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "\ud83c\udfe2 Branch",
+   "mandatory": 0,
+   "options": "Branch",
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "\u2b50 Attendance Status",
+   "mandatory": 0,
+   "options": "\nExcellent\nGood\nFair\nPoor\nVery Poor",
+   "wildcard_filter": 0
+  },
+  {
+   "default": "0",
+   "fieldname": "show_services",
+   "fieldtype": "Check",
+   "label": "\ud83d\udccb Show Individual Services",
+   "mandatory": 0,
+   "wildcard_filter": 0
+  },
+  {
+   "default": "1",
+   "fieldname": "show_trends",
+   "fieldtype": "Check",
+   "label": "\ud83d\udcc8 Show Trend Indicators",
+   "mandatory": 0,
+   "wildcard_filter": 0
+  },
+  {
+   "default": "0",
+   "fieldname": "group_by_week",
+   "fieldtype": "Check",
+   "label": "\ud83d\uddd3\ufe0f Group by Week",
+   "mandatory": 0,
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "javascript": "detailed_member_attendance.js",
+ "json": "{\"filters_config\": {\"ui_style\": \"modern\", \"show_icons\": true, \"theme\": \"pastel\", \"auto_apply\": true}}",
+ "letter_head": "",
+ "modified": "2026-02-02 13:41:06.917955",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Detailed Member Attendance",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Church Attendance",
+ "report_name": "Detailed Member Attendance",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

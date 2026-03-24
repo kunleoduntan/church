@@ -1,0 +1,246 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:zone_name",
+ "creation": "2026-01-27 21:01:10.201219",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "zone_name",
+  "column_break_junlb",
+  "contact_information_section",
+  "email",
+  "phone",
+  "column_break_oivzn",
+  "address",
+  "city",
+  "state",
+  "country",
+  "linkage_section",
+  "province",
+  "column_break_pkqrc",
+  "region",
+  "pastors_details_tab",
+  "zone_pastor_section",
+  "member",
+  "pastor_name",
+  "column_break_2evcj",
+  "mobile_phone",
+  "assistant_pastors_section",
+  "member_asp",
+  "assitant_pastor",
+  "column_break_ra1vj",
+  "assistant_pastor_mobile_phone",
+  "workers_tab",
+  "workers",
+  "counts_section",
+  "worker_count_male",
+  "column_break_zknjc",
+  "worker_count_female"
+ ],
+ "fields": [
+  {
+   "fieldname": "zone_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Zone Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_junlb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contact_information_section",
+   "fieldtype": "Section Break",
+   "label": "Contact Information"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "column_break_oivzn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Small Text",
+   "label": "Address"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State"
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country"
+  },
+  {
+   "fieldname": "linkage_section",
+   "fieldtype": "Section Break",
+   "label": "Linkage"
+  },
+  {
+   "fieldname": "province",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Province",
+   "options": "Province"
+  },
+  {
+   "fieldname": "column_break_pkqrc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "region",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Region",
+   "options": "Region"
+  },
+  {
+   "fieldname": "pastors_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Pastors Details"
+  },
+  {
+   "fieldname": "zone_pastor_section",
+   "fieldtype": "Section Break",
+   "label": "Zone Pastor"
+  },
+  {
+   "fieldname": "member",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Member",
+   "options": "Member"
+  },
+  {
+   "fetch_from": "member.full_name",
+   "fieldname": "pastor_name",
+   "fieldtype": "Data",
+   "label": "Pastor Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_2evcj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "member.mobile_phone",
+   "fieldname": "mobile_phone",
+   "fieldtype": "Data",
+   "label": "Mobile Phone",
+   "read_only": 1
+  },
+  {
+   "fieldname": "assistant_pastors_section",
+   "fieldtype": "Section Break",
+   "label": "Assistant Pastors"
+  },
+  {
+   "fieldname": "member_asp",
+   "fieldtype": "Link",
+   "label": "Member",
+   "options": "Member"
+  },
+  {
+   "fetch_from": "member_asp.full_name",
+   "fieldname": "assitant_pastor",
+   "fieldtype": "Data",
+   "label": "Assistant Pastor",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ra1vj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "member_asp.mobile_phone",
+   "fieldname": "assistant_pastor_mobile_phone",
+   "fieldtype": "Data",
+   "label": "Mobile Phone",
+   "read_only": 1
+  },
+  {
+   "fieldname": "workers_tab",
+   "fieldtype": "Tab Break",
+   "label": "Workers"
+  },
+  {
+   "fieldname": "workers",
+   "fieldtype": "Table",
+   "label": "Workers",
+   "options": "Zone Workers Entry"
+  },
+  {
+   "fieldname": "counts_section",
+   "fieldtype": "Section Break",
+   "label": "Counts"
+  },
+  {
+   "fieldname": "worker_count_male",
+   "fieldtype": "Int",
+   "label": "Worker Count Male",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_zknjc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "worker_count_female",
+   "fieldtype": "Int",
+   "label": "Worker Count Female",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-01-27 21:03:01.023117",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Zone",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

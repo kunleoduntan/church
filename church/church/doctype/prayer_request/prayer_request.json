@@ -1,0 +1,179 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-03-07 15:35:32.065753",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "prayer_detail_section",
+  "member_id",
+  "full_name",
+  "column_break_member",
+  "submitted_on",
+  "status",
+  "column_break_flags",
+  "is_anonymous",
+  "is_urgent",
+  "prayer_content_section",
+  "category",
+  "prayer_title",
+  "prayer_body",
+  "pastoral_section",
+  "assigned_to",
+  "pastoral_notes",
+  "column_break_pastoral",
+  "prayed_on",
+  "responded_on"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "PRAY-.YYYY.-.####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "prayer_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Request Details"
+  },
+  {
+   "fieldname": "member_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Member",
+   "options": "Member"
+  },
+  {
+   "fetch_from": "member_id.full_name",
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_member",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "submitted_on",
+   "fieldtype": "Datetime",
+   "label": "Submitted On",
+   "read_only": 1
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Pending\nBeing Prayed For\nResponded\nClosed"
+  },
+  {
+   "fieldname": "column_break_flags",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_anonymous",
+   "fieldtype": "Check",
+   "label": "Keep Anonymous"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_urgent",
+   "fieldtype": "Check",
+   "label": "Urgent Request"
+  },
+  {
+   "fieldname": "prayer_content_section",
+   "fieldtype": "Section Break",
+   "label": "Prayer Content"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Category",
+   "options": "General\nHealth & Healing\nFinancial Breakthrough\nFamily & Relationships\nCareer & Education\nSpiritual Growth\nProtection\nGuidance\nThanksgiving\nOther"
+  },
+  {
+   "fieldname": "prayer_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Prayer Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "prayer_body",
+   "fieldtype": "Text",
+   "label": "Prayer Request",
+   "reqd": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "pastoral_section",
+   "fieldtype": "Section Break",
+   "label": "Pastoral Response"
+  },
+  {
+   "fieldname": "assigned_to",
+   "fieldtype": "Link",
+   "label": "Assigned To (Pastor/Counsellor)",
+   "options": "Member"
+  },
+  {
+   "fieldname": "pastoral_notes",
+   "fieldtype": "Text",
+   "label": "Pastoral Notes"
+  },
+  {
+   "fieldname": "column_break_pastoral",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "prayed_on",
+   "fieldtype": "Date",
+   "label": "Prayed On"
+  },
+  {
+   "fieldname": "responded_on",
+   "fieldtype": "Date",
+   "label": "Responded On"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-03-07 15:37:25.150469",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Prayer Request",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

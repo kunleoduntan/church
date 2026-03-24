@@ -1,0 +1,200 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-01-29 11:26:14.826239",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "guest_information_section",
+  "guest_type",
+  "full_name",
+  "title",
+  "column_break_contact",
+  "email",
+  "phone",
+  "column_break_affiliation",
+  "ministry_name",
+  "organization",
+  "role_section",
+  "guest_role",
+  "session_topic",
+  "column_break_role",
+  "time_slot",
+  "duration_minutes",
+  "logistics_section",
+  "invitation_status",
+  "rsvp_status",
+  "column_break_logistics",
+  "requires_accommodation",
+  "requires_transportation",
+  "column_break_dietary",
+  "dietary_requirements",
+  "special_requests",
+  "section_break_notes",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "guest_information_section",
+   "fieldtype": "Section Break",
+   "label": "Guest Information"
+  },
+  {
+   "fieldname": "guest_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Guest Type",
+   "options": "Guest Speaker\nKeynote Speaker\nPanelist\nWorkshop Facilitator\nSpecial Guest\nMinistering Pastor\nWorship Leader\nChoir Director\nHonoree\nVIP\nOther",
+   "reqd": 1
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Select",
+   "label": "Title/Prefix",
+   "options": "Rev.\nPastor\nBishop\nApostle\nProphet\nEvangelist\nDr.\nProf.\nMr.\nMrs.\nMs.\nDeacon\nDeaconess\nElder\nBrother\nSister"
+  },
+  {
+   "fieldname": "column_break_contact",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Email Address",
+   "options": "Email"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Phone Number",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "column_break_affiliation",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ministry_name",
+   "fieldtype": "Data",
+   "label": "Ministry/Church Name"
+  },
+  {
+   "fieldname": "organization",
+   "fieldtype": "Data",
+   "label": "Organization/Institution"
+  },
+  {
+   "fieldname": "role_section",
+   "fieldtype": "Section Break",
+   "label": "Role & Responsibilities"
+  },
+  {
+   "fieldname": "guest_role",
+   "fieldtype": "Small Text",
+   "label": "Role/Responsibility"
+  },
+  {
+   "fieldname": "session_topic",
+   "fieldtype": "Data",
+   "label": "Session/Topic"
+  },
+  {
+   "fieldname": "column_break_role",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "time_slot",
+   "fieldtype": "Data",
+   "label": "Time Slot"
+  },
+  {
+   "fieldname": "duration_minutes",
+   "fieldtype": "Int",
+   "label": "Duration (Minutes)"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "logistics_section",
+   "fieldtype": "Section Break",
+   "label": "Invitation & Logistics"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "invitation_status",
+   "fieldtype": "Select",
+   "label": "Invitation Status",
+   "options": "Pending\nSent\nDelivered\nRead"
+  },
+  {
+   "default": "Awaiting Response",
+   "fieldname": "rsvp_status",
+   "fieldtype": "Select",
+   "label": "RSVP Status",
+   "options": "Awaiting Response\nConfirmed\nDeclined\nTentative\nNo Response"
+  },
+  {
+   "fieldname": "column_break_logistics",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "requires_accommodation",
+   "fieldtype": "Check",
+   "label": "Requires Accommodation"
+  },
+  {
+   "default": "0",
+   "fieldname": "requires_transportation",
+   "fieldtype": "Check",
+   "label": "Requires Transportation"
+  },
+  {
+   "fieldname": "column_break_dietary",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dietary_requirements",
+   "fieldtype": "Small Text",
+   "label": "Dietary Requirements"
+  },
+  {
+   "fieldname": "special_requests",
+   "fieldtype": "Small Text",
+   "label": "Special Requests"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_notes",
+   "fieldtype": "Section Break",
+   "label": "Additional Notes"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-01-29 11:26:14.826239",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Event Guest",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

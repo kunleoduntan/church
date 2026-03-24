@@ -1,0 +1,477 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:SI-{service_name}-{service_date}",
+ "creation": "2026-01-29 12:30:57.425573",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "service_details_section",
+  "service",
+  "service_name",
+  "service_date",
+  "capacity",
+  "column_break_basic",
+  "service_type",
+  "service_time",
+  "actual_start_time",
+  "column_break_end",
+  "actual_end_time",
+  "status",
+  "branch",
+  "section_break_ministry_team",
+  "ministry_team",
+  "section_break_leadership",
+  "minister",
+  "worship_leader",
+  "column_break_team",
+  "choir",
+  "ushering_team",
+  "column_break_bwoyl",
+  "venue",
+  "section_break_service_order",
+  "sermon_title",
+  "sermon_text",
+  "column_break_sermon",
+  "preacher",
+  "sermon_notes",
+  "service_order",
+  "section_break_attendance",
+  "total_attendance",
+  "men_count",
+  "column_break_attendance",
+  "women_count",
+  "children_count",
+  "column_break_visitors",
+  "first_timers",
+  "new_converts",
+  "section_break_visitor_tracking",
+  "service_visitors",
+  "section_break_collections",
+  "total_offering",
+  "total_tithe",
+  "column_break_collections",
+  "special_offering",
+  "other_collections",
+  "section_break_media",
+  "audio_recording",
+  "video_recording",
+  "column_break_media",
+  "livestream_link",
+  "livestream_views",
+  "section_break_notes",
+  "service_report",
+  "qr_code_tab",
+  "qr_code_section_section",
+  "venue_qr_code",
+  "column_break_82zgu",
+  "venue_qr_checkin_url",
+  "column_break_rwap0",
+  "venue_qr_expires_at",
+  "column_break_gx4te",
+  "venue_qr_code_hash",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "service_details_section",
+   "fieldtype": "Section Break",
+   "label": "Service Details"
+  },
+  {
+   "fieldname": "service",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Service",
+   "options": "Church Service",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "service.service_name",
+   "fieldname": "service_name",
+   "fieldtype": "Data",
+   "label": "Service Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "service_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Service Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "service.service_time",
+   "fieldname": "service_time",
+   "fieldtype": "Time",
+   "label": "Scheduled Time",
+   "read_only": 1
+  },
+  {
+   "fieldname": "actual_start_time",
+   "fieldtype": "Time",
+   "label": "Actual Start Time"
+  },
+  {
+   "fieldname": "column_break_end",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "actual_end_time",
+   "fieldtype": "Time",
+   "label": "Actual End Time"
+  },
+  {
+   "default": "Scheduled",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Scheduled\nOngoing\nCompleted\nCancelled",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_ministry_team",
+   "fieldtype": "Section Break",
+   "label": "Ministry Team for This Service"
+  },
+  {
+   "fieldname": "ministry_team",
+   "fieldtype": "Table",
+   "label": "Ministry Team",
+   "options": "Service Instance Team"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_leadership",
+   "fieldtype": "Section Break",
+   "label": "Service Leadership"
+  },
+  {
+   "fetch_from": "service.default_minister",
+   "fieldname": "minister",
+   "fieldtype": "Link",
+   "label": "Minister/Pastor",
+   "options": "Member"
+  },
+  {
+   "fetch_from": "service.default_worship_leader",
+   "fieldname": "worship_leader",
+   "fieldtype": "Link",
+   "label": "Worship Leader",
+   "options": "Member"
+  },
+  {
+   "fieldname": "column_break_team",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "service.default_choir",
+   "fieldname": "choir",
+   "fieldtype": "Link",
+   "label": "Choir",
+   "options": "Ministry"
+  },
+  {
+   "fetch_from": "service.default_ushering_team",
+   "fieldname": "ushering_team",
+   "fieldtype": "Link",
+   "label": "Ushering Team",
+   "options": "Ministry"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_service_order",
+   "fieldtype": "Section Break",
+   "label": "Sermon & Service Order"
+  },
+  {
+   "fieldname": "sermon_title",
+   "fieldtype": "Data",
+   "label": "Sermon Title"
+  },
+  {
+   "fieldname": "sermon_text",
+   "fieldtype": "Data",
+   "label": "Bible Text"
+  },
+  {
+   "fieldname": "column_break_sermon",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "preacher",
+   "fieldtype": "Link",
+   "label": "Preacher",
+   "options": "Member"
+  },
+  {
+   "fieldname": "sermon_notes",
+   "fieldtype": "Text Editor",
+   "label": "Sermon Notes/Summary"
+  },
+  {
+   "fetch_from": "service.service_order_template",
+   "fieldname": "service_order",
+   "fieldtype": "Text Editor",
+   "label": "Service Order"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_attendance",
+   "fieldtype": "Section Break",
+   "label": "Attendance"
+  },
+  {
+   "fieldname": "total_attendance",
+   "fieldtype": "Int",
+   "label": "Total Attendance",
+   "read_only": 1
+  },
+  {
+   "fieldname": "men_count",
+   "fieldtype": "Int",
+   "label": "Men"
+  },
+  {
+   "fieldname": "column_break_attendance",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "women_count",
+   "fieldtype": "Int",
+   "label": "Women"
+  },
+  {
+   "fieldname": "children_count",
+   "fieldtype": "Int",
+   "label": "Children"
+  },
+  {
+   "fieldname": "column_break_visitors",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "first_timers",
+   "fieldtype": "Int",
+   "label": "First Timers"
+  },
+  {
+   "fieldname": "new_converts",
+   "fieldtype": "Int",
+   "label": "New Converts"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_visitor_tracking",
+   "fieldtype": "Section Break",
+   "label": "Visitor Tracking"
+  },
+  {
+   "fieldname": "service_visitors",
+   "fieldtype": "Table",
+   "label": "Visitors for This Service",
+   "options": "Service Visitor"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_collections",
+   "fieldtype": "Section Break",
+   "label": "Collections"
+  },
+  {
+   "fieldname": "total_offering",
+   "fieldtype": "Currency",
+   "label": "Total Offering",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_tithe",
+   "fieldtype": "Currency",
+   "label": "Total Tithe",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_collections",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "special_offering",
+   "fieldtype": "Currency",
+   "label": "Special Offering",
+   "read_only": 1
+  },
+  {
+   "fieldname": "other_collections",
+   "fieldtype": "Currency",
+   "label": "Other Collections",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_media",
+   "fieldtype": "Section Break",
+   "label": "Media & Recording"
+  },
+  {
+   "fieldname": "audio_recording",
+   "fieldtype": "Attach",
+   "label": "Audio Recording"
+  },
+  {
+   "fieldname": "video_recording",
+   "fieldtype": "Attach",
+   "label": "Video Recording"
+  },
+  {
+   "fieldname": "column_break_media",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "livestream_link",
+   "fieldtype": "Data",
+   "label": "Livestream Link"
+  },
+  {
+   "fieldname": "livestream_views",
+   "fieldtype": "Int",
+   "label": "Livestream Views"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_notes",
+   "fieldtype": "Section Break",
+   "label": "Service Report"
+  },
+  {
+   "fieldname": "service_report",
+   "fieldtype": "Text Editor",
+   "label": "Service Report/Notes"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Service Instance",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Service Instance",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_bwoyl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "venue",
+   "fieldtype": "Small Text",
+   "label": "Venue"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch"
+  },
+  {
+   "fieldname": "service_type",
+   "fieldtype": "Link",
+   "label": "Service Type",
+   "options": "Programme"
+  },
+  {
+   "fieldname": "qr_code_section_section",
+   "fieldtype": "Section Break",
+   "label": "QR Code Section "
+  },
+  {
+   "fieldname": "venue_qr_code",
+   "fieldtype": "Attach Image",
+   "label": "Venue QR Code"
+  },
+  {
+   "fieldname": "column_break_82zgu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "venue_qr_checkin_url",
+   "fieldtype": "Data",
+   "label": "Venue QR Check-in URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_rwap0",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "venue_qr_expires_at",
+   "fieldtype": "Datetime",
+   "label": "Venue QR Expire At"
+  },
+  {
+   "fieldname": "column_break_gx4te",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "venue_qr_code_hash",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Venue QR Code Hash",
+   "read_only": 1
+  },
+  {
+   "fieldname": "qr_code_tab",
+   "fieldtype": "Tab Break",
+   "label": "QR Code"
+  },
+  {
+   "fieldname": "capacity",
+   "fieldtype": "Int",
+   "label": "Capacity"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-03-23 13:07:40.832001",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Service Instance",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

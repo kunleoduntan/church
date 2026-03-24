@@ -1,0 +1,26 @@
+{
+ "allow_roles": [
+  {
+   "role": "All"
+  }
+ ],
+ "creation": "2025-04-05 12:31:25.816825",
+ "docstatus": 0,
+ "doctype": "Module Onboarding",
+ "documentation_url": "/church",
+ "idx": 0,
+ "is_complete": 0,
+ "modified": "2025-05-02 13:00:05.494189",
+ "modified_by": "kunleoduntan@gmail.com",
+ "module": "church",
+ "name": "Welcome to Church Management",
+ "owner": "Administrator",
+ "steps": [
+  {
+   "step": "Create Member"
+  }
+ ],
+ "subtitle": "Welcome",
+ "success_message": "Thank you for using this app",
+ "title": "Welcome to Church Management"
+}

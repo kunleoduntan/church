@@ -1,0 +1,111 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-01-31 00:33:50.928400",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "asset_id",
+  "asset_name",
+  "column_break_giddh",
+  "location",
+  "assigned_to",
+  "column_break_x8d9e",
+  "status",
+  "assignment_date",
+  "section_break_qftnt",
+  "qr_code",
+  "column_break_rqaz5",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "asset_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Asset ID",
+   "options": "Asset",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "asset_id.asset_name",
+   "fieldname": "asset_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Asset Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_giddh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Specific location within the children's class",
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Location in Class"
+  },
+  {
+   "description": "Teacher or staff member responsible",
+   "fieldname": "assigned_to",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Assigned To",
+   "options": "Member"
+  },
+  {
+   "fieldname": "column_break_x8d9e",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Active\nInactive\nIn Maintenance\nLost\nRetired"
+  },
+  {
+   "description": "Date when asset was assigned to this class",
+   "fieldname": "assignment_date",
+   "fieldtype": "Date",
+   "label": "Assignment Date"
+  },
+  {
+   "fieldname": "section_break_qftnt",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Auto-generated QR code for asset tracking",
+   "fieldname": "qr_code",
+   "fieldtype": "Data",
+   "label": "QR Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_rqaz5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Any special notes about this asset in the class context",
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-01-31 00:33:50.928400",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Children Class Assets",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

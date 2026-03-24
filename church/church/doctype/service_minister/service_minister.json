@@ -1,0 +1,105 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-04-06 14:33:06.420344",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "is_invited",
+  "member_id",
+  "full_name",
+  "column_break_xh8h5",
+  "designation",
+  "from",
+  "column_break_8pfc5",
+  "duty",
+  "column_break_eupjf",
+  "email",
+  "mobile_phone"
+ ],
+ "fields": [
+  {
+   "depends_on": "eval:doc.is_invited == \"No\"",
+   "fieldname": "member_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Member ID",
+   "mandatory_depends_on": "eval:doc.is_invited == \"No\"",
+   "options": "Member",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "member_id.full_name",
+   "fetch_if_empty": 1,
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "column_break_xh8h5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Designation"
+  },
+  {
+   "fieldname": "column_break_8pfc5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.is_invited == \"Yes\"",
+   "fieldname": "from",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "From",
+   "mandatory_depends_on": "eval:doc.is_invited == \"Yes\""
+  },
+  {
+   "fieldname": "duty",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Duty",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_eupjf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "is_invited",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Is Invited",
+   "options": "\nYes\nNo",
+   "reqd": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fieldname": "mobile_phone",
+   "fieldtype": "Phone",
+   "label": "Mobile Phone"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-04-09 10:55:02.034896",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Service Minister",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

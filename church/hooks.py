@@ -1,201 +1,187 @@
-from . import __version__ as app_version
+# -*- coding: utf-8 -*-
+# Copyright (c) 2026, Church Management
+# License: MIT
+#
+# church/hooks.py
+# ─────────────────────────────────────────────────────────────────────────────
 
-app_name = "church"
-app_title = "church"
-app_publisher = "kunle"
+from . import __version__ as app_version  # noqa
+
+app_name        = "church"
+app_title       = "church"
+app_publisher   = "kunle"
 app_description = "Church Management"
-app_email = "kunleoduntan@gmail.com"
-app_license = "Mit"
+app_email       = "kunleoduntan@gmail.com"
+app_license     = "MIT"
+app_version     = app_version
 
-# Includes in <head>
-# ------------------
 
-# include js, css files in header of desk.html
-# app_include_css = "/assets/church/css/church.css"
-# app_include_js = "/assets/church/js/church.js"
+# ─────────────────────────────────────────────────────────────────────────────
+# WEBSITE ROUTES
+# ─────────────────────────────────────────────────────────────────────────────
 
-# include js, css files in header of web template
-# web_include_css = "/assets/church/css/church.css"
-# web_include_js = "/assets/church/js/church.js"
+website_route_rules = [
+    {"from_route": "/member_portal", "to_route": "member_portal"},
+]
 
-# include custom scss in every website theme (without file extension ".scss")
-# website_theme_scss = "church/public/scss/website"
 
-# include js, css files in header of web form
-# webform_include_js = {"doctype": "public/js/doctype.js"}
-# webform_include_css = {"doctype": "public/css/doctype.css"}
+# ─────────────────────────────────────────────────────────────────────────────
+# PORTAL MENU
+# ─────────────────────────────────────────────────────────────────────────────
 
-# include js in page
-# page_js = {"page" : "public/js/file.js"}
+portal_menu_items = [
+    {"title": "Member Portal", "route": "/member_portal", "reference_doctype": "Member"},
+]
 
-# include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
-# doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
-# doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
-# doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
-# Home Pages
-# ----------
+# ─────────────────────────────────────────────────────────────────────────────
+# CLIENT-SIDE SCRIPTS
+# ─────────────────────────────────────────────────────────────────────────────
 
-# application home page (will override Website Settings)
-# home_page = "login"
+doctype_js = {
+    "Purchase Invoice":    "public/js/purchase_invoice.js",
+    "Bank Reconciliation": "public/js/bank_reconciliation_manual.js",
+    "Annual Budget":       "public/js/annual_budget_manual.js",
+    "Receipts":            "doctype/receipts/receipts.js",
+    "Member":              "public/js/member_smart_attendance.js",
+    "Church Attendance":   "public/js/church_attendance_smart.js",
+}
 
-# website user home page (by Role)
-# role_home_page = {
-#	"Role": "home_page"
-# }
 
-# Generators
-# ----------
+# ─────────────────────────────────────────────────────────────────────────────
+# DOCUMENT EVENTS
+# ─────────────────────────────────────────────────────────────────────────────
 
-# automatically create page for each record of this doctype
-# website_generators = ["Web Page"]
+doc_events = {
 
-# Jinja
-# ----------
+    "Church Attendance": {},
 
-# add methods and filters to jinja environment
-# jinja = {
-#	"methods": "church.utils.jinja_methods",
-#	"filters": "church.utils.jinja_filters"
-# }
+    "Attendance Sheet": {
+        "before_save": "church.church.doctype.attendance_sheet.attendance_sheet.update_attendance_analysis",
+        "on_submit":   "church.church.doctype.attendance_sheet.attendance_sheet.send_attendance_sheet_notification",
+    },
 
-# Installation
-# ------------
+    "Person Registry": {
+        "after_insert": "church.church.doctype.person_registry.person_registry.after_insert",
+    },
 
-# before_install = "church.install.before_install"
-# after_install = "church.install.after_install"
+    "Bank Reconciliation": {
+        "validate": "church.tasks.import_bank_statement_from_excel",
+    },
 
-# Uninstallation
-# ------------
+    "Receipts": {
+        "after_insert": "church.church.doctype.member_tithe_record.member_tithe_record.on_receipt_created",
+        "on_update":    "church.church.doctype.member_tithe_record.member_tithe_record.on_receipt_updated",
+        "on_submit":    "church.church.doctype.member_tithe_record.member_tithe_record.on_receipt_submitted",
+        "on_cancel":    "church.church.doctype.member_tithe_record.member_tithe_record.on_receipt_cancelled",
+    },
 
-# before_uninstall = "church.uninstall.before_uninstall"
-# after_uninstall = "church.uninstall.after_uninstall"
+    "Member": {
+        "after_save":   "church.attendance.smart_attendance.auto_generate_qr_code",
+        #"after_insert": "church.church.doctype.member.member.generate_member_qr",
+        "on_trash":     "church.api.member_portal_api.clear_member_portal_session",
+        "on_update": "church.church.doctype.announcement.announcement.notify_member_update",
+    },
 
-# Desk Notifications
-# ------------------
-# See frappe.core.notifications.get_notification_config
+    "Attendance Marking": {
+        "on_cancel": "church.church.doctype.attendance_marking.attendance_marking.cancel_linked_attendance",
+    },
+}
 
-# notification_config = "church.notifications.get_notification_config"
 
-# Permissions
-# -----------
-# Permissions evaluated in scripted ways
+# ─────────────────────────────────────────────────────────────────────────────
+# SCHEDULED TASKS
+# ─────────────────────────────────────────────────────────────────────────────
 
-# permission_query_conditions = {
-#	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
-# }
-#
-# has_permission = {
-#	"Event": "frappe.desk.doctype.event.event.has_permission",
-# }
+scheduler_events = {
 
-# DocType Class
-# ---------------
-# Override standard doctype classes
+    "cron": {
 
-# override_doctype_class = {
-#	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+        "*/5 * * * *": [
+            "church.attendance.smart_attendance.auto_check_wifi_connections",
+            "church.attendance.auto_service_creator.auto_create_service_instances",
+            
+        ],
 
-# Document Events
-# ---------------
-# Hook on document methods and events
+        "*/10 * * * *": [
+            "church.utils.network_detection_service.scheduled_network_scan",
+        ],
 
-# doc_events = {
-#	"*": {
-#		"on_update": "method",
-#		"on_cancel": "method",
-#		"on_trash": "method"
-#	}
-# }
+        "*/15 * * * *": [
+            "church.church.doctype.communication_campaign.communication_campaign.process_scheduled_campaigns",
+            "church.church.doctype.visitor.visitor.send_welcome_message",
+            "church.church.doctype.service_instance.service_instance_ai_attendance.auto_update_attendance_from_visitors",
+            "church.church.doctype.announcement.announcement.process_scheduled",
+        ],
 
-# Scheduled Tasks
-# ---------------
+        "0 */1 * * *": [
+            "church.attendance.smart_attendance.cleanup_expired_qr_tokens",
+        ],
 
-# scheduler_events = {
-#	"all": [
-#		"church.tasks.all"
-#	],
-#	"daily": [
-#		"church.tasks.daily"
-#	],
-#	"hourly": [
-#		"church.tasks.hourly"
-#	],
-#	"weekly": [
-#		"church.tasks.weekly"
-#	],
-#	"monthly": [
-#		"church.tasks.monthly"
-#	],
-# }
+        "0 6 * * *": [
+            "church.church.doctype.children_class.children_class.send_daily_birthday_wishes",
+        ],
 
-# Testing
-# -------
+        "0 6 * * 0": [
+            "church.church.doctype.attendance_sheet.attendance_sheet.auto_create_attendance_sheets",
+        ],
 
-# before_tests = "church.install.before_tests"
+        "0 20 * * 0": [
+            "church.church.doctype.church_attendance.church_attendance.send_attendance_reminders",
+        ],
+    },
 
-# Overriding Methods
-# ------------------------------
-#
-# override_whitelisted_methods = {
-#	"frappe.desk.doctype.event.event.get_events": "church.event.get_events"
-# }
-#
-# each overriding function accepts a `data` argument;
-# generated from the base implementation of the doctype dashboard,
-# along with any modifications made in other Frappe apps
-# override_doctype_dashboards = {
-#	"Task": "church.task.get_dashboard_data"
-# }
+    "hourly": [
+        "church.church.doctype.church_attendance.church_attendance.auto_submit_attendance",
+        "church.api.announcement_api.process_scheduled",
+    ],
 
-# exempt linked doctypes from being automatically cancelled
-#
-# auto_cancel_exempted_doctypes = ["Auto Repeat"]
+    "daily": [
 
-# Ignore links to specified DocTypes when deleting documents
-# -----------------------------------------------------------
+        "church.church.doctype.presence_log.presence_log.auto_process_yesterday_logs",
+        "church.church.doctype.daily_presence_record.daily_presence_record.auto_mark_absent",
 
-# ignore_links_on_delete = ["Communication", "ToDo"]
+        "church.church.doctype.communication_campaign.communication_campaign.process_recurring_campaigns",
 
-# Request Events
-# ----------------
-# before_request = ["church.utils.before_request"]
-# after_request = ["church.utils.after_request"]
+        "church.church.doctype.member_tithe_record.member_tithe_record.sync_all_tithe_records",
 
-# Job Events
-# ----------
-# before_job = ["church.utils.before_job"]
-# after_job = ["church.utils.after_job"]
+        "church.church.doctype.church_department.church_department.daily_birthday_wishes",
+        "church.church.doctype.member.member.send_birthday_wishes",
 
-# User Data Protection
-# --------------------
+        "church.attendance.smart_attendance.cleanup_old_attendance_data",
+        "church.attendance.smart_attendance.cleanup_expired_qr_tokens",
 
-# user_data_fields = [
-#	{
-#		"doctype": "{doctype_1}",
-#		"filter_by": "{filter_by}",
-#		"redact_fields": ["{field_1}", "{field_2}"],
-#		"partial": 1,
-#	},
-#	{
-#		"doctype": "{doctype_2}",
-#		"filter_by": "{filter_by}",
-#		"partial": 1,
-#	},
-#	{
-#		"doctype": "{doctype_3}",
-#		"strict": False,
-#	},
-#	{
-#		"doctype": "{doctype_4}"
-#	}
-# ]
+        "church.church.doctype.church_attendance.church_attendance.send_absent_member_emails",
+        "church.church.doctype.church_attendance.church_attendance.send_absent_member_report",
+        "church.church.doctype.church_attendance.church_attendance.run_member_followup_monitor",
+        "church.church.doctype.pledges.pledges.send_pledge_reminders",
 
-# Authentication and authorization
-# --------------------------------
+        # Member portal session cleanup
+        "church.api.member_portal_api.purge_expired_portal_sessions",
+    ],
 
-# auth_hooks = [
-#	"church.auth.validate"
-# ]
+    "weekly": [
+        "church.church.doctype.member_tithe_record.member_tithe_record.create_missing_tithe_records",
+        "church.church.doctype.offering_sheet.offering_sheet.auto_create_offering_sheets",
+        "church.church.doctype.attendance_sheet.attendance_sheet.auto_create_attendance_sheets",
+        "church.church.doctype.member.member.reclassify_members",
+        "church.church.doctype.visitation.visitation.create_weekly_visitations",
+        
+    ],
+
+    "yearly": [
+        "church.church.doctype.member.member.reclassify_members",
+    ],
+    "all": [
+        # Poll WiFi connections every 5 minutes (runs on every scheduler tick)
+        # Only activates if enable_wifi_checkin is True in Church Settings
+        "church.attendance.smart_attendance.auto_check_wifi_connections",
+    ],
+}
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# LOGOUT HANDLER
+# ─────────────────────────────────────────────────────────────────────────────
+
+on_logout = "church.api.member_portal_api.on_frappe_logout"

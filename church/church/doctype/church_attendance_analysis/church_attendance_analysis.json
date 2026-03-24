@@ -67,8 +67,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Branch",
-   "options": "Branch",
-   "reqd": 1
+   "mandatory_depends_on": "date",
+   "options": "Branch"
   },
   {
    "default": "0",
@@ -226,7 +226,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-11-26 19:58:20.615841",
+ "modified": "2025-04-19 18:14:57.803844",
  "modified_by": "Administrator",
  "module": "church",
  "name": "Church Attendance Analysis",

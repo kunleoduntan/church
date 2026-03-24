@@ -1,0 +1,378 @@
+{% extends "templates/print_format/print_format.html" %}
+
+{% block header %}
+<style>
+    @page {
+        size: A4;
+        margin: 2.5cm;
+        @top-center {
+            content: element(header);
+        }
+        @bottom-center {
+            content: element(footer);
+        }
+    }
+    
+    body {
+        font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+        line-height: 1.4;
+        color: #1F2937;
+        background: white;
+    }
+    
+    /* Header with letterhead styling */
+    .letterhead-header {
+        position: running(header);
+        margin-bottom: 20px;
+        border-bottom: 3px solid #4F46E5;
+        padding-bottom: 15px;
+    }
+    
+    .church-logo {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    
+    .church-logo img {
+        max-height: 80px;
+        width: auto;
+    }
+    
+    .church-info {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 20px;
+    }
+    
+    .church-name {
+        font-size: 24px;
+        font-weight: bold;
+        color: #4F46E5;
+        margin: 0;
+        letter-spacing: 1px;
+    }
+    
+    .church-motto {
+        font-size: 12px;
+        color: #6B7280;
+        margin: 5px 0 0 0;
+    }
+    
+    /* Footer */
+    .footer {
+        position: running(footer);
+        text-align: center;
+        font-size: 10px;
+        color: #9CA3AF;
+        border-top: 1px solid #E5E7EB;
+        padding-top: 10px;
+        margin-top: 20px;
+    }
+    
+    /* Title */
+    .report-title {
+        text-align: center;
+        margin: 20px 0;
+    }
+    
+    .report-title h1 {
+        color: #4F46E5;
+        font-size: 28px;
+        margin: 0;
+        font-weight: 600;
+    }
+    
+    .report-title p {
+        color: #6B7280;
+        margin: 5px 0 0;
+        font-size: 14px;
+    }
+    
+    /* Member Info Card */
+    .member-card {
+        background: linear-gradient(135deg, #F9FAFB 0%, #FFFFFF 100%);
+        border: 1px solid #E5E7EB;
+        border-radius: 12px;
+        padding: 20px;
+        margin: 20px 0;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    
+    .member-header {
+        border-bottom: 2px solid #4F46E5;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+    }
+    
+    .member-header h2 {
+        margin: 0;
+        color: #111827;
+        font-size: 20px;
+    }
+    
+    .member-header .member-id {
+        color: #6B7280;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+    
+    .member-details-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .detail-item {
+        display: flex;
+        align-items: baseline;
+    }
+    
+    .detail-label {
+        font-weight: 600;
+        color: #4F46E5;
+        width: 100px;
+        font-size: 13px;
+    }
+    
+    .detail-value {
+        color: #1F2937;
+        font-size: 14px;
+    }
+    
+    /* Summary Stats */
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin: 20px 0;
+    }
+    
+    .stat-card {
+        background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+        border-radius: 12px;
+        padding: 15px;
+        text-align: center;
+        color: white;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    .stat-label {
+        font-size: 12px;
+        opacity: 0.9;
+        margin-bottom: 5px;
+    }
+    
+    .stat-value {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    
+    /* Table Styling */
+    .tithe-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 13px;
+    }
+    
+    .tithe-table th {
+        background: linear-gradient(135deg, #F3F4F6 0%, #E5E7EB 100%);
+        color: #1F2937;
+        padding: 12px 8px;
+        text-align: left;
+        font-weight: 600;
+        border: 1px solid #E5E7EB;
+    }
+    
+    .tithe-table td {
+        padding: 10px 8px;
+        border: 1px solid #E5E7EB;
+        vertical-align: top;
+    }
+    
+    .tithe-table tr:hover {
+        background-color: #F9FAFB;
+    }
+    
+    .amount-positive {
+        color: #10B981;
+        font-weight: 500;
+    }
+    
+    .total-row {
+        background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+        font-weight: bold;
+    }
+    
+    .total-row td {
+        border-top: 2px solid #F59E0B;
+        border-bottom: 2px solid #F59E0B;
+    }
+    
+    /* Footer Note */
+    .footer-note {
+        margin-top: 30px;
+        padding: 15px;
+        background: #FEF3C7;
+        border-left: 4px solid #F59E0B;
+        border-radius: 8px;
+        font-size: 12px;
+        color: #92400E;
+    }
+    
+    .footer-note i {
+        font-style: italic;
+    }
+    
+    /* Print-specific styles */
+    @media print {
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .no-print {
+            display: none;
+        }
+        
+        .tithe-table th,
+        .tithe-table td {
+            border-color: #D1D5DB;
+        }
+        
+        .stat-card {
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        
+        .total-row {
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+    }
+</style>
+
+<div class="letterhead-header">
+    <div class="church-logo">
+        {% if filters.church_logo %}
+        <img src="{{ filters.church_logo }}" alt="Church Logo">
+        {% else %}
+        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #4F46E5, #7C3AED); border-radius: 50%; display: inline-block;"></div>
+        {% endif %}
+    </div>
+    <div class="church-info">
+        <div class="church-name">{{ filters.church_name or "GRACE COMMUNITY CHURCH" }}</div>
+        <div class="church-motto">{{ filters.church_motto or "Walking in Faith, Growing in Grace" }}</div>
+    </div>
+</div>
+
+<div class="footer">
+    <div>Generated on {{ frappe.utils.formatdate(frappe.utils.nowdate(), "dddd, MMMM D, YYYY") }} | Page <span class="page"></span></div>
+    <div>This is a computer-generated document. No signature required.</div>
+</div>
+
+<div class="report-title">
+    <h1>MEMBER TITHE RECORD</h1>
+    <p>Faithful Stewardship Report</p>
+</div>
+
+<div class="member-card">
+    <div class="member-header">
+        <h2>{{ doc.full_name or "Member Name" }}</h2>
+        <div class="member-id">Member ID: {{ doc.member_id or "N/A" }}</div>
+    </div>
+    <div class="member-details-grid">
+        <div class="detail-item">
+            <div class="detail-label">Salutation:</div>
+            <div class="detail-value">{{ doc.salutation or "N/A" }}</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">Branch:</div>
+            <div class="detail-value">{{ doc.branch or "N/A" }}</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">Default Currency:</div>
+            <div class="detail-value">{{ doc.currency or "USD" }}</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">Last Synced:</div>
+            <div class="detail-value">{{ frappe.utils.format_datetime(doc.last_synced, "dddd, MMMM D, YYYY h:mm A") if doc.last_synced else "N/A" }}</div>
+        </div>
+    </div>
+    {% if doc.description %}
+    <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E5E7EB;">
+        <div class="detail-label" style="margin-bottom: 5px;">Notes:</div>
+        <div class="detail-value">{{ doc.description }}</div>
+    </div>
+    {% endif %}
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-label">Total Transactions</div>
+        <div class="stat-value">{{ data|length }}</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">Total Amount Paid</div>
+        <div class="stat-value">{{ frappe.utils.fmt_money(doc.amount_paid, 2, doc.currency) if doc.amount_paid else "0.00" }}</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">Average per Transaction</div>
+        <div class="stat-value">{{ frappe.utils.fmt_money((doc.amount_paid / data|length) if doc.amount_paid and data|length > 0 else 0, 2, doc.currency) }}</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">Faithfulness Score</div>
+        <div class="stat-value">{{ ((doc.amount_paid or 0) / 12 * 100) | round(0) }}%</div>
+    </div>
+</div>
+
+{% if data %}
+<table class="tithe-table">
+    <thead>
+        <tr>
+            <th width="12%">Date</th>
+            <th width="12%">Receipt</th>
+            <th width="8%">Currency</th>
+            <th width="8%">Rate</th>
+            <th width="15%">Amount Paid</th>
+            <th width="15%">Amount (LCY)</th>
+            <th width="15%">Branch</th>
+            <th width="15%">Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in data %}
+        <tr {% if loop.last %}class="total-row"{% endif %}>
+            <td>{{ frappe.utils.formatdate(row.date, "dd MMM YYYY") if row.date else "-" }}</td>
+            <td>{{ row.receipt_no or "-" }}</td>
+            <td>{{ row.currency or "-" }}</td>
+            <td style="text-align: right;">{{ row.exchange_rate or "-" }}</td>
+            <td style="text-align: right;">{{ frappe.utils.fmt_money(row.amount_paid, 2, row.currency) if row.amount_paid else "-" }}</td>
+            <td style="text-align: right;"><strong>{{ frappe.utils.fmt_money(row.amount_in_lc, 2, doc.currency) if row.amount_in_lc else "-" }}</strong></td>
+            <td>{{ row.branch or "-" }}</td>
+            <td>{{ row.other_details or "-" }}</td>
+        </tr>
+        {% endfor %}
+        {% if data|length > 1 %}
+        <tr class="total-row">
+            <td colspan="4"><strong>TOTAL</strong></td>
+            <td style="text-align: right;"><strong>{{ frappe.utils.fmt_money(data|sum(attribute='amount_paid'), 2, doc.currency) }}</strong></td>
+            <td style="text-align: right;"><strong>{{ frappe.utils.fmt_money(data|sum(attribute='amount_in_lc'), 2, doc.currency) }}</strong></td>
+            <td colspan="2"></td>
+        </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% else %}
+<div style="text-align: center; padding: 40px; color: #6B7280; border: 1px dashed #D1D5DB; border-radius: 8px; margin: 20px 0;">
+    <span style="font-size: 48px;">📭</span>
+    <p style="margin-top: 10px;">No tithe records found for this period.</p>
+    <p style="font-size: 12px;">Keep sowing seeds of faithfulness! 🌱</p>
+</div>
+{% endif %}
+
+<div class="footer-note">
+    <i>✨ "Honor the Lord with your wealth and with the firstfruits of all your produce." - Proverbs 3:9</i>
+    <div style="margin-top: 8px; font-size: 11px;">This report is a record of tithes and offerings. Thank you for your faithful giving!</div>
+</div>
+{% endblock %}

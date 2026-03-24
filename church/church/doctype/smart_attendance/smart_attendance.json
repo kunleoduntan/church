@@ -1,0 +1,208 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "prompt",
+ "creation": "2026-02-04 06:13:30.198271",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "attendance_section",
+  "church_attendance",
+  "member",
+  "present",
+  "smart_check_in_section",
+  "check_in_method",
+  "check_in_timestamp",
+  "column_break_check_in",
+  "device_used",
+  "ip_address",
+  "section_break_location",
+  "gps_latitude",
+  "gps_longitude",
+  "column_break_location",
+  "distance_from_church",
+  "location_verified",
+  "section_break_fraud",
+  "is_suspicious",
+  "fraud_reason",
+  "column_break_fraud",
+  "verified_by_admin",
+  "admin_notes",
+  "auto_marked"
+ ],
+ "fields": [
+  {
+   "fieldname": "attendance_section",
+   "fieldtype": "Section Break",
+   "label": "Attendance Reference"
+  },
+  {
+   "fieldname": "church_attendance",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Church Attendance",
+   "options": "Church Attendance",
+   "reqd": 1
+  },
+  {
+   "fieldname": "member",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Member",
+   "options": "Member",
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "present",
+   "fieldtype": "Check",
+   "label": "Present"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.present==1",
+   "fieldname": "smart_check_in_section",
+   "fieldtype": "Section Break",
+   "label": "Smart Check-in Details"
+  },
+  {
+   "fieldname": "check_in_method",
+   "fieldtype": "Select",
+   "label": "Check-in Method",
+   "options": "\nManual Entry\nQR Code - Personal\nQR Code - Service\nWiFi Auto\nWhatsApp\nWhatsApp + Location\nWhatsApp + Daily Code\nMobile App",
+   "read_only": 1
+  },
+  {
+   "fieldname": "check_in_timestamp",
+   "fieldtype": "Datetime",
+   "label": "Check-in Time",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_check_in",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "device_used",
+   "fieldtype": "Data",
+   "label": "Device Used",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ip_address",
+   "fieldtype": "Data",
+   "label": "IP Address",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.present==1",
+   "fieldname": "section_break_location",
+   "fieldtype": "Section Break",
+   "label": "Location Verification"
+  },
+  {
+   "fieldname": "gps_latitude",
+   "fieldtype": "Float",
+   "label": "GPS Latitude",
+   "precision": "8",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gps_longitude",
+   "fieldtype": "Float",
+   "label": "GPS Longitude",
+   "precision": "8",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_location",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "distance_from_church",
+   "fieldtype": "Float",
+   "label": "Distance from Church (meters)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "location_verified",
+   "fieldtype": "Check",
+   "label": "Location Verified",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_fraud",
+   "fieldtype": "Section Break",
+   "label": "Fraud Detection"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_suspicious",
+   "fieldtype": "Check",
+   "label": "Flagged as Suspicious"
+  },
+  {
+   "depends_on": "eval:doc.is_suspicious==1",
+   "fieldname": "fraud_reason",
+   "fieldtype": "Small Text",
+   "label": "Fraud Detection Reason",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_fraud",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.is_suspicious==1",
+   "fieldname": "verified_by_admin",
+   "fieldtype": "Link",
+   "label": "Verified By",
+   "options": "User"
+  },
+  {
+   "depends_on": "eval:doc.is_suspicious==1",
+   "fieldname": "admin_notes",
+   "fieldtype": "Small Text",
+   "label": "Admin Notes"
+  },
+  {
+   "default": "0",
+   "fieldname": "auto_marked",
+   "fieldtype": "Check",
+   "label": "Auto-Marked",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-04 06:16:41.558693",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Smart Attendance",
+ "naming_rule": "Set by user",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

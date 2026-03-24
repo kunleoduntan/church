@@ -1,0 +1,316 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-01-29 12:22:27.631398",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "visitor",
+  "full_name",
+  "column_break_1",
+  "gender",
+  "age",
+  "age_category",
+  "column_break_2",
+  "phone",
+  "email",
+  "column_break_3",
+  "visit_type",
+  "is_first_time",
+  "visit_count",
+  "section_break_spiritual",
+  "is_born_again",
+  "interested_in_membership",
+  "column_break_spiritual",
+  "interested_in_baptism",
+  "prayer_request",
+  "section_break_follow_up",
+  "follow_up_required",
+  "follow_up_assigned_to",
+  "follow_up_coordinator_name",
+  "column_break_follow_up",
+  "follow_up_status",
+  "follow_up_date",
+  "column_break_follow_up_2",
+  "follow_up_method",
+  "follow_up_notes",
+  "section_break_details",
+  "address",
+  "city",
+  "state",
+  "column_break_details",
+  "how_did_you_hear",
+  "referrer",
+  "referrer_name",
+  "section_break_notes",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "visitor",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Visitor",
+   "options": "Visitor",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "visitor.full_name",
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "visitor.gender",
+   "fieldname": "gender",
+   "fieldtype": "Link",
+   "label": "Gender",
+   "options": "Gender",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "visitor.age",
+   "fieldname": "age",
+   "fieldtype": "Int",
+   "label": "Age",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "visitor.age_category",
+   "fieldname": "age_category",
+   "fieldtype": "Select",
+   "label": "Age Category",
+   "options": "\nChild\nTeenager\nYouth\nAdult\nSenior",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "visitor.mobile_phone",
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Phone",
+   "options": "Phone",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "visitor.email",
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "visitor.visit_type",
+   "fieldname": "visit_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Visit Type",
+   "options": "First Time Visitor\nReturn Visitor\nGuest from Another Church\nRelocating Member\nOther",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_first_time",
+   "fieldtype": "Check",
+   "label": "First Time Visit"
+  },
+  {
+   "default": "1",
+   "fieldname": "visit_count",
+   "fieldtype": "Int",
+   "label": "Visit Count",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_spiritual",
+   "fieldtype": "Section Break",
+   "label": "Spiritual Information"
+  },
+  {
+   "default": "0",
+   "fetch_from": "visitor.is_born_again",
+   "fieldname": "is_born_again",
+   "fieldtype": "Check",
+   "label": "Born Again"
+  },
+  {
+   "default": "0",
+   "fetch_from": "visitor.interested_in_membership",
+   "fieldname": "interested_in_membership",
+   "fieldtype": "Check",
+   "label": "Interested in Membership"
+  },
+  {
+   "fieldname": "column_break_spiritual",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fetch_from": "visitor.interested_in_baptism",
+   "fieldname": "interested_in_baptism",
+   "fieldtype": "Check",
+   "label": "Interested in Baptism"
+  },
+  {
+   "fieldname": "prayer_request",
+   "fieldtype": "Small Text",
+   "label": "Prayer Request (This Visit)"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_follow_up",
+   "fieldtype": "Section Break",
+   "label": "Follow-up Management"
+  },
+  {
+   "default": "1",
+   "fieldname": "follow_up_required",
+   "fieldtype": "Check",
+   "label": "Follow-up Required"
+  },
+  {
+   "depends_on": "eval:doc.follow_up_required==1",
+   "fieldname": "follow_up_assigned_to",
+   "fieldtype": "Link",
+   "label": "Follow-up Assigned To",
+   "options": "Member"
+  },
+  {
+   "fetch_from": "follow_up_assigned_to.full_name",
+   "fieldname": "follow_up_coordinator_name",
+   "fieldtype": "Data",
+   "label": "Coordinator Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_follow_up",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Pending",
+   "depends_on": "eval:doc.follow_up_required==1",
+   "fieldname": "follow_up_status",
+   "fieldtype": "Select",
+   "label": "Follow-up Status",
+   "options": "Pending\nScheduled\nIn Progress\nCompleted\nNot Required\nUnable to Contact"
+  },
+  {
+   "depends_on": "eval:doc.follow_up_required==1",
+   "fieldname": "follow_up_date",
+   "fieldtype": "Date",
+   "label": "Follow-up Date"
+  },
+  {
+   "fieldname": "column_break_follow_up_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.follow_up_required==1",
+   "fieldname": "follow_up_method",
+   "fieldtype": "Select",
+   "label": "Follow-up Method",
+   "options": "\nPhone Call\nWhatsApp/SMS\nEmail\nHome Visit\nChurch Visit\nVideo Call"
+  },
+  {
+   "depends_on": "eval:doc.follow_up_required==1",
+   "fieldname": "follow_up_notes",
+   "fieldtype": "Text",
+   "label": "Follow-up Notes"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_details",
+   "fieldtype": "Section Break",
+   "label": "Additional Details"
+  },
+  {
+   "fetch_from": "visitor.address",
+   "fieldname": "address",
+   "fieldtype": "Small Text",
+   "label": "Address",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "visitor.city",
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "visitor.state",
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_details",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "visitor.how_did_you_hear",
+   "fieldname": "how_did_you_hear",
+   "fieldtype": "Select",
+   "label": "How Did You Hear About Us?",
+   "options": "\nFriend/Family Invitation\nSocial Media\nWebsite\nGoogle Search\nDriving/Walking By\nFlyer/Poster\nRadio/TV\nCommunity Event\nOther",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "visitor.referrer_name",
+   "fieldname": "referrer",
+   "fieldtype": "Link",
+   "label": "Referred By",
+   "options": "Member",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "referrer.full_name",
+   "fieldname": "referrer_name",
+   "fieldtype": "Data",
+   "label": "Referrer Name",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_notes",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes for This Visit"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-01-29 12:22:27.631398",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Service Visitor",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

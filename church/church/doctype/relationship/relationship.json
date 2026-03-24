@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "field:relationship",
  "creation": "2024-11-25 04:16:25.363735",
  "default_view": "List",
  "doctype": "DocType",
@@ -13,15 +14,18 @@
   {
    "fieldname": "relationship",
    "fieldtype": "Data",
-   "label": "Relationship"
+   "label": "Relationship",
+   "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-11-25 04:16:53.598678",
+ "modified": "2025-04-05 12:21:37.383005",
  "modified_by": "Administrator",
  "module": "church",
  "name": "Relationship",
+ "name_case": "Title Case",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {

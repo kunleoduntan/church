@@ -1,0 +1,108 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "field:test_name",
+ "creation": "2025-05-18 14:46:58.462971",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "test_name",
+  "checkup_type",
+  "column_break_eene1",
+  "normal_range",
+  "risk_threshold",
+  "indication",
+  "column_break_y73gr",
+  "prescription"
+ ],
+ "fields": [
+  {
+   "fieldname": "test_name",
+   "fieldtype": "Data",
+   "label": "Test Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_eene1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_y73gr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "prescription",
+   "fieldtype": "Small Text",
+   "label": "Prescription"
+  },
+  {
+   "fieldname": "normal_range",
+   "fieldtype": "Small Text",
+   "label": "Normal Range",
+   "reqd": 1
+  },
+  {
+   "fieldname": "checkup_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Checkup Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "indication",
+   "fieldtype": "Data",
+   "label": "Indication"
+  },
+  {
+   "fieldname": "risk_threshold",
+   "fieldtype": "Data",
+   "label": "Risk Threshold"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-05-18 16:33:32.213239",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Test Type",
+ "name_case": "Title Case",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "test_name",
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "test_name"
+}

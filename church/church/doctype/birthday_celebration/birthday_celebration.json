@@ -1,0 +1,234 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:BDAY-{child_name}-{YYYY}-{MM}-{DD}",
+ "creation": "2026-01-31 00:59:02.661345",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "child_information_section",
+  "child",
+  "child_name",
+  "age",
+  "column_break_1",
+  "class_name",
+  "branch",
+  "celebration_date",
+  "notification_status_section",
+  "whatsapp_sent",
+  "whatsapp_sent_at",
+  "column_break_notification_1",
+  "email_sent",
+  "email_sent_at",
+  "column_break_notification_2",
+  "sms_sent",
+  "sms_sent_at",
+  "column_break_notification_3",
+  "teacher_notified",
+  "teacher_notified_at",
+  "contact_details_section",
+  "parent_name",
+  "parent_phone",
+  "column_break_contact_1",
+  "parent_email",
+  "notes_section",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "child_information_section",
+   "fieldtype": "Section Break",
+   "label": "Child Information"
+  },
+  {
+   "fieldname": "child",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Child",
+   "options": "Member",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "child.full_name",
+   "fieldname": "child_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Child Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "age",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Age",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "class_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Class Name",
+   "options": "Children Class"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Branch",
+   "options": "Branch"
+  },
+  {
+   "default": "Today",
+   "fieldname": "celebration_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Celebration Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "notification_status_section",
+   "fieldtype": "Section Break",
+   "label": "Notification Status"
+  },
+  {
+   "default": "0",
+   "fieldname": "whatsapp_sent",
+   "fieldtype": "Check",
+   "label": "WhatsApp Sent"
+  },
+  {
+   "depends_on": "whatsapp_sent",
+   "fieldname": "whatsapp_sent_at",
+   "fieldtype": "Datetime",
+   "label": "WhatsApp Sent At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_notification_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "email_sent",
+   "fieldtype": "Check",
+   "label": "Email Sent"
+  },
+  {
+   "depends_on": "email_sent",
+   "fieldname": "email_sent_at",
+   "fieldtype": "Datetime",
+   "label": "Email Sent At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_notification_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "sms_sent",
+   "fieldtype": "Check",
+   "label": "SMS Sent"
+  },
+  {
+   "depends_on": "sms_sent",
+   "fieldname": "sms_sent_at",
+   "fieldtype": "Datetime",
+   "label": "SMS Sent At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_notification_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "teacher_notified",
+   "fieldtype": "Check",
+   "label": "Teacher Notified"
+  },
+  {
+   "depends_on": "teacher_notified",
+   "fieldname": "teacher_notified_at",
+   "fieldtype": "Datetime",
+   "label": "Teacher Notified At",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "contact_details_section",
+   "fieldtype": "Section Break",
+   "label": "Contact Details"
+  },
+  {
+   "fetch_from": "child.parent_name",
+   "fieldname": "parent_name",
+   "fieldtype": "Data",
+   "label": "Parent Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "child.parent_phone",
+   "fieldname": "parent_phone",
+   "fieldtype": "Data",
+   "label": "Parent Phone",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_contact_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "child.parent_email",
+   "fieldname": "parent_email",
+   "fieldtype": "Data",
+   "label": "Parent Email",
+   "options": "Email",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-01-31 00:59:38.076828",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Birthday Celebration",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

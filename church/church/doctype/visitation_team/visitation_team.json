@@ -1,0 +1,90 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-04-06 20:18:06.619799",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "member_id",
+  "full_name",
+  "column_break_g754j",
+  "email",
+  "phone_no",
+  "column_break_io4ej",
+  "role",
+  "column_break_7xcqh",
+  "note"
+ ],
+ "fields": [
+  {
+   "fieldname": "member_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Member ID",
+   "options": "Member"
+  },
+  {
+   "fieldname": "column_break_g754j",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "member_id.full_name",
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Full Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_io4ej",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "role",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Role"
+  },
+  {
+   "fieldname": "column_break_7xcqh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "note",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Note",
+   "max_height": "90px"
+  },
+  {
+   "fetch_from": "member_id.email",
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Email"
+  },
+  {
+   "fetch_from": "member_id.mobile_phone",
+   "fetch_if_empty": 1,
+   "fieldname": "phone_no",
+   "fieldtype": "Phone",
+   "in_list_view": 1,
+   "label": "Mobile Phone"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-04-06 20:57:22.013010",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Visitation Team",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

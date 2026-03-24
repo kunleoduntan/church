@@ -1,0 +1,427 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-03-20 14:14:05.692419",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "date",
+  "subject",
+  "audience_group",
+  "message_type",
+  "column_break_top1",
+  "status",
+  "sent",
+  "priority",
+  "from_name",
+  "from_email",
+  "reply_to_email",
+  "section_break_scheduling",
+  "schedule",
+  "schedule_time",
+  "expiry_date",
+  "column_break_sched2",
+  "is_test",
+  "test_email",
+  "test_phone_number",
+  "section_break_audience",
+  "filter",
+  "sunday_school_class",
+  "gender",
+  "marital_status",
+  "branch",
+  "member_status",
+  "column_break_aud2",
+  "total_recipients",
+  "sent_count",
+  "failed_count",
+  "pending_count",
+  "recipients_tab",
+  "recipients",
+  "message_tab",
+  "option",
+  "include_attachments",
+  "column_break_msg2",
+  "track_opens",
+  "unsubscribe_link",
+  "summary",
+  "message_purpose",
+  "section_break_body",
+  "message_body",
+  "message_tx_html",
+  "whatsapp_message_body",
+  "sms_message_body",
+  "settings_tab",
+  "whatsapp_image_url",
+  "footer_text",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "ANN-.DD.-.MM.-.YY.-.####"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Subject",
+   "reqd": 1
+  },
+  {
+   "fieldname": "audience_group",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Audience Group",
+   "options": "\nMember\nCustomer\nContact\nSupplier\nEmployee\nChurch Department\nImported",
+   "reqd": 1
+  },
+  {
+   "fieldname": "message_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Message Type",
+   "options": "\nEmail\nWhatsApp\nSMS\nEmail + WhatsApp\nEmail + SMS",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_top1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Draft\nScheduled\nSending\nSent\nPartially Sent\nFailed\nCancelled",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "sent",
+   "fieldtype": "Check",
+   "label": "Fully Sent",
+   "read_only": 1
+  },
+  {
+   "default": "Normal",
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "label": "Priority",
+   "options": "\nNormal\nHigh\nUrgent"
+  },
+  {
+   "description": "Sender display name shown to recipients",
+   "fieldname": "from_name",
+   "fieldtype": "Data",
+   "label": "From Name"
+  },
+  {
+   "fieldname": "from_email",
+   "fieldtype": "Data",
+   "label": "From Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "reply_to_email",
+   "fieldtype": "Data",
+   "label": "Reply-To Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "section_break_scheduling",
+   "fieldtype": "Section Break",
+   "label": "Scheduling"
+  },
+  {
+   "default": "0",
+   "fieldname": "schedule",
+   "fieldtype": "Check",
+   "label": "Schedule for Later"
+  },
+  {
+   "depends_on": "eval:doc.schedule == 1",
+   "fieldname": "schedule_time",
+   "fieldtype": "Datetime",
+   "label": "Schedule Time",
+   "mandatory_depends_on": "eval:doc.schedule == 1"
+  },
+  {
+   "description": "Scheduler will not send after this date",
+   "fieldname": "expiry_date",
+   "fieldtype": "Date",
+   "label": "Expiry Date"
+  },
+  {
+   "fieldname": "column_break_sched2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_test",
+   "fieldtype": "Check",
+   "label": "Test Mode"
+  },
+  {
+   "depends_on": "eval:doc.is_test == 1 && (doc.message_type == 'Email' || doc.message_type == 'Email + WhatsApp' || doc.message_type == 'Email + SMS')",
+   "fieldname": "test_email",
+   "fieldtype": "Data",
+   "label": "Test Email",
+   "options": "Email"
+  },
+  {
+   "depends_on": "eval:doc.is_test == 1 && (doc.message_type == 'WhatsApp' || doc.message_type == 'SMS' || doc.message_type == 'Email + WhatsApp' || doc.message_type == 'Email + SMS')",
+   "fieldname": "test_phone_number",
+   "fieldtype": "Phone",
+   "label": "Test Phone Number"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_audience",
+   "fieldtype": "Section Break",
+   "label": "Audience Filters"
+  },
+  {
+   "depends_on": "eval:doc.audience_group == 'Member'",
+   "fieldname": "filter",
+   "fieldtype": "Select",
+   "label": "Filter By",
+   "options": "\nAll Members\nPastors\nWorkers\nSunday School Class\nHODs\nTeenagers\nYouth\nAdults\nElders\nGender\nMarital Status\nBranch\nMember Status\nMen\nWomen"
+  },
+  {
+   "depends_on": "eval:doc.filter == 'Sunday School Class'",
+   "fieldname": "sunday_school_class",
+   "fieldtype": "Link",
+   "label": "Sunday School Class",
+   "options": "Sunday School Class"
+  },
+  {
+   "depends_on": "eval:doc.filter == 'Gender'",
+   "fieldname": "gender",
+   "fieldtype": "Link",
+   "label": "Gender",
+   "options": "Gender"
+  },
+  {
+   "depends_on": "eval:doc.filter == 'Marital Status'",
+   "fieldname": "marital_status",
+   "fieldtype": "Select",
+   "label": "Marital Status",
+   "options": "\nSingle\nMarried\nWidow\nWidower"
+  },
+  {
+   "depends_on": "eval:doc.filter == 'Branch'",
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch"
+  },
+  {
+   "depends_on": "eval:doc.filter == 'Member Status'",
+   "fieldname": "member_status",
+   "fieldtype": "Select",
+   "label": "Member Status",
+   "options": "\nActive\nInactive"
+  },
+  {
+   "fieldname": "column_break_aud2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_recipients",
+   "fieldtype": "Int",
+   "label": "Total Recipients",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "sent_count",
+   "fieldtype": "Int",
+   "label": "Sent",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "failed_count",
+   "fieldtype": "Int",
+   "label": "Failed",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "pending_count",
+   "fieldtype": "Int",
+   "label": "Pending",
+   "read_only": 1
+  },
+  {
+   "fieldname": "recipients_tab",
+   "fieldtype": "Tab Break",
+   "label": "Recipients"
+  },
+  {
+   "fieldname": "recipients",
+   "fieldtype": "Table",
+   "label": "Recipients",
+   "options": "Announcement Recipient",
+   "reqd": 1
+  },
+  {
+   "fieldname": "message_tab",
+   "fieldtype": "Tab Break",
+   "label": "Message"
+  },
+  {
+   "depends_on": "eval:doc.message_type == 'Email' || doc.message_type == 'Email + WhatsApp' || doc.message_type == 'Email + SMS'",
+   "fieldname": "option",
+   "fieldtype": "Select",
+   "label": "Email Format",
+   "options": "\nHTML\nText"
+  },
+  {
+   "default": "0",
+   "fieldname": "include_attachments",
+   "fieldtype": "Check",
+   "label": "Include Attachments"
+  },
+  {
+   "fieldname": "column_break_msg2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "track_opens",
+   "fieldtype": "Check",
+   "label": "Track Opens"
+  },
+  {
+   "default": "1",
+   "fieldname": "unsubscribe_link",
+   "fieldtype": "Check",
+   "label": "Include Unsubscribe Link"
+  },
+  {
+   "description": "Brief teaser shown in email preview",
+   "fieldname": "summary",
+   "fieldtype": "Small Text",
+   "label": "Summary",
+   "max_height": "60px"
+  },
+  {
+   "description": "Not sent to recipients",
+   "fieldname": "message_purpose",
+   "fieldtype": "Small Text",
+   "label": "Internal Notes",
+   "max_height": "80px"
+  },
+  {
+   "fieldname": "section_break_body",
+   "fieldtype": "Section Break",
+   "label": "Message Content"
+  },
+  {
+   "depends_on": "eval:(doc.message_type == 'Email' || doc.message_type == 'Email + WhatsApp' || doc.message_type == 'Email + SMS') && doc.option == 'Text'",
+   "fieldname": "message_body",
+   "fieldtype": "Text Editor",
+   "label": "Email Body (Text)"
+  },
+  {
+   "depends_on": "eval:(doc.message_type == 'Email' || doc.message_type == 'Email + WhatsApp' || doc.message_type == 'Email + SMS') && doc.option == 'HTML'",
+   "fieldname": "message_tx_html",
+   "fieldtype": "HTML Editor",
+   "label": "Email Body (HTML)"
+  },
+  {
+   "depends_on": "eval:doc.message_type == 'WhatsApp' || doc.message_type == 'Email + WhatsApp'",
+   "description": "Merge tags: {{full_name}}, {{salutation}}",
+   "fieldname": "whatsapp_message_body",
+   "fieldtype": "Text",
+   "label": "WhatsApp Message"
+  },
+  {
+   "depends_on": "eval:doc.message_type == 'SMS' || doc.message_type == 'Email + SMS'",
+   "description": "Merge tag: {{full_name}}. Keep under 160 chars.",
+   "fieldname": "sms_message_body",
+   "fieldtype": "Small Text",
+   "label": "SMS Message"
+  },
+  {
+   "fieldname": "settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Advanced Settings"
+  },
+  {
+   "depends_on": "eval:doc.message_type == 'WhatsApp' || doc.message_type == 'Email + WhatsApp'",
+   "fieldname": "whatsapp_image_url",
+   "fieldtype": "Data",
+   "label": "WhatsApp Image URL"
+  },
+  {
+   "fieldname": "footer_text",
+   "fieldtype": "Small Text",
+   "label": "Email Footer Text"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Announcement",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Announcement",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-03-20 14:14:32.437858",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Announcement",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

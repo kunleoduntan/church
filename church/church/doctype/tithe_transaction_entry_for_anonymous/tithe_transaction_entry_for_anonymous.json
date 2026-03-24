@@ -1,8 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2024-11-25 17:49:25.528104",
- "default_view": "List",
+ "creation": "2026-02-01 21:14:48.823988",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
@@ -10,11 +9,12 @@
   "date",
   "full_name",
   "column_break_qntb8",
-  "designated_bank_acct",
   "branch",
-  "currency",
+  "designated_bank_acct",
   "column_break_8zwmn",
+  "currency",
   "amount_paid",
+  "column_break_rate",
   "exchange_rate",
   "amount_in_lc",
   "column_break_wbbbr",
@@ -25,57 +25,82 @@
    "fieldname": "date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Date"
+   "label": "Date",
+   "reqd": 1,
+   "width": "100px"
   },
   {
    "fieldname": "full_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Full Name"
+   "label": "Name/Description",
+   "reqd": 1,
+   "width": "150px"
   },
   {
    "fieldname": "column_break_qntb8",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "designated_bank_acct",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Designated Bank Acct"
-  },
-  {
    "fieldname": "branch",
-   "fieldtype": "Data",
-   "label": "Branch"
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch",
+   "read_only": 1
   },
   {
-   "fieldname": "currency",
+   "fieldname": "designated_bank_acct",
    "fieldtype": "Link",
-   "label": "Currency",
-   "options": "Currency"
+   "label": "Bank Account",
+   "options": "Bank Account",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_8zwmn",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "amount_paid",
-   "fieldtype": "Float",
+   "default": "NGN",
+   "fieldname": "currency",
+   "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Amount Paid",
-   "precision": "2"
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1,
+   "width": "70px"
   },
   {
-   "fieldname": "amount_in_lc",
+   "fieldname": "amount_paid",
    "fieldtype": "Currency",
-   "label": "Amount in Lc"
+   "in_list_view": 1,
+   "label": "Amount",
+   "options": "currency",
+   "precision": "2",
+   "reqd": 1,
+   "width": "120px"
+  },
+  {
+   "fieldname": "column_break_rate",
+   "fieldtype": "Column Break"
   },
   {
    "default": "1.00",
    "fieldname": "exchange_rate",
    "fieldtype": "Float",
    "label": "Exchange Rate",
-   "precision": "2"
+   "precision": "4",
+   "reqd": 1,
+   "width": "100px"
+  },
+  {
+   "fieldname": "amount_in_lc",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount (LC)",
+   "non_negative": 1,
+   "precision": "2",
+   "read_only": 1,
+   "width": "120px"
   },
   {
    "fieldname": "column_break_wbbbr",
@@ -84,15 +109,14 @@
   {
    "fieldname": "other_details",
    "fieldtype": "Small Text",
-   "in_list_view": 1,
-   "label": "Other Details",
-   "width": "105px"
+   "label": "Note",
+   "width": "200px"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-11-27 13:28:17.871077",
+ "modified": "2026-02-01 21:14:48.823988",
  "modified_by": "Administrator",
  "module": "church",
  "name": "Tithe Transaction Entry for Anonymous",
@@ -100,5 +124,6 @@
  "permissions": [],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }

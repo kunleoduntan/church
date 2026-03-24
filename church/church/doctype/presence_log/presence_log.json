@@ -1,0 +1,285 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:LOG-{YYYY}-{#######}",
+ "creation": "2025-12-09 09:57:48.662196",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "person_details_section",
+  "person_registry",
+  "person_name",
+  "column_break_1",
+  "registry_type",
+  "organization_unit",
+  "log_information_section",
+  "log_timestamp",
+  "log_date",
+  "column_break_2",
+  "detection_method",
+  "checkpoint_location",
+  "device_details_section",
+  "device_alias",
+  "device_identifier_hash",
+  "column_break_3",
+  "ip_address_recorded",
+  "user_agent_string",
+  "verification_section",
+  "is_verified",
+  "verification_status",
+  "column_break_4",
+  "processed_to_attendance",
+  "attendance_record_reference",
+  "session_tracking_section",
+  "session_identifier",
+  "session_start",
+  "column_break_5",
+  "session_end",
+  "session_duration_minutes",
+  "additional_data_section",
+  "geo_location_data",
+  "column_break_6",
+  "custom_metadata",
+  "system_notes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "person_details_section",
+   "fieldtype": "Section Break",
+   "label": "Person Details"
+  },
+  {
+   "fieldname": "person_registry",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Person",
+   "options": "Person Registry",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "person_registry.full_name",
+   "fieldname": "person_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Person Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "person_registry.registry_type",
+   "fieldname": "registry_type",
+   "fieldtype": "Data",
+   "label": "Registry Type",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "person_registry.organization_unit",
+   "fieldname": "organization_unit",
+   "fieldtype": "Link",
+   "label": "Organization Unit",
+   "options": "Organization Unit",
+   "read_only": 1
+  },
+  {
+   "fieldname": "log_information_section",
+   "fieldtype": "Section Break",
+   "label": "Log Information"
+  },
+  {
+   "default": "now",
+   "fieldname": "log_timestamp",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Log Timestamp",
+   "reqd": 1
+  },
+  {
+   "fieldname": "log_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Log Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "detection_method",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Detection Method",
+   "options": "QR Code Scan\nMAC Detection\nManual Entry\nCaptive Portal\nNFC Card\nBiometric",
+   "reqd": 1
+  },
+  {
+   "fieldname": "checkpoint_location",
+   "fieldtype": "Link",
+   "label": "Checkpoint Location",
+   "options": "Checkpoint Location"
+  },
+  {
+   "fieldname": "device_details_section",
+   "fieldtype": "Section Break",
+   "label": "Device Details"
+  },
+  {
+   "fieldname": "device_alias",
+   "fieldtype": "Data",
+   "label": "Device Alias",
+   "read_only": 1
+  },
+  {
+   "fieldname": "device_identifier_hash",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Device Hash",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ip_address_recorded",
+   "fieldtype": "Data",
+   "label": "IP Address",
+   "read_only": 1
+  },
+  {
+   "fieldname": "user_agent_string",
+   "fieldtype": "Small Text",
+   "label": "User Agent",
+   "read_only": 1
+  },
+  {
+   "fieldname": "verification_section",
+   "fieldtype": "Section Break",
+   "label": "Verification"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_verified",
+   "fieldtype": "Check",
+   "label": "Verified"
+  },
+  {
+   "default": "Verified",
+   "fieldname": "verification_status",
+   "fieldtype": "Select",
+   "label": "Verification Status",
+   "options": "Verified\nPending\nFlagged\nRejected"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "processed_to_attendance",
+   "fieldtype": "Check",
+   "label": "Processed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "attendance_record_reference",
+   "fieldtype": "Link",
+   "label": "Attendance Record",
+   "options": "Daily Presence Record",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "session_tracking_section",
+   "fieldtype": "Section Break",
+   "label": "Session Tracking"
+  },
+  {
+   "fieldname": "session_identifier",
+   "fieldtype": "Data",
+   "label": "Session ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "session_start",
+   "fieldtype": "Datetime",
+   "label": "Session Start",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "session_end",
+   "fieldtype": "Datetime",
+   "label": "Session End",
+   "read_only": 1
+  },
+  {
+   "fieldname": "session_duration_minutes",
+   "fieldtype": "Int",
+   "label": "Duration (Minutes)",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "additional_data_section",
+   "fieldtype": "Section Break",
+   "label": "Additional Data"
+  },
+  {
+   "fieldname": "geo_location_data",
+   "fieldtype": "Small Text",
+   "label": "Geo Location",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_metadata",
+   "fieldtype": "Long Text",
+   "label": "Custom Metadata",
+   "read_only": 1
+  },
+  {
+   "fieldname": "system_notes",
+   "fieldtype": "Text",
+   "label": "System Notes",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Presence Log",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-12-09 10:20:14.060169",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Presence Log",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

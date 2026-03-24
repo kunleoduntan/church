@@ -1,0 +1,238 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2025-04-07 11:25:35.144546",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "reporting_date",
+  "naming_series",
+  "service_type",
+  "column_break_gwqeb",
+  "no_of_weeks",
+  "start_date",
+  "column_break_8owjq",
+  "branch",
+  "company",
+  "column_break_oyn7w",
+  "day",
+  "send_message",
+  "list_section",
+  "absentees_list",
+  "section_break_ffsh4",
+  "column_break_2iq07",
+  "column_break_1myww",
+  "column_break_5c4bw",
+  "column_break_v758m",
+  "column_break_hyctv",
+  "total_count",
+  "email_tab",
+  "send_to",
+  "column_break_p37eb",
+  "cc",
+  "column_break_grwxx",
+  "bcc",
+  "report_tab",
+  "report_detail_section",
+  "note",
+  "column_break_vpxlk",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "reporting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Reporting Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_gwqeb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "no_of_weeks",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "No of Weeks (Back)",
+   "options": "\nOne Wk Ago\nTwo Wks Ago\nThree Wks Ago\nFour Wks Ago\nThree Mths Ago\nSix Mths Ago\nOne Year Ago",
+   "reqd": 1
+  },
+  {
+   "fieldname": "day",
+   "fieldtype": "Data",
+   "label": "Day"
+  },
+  {
+   "default": "0",
+   "fieldname": "send_message",
+   "fieldtype": "Check",
+   "label": "Send Message"
+  },
+  {
+   "fieldname": "column_break_8owjq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "email_tab",
+   "fieldtype": "Tab Break",
+   "label": "Email"
+  },
+  {
+   "fieldname": "send_to",
+   "fieldtype": "Small Text",
+   "label": "Send To"
+  },
+  {
+   "fieldname": "column_break_p37eb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cc",
+   "fieldtype": "Small Text",
+   "label": "Cc"
+  },
+  {
+   "fieldname": "column_break_grwxx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "bcc",
+   "fieldtype": "Small Text",
+   "label": "Bcc"
+  },
+  {
+   "fieldname": "report_tab",
+   "fieldtype": "Tab Break",
+   "label": "Report"
+  },
+  {
+   "fieldname": "report_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Report Detail"
+  },
+  {
+   "fieldname": "note",
+   "fieldtype": "Text Editor",
+   "label": "Note"
+  },
+  {
+   "fieldname": "column_break_vpxlk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "list_section",
+   "fieldtype": "Section Break",
+   "label": "List"
+  },
+  {
+   "fieldname": "absentees_list",
+   "fieldtype": "Table",
+   "label": "Absentees List",
+   "options": "Absentees List"
+  },
+  {
+   "fieldname": "column_break_2iq07",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_5c4bw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_v758m",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_hyctv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_count",
+   "fieldtype": "Int",
+   "label": "Total Count"
+  },
+  {
+   "fieldname": "section_break_ffsh4",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_oyn7w",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_1myww",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "service_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Service Type",
+   "options": "Programme",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Church Absentees Report",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-04-08 17:20:09.405039",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Church Absentees Report",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

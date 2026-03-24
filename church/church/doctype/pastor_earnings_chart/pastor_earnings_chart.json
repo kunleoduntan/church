@@ -1,5 +1,7 @@
 {
  "actions": [],
+ "allow_events_in_timeline": 1,
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "naming_series:",
  "creation": "2025-01-06 10:29:00.004201",
@@ -9,70 +11,105 @@
  "engine": "InnoDB",
  "field_order": [
   "earnings_chart_detail_section",
+  "fiscal_year",
   "naming_series",
+  "effective_date",
+  "column_break_pnt9v",
+  "end_date",
+  "column_break_twjg6",
   "chart_description",
-  "lower_value",
-  "column_break_tpvja",
-  "upper_value",
-  "fixed_amount",
-  "column_break_lznfp",
-  "basic",
-  "allow"
+  "column_break_ivrtg",
+  "enable",
+  "section_break_utpxq",
+  "pastor_earning_chart_detail",
+  "section_break_6maov",
+  "row_count"
  ],
  "fields": [
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "hidden": 1,
-   "label": "Series "
+   "label": "Series ",
+   "options": "PSEC-.MM.-.YY.-.####"
   },
   {
    "fieldname": "chart_description",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Chart Description"
-  },
-  {
-   "fieldname": "column_break_tpvja",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "lower_value",
-   "fieldtype": "Float",
-   "label": "Lower Value"
-  },
-  {
-   "fieldname": "upper_value",
-   "fieldtype": "Float",
-   "label": "Upper Value"
-  },
-  {
-   "fieldname": "column_break_lznfp",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "fixed_amount",
-   "fieldtype": "Float",
-   "label": "Fixed Amount"
-  },
-  {
-   "fieldname": "basic",
-   "fieldtype": "Float",
-   "label": "Basic"
-  },
-  {
-   "fieldname": "allow",
-   "fieldtype": "Float",
-   "label": "Allow"
   },
   {
    "fieldname": "earnings_chart_detail_section",
    "fieldtype": "Section Break",
    "label": "Earnings Chart Detail"
+  },
+  {
+   "fieldname": "section_break_utpxq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "pastor_earning_chart_detail",
+   "fieldtype": "Table",
+   "label": "Pastor Earning Chart Detail",
+   "options": "Pastor Earning Chart Detail"
+  },
+  {
+   "fieldname": "section_break_6maov",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "effective_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Effective Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fiscal_year",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Fiscal Year",
+   "options": "Fiscal Year",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "End Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_pnt9v",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_twjg6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Enable",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_ivrtg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "row_count",
+   "fieldtype": "Int",
+   "label": "Row Count",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-01-06 10:38:42.339923",
+ "modified": "2025-09-04 18:50:46.048985",
  "modified_by": "Administrator",
  "module": "church",
  "name": "Pastor Earnings Chart",
@@ -90,9 +127,34 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts User",
+   "share": 1,
+   "write": 1
   }
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }

@@ -1,0 +1,107 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-04-07 11:33:42.874650",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "member_id",
+  "full_name",
+  "email",
+  "column_break_gwqeb",
+  "service_date",
+  "service_type",
+  "column_break_45poh",
+  "present",
+  "phone",
+  "column_break_8fsur",
+  "last_attended",
+  "weeks_missed"
+ ],
+ "fields": [
+  {
+   "fieldname": "member_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Member ID",
+   "options": "Member",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "member_id.full_name",
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "column_break_gwqeb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "service_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Service Date"
+  },
+  {
+   "fieldname": "column_break_45poh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "service_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Service Type",
+   "options": "Programme"
+  },
+  {
+   "fieldname": "column_break_8fsur",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "member_id.email",
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Email"
+  },
+  {
+   "fetch_from": "member_id.mobile_phone",
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Phone"
+  },
+  {
+   "fieldname": "last_attended",
+   "fieldtype": "Date",
+   "label": "Last Attended"
+  },
+  {
+   "fieldname": "weeks_missed",
+   "fieldtype": "Data",
+   "label": "Weeks Missed"
+  },
+  {
+   "default": "0",
+   "fieldname": "present",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Present"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-04-08 17:14:22.013998",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Absentees List",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

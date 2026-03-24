@@ -1,24 +1,24 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2024-11-25 10:13:48.134008",
- "default_view": "List",
+ "creation": "2026-01-28 13:01:40.344469",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "date",
-  "full_name",
   "receipt_no",
-  "column_break_qntb8",
-  "designated_bank_acct",
+  "full_name",
+  "column_break_1",
   "branch",
+  "designated_bank_acct",
+  "column_break_2",
   "currency",
-  "column_break_8zwmn",
-  "amount_paid",
   "exchange_rate",
+  "column_break_3",
+  "amount_paid",
   "amount_in_lc",
-  "column_break_wbbbr",
+  "section_break_notes",
   "other_details"
  ],
  "fields": [
@@ -26,77 +26,105 @@
    "fieldname": "date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Date"
+   "in_standard_filter": 1,
+   "label": "Payment Date",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "receipt_no",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Receipt No",
+   "options": "Receipts",
+   "read_only": 1,
+   "reqd": 1,
+   "unique": 1
   },
   {
    "fieldname": "full_name",
    "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Full Name"
+   "label": "Member Name",
+   "read_only": 1
   },
   {
-   "fieldname": "receipt_no",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Receipt No"
-  },
-  {
-   "fieldname": "column_break_qntb8",
+   "fieldname": "column_break_1",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch",
+   "read_only": 1
   },
   {
    "fieldname": "designated_bank_acct",
    "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Designated Bank Acct"
+   "label": "Bank Account",
+   "read_only": 1
   },
   {
-   "fieldname": "branch",
-   "fieldtype": "Data",
-   "label": "Branch"
-  },
-  {
-   "fieldname": "column_break_8zwmn",
+   "fieldname": "column_break_2",
    "fieldtype": "Column Break"
+  },
+  {
+   "default": "NGN",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Currency",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "exchange_rate",
+   "fieldtype": "Float",
+   "label": "Exchange Rate",
+   "precision": "4",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amount_paid",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount Paid",
+   "precision": "2",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "amount_in_lc",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Amount (LCY)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_notes",
+   "fieldtype": "Section Break",
+   "label": "Additional Notes"
   },
   {
    "fieldname": "other_details",
    "fieldtype": "Small Text",
-   "in_list_view": 1,
-   "label": "Other Details",
-   "width": "105px"
-  },
-  {
-   "fieldname": "amount_paid",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "Amount Paid"
-  },
-  {
-   "fieldname": "currency",
-   "fieldtype": "Link",
-   "label": "Currency",
-   "options": "Currency"
-  },
-  {
-   "fieldname": "exchange_rate",
-   "fieldtype": "Float",
-   "label": "Exchange Rate"
-  },
-  {
-   "fieldname": "amount_in_lc",
-   "fieldtype": "Currency",
-   "label": "Amount in Lc"
-  },
-  {
-   "fieldname": "column_break_wbbbr",
-   "fieldtype": "Column Break"
+   "label": "Notes"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-11-27 14:18:41.729518",
+ "modified": "2026-01-28 13:01:40.344469",
  "modified_by": "Administrator",
  "module": "church",
  "name": "Tithe Payment Schedule",
@@ -104,5 +132,6 @@
  "permissions": [],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }

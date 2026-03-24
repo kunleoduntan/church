@@ -1,0 +1,88 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-23 11:58:28.845963",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "day",
+  "service",
+  "time_from",
+  "column_break_2mafk",
+  "time_to",
+  "duration",
+  "column_break_d2bx9",
+  "no_of_service_per_day"
+ ],
+ "fields": [
+  {
+   "fieldname": "day",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Day",
+   "options": "\nSun\nMon\nTue\nWed\nThu\nFri\nSat",
+   "reqd": 1
+  },
+  {
+   "description": "Plain label for the service (e.g. Sunday Service, Bible Study). No template record needed.",
+   "fieldname": "service",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Service Name",
+   "options": "Programme",
+   "reqd": 1
+  },
+  {
+   "fieldname": "time_from",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Time From",
+   "reqd": 1
+  },
+  {
+   "fieldname": "time_to",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Time To",
+   "reqd": 1
+  },
+  {
+   "description": "Duration of each service slot in hours (e.g. 1.5 = 1 hour 30 min)",
+   "fieldname": "duration",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Duration (hrs per slot)",
+   "reqd": 1
+  },
+  {
+   "description": "Number of service slots on this day (e.g. 2 = 1st and 2nd service)",
+   "fieldname": "no_of_service_per_day",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "No of Services Per Day",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_2mafk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_d2bx9",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-03-23 12:00:22.748599",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Weekly Services",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

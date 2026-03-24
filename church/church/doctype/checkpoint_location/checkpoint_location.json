@@ -1,0 +1,90 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:location_name",
+ "creation": "2025-12-09 10:38:43.209764",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "location_name",
+  "location_code",
+  "column_break_1",
+  "location_type",
+  "is_active",
+  "section_break_1",
+  "address_details",
+  "column_break_2",
+  "geo_coordinates",
+  "allowed_radius_meters"
+ ],
+ "fields": [
+  {
+   "fieldname": "location_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Location Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "location_code",
+   "fieldtype": "Data",
+   "label": "Location Code",
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "location_type",
+   "fieldtype": "Select",
+   "label": "Location Type",
+   "options": "Main Entrance\nSide Entrance\nReception\nOffice Floor\nMeeting Room\nWorkshop\nChurch Hall\nOther"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Active"
+  },
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "address_details",
+   "fieldtype": "Small Text",
+   "label": "Address"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "geo_coordinates",
+   "fieldtype": "Data",
+   "label": "GPS Coordinates"
+  },
+  {
+   "default": "100",
+   "fieldname": "allowed_radius_meters",
+   "fieldtype": "Int",
+   "label": "Allowed Radius (Meters)"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-12-09 10:38:43.209764",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Checkpoint Location",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

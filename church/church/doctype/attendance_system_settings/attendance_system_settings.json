@@ -1,0 +1,268 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-12-09 10:35:08.924513",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "general_settings_section",
+  "enable_qr_attendance",
+  "enable_mac_attendance",
+  "column_break_1",
+  "enable_manual_attendance",
+  "enable_biometric_attendance",
+  "qr_code_settings_section",
+  "qr_token_validity_days",
+  "auto_regenerate_qr",
+  "column_break_2",
+  "qr_code_size",
+  "include_person_photo_in_qr",
+  "mac_detection_settings_section",
+  "mac_sync_interval_minutes",
+  "mac_encryption_key",
+  "column_break_3",
+  "mac_encryption_salt",
+  "router_integration_enabled",
+  "network_settings_section",
+  "router_ip_address",
+  "router_api_username",
+  "column_break_4",
+  "router_api_password",
+  "router_type",
+  "attendance_rules_section",
+  "attendance_grace_period_minutes",
+  "allow_multiple_checkins",
+  "column_break_5",
+  "auto_checkout_time",
+  "mark_absent_after_days",
+  "notification_settings_section",
+  "send_daily_summary",
+  "summary_recipients",
+  "column_break_6",
+  "alert_on_suspicious_activity",
+  "alert_recipients"
+ ],
+ "fields": [
+  {
+   "fieldname": "general_settings_section",
+   "fieldtype": "Section Break",
+   "label": "General Settings"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_qr_attendance",
+   "fieldtype": "Check",
+   "label": "Enable QR Code Attendance"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_mac_attendance",
+   "fieldtype": "Check",
+   "label": "Enable MAC Detection Attendance"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_manual_attendance",
+   "fieldtype": "Check",
+   "label": "Enable Manual Attendance Entry"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_biometric_attendance",
+   "fieldtype": "Check",
+   "label": "Enable Biometric Attendance"
+  },
+  {
+   "fieldname": "qr_code_settings_section",
+   "fieldtype": "Section Break",
+   "label": "QR Code Settings"
+  },
+  {
+   "default": "90",
+   "description": "Number of days before QR code expires and needs regeneration",
+   "fieldname": "qr_token_validity_days",
+   "fieldtype": "Int",
+   "label": "QR Token Validity (Days)"
+  },
+  {
+   "default": "1",
+   "fieldname": "auto_regenerate_qr",
+   "fieldtype": "Check",
+   "label": "Auto-Regenerate Expired QR Codes"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "300",
+   "fieldname": "qr_code_size",
+   "fieldtype": "Int",
+   "label": "QR Code Size (Pixels)"
+  },
+  {
+   "default": "0",
+   "fieldname": "include_person_photo_in_qr",
+   "fieldtype": "Check",
+   "label": "Include Photo in QR Code Card"
+  },
+  {
+   "fieldname": "mac_detection_settings_section",
+   "fieldtype": "Section Break",
+   "label": "MAC Detection Settings"
+  },
+  {
+   "default": "10",
+   "description": "How often to check router for connected devices",
+   "fieldname": "mac_sync_interval_minutes",
+   "fieldtype": "Int",
+   "label": "MAC Sync Interval (Minutes)"
+  },
+  {
+   "fieldname": "mac_encryption_key",
+   "fieldtype": "Password",
+   "hidden": 1,
+   "label": "MAC Encryption Key",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mac_encryption_salt",
+   "fieldtype": "Password",
+   "hidden": 1,
+   "label": "Encryption Salt",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "router_integration_enabled",
+   "fieldtype": "Check",
+   "label": "Enable Router Integration"
+  },
+  {
+   "fieldname": "network_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Network/Router Settings"
+  },
+  {
+   "fieldname": "router_ip_address",
+   "fieldtype": "Data",
+   "label": "Router IP Address"
+  },
+  {
+   "fieldname": "router_api_username",
+   "fieldtype": "Data",
+   "label": "Router API Username"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "router_api_password",
+   "fieldtype": "Password",
+   "label": "Router API Password"
+  },
+  {
+   "fieldname": "router_type",
+   "fieldtype": "Select",
+   "label": "Router Type",
+   "options": "\nMikroTik\nUniFi\nCisco\nTP-Link\nOpenWRT\nDD-WRT\nOther"
+  },
+  {
+   "fieldname": "attendance_rules_section",
+   "fieldtype": "Section Break",
+   "label": "Attendance Rules"
+  },
+  {
+   "default": "15",
+   "fieldname": "attendance_grace_period_minutes",
+   "fieldtype": "Int",
+   "label": "Grace Period (Minutes)"
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_multiple_checkins",
+   "fieldtype": "Check",
+   "label": "Allow Multiple Check-ins Per Day"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "auto_checkout_time",
+   "fieldtype": "Time",
+   "label": "Auto Check-out Time"
+  },
+  {
+   "default": "1",
+   "fieldname": "mark_absent_after_days",
+   "fieldtype": "Int",
+   "label": "Mark Absent After (Days)"
+  },
+  {
+   "fieldname": "notification_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Notification Settings"
+  },
+  {
+   "default": "0",
+   "fieldname": "send_daily_summary",
+   "fieldtype": "Check",
+   "label": "Send Daily Attendance Summary"
+  },
+  {
+   "fieldname": "summary_recipients",
+   "fieldtype": "Small Text",
+   "label": "Summary Recipients (comma-separated emails)"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "alert_on_suspicious_activity",
+   "fieldtype": "Check",
+   "label": "Alert on Suspicious Activity"
+  },
+  {
+   "fieldname": "alert_recipients",
+   "fieldtype": "Small Text",
+   "label": "Alert Recipients"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2025-12-09 10:35:08.924513",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Attendance System Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

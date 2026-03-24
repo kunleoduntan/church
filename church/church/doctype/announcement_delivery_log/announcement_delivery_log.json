@@ -1,0 +1,116 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-14 20:55:50.060785",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "recipient_type",
+  "recipient_id",
+  "recipient_name",
+  "recipient_email",
+  "recipient_mobile",
+  "channel",
+  "status",
+  "sent_at",
+  "delivered_at",
+  "read_at",
+  "error_message",
+  "external_id"
+ ],
+ "fields": [
+  {
+   "fieldname": "recipient_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Recipient Type",
+   "options": "Member\nCustomer\nSupplier\nLead\nContact\nOpportunity\nOther",
+   "reqd": 1
+  },
+  {
+   "fieldname": "recipient_id",
+   "fieldtype": "Dynamic Link",
+   "label": "Recipient ID",
+   "options": "recipient_type"
+  },
+  {
+   "fieldname": "recipient_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Recipient Name"
+  },
+  {
+   "fieldname": "recipient_email",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "recipient_mobile",
+   "fieldtype": "Data",
+   "label": "Mobile",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "channel",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Channel",
+   "options": "Email\nSMS\nWhatsApp\nPush Notification\nPortal",
+   "reqd": 1
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Pending\nSent\nDelivered\nFailed\nRead\nClicked"
+  },
+  {
+   "fieldname": "sent_at",
+   "fieldtype": "Datetime",
+   "label": "Sent At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "delivered_at",
+   "fieldtype": "Datetime",
+   "label": "Delivered At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "read_at",
+   "fieldtype": "Datetime",
+   "label": "Read At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "error_message",
+   "fieldtype": "Small Text",
+   "label": "Error Message",
+   "read_only": 1
+  },
+  {
+   "fieldname": "external_id",
+   "fieldtype": "Data",
+   "label": "External ID",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-03-14 20:55:50.060785",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Announcement Delivery Log",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

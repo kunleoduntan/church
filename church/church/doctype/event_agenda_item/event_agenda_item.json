@@ -1,0 +1,109 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-01-29 11:30:14.677951",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "sequence",
+  "session_title",
+  "column_break_1",
+  "start_time",
+  "end_time",
+  "column_break_2",
+  "duration_minutes",
+  "section_break_details",
+  "activity_type",
+  "facilitator",
+  "column_break_3",
+  "description",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "sequence",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Sequence",
+   "reqd": 1
+  },
+  {
+   "fieldname": "session_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Session/Activity Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "start_time",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Start Time",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_time",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "End Time"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "duration_minutes",
+   "fieldtype": "Int",
+   "label": "Duration (Minutes)"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_details",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "activity_type",
+   "fieldtype": "Select",
+   "label": "Activity Type",
+   "options": "Opening Prayer\nWorship/Praise\nWelcome Address\nKeynote Speech\nPanel Discussion\nWorkshop Session\nMinistration\nTestimony\nOffering\nBreak/Intermission\nLunch\nNetworking\nQ&A Session\nClosing Remarks\nBenediction\nOther"
+  },
+  {
+   "fieldname": "facilitator",
+   "fieldtype": "Data",
+   "label": "Facilitator/Speaker"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-01-29 11:30:14.677951",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Event Agenda Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

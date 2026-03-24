@@ -1,0 +1,401 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:PR-{#####}",
+ "creation": "2025-12-09 12:05:54.875950",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_information_section",
+  "registry_id",
+  "full_name",
+  "column_break_1",
+  "status",
+  "registry_type",
+  "section_break_2",
+  "email_id",
+  "mobile_number",
+  "column_break_3",
+  "alternate_phone",
+  "date_of_birth",
+  "organizational_details_section",
+  "organization_unit",
+  "designation",
+  "column_break_4",
+  "employee_reference",
+  "membership_category",
+  "identification_section",
+  "qr_identity_code",
+  "qr_code_image",
+  "column_break_5",
+  "qr_security_token",
+  "token_expiry_date",
+  "qr_last_regenerated",
+  "device_registry_section",
+  "registered_devices",
+  "media_section",
+  "profile_picture",
+  "column_break_6",
+  "identification_document",
+  "settings_section",
+  "allow_auto_attendance",
+  "enable_mac_detection",
+  "column_break_7",
+  "send_attendance_notifications",
+  "notification_preference",
+  "additional_information_section",
+  "address_line",
+  "city",
+  "column_break_8",
+  "state_province",
+  "country",
+  "postal_code",
+  "section_break_9",
+  "emergency_contact_name",
+  "emergency_contact_phone",
+  "column_break_10",
+  "blood_group",
+  "medical_notes",
+  "notes_section",
+  "internal_notes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_information_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "registry_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Registry ID",
+   "read_only": 1,
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Full Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Pending Approval",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Active\nInactive\nSuspended\nPending Approval",
+   "reqd": 1
+  },
+  {
+   "default": "Member",
+   "fieldname": "registry_type",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Registry Type",
+   "options": "Employee\nMember\nVisitor\nContractor\nGuest",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break",
+   "label": "Contact Information"
+  },
+  {
+   "fieldname": "email_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Email ID",
+   "options": "Email",
+   "unique": 1
+  },
+  {
+   "fieldname": "mobile_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Mobile Number",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "alternate_phone",
+   "fieldtype": "Data",
+   "label": "Alternate Phone"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth"
+  },
+  {
+   "fieldname": "organizational_details_section",
+   "fieldtype": "Section Break",
+   "label": "Organizational Details"
+  },
+  {
+   "fieldname": "organization_unit",
+   "fieldtype": "Link",
+   "label": "Organization Unit",
+   "options": "Organization Unit"
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "label": "Designation/Role"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "employee_reference",
+   "fieldtype": "Data",
+   "label": "Employee/Member ID"
+  },
+  {
+   "fieldname": "membership_category",
+   "fieldtype": "Data",
+   "label": "Membership Category",
+   "options": "Member Category"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "identification_section",
+   "fieldtype": "Section Break",
+   "label": "QR Code Identification"
+  },
+  {
+   "fieldname": "qr_identity_code",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "QR Identity Code",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "qr_code_image",
+   "fieldtype": "Attach Image",
+   "label": "QR Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "qr_security_token",
+   "fieldtype": "Password",
+   "hidden": 1,
+   "label": "QR Security Token",
+   "read_only": 1
+  },
+  {
+   "fieldname": "token_expiry_date",
+   "fieldtype": "Date",
+   "label": "Token Expiry Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "qr_last_regenerated",
+   "fieldtype": "Datetime",
+   "label": "QR Last Regenerated",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "device_registry_section",
+   "fieldtype": "Section Break",
+   "label": "Registered Devices"
+  },
+  {
+   "fieldname": "registered_devices",
+   "fieldtype": "Table",
+   "label": "Registered Devices",
+   "options": "Device Registry Entry"
+  },
+  {
+   "fieldname": "media_section",
+   "fieldtype": "Section Break",
+   "label": "Media & Documents"
+  },
+  {
+   "fieldname": "profile_picture",
+   "fieldtype": "Attach Image",
+   "label": "Profile Picture"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "identification_document",
+   "fieldtype": "Attach",
+   "label": "Identification Document"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "settings_section",
+   "fieldtype": "Section Break",
+   "label": "Attendance Settings"
+  },
+  {
+   "default": "1",
+   "fieldname": "allow_auto_attendance",
+   "fieldtype": "Check",
+   "label": "Allow Auto Attendance"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_mac_detection",
+   "fieldtype": "Check",
+   "label": "Enable MAC Detection"
+  },
+  {
+   "fieldname": "column_break_7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "send_attendance_notifications",
+   "fieldtype": "Check",
+   "label": "Send Attendance Notifications"
+  },
+  {
+   "depends_on": "send_attendance_notifications",
+   "fieldname": "notification_preference",
+   "fieldtype": "Select",
+   "label": "Notification Preference",
+   "options": "\nEmail\nSMS\nBoth"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "additional_information_section",
+   "fieldtype": "Section Break",
+   "label": "Additional Information"
+  },
+  {
+   "fieldname": "address_line",
+   "fieldtype": "Small Text",
+   "label": "Address"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "column_break_8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "state_province",
+   "fieldtype": "Data",
+   "label": "State/Province"
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country"
+  },
+  {
+   "fieldname": "postal_code",
+   "fieldtype": "Data",
+   "label": "Postal Code"
+  },
+  {
+   "fieldname": "section_break_9",
+   "fieldtype": "Section Break",
+   "label": "Emergency Contact"
+  },
+  {
+   "fieldname": "emergency_contact_name",
+   "fieldtype": "Data",
+   "label": "Emergency Contact Name"
+  },
+  {
+   "fieldname": "emergency_contact_phone",
+   "fieldtype": "Data",
+   "label": "Emergency Contact Phone"
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "blood_group",
+   "fieldtype": "Select",
+   "label": "Blood Group",
+   "options": "\nA+\nA-\nB+\nB-\nAB+\nAB-\nO+\nO-"
+  },
+  {
+   "fieldname": "medical_notes",
+   "fieldtype": "Small Text",
+   "label": "Medical Notes/Allergies"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Internal Notes"
+  },
+  {
+   "fieldname": "internal_notes",
+   "fieldtype": "Text Editor",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Person Registry",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-03-23 11:12:11.085781",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Person Registry",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

@@ -1,0 +1,446 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-01-28 01:32:40.630637",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "general_section",
+  "company",
+  "enable_email",
+  "enable_sms",
+  "enable_whatsapp",
+  "email_settings_section",
+  "default_sender_name",
+  "default_sender_email",
+  "column_break_email",
+  "default_reply_to",
+  "email_account",
+  "sms_settings_section",
+  "sms_provider",
+  "column_break_sms",
+  "sms_enabled",
+  "section_break_sms_providers",
+  "twilio_sms_section",
+  "twilio_account_sid",
+  "twilio_auth_token",
+  "column_break_twilio",
+  "twilio_from_number",
+  "nexmo_sms_section",
+  "nexmo_api_key",
+  "nexmo_api_secret",
+  "column_break_nexmo",
+  "nexmo_from_number",
+  "custom_sms_section",
+  "custom_sms_api_endpoint",
+  "custom_sms_method",
+  "column_break_custom_sms",
+  "custom_sms_api_key",
+  "custom_sms_headers",
+  "custom_sms_body_template",
+  "whatsapp_settings_section",
+  "whatsapp_provider",
+  "column_break_whatsapp",
+  "whatsapp_enabled",
+  "section_break_whatsapp_providers",
+  "twilio_whatsapp_section",
+  "twilio_whatsapp_sid",
+  "twilio_whatsapp_token",
+  "column_break_twilio_wa",
+  "twilio_whatsapp_number",
+  "wati_section",
+  "wati_api_endpoint",
+  "wati_access_token",
+  "column_break_wati",
+  "wati_number",
+  "custom_whatsapp_section",
+  "custom_whatsapp_api_endpoint",
+  "custom_whatsapp_method",
+  "column_break_custom_wa",
+  "custom_whatsapp_api_key",
+  "custom_whatsapp_headers",
+  "custom_whatsapp_body_template",
+  "testing_section",
+  "test_email",
+  "test_phone_number",
+  "column_break_test",
+  "last_test_date",
+  "last_test_status"
+ ],
+ "fields": [
+  {
+   "fieldname": "general_section",
+   "fieldtype": "Section Break",
+   "label": "General Settings"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_email",
+   "fieldtype": "Check",
+   "label": "Enable Email"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_sms",
+   "fieldtype": "Check",
+   "label": "Enable SMS"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_whatsapp",
+   "fieldtype": "Check",
+   "label": "Enable WhatsApp"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "enable_email",
+   "fieldname": "email_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Email Settings"
+  },
+  {
+   "fieldname": "default_sender_name",
+   "fieldtype": "Data",
+   "label": "Default Sender Name"
+  },
+  {
+   "fieldname": "default_sender_email",
+   "fieldtype": "Data",
+   "label": "Default Sender Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "column_break_email",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "default_reply_to",
+   "fieldtype": "Data",
+   "label": "Default Reply To",
+   "options": "Email"
+  },
+  {
+   "fieldname": "email_account",
+   "fieldtype": "Link",
+   "label": "Default Email Account",
+   "options": "Email Account"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "enable_sms",
+   "fieldname": "sms_settings_section",
+   "fieldtype": "Section Break",
+   "label": "SMS Settings"
+  },
+  {
+   "fieldname": "sms_provider",
+   "fieldtype": "Select",
+   "label": "SMS Provider",
+   "options": "\nTwilio\nNexmo/Vonage\nCustom API"
+  },
+  {
+   "fieldname": "column_break_sms",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "sms_enabled",
+   "fieldtype": "Check",
+   "label": "SMS Active",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.enable_sms && doc.sms_provider",
+   "fieldname": "section_break_sms_providers",
+   "fieldtype": "Section Break"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.sms_provider=='Twilio'",
+   "fieldname": "twilio_sms_section",
+   "fieldtype": "Section Break",
+   "label": "Twilio SMS Configuration"
+  },
+  {
+   "fieldname": "twilio_account_sid",
+   "fieldtype": "Data",
+   "label": "Account SID"
+  },
+  {
+   "fieldname": "twilio_auth_token",
+   "fieldtype": "Password",
+   "label": "Auth Token"
+  },
+  {
+   "fieldname": "column_break_twilio",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "twilio_from_number",
+   "fieldtype": "Data",
+   "label": "From Number",
+   "options": "Phone"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.sms_provider=='Nexmo/Vonage'",
+   "fieldname": "nexmo_sms_section",
+   "fieldtype": "Section Break",
+   "label": "Nexmo/Vonage SMS Configuration"
+  },
+  {
+   "fieldname": "nexmo_api_key",
+   "fieldtype": "Data",
+   "label": "API Key"
+  },
+  {
+   "fieldname": "nexmo_api_secret",
+   "fieldtype": "Password",
+   "label": "API Secret"
+  },
+  {
+   "fieldname": "column_break_nexmo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "nexmo_from_number",
+   "fieldtype": "Data",
+   "label": "From Number",
+   "options": "Phone"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.sms_provider=='Custom API'",
+   "fieldname": "custom_sms_section",
+   "fieldtype": "Section Break",
+   "label": "Custom SMS API Configuration"
+  },
+  {
+   "fieldname": "custom_sms_api_endpoint",
+   "fieldtype": "Data",
+   "label": "API Endpoint URL"
+  },
+  {
+   "default": "POST",
+   "fieldname": "custom_sms_method",
+   "fieldtype": "Select",
+   "label": "HTTP Method",
+   "options": "POST\nGET"
+  },
+  {
+   "fieldname": "column_break_custom_sms",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_sms_api_key",
+   "fieldtype": "Password",
+   "label": "API Key"
+  },
+  {
+   "description": "JSON format: {\"Authorization\": \"Bearer {api_key}\", \"Content-Type\": \"application/json\"}",
+   "fieldname": "custom_sms_headers",
+   "fieldtype": "Code",
+   "label": "Request Headers (JSON)",
+   "options": "JSON"
+  },
+  {
+   "description": "Use placeholders: {phone_number}, {message}, {api_key}",
+   "fieldname": "custom_sms_body_template",
+   "fieldtype": "Code",
+   "label": "Request Body Template (JSON)",
+   "options": "JSON"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "enable_whatsapp",
+   "fieldname": "whatsapp_settings_section",
+   "fieldtype": "Section Break",
+   "label": "WhatsApp Settings"
+  },
+  {
+   "fieldname": "whatsapp_provider",
+   "fieldtype": "Select",
+   "label": "WhatsApp Provider",
+   "options": "\nTwilio\nWATI\nCustom API"
+  },
+  {
+   "fieldname": "column_break_whatsapp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "whatsapp_enabled",
+   "fieldtype": "Check",
+   "label": "WhatsApp Active",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.enable_whatsapp && doc.whatsapp_provider",
+   "fieldname": "section_break_whatsapp_providers",
+   "fieldtype": "Section Break"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.whatsapp_provider=='Twilio'",
+   "fieldname": "twilio_whatsapp_section",
+   "fieldtype": "Section Break",
+   "label": "Twilio WhatsApp Configuration"
+  },
+  {
+   "fieldname": "twilio_whatsapp_sid",
+   "fieldtype": "Data",
+   "label": "Account SID"
+  },
+  {
+   "fieldname": "twilio_whatsapp_token",
+   "fieldtype": "Password",
+   "label": "Auth Token"
+  },
+  {
+   "fieldname": "column_break_twilio_wa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "twilio_whatsapp_number",
+   "fieldtype": "Data",
+   "label": "WhatsApp Number",
+   "options": "Phone"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.whatsapp_provider=='WATI'",
+   "fieldname": "wati_section",
+   "fieldtype": "Section Break",
+   "label": "WATI Configuration"
+  },
+  {
+   "default": "https://live-server.wati.io",
+   "fieldname": "wati_api_endpoint",
+   "fieldtype": "Data",
+   "label": "API Endpoint"
+  },
+  {
+   "fieldname": "wati_access_token",
+   "fieldtype": "Password",
+   "label": "Access Token"
+  },
+  {
+   "fieldname": "column_break_wati",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "wati_number",
+   "fieldtype": "Data",
+   "label": "WhatsApp Number",
+   "options": "Phone"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.whatsapp_provider=='Custom API'",
+   "fieldname": "custom_whatsapp_section",
+   "fieldtype": "Section Break",
+   "label": "Custom WhatsApp API Configuration"
+  },
+  {
+   "fieldname": "custom_whatsapp_api_endpoint",
+   "fieldtype": "Data",
+   "label": "API Endpoint URL"
+  },
+  {
+   "default": "POST",
+   "fieldname": "custom_whatsapp_method",
+   "fieldtype": "Select",
+   "label": "HTTP Method",
+   "options": "POST\nGET"
+  },
+  {
+   "fieldname": "column_break_custom_wa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_whatsapp_api_key",
+   "fieldtype": "Password",
+   "label": "API Key"
+  },
+  {
+   "description": "JSON format: {\"Authorization\": \"Bearer {api_key}\", \"Content-Type\": \"application/json\"}",
+   "fieldname": "custom_whatsapp_headers",
+   "fieldtype": "Code",
+   "label": "Request Headers (JSON)",
+   "options": "JSON"
+  },
+  {
+   "description": "Use placeholders: {phone_number}, {message}, {image_url}, {api_key}",
+   "fieldname": "custom_whatsapp_body_template",
+   "fieldtype": "Code",
+   "label": "Request Body Template (JSON)",
+   "options": "JSON"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "testing_section",
+   "fieldtype": "Section Break",
+   "label": "Testing"
+  },
+  {
+   "fieldname": "test_email",
+   "fieldtype": "Data",
+   "label": "Test Email Address",
+   "options": "Email"
+  },
+  {
+   "fieldname": "test_phone_number",
+   "fieldtype": "Data",
+   "label": "Test Phone Number",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "column_break_test",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_test_date",
+   "fieldtype": "Datetime",
+   "label": "Last Test Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_test_status",
+   "fieldtype": "Small Text",
+   "label": "Last Test Status",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-01-28 01:32:40.630637",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Communication Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

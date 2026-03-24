@@ -1,0 +1,27 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2026-03-10 15:07:20.497760",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "Letter Head1",
+ "modified": "2026-03-10 15:07:20.497760",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Attendance Analysis Report",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Church Attendance",
+ "report_name": "Attendance Analysis Report",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

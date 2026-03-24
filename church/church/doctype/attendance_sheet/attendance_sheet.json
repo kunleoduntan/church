@@ -14,11 +14,11 @@
   "naming_series",
   "reporting_date",
   "date_from",
-  "date_to",
   "column_break_hazcl",
+  "date_to",
   "branch",
-  "month",
   "column_break_twcty",
+  "month",
   "prepared_by",
   "column_break_w62qh",
   "report_note",
@@ -41,28 +41,37 @@
   "column_break_hdt1d",
   "total_first",
   "total_second",
-  "total_third"
+  "total_third",
+  "amended_from"
  ],
  "fields": [
   {
    "fieldname": "reporting_date",
    "fieldtype": "Date",
-   "label": "Reporting Date"
+   "in_list_view": 1,
+   "label": "Reporting Date",
+   "reqd": 1
   },
   {
    "fieldname": "date_from",
    "fieldtype": "Date",
-   "label": "Date From"
+   "in_list_view": 1,
+   "label": "Date From",
+   "reqd": 1
   },
   {
    "fieldname": "date_to",
    "fieldtype": "Date",
-   "label": "Date To"
+   "in_list_view": 1,
+   "label": "Date To",
+   "reqd": 1
   },
   {
    "fieldname": "branch",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Branch",
+   "mandatory_depends_on": "month",
    "options": "Branch"
   },
   {
@@ -215,12 +224,23 @@
    "hidden": 1,
    "label": "Naming Series",
    "options": "ATS-.DD.-.MM.-.YY.-.####"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Attendance Sheet",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2024-12-15 14:04:49.509772",
+ "modified": "2025-05-12 16:02:17.373949",
  "modified_by": "Administrator",
  "module": "church",
  "name": "Attendance Sheet",

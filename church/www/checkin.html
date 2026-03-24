@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Church Check-In</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(160deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 20px 16px 50px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 430px;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.28);
+            overflow: hidden;
+        }
+
+        /* ── HEADER ── */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 28px 24px 22px;
+            text-align: center;
+        }
+        .header .icon { font-size: 38px; line-height: 1; margin-bottom: 8px; }
+        .header h1 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+        .service-badge {
+            background: rgba(255,255,255,0.18);
+            border-radius: 12px;
+            padding: 10px 14px;
+            font-size: 13px;
+            line-height: 1.7;
+            display: none;
+        }
+        .service-badge .svc-name { font-size: 15px; font-weight: 700; }
+
+        /* ── BODY ── */
+        .body { padding: 24px; }
+
+        /* ── STATES ── */
+        .state { display: none; }
+        .state.active { display: block; }
+
+        /* ── SPINNER ── */
+        .spinner-wrap { text-align: center; padding: 36px 0; }
+        .spinner {
+            width: 42px; height: 42px;
+            border: 4px solid #e8e8e8;
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 0.75s linear infinite;
+            margin: 0 auto 14px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .spinner-wrap p { color: #888; font-size: 14px; }
+
+        /* ── SECTION TITLE ── */
+        .section-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+        .section-sub {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        /* ── FORM ── */
+        .form-group { margin-bottom: 14px; }
+        label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+        label .req { color: #e74c3c; }
+        input, select {
+            width: 100%;
+            padding: 13px 14px;
+            border: 2px solid #ebebeb;
+            border-radius: 12px;
+            font-size: 15px;
+            color: #2c3e50;
+            background: #fafafa;
+            transition: border-color 0.2s, background 0.2s;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            background: #fff;
+        }
+        .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+        /* ── DIVIDER ── */
+        .or-divider {
+            display: flex; align-items: center; gap: 10px;
+            margin: 14px 0; color: #ccc; font-size: 12px;
+        }
+        .or-divider::before, .or-divider::after {
+            content: ''; flex: 1; height: 1px; background: #ebebeb;
+        }
+
+        /* ── BUTTONS ── */
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity 0.15s, transform 0.1s;
+            margin-top: 6px;
+        }
+        .btn:active { transform: scale(0.98); }
+        .btn:disabled { opacity: 0.55; cursor: default; }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        .btn-outline {
+            background: #fff;
+            border: 2px solid #667eea;
+            color: #667eea;
+        }
+        .btn-ghost {
+            background: none;
+            color: #888;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 10px;
+        }
+
+        /* ── MEMBER FOUND CARD ── */
+        .found-card {
+            background: #f0faf3;
+            border: 2px solid #a8ddb5;
+            border-radius: 16px;
+            padding: 22px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .avatar {
+            width: 62px; height: 62px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-size: 24px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+        }
+        .found-card h3 { font-size: 19px; font-weight: 700; color: #1a3a2a; }
+        .found-card p { font-size: 13px; color: #5a8a6a; margin-top: 3px; }
+
+        /* ── SUCCESS ── */
+        .success-wrap { text-align: center; padding: 16px 0 8px; }
+        .success-wrap .big-icon { font-size: 66px; margin-bottom: 14px; }
+        .success-wrap h2 { font-size: 22px; font-weight: 800; color: #27ae60; margin-bottom: 8px; }
+        .success-wrap .msg { font-size: 15px; color: #555; line-height: 1.6; margin-bottom: 16px; }
+        .pill {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 22px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .verse {
+            background: #f8f6ff;
+            border-left: 4px solid #667eea;
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #666;
+            font-style: italic;
+            line-height: 1.7;
+            text-align: left;
+        }
+
+        /* ── ALREADY CHECKED IN ── */
+        .already-wrap { text-align: center; padding: 16px 0; }
+        .already-wrap .big-icon { font-size: 58px; margin-bottom: 12px; }
+        .already-wrap h2 { font-size: 20px; font-weight: 700; color: #2980b9; margin-bottom: 8px; }
+        .already-wrap p { font-size: 14px; color: #555; line-height: 1.6; }
+
+        /* ── FOOTER ── */
+        .footer {
+            text-align: center;
+            padding: 14px 20px;
+            border-top: 1px solid #f2f2f2;
+            font-size: 11px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="icon">⛪</div>
+        <h1 id="church-name">Welcome</h1>
+        <div class="service-badge" id="service-badge">
+            <div class="svc-name" id="svc-type">—</div>
+            <div id="svc-date-time">—</div>
+            <div id="svc-branch">—</div>
+        </div>
+    </div>
+
+    <div class="body">
+
+        <!-- STATE: LOADING -->
+        <div class="state active" id="state-loading">
+            <div class="spinner-wrap">
+                <div class="spinner"></div>
+                <p>Loading…</p>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════════════
+             STATE: PHONE LOOKUP
+             First screen — enter phone/email to find record.
+             Two outcomes: member found → confirm screen
+                           not found   → visitor form (seamlessly)
+        ═══════════════════════════════════════════════════ -->
+        <div class="state" id="state-lookup">
+            <p class="section-title">👋 Check In</p>
+            <p class="section-sub">Enter your mobile number to check in. If you are visiting for the first time, tap <em>"I'm a visitor"</em> below.</p>
+
+            <div class="form-group">
+                <label>Mobile Number <span class="req">*</span></label>
+                <input type="tel" id="lk-phone" placeholder="e.g. 08012345678" inputmode="tel">
+            </div>
+
+            <div class="or-divider">or</div>
+
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" id="lk-email" placeholder="your@email.com" inputmode="email">
+            </div>
+
+            <button class="btn btn-primary" id="btn-lookup" onclick="doLookup()">
+                Find My Record
+            </button>
+            <button class="btn btn-ghost" onclick="goToVisitorForm(null, null)">
+                I'm a visitor / first-timer →
+            </button>
+        </div>
+
+        <!-- ══════════════════════════════════════════════════
+             STATE: MEMBER FOUND — confirm before checking in
+        ═══════════════════════════════════════════════════ -->
+        <div class="state" id="state-found">
+            <div class="found-card">
+                <div class="avatar" id="found-avatar">?</div>
+                <h3 id="found-name">—</h3>
+                <p>Member found ✓</p>
+            </div>
+            <button class="btn btn-primary" id="btn-confirm" onclick="doMemberCheckin()">
+                ✅ Yes, Check Me In
+            </button>
+            <button class="btn btn-outline" onclick="showState('state-lookup')" style="margin-top:10px;">
+                ← Not me, go back
+            </button>
+        </div>
+
+        <!-- ══════════════════════════════════════════════════
+             STATE: VISITOR FORM
+             Shown when:
+               a) member lookup returns not found, OR
+               b) person taps "I'm a visitor"
+             Creates a Visitor record + Church Attendance.
+        ═══════════════════════════════════════════════════ -->
+        <div class="state" id="state-visitor">
+            <p class="section-title">📋 Visitor Information</p>
+            <p class="section-sub">Welcome! Please fill in your details so we can record your visit.</p>
+
+            <div class="row2">
+                <div class="form-group">
+                    <label>First Name <span class="req">*</span></label>
+                    <input type="text" id="v-first" placeholder="First name" autocomplete="given-name">
+                </div>
+                <div class="form-group">
+                    <label>Last Name <span class="req">*</span></label>
+                    <input type="text" id="v-last" placeholder="Last name" autocomplete="family-name">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Mobile Number <span class="req">*</span></label>
+                <input type="tel" id="v-phone" placeholder="e.g. 08012345678" inputmode="tel" autocomplete="tel">
+            </div>
+
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" id="v-email" placeholder="your@email.com (optional)" inputmode="email" autocomplete="email">
+            </div>
+
+            <div class="row2">
+                <div class="form-group">
+                    <label>Gender <span class="req">*</span></label>
+                    <select id="v-gender">
+                        <option value="">Select…</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Marital Status</label>
+                    <select id="v-marital">
+                        <option value="">Select…</option>
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Widowed">Widowed</option>
+                        <option value="Divorced">Divorced</option>
+                        <option value="Prefer Not to Say">Prefer not to say</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" id="btn-visitor-submit" onclick="doVisitorCheckin()">
+                ✅ Check In as Visitor
+            </button>
+            <button class="btn btn-ghost" onclick="showState('state-lookup')">
+                ← Go back
+            </button>
+        </div>
+
+        <!-- ══════════════════════════════════════════════════
+             STATE: SUCCESS
+        ═══════════════════════════════════════════════════ -->
+        <div class="state" id="state-success">
+            <div class="success-wrap">
+                <div class="big-icon">🎉</div>
+                <h2>You're Checked In!</h2>
+                <p class="msg" id="success-msg">Welcome!</p>
+                <div class="pill" id="success-pill">—</div>
+                <div class="verse">
+                    "Not forsaking the assembling of ourselves together,
+                    but encouraging one another." — Hebrews 10:25
+                </div>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════════════
+             STATE: ALREADY CHECKED IN
+        ═══════════════════════════════════════════════════ -->
+        <div class="state" id="state-already">
+            <div class="already-wrap">
+                <div class="big-icon">✅</div>
+                <h2>Already Checked In</h2>
+                <p id="already-msg">Your attendance has already been recorded for this service.</p>
+            </div>
+        </div>
+
+    </div><!-- /.body -->
+
+    <div class="footer">⛪ Church Management System</div>
+</div>
+
+<script>
+// ─────────────────────────────────────────────────────────────
+// GLOBALS
+// ─────────────────────────────────────────────────────────────
+var params  = new URLSearchParams(window.location.search);
+var CODE    = params.get('code')    || '';
+var SERVICE = params.get('service') || '';
+
+var FOUND_MEMBER_ID  = null;
+var SERVICE_LABEL    = '';
+
+// ─────────────────────────────────────────────────────────────
+// BOOT
+// ─────────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', function () {
+    loadServiceInfo();
+});
+
+// ─────────────────────────────────────────────────────────────
+// STEP 1 — LOAD SERVICE INFO (always succeeds)
+// ─────────────────────────────────────────────────────────────
+function loadServiceInfo() {
+    showState('state-loading');
+
+    callAPI('church.attendance.guest_checkin.get_service_info', {
+        service: SERVICE,
+        code: CODE
+    })
+    .then(function (r) {
+        // Populate header regardless
+        document.getElementById('church-name').textContent = r.church_name || 'Welcome';
+
+        if (r.service_type) {
+            document.getElementById('svc-type').textContent = r.service_type;
+
+            var dt = r.service_date || '';
+            var tm = r.service_time ? ' · ' + r.service_time : '';
+            document.getElementById('svc-date-time').textContent = dt + tm;
+            document.getElementById('svc-branch').textContent = r.branch || '';
+            document.getElementById('service-badge').style.display = 'block';
+
+            SERVICE_LABEL = r.service_type + (dt ? ' · ' + dt : '');
+        }
+
+        // Always land on lookup screen — no error screen ever shown
+        showState('state-lookup');
+    })
+    .catch(function () {
+        // Even on network failure, show the lookup screen
+        showState('state-lookup');
+    });
+}
+
+// ─────────────────────────────────────────────────────────────
+// STEP 2 — LOOKUP MEMBER
+// ─────────────────────────────────────────────────────────────
+function doLookup() {
+    var phone = val('lk-phone');
+    var email = val('lk-email');
+
+    if (!phone && !email) {
+        shake('lk-phone');
+        alert('Please enter your mobile number or email.');
+        return;
+    }
+
+    setBtnLoading('btn-lookup', true, 'Searching…');
+
+    callAPI('church.attendance.guest_checkin.lookup_member', {
+        phone: phone,
+        email: email
+    })
+    .then(function (r) {
+        setBtnLoading('btn-lookup', false, 'Find My Record');
+
+        if (r.found) {
+            // Member found — show confirm card
+            FOUND_MEMBER_ID = r.member_id;
+            document.getElementById('found-avatar').textContent = initials(r.full_name);
+            document.getElementById('found-name').textContent   = r.full_name;
+            showState('state-found');
+        } else {
+            // NOT found — seamlessly move to visitor form
+            // Pre-fill whatever the user typed
+            goToVisitorForm(phone, email);
+        }
+    })
+    .catch(function () {
+        setBtnLoading('btn-lookup', false, 'Find My Record');
+        goToVisitorForm(phone, email);
+    });
+}
+
+// ─────────────────────────────────────────────────────────────
+// STEP 3A — CONFIRM & CHECKIN MEMBER
+// ─────────────────────────────────────────────────────────────
+function doMemberCheckin() {
+    if (!FOUND_MEMBER_ID) return;
+
+    setBtnLoading('btn-confirm', true, 'Checking in…');
+
+    callAPI('church.attendance.guest_checkin.checkin_member', {
+        member_id: FOUND_MEMBER_ID,
+        service:   SERVICE
+    })
+    .then(function (r) {
+        setBtnLoading('btn-confirm', false, '✅ Yes, Check Me In');
+
+        if (!r.success) {
+            alert(r.message || 'Check-in failed. Please see the attendance desk.');
+            return;
+        }
+
+        if (r.already_checked_in) {
+            document.getElementById('already-msg').textContent = r.message;
+            showState('state-already');
+            return;
+        }
+
+        showSuccess(r.message);
+    })
+    .catch(function () {
+        setBtnLoading('btn-confirm', false, '✅ Yes, Check Me In');
+        alert('Connection error. Please try again.');
+    });
+}
+
+// ─────────────────────────────────────────────────────────────
+// STEP 3B — SUBMIT VISITOR FORM
+// ─────────────────────────────────────────────────────────────
+function doVisitorCheckin() {
+    var firstName = val('v-first');
+    var lastName  = val('v-last');
+    var phone     = val('v-phone');
+    var email     = val('v-email');
+    var gender    = val('v-gender');
+    var marital   = val('v-marital');
+
+    if (!firstName) { alert('Please enter your first name.');   focus('v-first');  return; }
+    if (!lastName)  { alert('Please enter your last name.');    focus('v-last');   return; }
+    if (!phone)     { alert('Please enter your mobile number.'); focus('v-phone'); return; }
+    if (!gender)    { alert('Please select your gender.');                         return; }
+
+    setBtnLoading('btn-visitor-submit', true, 'Checking in…');
+
+    callAPI('church.attendance.guest_checkin.checkin_visitor', {
+        service:        SERVICE,
+        first_name:     firstName,
+        last_name:      lastName,
+        mobile_phone:   phone,
+        email:          email,
+        gender:         gender,
+        marital_status: marital
+    })
+    .then(function (r) {
+        setBtnLoading('btn-visitor-submit', false, '✅ Check In as Visitor');
+
+        if (!r.success) {
+            alert(r.message || 'Check-in failed. Please see the welcome desk.');
+            return;
+        }
+
+        if (r.already_checked_in) {
+            document.getElementById('already-msg').textContent = r.message;
+            showState('state-already');
+            return;
+        }
+
+        showSuccess(r.message);
+    })
+    .catch(function () {
+        setBtnLoading('btn-visitor-submit', false, '✅ Check In as Visitor');
+        alert('Connection error. Please try again.');
+    });
+}
+
+// ─────────────────────────────────────────────────────────────
+// UI HELPERS
+// ─────────────────────────────────────────────────────────────
+
+function goToVisitorForm(phone, email) {
+    // Pre-fill if values were typed in lookup screen
+    if (phone) document.getElementById('v-phone').value = phone;
+    if (email) document.getElementById('v-email').value = email;
+    showState('state-visitor');
+}
+
+function showSuccess(message) {
+    document.getElementById('success-msg').textContent  = message || 'Welcome!';
+    document.getElementById('success-pill').textContent = SERVICE_LABEL || 'Service';
+    showState('state-success');
+}
+
+function showState(id) {
+    document.querySelectorAll('.state').forEach(function (el) {
+        el.classList.remove('active');
+    });
+    var el = document.getElementById(id);
+    if (el) el.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function setBtnLoading(id, loading, label) {
+    var btn = document.getElementById(id);
+    if (!btn) return;
+    btn.disabled    = loading;
+    btn.textContent = loading ? '⏳ ' + label : label;
+}
+
+function val(id) {
+    var el = document.getElementById(id);
+    return el ? el.value.trim() : '';
+}
+
+function focus(id) {
+    var el = document.getElementById(id);
+    if (el) { el.focus(); el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+}
+
+function shake(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.style.border = '2px solid #e74c3c';
+    setTimeout(function () { el.style.border = ''; }, 1500);
+}
+
+function initials(name) {
+    if (!name) return '?';
+    var p = name.trim().split(' ');
+    if (p.length >= 2) return (p[0][0] + p[p.length-1][0]).toUpperCase();
+    return p[0][0].toUpperCase();
+}
+
+// ─────────────────────────────────────────────────────────────
+// API WRAPPER — posts to Frappe whitelist method
+// ─────────────────────────────────────────────────────────────
+function callAPI(method, args) {
+    var form = new URLSearchParams();
+    Object.keys(args).forEach(function (k) {
+        if (args[k] !== null && args[k] !== undefined && args[k] !== '') {
+            form.append(k, args[k]);
+        }
+    });
+
+    return fetch('/api/method/' + method, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body:    form.toString()
+    })
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+        // Frappe wraps responses in { message: ... }
+        return (data.message !== undefined) ? data.message : data;
+    });
+}
+</script>
+</body>
+</html>

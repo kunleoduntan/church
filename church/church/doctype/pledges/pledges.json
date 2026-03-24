@@ -1,0 +1,336 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-03-15 19:06:28.458310",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tab_pledge_details",
+  "pledge_detail_section",
+  "naming_series",
+  "pledge_date",
+  "is_a_member",
+  "member_id",
+  "column_break_member",
+  "salutation",
+  "first_name",
+  "last_name",
+  "column_break_contact",
+  "phone_no",
+  "email",
+  "branch",
+  "section_break_pledge_info",
+  "programme",
+  "amount",
+  "column_break_dates",
+  "redemption_date",
+  "closing_date",
+  "column_break_payment",
+  "designated_bank_acct",
+  "currency",
+  "exchange_rate",
+  "column_break_description",
+  "description",
+  "tab_redemption_summary",
+  "pledge_dashboard_html",
+  "section_break_status",
+  "redemption_status",
+  "column_break_redeemed",
+  "total_redeemed",
+  "column_break_outstanding",
+  "outstanding_balance",
+  "tab_more_info",
+  "amended_from",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "tab_pledge_details",
+   "fieldtype": "Tab Break",
+   "label": "Pledge Details"
+  },
+  {
+   "fieldname": "pledge_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Pledger Information"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "PLEDGE-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "pledge_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Pledge Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "is_a_member",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Is a Member",
+   "options": "\nYes\nNo",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.is_a_member == 'Yes'",
+   "fieldname": "member_id",
+   "fieldtype": "Link",
+   "label": "Member ID",
+   "mandatory_depends_on": "eval:doc.is_a_member == 'Yes'",
+   "options": "Member"
+  },
+  {
+   "fieldname": "column_break_member",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "member_id.salutation",
+   "fieldname": "salutation",
+   "fieldtype": "Link",
+   "label": "Salutation",
+   "options": "Salutation",
+   "read_only_depends_on": "eval:doc.is_a_member == 'Yes'"
+  },
+  {
+   "fetch_from": "member_id.first_name",
+   "fetch_if_empty": 1,
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "label": "First Name",
+   "mandatory_depends_on": "eval:doc.is_a_member == 'No'",
+   "read_only_depends_on": "eval:doc.is_a_member == 'Yes'"
+  },
+  {
+   "fetch_from": "member_id.last_name",
+   "fetch_if_empty": 1,
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Last Name",
+   "mandatory_depends_on": "eval:doc.is_a_member == 'No'",
+   "read_only_depends_on": "eval:doc.is_a_member == 'Yes'"
+  },
+  {
+   "fieldname": "column_break_contact",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "member_id.phone_no",
+   "fetch_if_empty": 1,
+   "fieldname": "phone_no",
+   "fieldtype": "Phone",
+   "label": "Phone No",
+   "mandatory_depends_on": "eval:doc.is_a_member == 'No'",
+   "read_only_depends_on": "eval:doc.is_a_member == 'Yes'"
+  },
+  {
+   "fetch_from": "member_id.email",
+   "fetch_if_empty": 1,
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "mandatory_depends_on": "eval:doc.is_a_member == 'No'",
+   "options": "Email",
+   "read_only_depends_on": "eval:doc.is_a_member == 'Yes'"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Branch",
+   "options": "Branch",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_pledge_info",
+   "fieldtype": "Section Break",
+   "label": "Pledge Information"
+  },
+  {
+   "fieldname": "programme",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Towards Programme",
+   "options": "Programme",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Pledge Amount",
+   "options": "currency",
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_dates",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "redemption_date",
+   "fieldtype": "Date",
+   "label": "Redemption Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "closing_date",
+   "fieldtype": "Date",
+   "label": "Expected Completion Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_payment",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "designated_bank_acct",
+   "fieldtype": "Link",
+   "label": "Designated Bank Account",
+   "options": "Bank Account",
+   "reqd": 1
+  },
+  {
+   "default": "NGN",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "default": "1.0",
+   "depends_on": "eval:doc.currency != 'NGN'",
+   "fieldname": "exchange_rate",
+   "fieldtype": "Float",
+   "label": "Exchange Rate",
+   "precision": "6"
+  },
+  {
+   "fieldname": "column_break_description",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tab_redemption_summary",
+   "fieldtype": "Tab Break",
+   "label": "Redemption Summary"
+  },
+  {
+   "fieldname": "pledge_dashboard_html",
+   "fieldtype": "HTML",
+   "label": "Pledge Dashboard",
+   "options": "<div id=\"pledge-dashboard-placeholder\" style=\"padding: 10px; color: #888; font-style: italic;\">Save the record to view redemption dashboard.</div>"
+  },
+  {
+   "fieldname": "section_break_status",
+   "fieldtype": "Section Break",
+   "label": "Redemption Totals"
+  },
+  {
+   "fieldname": "redemption_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Redemption Status",
+   "options": "\nPending\nPartially Redeemed\nFully Redeemed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_redeemed",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_redeemed",
+   "fieldtype": "Currency",
+   "label": "Total Redeemed",
+   "options": "currency",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_outstanding",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "outstanding_balance",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Outstanding Balance",
+   "options": "currency",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tab_more_info",
+   "fieldtype": "Tab Break",
+   "label": "More Info"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Pledges",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Pledges",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-03-15 19:06:28.458310",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Pledges",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

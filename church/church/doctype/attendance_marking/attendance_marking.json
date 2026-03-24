@@ -1,0 +1,648 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-03-06 10:27:18.082884",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "general_details_section",
+  "naming_series",
+  "service_instance",
+  "service_date",
+  "column_break_hjmtp",
+  "service_type",
+  "branch",
+  "column_break_1odh4",
+  "gender",
+  "audience_section",
+  "fetch_members_btn",
+  "attendance",
+  "attendance_summary_tab",
+  "overall_summary_section",
+  "total_subscribers",
+  "total_present",
+  "total_absent",
+  "column_break_overall2",
+  "attendance_pct",
+  "create_attendance_btn",
+  "attendance_created",
+  "demography_counts_section",
+  "total_men",
+  "total_men_present",
+  "column_break_demo1",
+  "total_women",
+  "total_women_present",
+  "column_break_demo2",
+  "total_youth",
+  "total_youth_present",
+  "column_break_demo3",
+  "total_teens",
+  "total_teens_present",
+  "column_break_demo4",
+  "total_children",
+  "total_children_present",
+  "column_break_demo5",
+  "total_unclassified",
+  "total_unclassified_present",
+  "demography_percentages_section",
+  "pct_men",
+  "pct_men_present",
+  "column_break_pct1",
+  "pct_women",
+  "pct_women_present",
+  "column_break_pct2",
+  "pct_youth",
+  "pct_youth_present",
+  "column_break_pct3",
+  "pct_teens",
+  "pct_teens_present",
+  "column_break_pct4",
+  "pct_children",
+  "pct_children_present",
+  "column_break_pct5",
+  "pct_unclassified",
+  "pct_unclassified_present",
+  "message_tab",
+  "subject",
+  "sent",
+  "message_type",
+  "column_break_i2t1z",
+  "include_attachments",
+  "message_purpose",
+  "is_test_email",
+  "schedule",
+  "schedule_time",
+  "test_email",
+  "test_phone_number",
+  "notification_options_section",
+  "notify_present_only",
+  "notify_absent_only",
+  "column_break_notify",
+  "email_template",
+  "whatsapp_template",
+  "option",
+  "column_break_gk5hf",
+  "whatsapp_image_url",
+  "column_break_4je1m",
+  "section_break_xxr3n",
+  "message_body",
+  "message_tx_html",
+  "whatsapp_message_body",
+  "send_notifications_btn",
+  "notification_log_section",
+  "notification_log",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "SAT-.DD.-.MM.-.YY.-.####"
+  },
+  {
+   "fieldname": "general_details_section",
+   "fieldtype": "Section Break",
+   "label": "General Details"
+  },
+  {
+   "fetch_from": "service_instance.service_date",
+   "fetch_if_empty": 1,
+   "fieldname": "service_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Service Date",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "service.service_type",
+   "fieldname": "service_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Service Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_hjmtp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1odh4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Select",
+   "label": "Demography Filter",
+   "options": "\nAll\nMen\nWomen\nYouth\nTeens\nChildren"
+  },
+  {
+   "fieldname": "audience_section",
+   "fieldtype": "Section Break",
+   "label": "Attendance List"
+  },
+  {
+   "fieldname": "fetch_members_btn",
+   "fieldtype": "Button",
+   "label": "Fetch Member List"
+  },
+  {
+   "fieldname": "attendance",
+   "fieldtype": "Table",
+   "label": "Attendance",
+   "options": "Attendance Marking Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "attendance_summary_tab",
+   "fieldtype": "Tab Break",
+   "label": "Attendance Summary"
+  },
+  {
+   "fieldname": "overall_summary_section",
+   "fieldtype": "Section Break",
+   "label": "Overall Summary"
+  },
+  {
+   "fieldname": "total_subscribers",
+   "fieldtype": "Int",
+   "label": "Total Members",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_present",
+   "fieldtype": "Int",
+   "label": "Total Present",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_absent",
+   "fieldtype": "Int",
+   "label": "Total Absent",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_overall2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "attendance_pct",
+   "fieldtype": "Percent",
+   "label": "Overall Attendance %",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.docstatus == 1",
+   "fieldname": "create_attendance_btn",
+   "fieldtype": "Button",
+   "label": "Create Church Attendance Records"
+  },
+  {
+   "default": "0",
+   "fieldname": "attendance_created",
+   "fieldtype": "Check",
+   "label": "Attendance Records Created",
+   "read_only": 1
+  },
+  {
+   "fieldname": "demography_counts_section",
+   "fieldtype": "Section Break",
+   "label": "Demography Counts"
+  },
+  {
+   "fieldname": "total_men",
+   "fieldtype": "Int",
+   "label": "Men (Total)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_men_present",
+   "fieldtype": "Int",
+   "label": "Men (Present)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_demo1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_women",
+   "fieldtype": "Int",
+   "label": "Women (Total)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_women_present",
+   "fieldtype": "Int",
+   "label": "Women (Present)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_demo2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_youth",
+   "fieldtype": "Int",
+   "label": "Youth (Total)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_youth_present",
+   "fieldtype": "Int",
+   "label": "Youth (Present)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_demo3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_teens",
+   "fieldtype": "Int",
+   "label": "Teens (Total)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_teens_present",
+   "fieldtype": "Int",
+   "label": "Teens (Present)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_demo4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_children",
+   "fieldtype": "Int",
+   "label": "Children (Total)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_children_present",
+   "fieldtype": "Int",
+   "label": "Children (Present)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_demo5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_unclassified",
+   "fieldtype": "Int",
+   "label": "Unclassified (Total)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_unclassified_present",
+   "fieldtype": "Int",
+   "label": "Unclassified (Present)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "demography_percentages_section",
+   "fieldtype": "Section Break",
+   "label": "Demography Attendance Percentages"
+  },
+  {
+   "description": "Men as % of all members",
+   "fieldname": "pct_men",
+   "fieldtype": "Percent",
+   "label": "Men % of Total",
+   "read_only": 1
+  },
+  {
+   "description": "Men present as % of total men",
+   "fieldname": "pct_men_present",
+   "fieldtype": "Percent",
+   "label": "Men Attendance %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_pct1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Women as % of all members",
+   "fieldname": "pct_women",
+   "fieldtype": "Percent",
+   "label": "Women % of Total",
+   "read_only": 1
+  },
+  {
+   "description": "Women present as % of total women",
+   "fieldname": "pct_women_present",
+   "fieldtype": "Percent",
+   "label": "Women Attendance %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_pct2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Youth as % of all members",
+   "fieldname": "pct_youth",
+   "fieldtype": "Percent",
+   "label": "Youth % of Total",
+   "read_only": 1
+  },
+  {
+   "description": "Youth present as % of total youth",
+   "fieldname": "pct_youth_present",
+   "fieldtype": "Percent",
+   "label": "Youth Attendance %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_pct3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Teens as % of all members",
+   "fieldname": "pct_teens",
+   "fieldtype": "Percent",
+   "label": "Teens % of Total",
+   "read_only": 1
+  },
+  {
+   "description": "Teens present as % of total teens",
+   "fieldname": "pct_teens_present",
+   "fieldtype": "Percent",
+   "label": "Teens Attendance %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_pct4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Children as % of all members",
+   "fieldname": "pct_children",
+   "fieldtype": "Percent",
+   "label": "Children % of Total",
+   "read_only": 1
+  },
+  {
+   "description": "Children present as % of total children",
+   "fieldname": "pct_children_present",
+   "fieldtype": "Percent",
+   "label": "Children Attendance %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_pct5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Unclassified as % of all members",
+   "fieldname": "pct_unclassified",
+   "fieldtype": "Percent",
+   "label": "Unclassified % of Total",
+   "read_only": 1
+  },
+  {
+   "description": "Unclassified present as % of total unclassified",
+   "fieldname": "pct_unclassified_present",
+   "fieldtype": "Percent",
+   "label": "Unclassified Attendance %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "message_tab",
+   "fieldtype": "Tab Break",
+   "label": "Message & Notifications"
+  },
+  {
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Subject",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "sent",
+   "fieldtype": "Check",
+   "label": "Notification Sent",
+   "read_only": 1
+  },
+  {
+   "fieldname": "message_type",
+   "fieldtype": "Select",
+   "label": "Message Type",
+   "options": "\nEmail\nWhatsApp\nSMS\nAll",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_i2t1z",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "include_attachments",
+   "fieldtype": "Check",
+   "label": "Include Attachments"
+  },
+  {
+   "fieldname": "message_purpose",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Message Purpose",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_test_email",
+   "fieldtype": "Check",
+   "label": "Is Test"
+  },
+  {
+   "default": "0",
+   "fieldname": "schedule",
+   "fieldtype": "Check",
+   "label": "Schedule"
+  },
+  {
+   "depends_on": "schedule",
+   "fieldname": "schedule_time",
+   "fieldtype": "Datetime",
+   "label": "Schedule Time",
+   "mandatory_depends_on": "schedule"
+  },
+  {
+   "depends_on": "eval:doc.message_type == 'Email' && doc.is_test_email == 1",
+   "fieldname": "test_email",
+   "fieldtype": "Data",
+   "label": "Test Email",
+   "options": "Email"
+  },
+  {
+   "depends_on": "eval:(doc.message_type == 'WhatsApp' || doc.message_type == 'SMS') && doc.is_test_email == 1",
+   "fieldname": "test_phone_number",
+   "fieldtype": "Phone",
+   "label": "Test Phone Number"
+  },
+  {
+   "fieldname": "notification_options_section",
+   "fieldtype": "Section Break",
+   "label": "Recipient Filter"
+  },
+  {
+   "default": "0",
+   "fieldname": "notify_present_only",
+   "fieldtype": "Check",
+   "label": "Notify Present Members Only"
+  },
+  {
+   "default": "0",
+   "fieldname": "notify_absent_only",
+   "fieldtype": "Check",
+   "label": "Notify Absent Members Only"
+  },
+  {
+   "fieldname": "column_break_notify",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.message_type == 'Email' || doc.message_type == 'All'",
+   "fieldname": "email_template",
+   "fieldtype": "Link",
+   "label": "Email Template",
+   "options": "Email Template"
+  },
+  {
+   "depends_on": "eval:doc.message_type == 'WhatsApp' || doc.message_type == 'All'",
+   "fieldname": "whatsapp_template",
+   "fieldtype": "Link",
+   "label": "WhatsApp Template",
+   "options": "Email Template"
+  },
+  {
+   "fieldname": "option",
+   "fieldtype": "Select",
+   "label": "Message Format",
+   "options": "\nHTML\nText"
+  },
+  {
+   "fieldname": "column_break_gk5hf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.message_type == 'WhatsApp' || doc.message_type == 'All'",
+   "fieldname": "whatsapp_image_url",
+   "fieldtype": "Data",
+   "label": "WhatsApp Image URL"
+  },
+  {
+   "fieldname": "column_break_4je1m",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_xxr3n",
+   "fieldtype": "Section Break",
+   "label": "Message Content"
+  },
+  {
+   "depends_on": "eval:doc.message_type == 'SMS' || doc.option == 'Text'",
+   "fieldname": "message_body",
+   "fieldtype": "Text Editor",
+   "label": "Message Body (Plain Text)"
+  },
+  {
+   "depends_on": "eval:(doc.message_type == 'Email' || doc.message_type == 'All') && doc.option == 'HTML'",
+   "fieldname": "message_tx_html",
+   "fieldtype": "HTML Editor",
+   "label": "Email Message (HTML)"
+  },
+  {
+   "depends_on": "eval:doc.message_type == 'WhatsApp' || doc.message_type == 'All'",
+   "fieldname": "whatsapp_message_body",
+   "fieldtype": "HTML Editor",
+   "label": "WhatsApp Message Body"
+  },
+  {
+   "fieldname": "send_notifications_btn",
+   "fieldtype": "Button",
+   "label": "Send Notifications Now"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "notification_log_section",
+   "fieldtype": "Section Break",
+   "label": "Notification Log"
+  },
+  {
+   "fieldname": "notification_log",
+   "fieldtype": "Long Text",
+   "label": "Log",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Attendance Marking",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Attendance Marking",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "service_instance",
+   "fieldtype": "Link",
+   "label": "Service Instance",
+   "options": "Service Instance"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-03-09 14:25:55.019653",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Attendance Marking",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Church Attendance - Smart Check In</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Alternative color schemes - uncomment to use */
+        /* Blue theme */
+        /* body { background: linear-gradient(135deg, #2E3192 0%, #1BFFFF 100%); } */
+        
+        /* Green theme */
+        /* body { background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%); } */
+        
+        /* Orange theme */
+        /* body { background: linear-gradient(135deg, #f46b45 0%, #eea849 100%); } */
+        
+        /* Dark theme */
+        /* body { background: linear-gradient(135deg, #232526 0%, #414345 100%); } */
+
+        .container {
+            text-align: center;
+            padding: 40px;
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 72px;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            animation: fadeIn 1s ease-in;
+        }
+
+        .subtitle {
+            font-size: 36px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+
+        .qr-container {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            display: inline-block;
+            margin: 40px auto;
+            animation: scaleIn 0.5s ease-out;
+            position: relative;
+        }
+
+        #qr-code {
+            width: 400px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #qr-code img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .qr-loading {
+            color: #667eea;
+            font-size: 18px;
+        }
+
+        .instructions {
+            margin-top: 40px;
+            font-size: 32px;
+            line-height: 1.6;
+        }
+
+        .instructions ol {
+            display: inline-block;
+            text-align: left;
+            margin: 20px auto;
+            list-style-position: inside;
+        }
+
+        .instructions li {
+            margin: 15px 0;
+            padding-left: 10px;
+        }
+
+        .stats-container {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            text-align: right;
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat {
+            font-size: 24px;
+            margin: 15px 0;
+        }
+
+        .stat-number {
+            font-size: 56px;
+            font-weight: bold;
+            display: block;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .stat-label {
+            font-size: 18px;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .refresh-timer {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            background: rgba(255,255,255,0.15);
+            padding: 15px 30px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .church-logo {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            max-width: 180px;
+            max-height: 120px;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+        }
+
+        .code-display {
+            margin-top: 30px;
+            font-size: 52px;
+            font-weight: bold;
+            letter-spacing: 10px;
+            background: rgba(255,255,255,0.25);
+            padding: 25px 50px;
+            border-radius: 20px;
+            display: inline-block;
+            border: 3px solid rgba(255,255,255,0.3);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .code-label {
+            font-size: 24px;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .wifi-info {
+            margin-top: 40px;
+            padding: 35px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 25px;
+            font-size: 28px;
+            border: 2px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .wifi-icon {
+            font-size: 64px;
+            margin-bottom: 15px;
+        }
+
+        .method-badges {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .footer-info {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            font-size: 16px;
+            opacity: 0.7;
+            text-align: right;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.85); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+            50% { box-shadow: 0 20px 60px rgba(255,255,255,0.2); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        .glow {
+            animation: glow 3s infinite;
+        }
+
+        /* Large screen optimization (4K displays) */
+        @media (min-width: 1920px) {
+            h1 { font-size: 96px; }
+            .subtitle { font-size: 52px; }
+            #qr-code { width: 550px; height: 550px; }
+            .instructions { font-size: 44px; }
+            .stat-number { font-size: 72px; }
+            .code-display { font-size: 64px; }
+        }
+
+        /* Tablet/smaller displays */
+        @media (max-width: 1024px) {
+            h1 { font-size: 56px; }
+            .subtitle { font-size: 28px; }
+            #qr-code { width: 320px; height: 320px; }
+            .instructions { font-size: 24px; }
+            .stats-container { font-size: 18px; }
+            .stat-number { font-size: 40px; }
+        }
+
+        /* Error/offline state */
+        .error-message {
+            background: rgba(255,0,0,0.2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px;
+            display: none;
+        }
+
+        .offline-indicator {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,0,0,0.8);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 18px;
+            display: none;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Church Logo - uncomment and update path -->
+    <!-- <img src="/files/church_logo.png" alt="Church Logo" class="church-logo"> -->
+
+    <!-- Offline Indicator -->
+    <div class="offline-indicator" id="offline-indicator">
+        ⚠️ Connection Lost - Reconnecting...
+    </div>
+
+    <!-- Live Stats -->
+    <div class="stats-container">
+        <div class="stat">
+            <span class="stat-number" id="attendance-count">0</span>
+            <span class="stat-label">Checked In</span>
+        </div>
+        <div class="stat">
+            <span class="stat-number" id="current-time">--:--</span>
+            <span class="stat-label">Current Time</span>
+        </div>
+        <div class="stat" id="service-time-stat" style="display:none;">
+            <span class="stat-number" id="service-time">--:--</span>
+            <span class="stat-label">Service Time</span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>✨ Welcome to Church!</h1>
+        <div class="subtitle" id="service-name">Sunday Service</div>
+
+        <!-- QR Code Display -->
+        <div class="qr-container pulse glow">
+            <div id="qr-code">
+                <div class="qr-loading">Loading QR Code...</div>
+            </div>
+        </div>
+
+        <!-- Daily Code for WhatsApp -->
+        <div id="code-section" style="display:none;">
+            <div class="code-label">📱 WhatsApp Code:</div>
+            <div class="code-display" id="daily-code"></div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <strong>📱 Three Ways to Check In:</strong>
+            <ol>
+                <li>📷 <strong>Scan QR Code</strong> with your phone camera</li>
+                <li>📶 <strong>Connect to WiFi</strong> for auto check-in</li>
+                <li>💬 <strong>Send WhatsApp</strong> with code above</li>
+            </ol>
+        </div>
+
+        <!-- WiFi Info -->
+        <div class="wifi-info" id="wifi-section">
+            <div class="wifi-icon">📶</div>
+            <strong>Connect to:</strong> <span id="wifi-ssid">ChurchWiFi</span><br>
+            <span style="font-size: 22px; opacity: 0.9;">Auto check-in enabled!</span>
+        </div>
+
+        <!-- Method Badges -->
+        <div class="method-badges" id="method-badges">
+            <!-- Will be populated dynamically -->
+        </div>
+    </div>
+
+    <!-- Refresh Timer -->
+    <div class="refresh-timer">
+        ⏱️ QR refreshes in: <strong><span id="refresh-timer">--</span></strong>
+    </div>
+
+    <!-- Footer Info -->
+    <div class="footer-info" id="footer-info">
+        <!-- Will be populated dynamically -->
+    </div>
+
+    <!-- Error Message -->
+    <div class="error-message" id="error-message"></div>
+
+    <script>
+        // ========================================================================
+        // CONFIGURATION
+        // ========================================================================
+        let REFRESH_INTERVAL = 5 * 60 * 1000; // 5 minutes default
+        let SERVICE_INSTANCE = null;
+        let currentQRCode = null;
+        let isOnline = true;
+        let retryCount = 0;
+        const MAX_RETRIES = 3;
+
+        // ========================================================================
+        // INITIALIZATION
+        // ========================================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Church Attendance Display Starting...');
+            
+            initializePage();
+            generateQRCode();
+            startRefreshTimer();
+            updateAttendanceCount();
+            updateClock();
+            checkOnlineStatus();
+            
+            // Set intervals
+            setInterval(generateQRCode, REFRESH_INTERVAL);
+            setInterval(updateAttendanceCount, 30000); // Every 30 seconds
+            setInterval(updateClock, 1000); // Every second
+            setInterval(checkOnlineStatus, 5000); // Every 5 seconds
+        });
+
+        // ========================================================================
+        // PAGE INITIALIZATION
+        // ========================================================================
+        async function initializePage() {
+            try {
+                const response = await fetch('/api/method/ecclesia.attendance.smart_attendance.get_display_settings');
+                const data = await response.json();
+                
+                if (data.message) {
+                    const settings = data.message;
+                    
+                    // Update service name
+                    document.getElementById('service-name').textContent = 
+                        settings.service_name || 'Sunday Service';
+                    
+                    // Update WiFi info
+                    document.getElementById('wifi-ssid').textContent = 
+                        settings.wifi_ssid || 'ChurchWiFi';
+                    
+                    SERVICE_INSTANCE = settings.service_instance;
+                    
+                    // Set refresh interval
+                    const intervalMap = {
+                        '1 Minute': 1,
+                        '5 Minutes': 5,
+                        '10 Minutes': 10,
+                        '15 Minutes': 15,
+                        '30 Minutes': 30,
+                        'Once Per Service': 999
+                    };
+                    REFRESH_INTERVAL = (intervalMap[settings.refresh_interval] || 5) * 60 * 1000;
+                    
+                    // Show/hide sections based on enabled methods
+                    if (!settings.enable_wifi) {
+                        document.getElementById('wifi-section').style.display = 'none';
+                    }
+                    
+                    // Show daily code if WhatsApp enabled
+                    if (settings.enable_whatsapp && settings.daily_code) {
+                        document.getElementById('daily-code').textContent = settings.daily_code;
+                        document.getElementById('code-section').style.display = 'block';
+                    }
+                    
+                    // Show service time if available
+                    if (settings.service_time) {
+                        document.getElementById('service-time').textContent = settings.service_time;
+                        document.getElementById('service-time-stat').style.display = 'block';
+                    }
+                    
+                    // Show method badges
+                    updateMethodBadges(settings);
+                    
+                    // Update footer
+                    updateFooter(settings);
+                    
+                    console.log('✅ Page initialized successfully');
+                }
+            } catch (error) {
+                console.error('❌ Error initializing page:', error);
+                showError('Failed to load settings. Retrying...');
+                if (retryCount < MAX_RETRIES) {
+                    retryCount++;
+                    setTimeout(initializePage, 5000);
+                }
+            }
+        }
+
+        // ========================================================================
+        // QR CODE GENERATION
+        // ========================================================================
+        async function generateQRCode() {
+            try {
+                const response = await fetch('/api/method/ecclesia.attendance.smart_attendance.generate_venue_qr_code', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        service_instance: SERVICE_INSTANCE
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.message && data.message.success) {
+                    const qrContainer = document.getElementById('qr-code');
+                    qrContainer.innerHTML = `<img src="${data.message.qr_image}" alt="Scan to Check In" style="width: 100%; height: 100%;">`;
+                    
+                    currentQRCode = data.message.qr_code;
+                    hideError();
+                    retryCount = 0;
+                    console.log('✅ QR code generated');
+                } else {
+                    throw new Error('QR generation failed');
+                }
+            } catch (error) {
+                console.error('❌ Error generating QR code:', error);
+                showError('QR code generation failed. Retrying...');
+                if (retryCount < MAX_RETRIES) {
+                    retryCount++;
+                    setTimeout(generateQRCode, 10000);
+                }
+            }
+        }
+
+        // ========================================================================
+        // ATTENDANCE COUNT UPDATE
+        // ========================================================================
+        async function updateAttendanceCount() {
+            if (!SERVICE_INSTANCE) return;
+            
+            try {
+                const response = await fetch(
+                    `/api/method/ecclesia.attendance.smart_attendance.get_attendance_count?service=${SERVICE_INSTANCE}`
+                );
+                const data = await response.json();
+                
+                if (data.message) {
+                    const count = data.message.count || 0;
+                    document.getElementById('attendance-count').textContent = count;
+                    console.log(`📊 Attendance: ${count}`);
+                }
+            } catch (error) {
+                console.error('❌ Error updating attendance count:', error);
+            }
+        }
+
+        // ========================================================================
+        // CLOCK UPDATE
+        // ========================================================================
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('current-time').textContent = `${hours}:${minutes}`;
+        }
+
+        // ========================================================================
+        // REFRESH TIMER
+        // ========================================================================
+        function startRefreshTimer() {
+            let secondsLeft = REFRESH_INTERVAL / 1000;
+            
+            setInterval(() => {
+                secondsLeft--;
+                
+                const minutes = Math.floor(secondsLeft / 60);
+                const seconds = secondsLeft % 60;
+                
+                document.getElementById('refresh-timer').textContent = 
+                    `${minutes}m ${String(seconds).padStart(2, '0')}s`;
+                
+                if (secondsLeft <= 0) {
+                    secondsLeft = REFRESH_INTERVAL / 1000;
+                }
+            }, 1000);
+        }
+
+        // ========================================================================
+        // METHOD BADGES
+        // ========================================================================
+        function updateMethodBadges(settings) {
+            const badges = [];
+            
+            if (settings.enable_qr) badges.push('📷 QR Code');
+            if (settings.enable_wifi) badges.push('📶 WiFi');
+            if (settings.enable_whatsapp) badges.push('💬 WhatsApp');
+            
+            const container = document.getElementById('method-badges');
+            container.innerHTML = badges.map(badge => 
+                `<div class="badge">${badge}</div>`
+            ).join('');
+        }
+
+        // ========================================================================
+        // FOOTER UPDATE
+        // ========================================================================
+        function updateFooter(settings) {
+            const footer = document.getElementById('footer-info');
+            const date = new Date().toLocaleDateString();
+            footer.innerHTML = `
+                ${settings.church_name || 'Church'}<br>
+                ${date}
+            `;
+        }
+
+        // ========================================================================
+        // ONLINE STATUS CHECK
+        // ========================================================================
+        function checkOnlineStatus() {
+            const wasOnline = isOnline;
+            isOnline = navigator.onLine;
+            
+            const indicator = document.getElementById('offline-indicator');
+            
+            if (!isOnline && wasOnline) {
+                indicator.style.display = 'block';
+                console.log('📡 Offline');
+            } else if (isOnline && !wasOnline) {
+                indicator.style.display = 'none';
+                console.log('📡 Back online');
+                // Refresh data
+                initializePage();
+                generateQRCode();
+                updateAttendanceCount();
+            }
+        }
+
+        // ========================================================================
+        // ERROR HANDLING
+        // ========================================================================
+        function showError(message) {
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+
+        function hideError() {
+            document.getElementById('error-message').style.display = 'none';
+        }
+
+        // ========================================================================
+        // AUTO-RELOAD (Daily)
+        // ========================================================================
+        setTimeout(() => {
+            console.log('🔄 Daily reload');
+            window.location.reload();
+        }, 24 * 60 * 60 * 1000);
+
+        // ========================================================================
+        // KEYBOARD SHORTCUTS (for admins)
+        // ========================================================================
+        document.addEventListener('keydown', (e) => {
+            // Press 'R' to refresh QR
+            if (e.key === 'r' || e.key === 'R') {
+                console.log('🔄 Manual refresh');
+                generateQRCode();
+            }
+            // Press 'F' for fullscreen
+            if (e.key === 'f' || e.key === 'F') {
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen();
+                } else {
+                    document.exitFullscreen();
+                }
+            }
+        });
+
+        console.log('✅ Smart Attendance Display Ready');
+        console.log('💡 Press R to refresh | Press F for fullscreen');
+    </script>
+</body>
+</html>

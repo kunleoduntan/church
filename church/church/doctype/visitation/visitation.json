@@ -1,0 +1,360 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-02-06 17:31:04.109680",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "date_of_visitation",
+  "day",
+  "naming_series",
+  "type",
+  "status",
+  "column_break_fsg30",
+  "branch",
+  "member_id",
+  "visitee_full_name",
+  "column_break_gwphv",
+  "location",
+  "gender",
+  "column_break_ahe9u",
+  "team_leader",
+  "full_name",
+  "email_sent",
+  "contacts_section",
+  "email",
+  "column_break_u5zyu",
+  "phone",
+  "column_break_h9iwo",
+  "alternative_phone",
+  "column_break_ltos0",
+  "address",
+  "team_section",
+  "visitation_team",
+  "report_tab",
+  "visitation_report",
+  "column_break_4ewyx",
+  "report_summary",
+  "outcomes_section",
+  "prayer_requests",
+  "column_break_outcomes",
+  "needs_identified",
+  "column_break_followup",
+  "follow_up_required",
+  "follow_up_notes",
+  "metadata_section",
+  "assigned_by",
+  "column_break_meta",
+  "completed_date",
+  "column_break_meta2",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "date_of_visitation",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date of Visitation",
+   "reqd": 1
+  },
+  {
+   "fieldname": "day",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Day",
+   "read_only": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "VIS-.branch.-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Type",
+   "options": "\nRegular Visitation\nEvangelism\nFollow-up\nSick Visit\nNew Member\nBereavement",
+   "reqd": 1
+  },
+  {
+   "default": "Assigned",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Assigned\nIn Progress\nCompleted\nCancelled\nRescheduled",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_fsg30",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Branch",
+   "options": "Branch",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.type != \"Evangelism\"",
+   "fieldname": "member_id",
+   "fieldtype": "Link",
+   "label": "Member ID",
+   "options": "Member"
+  },
+  {
+   "fetch_from": "member_id.full_name",
+   "fetch_if_empty": 1,
+   "fieldname": "visitee_full_name",
+   "fieldtype": "Data",
+   "label": "Full Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_gwphv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Location"
+  },
+  {
+   "fetch_from": "member_id.gender",
+   "fetch_if_empty": 1,
+   "fieldname": "gender",
+   "fieldtype": "Link",
+   "label": "Gender",
+   "options": "Gender"
+  },
+  {
+   "fieldname": "column_break_ahe9u",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "team_leader",
+   "fieldtype": "Link",
+   "label": "Team Leader",
+   "options": "Member",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "team_leader.full_name",
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Team Leader Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "contacts_section",
+   "fieldtype": "Section Break",
+   "label": "Contact Information"
+  },
+  {
+   "fetch_from": "member_id.email",
+   "fetch_if_empty": 1,
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fieldname": "column_break_u5zyu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "member_id.mobile_phone",
+   "fetch_if_empty": 1,
+   "fieldname": "phone",
+   "fieldtype": "Phone",
+   "label": "Phone"
+  },
+  {
+   "fieldname": "column_break_h9iwo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "member_id.phone",
+   "fetch_if_empty": 1,
+   "fieldname": "alternative_phone",
+   "fieldtype": "Phone",
+   "label": "Alternative Phone"
+  },
+  {
+   "fieldname": "column_break_ltos0",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "member_id.address",
+   "fetch_if_empty": 1,
+   "fieldname": "address",
+   "fieldtype": "Small Text",
+   "label": "Address",
+   "max_height": "90px"
+  },
+  {
+   "fieldname": "team_section",
+   "fieldtype": "Section Break",
+   "label": "Visitation Team"
+  },
+  {
+   "fieldname": "visitation_team",
+   "fieldtype": "Table",
+   "label": "Team Members",
+   "options": "Visitation Team"
+  },
+  {
+   "fieldname": "report_tab",
+   "fieldtype": "Tab Break",
+   "label": "Visitation Report"
+  },
+  {
+   "fieldname": "visitation_report",
+   "fieldtype": "Text Editor",
+   "label": "Detailed Report"
+  },
+  {
+   "fieldname": "column_break_4ewyx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "report_summary",
+   "fieldtype": "Small Text",
+   "label": "Summary",
+   "max_height": "150px"
+  },
+  {
+   "fieldname": "outcomes_section",
+   "fieldtype": "Section Break",
+   "label": "Outcomes & Follow-up"
+  },
+  {
+   "fieldname": "prayer_requests",
+   "fieldtype": "Small Text",
+   "label": "Prayer Requests",
+   "max_height": "100px"
+  },
+  {
+   "fieldname": "column_break_outcomes",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "needs_identified",
+   "fieldtype": "Small Text",
+   "label": "Needs Identified",
+   "max_height": "100px"
+  },
+  {
+   "fieldname": "column_break_followup",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "follow_up_required",
+   "fieldtype": "Check",
+   "label": "Follow-up Required"
+  },
+  {
+   "depends_on": "follow_up_required",
+   "fieldname": "follow_up_notes",
+   "fieldtype": "Small Text",
+   "label": "Follow-up Notes",
+   "max_height": "100px"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "metadata_section",
+   "fieldtype": "Section Break",
+   "label": "Metadata"
+  },
+  {
+   "fieldname": "assigned_by",
+   "fieldtype": "Link",
+   "label": "Assigned By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_meta",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "completed_date",
+   "fieldtype": "Datetime",
+   "label": "Completed Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_meta2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Visitation",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Visitation",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "email_sent",
+   "fieldtype": "Check",
+   "label": "Email Sent"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-02-06 19:30:44.287953",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Visitation",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

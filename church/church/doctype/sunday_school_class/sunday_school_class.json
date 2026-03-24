@@ -10,11 +10,12 @@
  "field_order": [
   "class_name",
   "class_desc",
-  "branch",
   "column_break_zr1ov",
-  "class_full_description",
+  "sunday_school_class_category",
   "column_break_h4d0f",
-  "member_age_group",
+  "demographic_group",
+  "column_break_k1aw1",
+  "branch",
   "teacher_tab",
   "teacher_detail_section",
   "teacher",
@@ -26,7 +27,6 @@
   "column_break_uplsx",
   "start_date",
   "end_date",
-  "assistant_teacher_tab",
   "assistant_teacher_detail_section",
   "assist_teacher_id",
   "assistant_teacher_name",
@@ -39,7 +39,15 @@
   "members_tab",
   "class_member_section",
   "sunday_school_group_member",
-  "member_count"
+  "member_count",
+  "reports_tab",
+  "last_report_generated",
+  "attendance_rate",
+  "messaging_tab",
+  "messaging_section",
+  "message_content",
+  "last_message_sent",
+  "total_messages_sent"
  ],
  "fields": [
   {
@@ -55,13 +63,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "class_full_description",
-   "fieldtype": "Small Text",
-   "label": "Class Full Description",
-   "max_height": "105px",
-   "width": "200px"
-  },
-  {
    "fieldname": "column_break_h4d0f",
    "fieldtype": "Column Break"
   },
@@ -69,7 +70,8 @@
    "fieldname": "teacher",
    "fieldtype": "Link",
    "label": "Teacher ",
-   "options": "Member"
+   "options": "Member",
+   "reqd": 1
   },
   {
    "fetch_from": "teacher.full_name",
@@ -82,11 +84,15 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "teacher.mobile_phone",
+   "fetch_if_empty": 1,
    "fieldname": "phone_no",
    "fieldtype": "Phone",
    "label": "Phone No"
   },
   {
+   "fetch_from": "teacher.email",
+   "fetch_if_empty": 1,
    "fieldname": "email",
    "fieldtype": "Data",
    "label": "Email"
@@ -102,7 +108,7 @@
    "label": "End Date"
   },
   {
-   "fetch_from": "teacher.salutaion",
+   "fetch_from": "teacher.salutation",
    "fieldname": "salutation",
    "fieldtype": "Data",
    "label": "Salutation"
@@ -123,11 +129,14 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "assist_teacher_id.mobile_phone",
+   "fetch_if_empty": 1,
    "fieldname": "assistant_teacher_phone_no",
    "fieldtype": "Phone",
    "label": "Assistant Teacher Phone No"
   },
   {
+   "fetch_from": "assist_teacher_id.email",
    "fieldname": "assistant_teacher_email",
    "fieldtype": "Data",
    "label": "Assistant Teacher Email"
@@ -150,13 +159,8 @@
    "fieldname": "assist_teacher_id",
    "fieldtype": "Link",
    "label": "Assist Teacher ID",
-   "options": "Member"
-  },
-  {
-   "fieldname": "member_age_group",
-   "fieldtype": "Select",
-   "label": "Member Age Group",
-   "options": "Age 11 - 19\nAge 20 - 29"
+   "options": "Member",
+   "reqd": 1
   },
   {
    "fieldname": "class_member_section",
@@ -187,12 +191,7 @@
   {
    "fieldname": "teacher_tab",
    "fieldtype": "Tab Break",
-   "label": "Teacher"
-  },
-  {
-   "fieldname": "assistant_teacher_tab",
-   "fieldtype": "Tab Break",
-   "label": "Assistant Teacher"
+   "label": "Teachers"
   },
   {
    "fieldname": "members_tab",
@@ -210,11 +209,73 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Class Desc"
+  },
+  {
+   "fieldname": "sunday_school_class_category",
+   "fieldtype": "Link",
+   "label": "Sunday School Class Category",
+   "options": "Sunday School Class Category",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_k1aw1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "demographic_group",
+   "fieldtype": "Select",
+   "label": "Demographic Group",
+   "options": "\nMen\nWoman\nTeen\nYouth\nAdult\nChildren"
+  },
+  {
+   "fieldname": "messaging_tab",
+   "fieldtype": "Tab Break",
+   "label": "Messaging"
+  },
+  {
+   "fieldname": "messaging_section",
+   "fieldtype": "Section Break",
+   "label": "Class Communication"
+  },
+  {
+   "description": "Compose message to send to all class members",
+   "fieldname": "message_content",
+   "fieldtype": "Text Editor",
+   "label": "Message Content"
+  },
+  {
+   "fieldname": "last_message_sent",
+   "fieldtype": "Datetime",
+   "label": "Last Message Sent",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_messages_sent",
+   "fieldtype": "Int",
+   "label": "Total Messages Sent",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reports_tab",
+   "fieldtype": "Tab Break",
+   "label": "Reports"
+  },
+  {
+   "fieldname": "last_report_generated",
+   "fieldtype": "Datetime",
+   "label": "Last Report Generated",
+   "read_only": 1
+  },
+  {
+   "fieldname": "attendance_rate",
+   "fieldtype": "Percent",
+   "label": "Average Attendance Rate",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-12-02 19:11:23.522063",
+ "modified": "2026-01-31 13:22:52.377296",
  "modified_by": "Administrator",
  "module": "church",
  "name": "Sunday School Class",

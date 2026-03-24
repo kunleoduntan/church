@@ -1,0 +1,184 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-01-29 11:43:14.268633",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "budget_category",
+  "item_name",
+  "description",
+  "column_break_item",
+  "qty",
+  "uom",
+  "cost_price",
+  "column_break_cost",
+  "estimated_cost",
+  "actual_cost",
+  "variance",
+  "variance_percentage",
+  "section_break_responsibility",
+  "person_in_charge",
+  "name_of_person_in_charge",
+  "column_break_dates",
+  "date_required",
+  "payment_status",
+  "column_break_payment",
+  "payment_date",
+  "payment_method",
+  "section_break_notes",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "budget_category",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Budget Category",
+   "options": "Venue & Facility\nCatering & Refreshments\nTransportation\nAccommodation\nMedia & Technology\nPrinting & Publications\nDecoration & Branding\nGuest Honorarium\nMarketing & Publicity\nEquipment Rental\nSecurity\nMiscellaneous\nContingency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Item Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "column_break_item",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Quantity",
+   "reqd": 1
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Select",
+   "label": "Unit of Measure",
+   "options": "Nos\nPcs\nPax\nDays\nHours\nSet\nPackage\nLot\nBox\nReam\nLitre\nKg\nService"
+  },
+  {
+   "fieldname": "cost_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Unit Cost",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_cost",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "estimated_cost",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Estimated Cost",
+   "read_only": 1
+  },
+  {
+   "fieldname": "actual_cost",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Actual Cost"
+  },
+  {
+   "fieldname": "variance",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Variance",
+   "read_only": 1
+  },
+  {
+   "fieldname": "variance_percentage",
+   "fieldtype": "Percent",
+   "label": "Variance %",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_responsibility",
+   "fieldtype": "Section Break",
+   "label": "Responsibility & Timeline"
+  },
+  {
+   "fieldname": "person_in_charge",
+   "fieldtype": "Link",
+   "label": "Person In Charge",
+   "options": "Member"
+  },
+  {
+   "fetch_from": "person_in_charge.full_name",
+   "fieldname": "name_of_person_in_charge",
+   "fieldtype": "Data",
+   "label": "Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_dates",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date_required",
+   "fieldtype": "Date",
+   "label": "Date Required"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "payment_status",
+   "fieldtype": "Select",
+   "label": "Payment Status",
+   "options": "Pending\nPartially Paid\nFully Paid\nOverdue\nCancelled"
+  },
+  {
+   "fieldname": "column_break_payment",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "payment_date",
+   "fieldtype": "Date",
+   "label": "Payment Date"
+  },
+  {
+   "fieldname": "payment_method",
+   "fieldtype": "Select",
+   "label": "Payment Method",
+   "options": "Cash\nBank Transfer\nCheque\nMobile Money\nCredit Card\nOnline Payment\nOther"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_notes",
+   "fieldtype": "Section Break",
+   "label": "Additional Information"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-01-29 11:43:14.268633",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Event Budget",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

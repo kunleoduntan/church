@@ -4,32 +4,38 @@
  "allow_import": 1,
  "allow_rename": 1,
  "autoname": "naming_series:",
+ "color": "Green",
  "creation": "2024-11-25 09:14:09.182575",
  "default_view": "List",
  "doctype": "DocType",
+ "document_type": "Document",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "vow_detail_section",
   "naming_series",
   "vow_date",
-  "salutation",
-  "first_name",
-  "last_name",
-  "column_break_c3tdd",
-  "currency",
-  "amount",
-  "designated_bank_acct",
   "is_a_member",
-  "column_break_aw7at",
+  "member_id",
+  "column_break_c3tdd",
+  "last_name",
+  "first_name",
+  "branch",
+  "column_break_fbbcv",
+  "salutation",
+  "phone_no",
+  "email",
+  "vow_details_section",
+  "amount",
   "programme",
+  "column_break_aw7at",
   "redemption_date",
   "closing_date",
   "column_break_tmeaw",
-  "branch",
+  "designated_bank_acct",
+  "currency",
+  "column_break_u20qi",
   "description",
-  "phone_no",
-  "email",
   "is_payable_on_installment",
   "installmental_redemption_list_section",
   "vow_installment_analysis",
@@ -48,20 +54,30 @@
    "label": "Vow Detail"
   },
   {
+   "fetch_from": "member_id.salutation",
    "fieldname": "salutation",
    "fieldtype": "Link",
    "label": "Salutation",
-   "options": "Salutation"
+   "options": "Salutation",
+   "read_only_depends_on": "eval:doc.is_a_member == \"Yes\""
   },
   {
+   "fetch_from": "member_id.first_name",
+   "fetch_if_empty": 1,
    "fieldname": "first_name",
    "fieldtype": "Data",
-   "label": "First Name"
+   "label": "First Name",
+   "mandatory_depends_on": "eval:doc.is_a_member != \"Yes\"",
+   "read_only_depends_on": "eval:doc.is_a_member == \"Yes\""
   },
   {
+   "fetch_from": "member_id.last_name",
+   "fetch_if_empty": 1,
    "fieldname": "last_name",
    "fieldtype": "Data",
-   "label": "Last Name"
+   "label": "Last Name",
+   "mandatory_depends_on": "eval:doc.is_a_member != \"Yes\"",
+   "read_only_depends_on": "eval:doc.is_a_member == \"Yes\""
   },
   {
    "fieldname": "column_break_c3tdd",
@@ -71,13 +87,15 @@
    "fieldname": "programme",
    "fieldtype": "Link",
    "label": "Towards Programme",
-   "options": "Programme"
+   "options": "Programme",
+   "reqd": 1
   },
   {
    "fieldname": "amount",
    "fieldtype": "Float",
    "label": "Amount",
-   "precision": "2"
+   "precision": "2",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_aw7at",
@@ -86,12 +104,14 @@
   {
    "fieldname": "redemption_date",
    "fieldtype": "Date",
-   "label": "Redemption Date"
+   "label": "Redemption Date",
+   "reqd": 1
   },
   {
    "fieldname": "closing_date",
    "fieldtype": "Date",
-   "label": "Closing Date"
+   "label": "Closing Date",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_tmeaw",
@@ -118,7 +138,8 @@
    "fieldname": "branch",
    "fieldtype": "Link",
    "label": "Branch",
-   "options": "Branch"
+   "options": "Branch",
+   "reqd": 1
   },
   {
    "fieldname": "currency",
@@ -131,8 +152,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Designated Bank Acct",
-   "options": "Bank Account",
-   "reqd": 1
+   "options": "Bank Account"
   },
   {
    "default": "0",
@@ -191,35 +211,59 @@
   {
    "fieldname": "vow_date",
    "fieldtype": "Date",
-   "label": "Vow Date"
+   "label": "Vow Date",
+   "reqd": 1
   },
   {
    "fieldname": "is_a_member",
    "fieldtype": "Select",
    "label": "Is a Member",
-   "options": "\nYes\nNo"
+   "options": "\nYes\nNo",
+   "reqd": 1
   },
   {
    "fieldname": "phone_no",
    "fieldtype": "Phone",
-   "label": "Phone No"
+   "label": "Phone No",
+   "reqd": 1
   },
   {
    "fieldname": "email",
    "fieldtype": "Data",
-   "label": "Email"
+   "label": "Email",
+   "reqd": 1
   },
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "hidden": 1,
    "label": "Naming Series"
+  },
+  {
+   "depends_on": "eval:doc.is_a_member == \"Yes\"",
+   "fieldname": "member_id",
+   "fieldtype": "Link",
+   "label": "Member ID",
+   "options": "Member"
+  },
+  {
+   "fieldname": "column_break_fbbcv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "vow_details_section",
+   "fieldtype": "Section Break",
+   "label": "Vow Details"
+  },
+  {
+   "fieldname": "column_break_u20qi",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-15 12:48:59.825809",
+ "modified": "2025-04-05 12:09:57.293266",
  "modified_by": "Administrator",
  "module": "church",
  "name": "Vow",
@@ -240,7 +284,11 @@
    "write": 1
   }
  ],
+ "search_fields": "last_name",
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "last_name",
+ "track_changes": 1
 }

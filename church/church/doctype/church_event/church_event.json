@@ -1,0 +1,721 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:EVT-{event_type}-{YYYY}-{####}",
+ "creation": "2026-01-29 11:44:27.116501",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "event_information_section",
+  "event_name",
+  "event_type",
+  "status",
+  "column_break_basic",
+  "organizing_ministry",
+  "event_category",
+  "target_audience",
+  "expected_attendance",
+  "event_schedule_section",
+  "start_date",
+  "start_time",
+  "column_break_schedule",
+  "end_date",
+  "end_time",
+  "column_break_duration",
+  "is_multi_day",
+  "duration_days",
+  "section_break_location",
+  "venue",
+  "venue_type",
+  "column_break_venue",
+  "address",
+  "city",
+  "column_break_capacity",
+  "seating_capacity",
+  "is_external_venue",
+  "venue_contact_person",
+  "venue_contact_phone",
+  "event_details_section",
+  "event_description",
+  "event_theme",
+  "column_break_details",
+  "dress_code",
+  "special_instructions",
+  "event_program_section",
+  "event_agenda",
+  "program_outline",
+  "invited_guests_section",
+  "invited_guests",
+  "leadership_section",
+  "event_coordinator",
+  "event_minister",
+  "column_break_leadership",
+  "worship_leader",
+  "protocol_officer",
+  "column_break_teams",
+  "choir_team",
+  "ushering_team",
+  "media_team",
+  "budget_section",
+  "budget_items",
+  "total_section",
+  "total_estimated_budget",
+  "column_break_budget_summary",
+  "total_actual_expenditure",
+  "column_break_budget",
+  "total_variance",
+  "column_break_megbo",
+  "budget_status",
+  "section_break_budget_notes",
+  "budget_notes",
+  "logistics_section",
+  "requires_catering",
+  "catering_notes",
+  "column_break_logistics",
+  "requires_transportation",
+  "transportation_notes",
+  "column_break_accommodation",
+  "requires_accommodation",
+  "accommodation_notes",
+  "media_section",
+  "enable_live_streaming",
+  "livestream_url",
+  "column_break_media",
+  "enable_recording",
+  "social_media_hashtag",
+  "column_break_publicity",
+  "publicity_status",
+  "promotional_materials",
+  "registration_section",
+  "requires_registration",
+  "registration_deadline",
+  "column_break_registration",
+  "registration_fee",
+  "max_participants",
+  "column_break_reg_count",
+  "total_registered",
+  "registration_url",
+  "attendance_section",
+  "actual_attendance",
+  "attendance_notes",
+  "column_break_attendance",
+  "offering_collected",
+  "offering_notes",
+  "evaluation_section",
+  "event_feedback",
+  "lessons_learned",
+  "column_break_evaluation",
+  "event_rating",
+  "recommendations",
+  "section_break_notes",
+  "additional_notes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "event_information_section",
+   "fieldtype": "Section Break",
+   "label": "Event Information"
+  },
+  {
+   "bold": 1,
+   "fieldname": "event_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Event Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "event_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Event Type",
+   "options": "Conference\nConvention\nCrusade\nSeminar\nWorkshop\nRetreat\nOutreach\nFundraising\nAnniversary\nGraduation\nOrdination\nDedication\nConvocation\nConcert\nFestival\nVigil\nOther",
+   "reqd": 1
+  },
+  {
+   "default": "Planning",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Planning\nApproved\nIn Progress\nCompleted\nCancelled\nPostponed",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "organizing_ministry",
+   "fieldtype": "Link",
+   "label": "Organizing Ministry",
+   "options": "Ministry"
+  },
+  {
+   "fieldname": "event_category",
+   "fieldtype": "Select",
+   "label": "Event Category",
+   "options": "Spiritual\nEducational\nSocial\nFundraising\nOutreach\nYouth\nChildren\nWomen\nMen\nFamily\nLeadership"
+  },
+  {
+   "fieldname": "target_audience",
+   "fieldtype": "Select",
+   "label": "Target Audience",
+   "options": "General Members\nYouth\nChildren\nWomen\nMen\nLeadership\nWorkers\nFirst Timers\nGuests\nCommunity\nAll"
+  },
+  {
+   "fieldname": "expected_attendance",
+   "fieldtype": "Int",
+   "label": "Expected Attendance"
+  },
+  {
+   "fieldname": "event_schedule_section",
+   "fieldtype": "Section Break",
+   "label": "Event Schedule"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "start_time",
+   "fieldtype": "Time",
+   "label": "Start Time",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_schedule",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_time",
+   "fieldtype": "Time",
+   "label": "End Time",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_duration",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_multi_day",
+   "fieldtype": "Check",
+   "label": "Multi-Day Event"
+  },
+  {
+   "depends_on": "eval:doc.is_multi_day==1",
+   "fieldname": "duration_days",
+   "fieldtype": "Int",
+   "label": "Duration (Days)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_location",
+   "fieldtype": "Section Break",
+   "label": "Venue & Location"
+  },
+  {
+   "fieldname": "venue",
+   "fieldtype": "Data",
+   "label": "Venue Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "venue_type",
+   "fieldtype": "Select",
+   "label": "Venue Type",
+   "options": "Church Auditorium\nChurch Hall\nConference Center\nHotel\nSchool\nOpen Ground\nOnline\nHybrid\nOther"
+  },
+  {
+   "fieldname": "column_break_venue",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Small Text",
+   "label": "Venue Address"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "column_break_capacity",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "seating_capacity",
+   "fieldtype": "Int",
+   "label": "Venue Capacity"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_external_venue",
+   "fieldtype": "Check",
+   "label": "External Venue"
+  },
+  {
+   "depends_on": "eval:doc.is_external_venue==1",
+   "fieldname": "venue_contact_person",
+   "fieldtype": "Data",
+   "label": "Venue Contact Person"
+  },
+  {
+   "depends_on": "eval:doc.is_external_venue==1",
+   "fieldname": "venue_contact_phone",
+   "fieldtype": "Data",
+   "label": "Venue Contact Phone"
+  },
+  {
+   "fieldname": "event_details_section",
+   "fieldtype": "Section Break",
+   "label": "Event Details"
+  },
+  {
+   "fieldname": "event_description",
+   "fieldtype": "Text Editor",
+   "label": "Event Description"
+  },
+  {
+   "fieldname": "event_theme",
+   "fieldtype": "Data",
+   "label": "Event Theme/Topic"
+  },
+  {
+   "fieldname": "column_break_details",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dress_code",
+   "fieldtype": "Select",
+   "label": "Dress Code",
+   "options": "Formal\nSemi-Formal\nCasual\nSmart Casual\nTraditional\nUniform\nNo Specific Code"
+  },
+  {
+   "fieldname": "special_instructions",
+   "fieldtype": "Small Text",
+   "label": "Special Instructions"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "event_program_section",
+   "fieldtype": "Section Break",
+   "label": "Event Program"
+  },
+  {
+   "fieldname": "event_agenda",
+   "fieldtype": "Table",
+   "label": "Event Agenda/Schedule",
+   "options": "Event Agenda Item"
+  },
+  {
+   "fieldname": "program_outline",
+   "fieldtype": "Text Editor",
+   "label": "Program Outline"
+  },
+  {
+   "fieldname": "invited_guests_section",
+   "fieldtype": "Section Break",
+   "label": "Invited Guests & Speakers"
+  },
+  {
+   "fieldname": "invited_guests",
+   "fieldtype": "Table",
+   "label": "Invited Guests",
+   "options": "Event Guest"
+  },
+  {
+   "fieldname": "leadership_section",
+   "fieldtype": "Section Break",
+   "label": "Event Leadership & Teams"
+  },
+  {
+   "fieldname": "event_coordinator",
+   "fieldtype": "Link",
+   "label": "Event Coordinator",
+   "options": "Member"
+  },
+  {
+   "fieldname": "event_minister",
+   "fieldtype": "Link",
+   "label": "Ministering Pastor/Speaker",
+   "options": "Member"
+  },
+  {
+   "fieldname": "column_break_leadership",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "worship_leader",
+   "fieldtype": "Link",
+   "label": "Worship Leader",
+   "options": "Member"
+  },
+  {
+   "fieldname": "protocol_officer",
+   "fieldtype": "Link",
+   "label": "Protocol Officer",
+   "options": "Member"
+  },
+  {
+   "fieldname": "column_break_teams",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "choir_team",
+   "fieldtype": "Link",
+   "label": "Choir/Music Team",
+   "options": "Ministry"
+  },
+  {
+   "fieldname": "ushering_team",
+   "fieldtype": "Link",
+   "label": "Ushering Team",
+   "options": "Ministry"
+  },
+  {
+   "fieldname": "media_team",
+   "fieldtype": "Link",
+   "label": "Media Team",
+   "options": "Ministry"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "budget_section",
+   "fieldtype": "Section Break",
+   "label": "Budget & Finance"
+  },
+  {
+   "fieldname": "budget_items",
+   "fieldtype": "Table",
+   "label": "Budget Items",
+   "options": "Event Budget"
+  },
+  {
+   "fieldname": "column_break_budget_summary",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_estimated_budget",
+   "fieldtype": "Currency",
+   "label": "Total Estimated Budget",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_actual_expenditure",
+   "fieldtype": "Currency",
+   "label": "Total Actual Expenditure",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_budget",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_variance",
+   "fieldtype": "Currency",
+   "label": "Total Variance",
+   "read_only": 1
+  },
+  {
+   "fieldname": "budget_status",
+   "fieldtype": "Select",
+   "label": "Budget Status",
+   "options": "Draft\nPending Approval\nApproved\nWithin Budget\nOver Budget\nUnder Budget\nCompleted"
+  },
+  {
+   "fieldname": "section_break_budget_notes",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "budget_notes",
+   "fieldtype": "Text Editor",
+   "label": "Budget Notes & Justifications"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "logistics_section",
+   "fieldtype": "Section Break",
+   "label": "Logistics"
+  },
+  {
+   "default": "0",
+   "fieldname": "requires_catering",
+   "fieldtype": "Check",
+   "label": "Requires Catering"
+  },
+  {
+   "depends_on": "eval:doc.requires_catering==1",
+   "fieldname": "catering_notes",
+   "fieldtype": "Small Text",
+   "label": "Catering Details"
+  },
+  {
+   "fieldname": "column_break_logistics",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "requires_transportation",
+   "fieldtype": "Check",
+   "label": "Requires Transportation"
+  },
+  {
+   "depends_on": "eval:doc.requires_transportation==1",
+   "fieldname": "transportation_notes",
+   "fieldtype": "Small Text",
+   "label": "Transportation Details"
+  },
+  {
+   "fieldname": "column_break_accommodation",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "requires_accommodation",
+   "fieldtype": "Check",
+   "label": "Requires Accommodation"
+  },
+  {
+   "depends_on": "eval:doc.requires_accommodation==1",
+   "fieldname": "accommodation_notes",
+   "fieldtype": "Small Text",
+   "label": "Accommodation Details"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "media_section",
+   "fieldtype": "Section Break",
+   "label": "Media & Publicity"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_live_streaming",
+   "fieldtype": "Check",
+   "label": "Live Streaming"
+  },
+  {
+   "depends_on": "eval:doc.enable_live_streaming==1",
+   "fieldname": "livestream_url",
+   "fieldtype": "Data",
+   "label": "Livestream URL"
+  },
+  {
+   "fieldname": "column_break_media",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_recording",
+   "fieldtype": "Check",
+   "label": "Record Event"
+  },
+  {
+   "fieldname": "social_media_hashtag",
+   "fieldtype": "Data",
+   "label": "Social Media Hashtag"
+  },
+  {
+   "fieldname": "column_break_publicity",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "publicity_status",
+   "fieldtype": "Select",
+   "label": "Publicity Status",
+   "options": "Not Started\nIn Progress\nCompleted"
+  },
+  {
+   "fieldname": "promotional_materials",
+   "fieldtype": "Small Text",
+   "label": "Promotional Materials"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "registration_section",
+   "fieldtype": "Section Break",
+   "label": "Registration"
+  },
+  {
+   "default": "0",
+   "fieldname": "requires_registration",
+   "fieldtype": "Check",
+   "label": "Requires Registration"
+  },
+  {
+   "depends_on": "eval:doc.requires_registration==1",
+   "fieldname": "registration_deadline",
+   "fieldtype": "Date",
+   "label": "Registration Deadline"
+  },
+  {
+   "fieldname": "column_break_registration",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.requires_registration==1",
+   "fieldname": "registration_fee",
+   "fieldtype": "Currency",
+   "label": "Registration Fee"
+  },
+  {
+   "depends_on": "eval:doc.requires_registration==1",
+   "fieldname": "max_participants",
+   "fieldtype": "Int",
+   "label": "Max Participants"
+  },
+  {
+   "fieldname": "column_break_reg_count",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.requires_registration==1",
+   "fieldname": "total_registered",
+   "fieldtype": "Int",
+   "label": "Total Registered",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.requires_registration==1",
+   "fieldname": "registration_url",
+   "fieldtype": "Data",
+   "label": "Registration URL"
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "eval:doc.status=='Completed'",
+   "fieldname": "attendance_section",
+   "fieldtype": "Section Break",
+   "label": "Attendance & Offering"
+  },
+  {
+   "fieldname": "actual_attendance",
+   "fieldtype": "Int",
+   "label": "Actual Attendance"
+  },
+  {
+   "fieldname": "attendance_notes",
+   "fieldtype": "Small Text",
+   "label": "Attendance Notes"
+  },
+  {
+   "fieldname": "column_break_attendance",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "offering_collected",
+   "fieldtype": "Currency",
+   "label": "Offering Collected"
+  },
+  {
+   "fieldname": "offering_notes",
+   "fieldtype": "Small Text",
+   "label": "Offering Notes"
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "eval:doc.status=='Completed'",
+   "fieldname": "evaluation_section",
+   "fieldtype": "Section Break",
+   "label": "Post-Event Evaluation"
+  },
+  {
+   "fieldname": "event_feedback",
+   "fieldtype": "Text Editor",
+   "label": "Event Feedback"
+  },
+  {
+   "fieldname": "lessons_learned",
+   "fieldtype": "Text Editor",
+   "label": "Lessons Learned"
+  },
+  {
+   "fieldname": "column_break_evaluation",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "event_rating",
+   "fieldtype": "Select",
+   "label": "Event Rating",
+   "options": "Excellent\nVery Good\nGood\nFair\nPoor"
+  },
+  {
+   "fieldname": "recommendations",
+   "fieldtype": "Text Editor",
+   "label": "Recommendations for Future"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_notes",
+   "fieldtype": "Section Break",
+   "label": "Additional Information"
+  },
+  {
+   "fieldname": "additional_notes",
+   "fieldtype": "Text Editor",
+   "label": "Additional Notes"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Church Event",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_section",
+   "fieldtype": "Section Break",
+   "hide_border": 1
+  },
+  {
+   "fieldname": "column_break_megbo",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-01-29 11:49:24.631352",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Church Event",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

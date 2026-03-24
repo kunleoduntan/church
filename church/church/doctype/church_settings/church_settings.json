@@ -1,0 +1,1296 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "prompt",
+ "creation": "2026-01-31 19:26:14.635140",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "general_settings_section",
+  "church_name",
+  "church_abbreviation",
+  "auto_submit_attendance",
+  "auto_submit_attendance_time",
+  "column_break_1",
+  "headquarters",
+  "default_currency",
+  "column_break_sggjg",
+  "service_gap_minutes",
+  "member_follow_up_section",
+  "create_weekly_visitation_sheet",
+  "section_break_receipt",
+  "receipt_settings_tab",
+  "auto_generate_receipts_on_batch_submit",
+  "auto_submit_receipts_from_batch",
+  "column_break_receipt_1",
+  "receipt_validity_days",
+  "enable_receipt_notifications",
+  "section_break_tithe",
+  "tithe_settings_tab",
+  "worker_tithe_account",
+  "member_tithe_account",
+  "column_break_tithe_1",
+  "default_tithe_income_account",
+  "tithe_cost_center",
+  "section_break_financial",
+  "financial_settings_tab",
+  "fiscal_year_start_month",
+  "enable_multi_currency",
+  "column_break_financial_1",
+  "default_bank_account",
+  "default_cash_account",
+  "section_break_members",
+  "member_settings_tab",
+  "member_id_prefix",
+  "worker_id_prefix",
+  "column_break_members_1",
+  "auto_create_member_ledger",
+  "require_member_approval",
+  "section_break_notifications",
+  "notification_settings_tab",
+  "email_notifications_enabled",
+  "notification_email",
+  "notification_sender_name",
+  "column_break_notifications_1",
+  "smtp_server",
+  "smtp_port",
+  "smtp_username",
+  "smtp_password",
+  "use_ssl_tls",
+  "email_notification_settings_section",
+  "offering_report_recipients",
+  "column_break_bum1r",
+  "email_subject_template",
+  "auto_email_offering_sheets",
+  "section_break_sms",
+  "sms_settings_section",
+  "sms_notifications_enabled",
+  "sms_provider",
+  "column_break_sms_1",
+  "sms_sender_id",
+  "section_break_sms_providers",
+  "twilio_settings_section",
+  "twilio_account_sid",
+  "twilio_auth_token",
+  "column_break_twilio",
+  "twilio_phone_number",
+  "section_break_termii",
+  "termii_settings_section",
+  "termii_api_key",
+  "termii_sender_id",
+  "column_break_termii",
+  "termii_channel",
+  "section_break_africastalking",
+  "africastalking_settings_section",
+  "africastalking_username",
+  "africastalking_api_key",
+  "column_break_africastalking",
+  "africastalking_sender_id",
+  "section_break_whatsapp",
+  "whatsapp_settings_section",
+  "whatsapp_notifications_enabled",
+  "whatsapp_provider",
+  "column_break_whatsapp_1",
+  "section_break_whatsapp_providers",
+  "twilio_whatsapp_section",
+  "twilio_whatsapp_number",
+  "column_break_twilio_wa",
+  "twilio_whatsapp_account_sid",
+  "twilio_whatsapp_auth_token",
+  "section_break_360dialog",
+  "dialog_360_section",
+  "dialog_360_api_key",
+  "dialog_360_client_id",
+  "column_break_360dialog",
+  "dialog_360_namespace",
+  "section_break_wati",
+  "wati_settings_section",
+  "wati_api_key",
+  "wati_api_endpoint",
+  "column_break_wati",
+  "wati_phone_number",
+  "section_break_push",
+  "push_notification_section",
+  "push_notifications_enabled",
+  "push_provider",
+  "column_break_push_1",
+  "firebase_server_key",
+  "firebase_project_id",
+  "onesignal_app_id",
+  "onesignal_api_key",
+  "birthday_settings_tab",
+  "birthday_message_section",
+  "send_message_from_template",
+  "auto_send_birthday_wishes",
+  "column_break_birthday1",
+  "birthday_wish_time",
+  "birthday_channels_section",
+  "birthday_template_section",
+  "birthday_message_template_html",
+  "birthday_message_template_plain",
+  "birthday_template_help",
+  "section_break_advanced",
+  "advanced_settings_tab",
+  "enable_branch_wise_accounting",
+  "enable_audit_trail",
+  "column_break_advanced_1",
+  "auto_backup_enabled",
+  "data_retention_years",
+  "weekly_services_tab",
+  "weekly_services",
+  "member_grouping_section",
+  "member_group_rules",
+  "demographic_group_rules",
+  "default_accounts_tab",
+  "default_accounts",
+  "smart_attendance_tab",
+  "smart_attendance_settings_section",
+  "enable_smart_attendance",
+  "attendance_check_in_window",
+  "attendance_check_in_window_after",
+  "qr_code_attendance_section",
+  "enable_qr_attendance",
+  "qr_refresh_interval",
+  "column_break_wpccf",
+  "qr_display_url",
+  "qr_check_in_method",
+  "section_break_wifi",
+  "enable_wifi_attendance",
+  "wifi_ssid",
+  "wifi_controller_url",
+  "column_break_s9wcp",
+  "wifi_api_key",
+  "wifi_captive_portal_url",
+  "wifi_require_confirmation",
+  "enable_whatsapp_attendance",
+  "whatsapp_business_number",
+  "whatsapp_api_token",
+  "column_break_un4je",
+  "whatsapp_verification_method",
+  "whatsapp_check_in_keyword",
+  "whatsapp_require_location",
+  "section_break_location",
+  "church_latitude",
+  "church_longitude",
+  "column_break_z9nga",
+  "location_radius",
+  "get_current_location",
+  "section_break_security",
+  "enable_fraud_detection",
+  "max_check_ins_per_service",
+  "column_break_wrzxl",
+  "block_remote_check_ins",
+  "notify_admin_on_fraud",
+  "section_break_notification",
+  "send_check_in_confirmation",
+  "confirmation_method",
+  "column_break_hk4kx",
+  "confirmation_message"
+ ],
+ "fields": [
+  {
+   "fieldname": "general_settings_section",
+   "fieldtype": "Section Break",
+   "label": "General Settings"
+  },
+  {
+   "description": "Official name of the church organization",
+   "fieldname": "church_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Church Name",
+   "reqd": 1
+  },
+  {
+   "description": "Short form/abbreviation (e.g., RCCG, MFM)",
+   "fieldname": "church_abbreviation",
+   "fieldtype": "Data",
+   "label": "Church Abbreviation"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Main headquarters location",
+   "fieldname": "headquarters",
+   "fieldtype": "Data",
+   "label": "Headquarters Location"
+  },
+  {
+   "default": "NGN",
+   "fieldname": "default_currency",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Default Currency",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_receipt",
+   "fieldtype": "Section Break",
+   "label": "Receipt Settings"
+  },
+  {
+   "fieldname": "receipt_settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Receipt Settings"
+  },
+  {
+   "default": "1",
+   "description": "Automatically generate receipts when a tithe batch is submitted",
+   "fieldname": "auto_generate_receipts_on_batch_submit",
+   "fieldtype": "Check",
+   "label": "Auto Generate Receipts on Batch Submit"
+  },
+  {
+   "default": "0",
+   "description": "Automatically submit receipts generated from batch (otherwise they remain in draft)",
+   "fieldname": "auto_submit_receipts_from_batch",
+   "fieldtype": "Check",
+   "label": "Auto Submit Receipts from Batch"
+  },
+  {
+   "fieldname": "column_break_receipt_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "365",
+   "description": "Number of days a receipt remains valid",
+   "fieldname": "receipt_validity_days",
+   "fieldtype": "Int",
+   "label": "Receipt Validity Days"
+  },
+  {
+   "default": "1",
+   "description": "Send notifications to members when receipts are generated",
+   "fieldname": "enable_receipt_notifications",
+   "fieldtype": "Check",
+   "label": "Enable Receipt Notifications"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_tithe",
+   "fieldtype": "Section Break",
+   "label": "Tithe Settings"
+  },
+  {
+   "fieldname": "tithe_settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Tithe Settings"
+  },
+  {
+   "description": "GL Account for worker tithes",
+   "fieldname": "worker_tithe_account",
+   "fieldtype": "Link",
+   "label": "Worker Tithe Account",
+   "options": "Account"
+  },
+  {
+   "description": "GL Account for member tithes",
+   "fieldname": "member_tithe_account",
+   "fieldtype": "Link",
+   "label": "Member Tithe Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "column_break_tithe_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Default income account for all tithes",
+   "fieldname": "default_tithe_income_account",
+   "fieldtype": "Link",
+   "label": "Default Tithe Income Account",
+   "options": "Account"
+  },
+  {
+   "description": "Default cost center for tithe transactions",
+   "fieldname": "tithe_cost_center",
+   "fieldtype": "Link",
+   "label": "Default Tithe Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_financial",
+   "fieldtype": "Section Break",
+   "label": "Financial Settings"
+  },
+  {
+   "fieldname": "financial_settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Financial Settings"
+  },
+  {
+   "default": "January",
+   "description": "Month when church fiscal year begins",
+   "fieldname": "fiscal_year_start_month",
+   "fieldtype": "Select",
+   "label": "Fiscal Year Start Month",
+   "options": "January\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_multi_currency",
+   "fieldtype": "Check",
+   "label": "Enable Multi-Currency Transactions"
+  },
+  {
+   "fieldname": "column_break_financial_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Default bank account for transactions",
+   "fieldname": "default_bank_account",
+   "fieldtype": "Link",
+   "label": "Default Bank Account",
+   "options": "Account"
+  },
+  {
+   "description": "Default cash account for cash transactions",
+   "fieldname": "default_cash_account",
+   "fieldtype": "Link",
+   "label": "Default Cash Account",
+   "options": "Account"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_members",
+   "fieldtype": "Section Break",
+   "label": "Member Settings"
+  },
+  {
+   "fieldname": "member_settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Member Settings"
+  },
+  {
+   "default": "MBR",
+   "description": "Prefix for member IDs (e.g., MBR-0001)",
+   "fieldname": "member_id_prefix",
+   "fieldtype": "Data",
+   "label": "Member ID Prefix"
+  },
+  {
+   "default": "WKR",
+   "description": "Prefix for worker IDs (e.g., WKR-0001)",
+   "fieldname": "worker_id_prefix",
+   "fieldtype": "Data",
+   "label": "Worker ID Prefix"
+  },
+  {
+   "fieldname": "column_break_members_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "description": "Automatically create ledger entries for member transactions",
+   "fieldname": "auto_create_member_ledger",
+   "fieldtype": "Check",
+   "label": "Auto Create Member Ledger"
+  },
+  {
+   "default": "0",
+   "description": "New members require approval before activation",
+   "fieldname": "require_member_approval",
+   "fieldtype": "Check",
+   "label": "Require Member Approval"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_notifications",
+   "fieldtype": "Section Break",
+   "label": "Email Settings"
+  },
+  {
+   "fieldname": "notification_settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Email"
+  },
+  {
+   "default": "1",
+   "fieldname": "email_notifications_enabled",
+   "fieldtype": "Check",
+   "label": "Enable Email Notifications"
+  },
+  {
+   "description": "Email address for receiving system notifications",
+   "fieldname": "notification_email",
+   "fieldtype": "Data",
+   "label": "Notification Email Address"
+  },
+  {
+   "default": "Church Management System",
+   "description": "Name displayed as sender in notifications",
+   "fieldname": "notification_sender_name",
+   "fieldtype": "Data",
+   "label": "Notification Sender Name"
+  },
+  {
+   "fieldname": "column_break_notifications_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.email_notifications_enabled",
+   "description": "SMTP server address (e.g., smtp.gmail.com)",
+   "fieldname": "smtp_server",
+   "fieldtype": "Data",
+   "label": "SMTP Server"
+  },
+  {
+   "default": "587",
+   "depends_on": "eval:doc.email_notifications_enabled",
+   "description": "SMTP port (587 for TLS, 465 for SSL)",
+   "fieldname": "smtp_port",
+   "fieldtype": "Int",
+   "label": "SMTP Port"
+  },
+  {
+   "depends_on": "eval:doc.email_notifications_enabled",
+   "description": "SMTP authentication username",
+   "fieldname": "smtp_username",
+   "fieldtype": "Data",
+   "label": "SMTP Username"
+  },
+  {
+   "depends_on": "eval:doc.email_notifications_enabled",
+   "description": "SMTP authentication password",
+   "fieldname": "smtp_password",
+   "fieldtype": "Password",
+   "label": "SMTP Password"
+  },
+  {
+   "default": "TLS",
+   "depends_on": "eval:doc.email_notifications_enabled",
+   "fieldname": "use_ssl_tls",
+   "fieldtype": "Select",
+   "label": "Encryption",
+   "options": "None\nTLS\nSSL"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_sms",
+   "fieldtype": "Section Break",
+   "label": "SMS Settings"
+  },
+  {
+   "fieldname": "sms_settings_section",
+   "fieldtype": "Tab Break",
+   "label": "SMS"
+  },
+  {
+   "default": "0",
+   "fieldname": "sms_notifications_enabled",
+   "fieldtype": "Check",
+   "label": "Enable SMS Notifications"
+  },
+  {
+   "depends_on": "eval:doc.sms_notifications_enabled",
+   "description": "Select your SMS service provider",
+   "fieldname": "sms_provider",
+   "fieldtype": "Select",
+   "label": "SMS Provider",
+   "options": "\nTwilio\nTermii\nAfrica's Talking\nBulk SMS Nigeria\nCustom API"
+  },
+  {
+   "fieldname": "column_break_sms_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.sms_notifications_enabled",
+   "description": "Sender ID shown to recipients",
+   "fieldname": "sms_sender_id",
+   "fieldtype": "Data",
+   "label": "SMS Sender ID"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.sms_notifications_enabled",
+   "fieldname": "section_break_sms_providers",
+   "fieldtype": "Section Break",
+   "label": "SMS Provider Configuration"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.sms_provider == 'Twilio'",
+   "fieldname": "twilio_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Twilio Settings"
+  },
+  {
+   "depends_on": "eval:doc.sms_provider == 'Twilio'",
+   "fieldname": "twilio_account_sid",
+   "fieldtype": "Data",
+   "label": "Twilio Account SID"
+  },
+  {
+   "depends_on": "eval:doc.sms_provider == 'Twilio'",
+   "fieldname": "twilio_auth_token",
+   "fieldtype": "Password",
+   "label": "Twilio Auth Token"
+  },
+  {
+   "fieldname": "column_break_twilio",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.sms_provider == 'Twilio'",
+   "description": "Your Twilio phone number (with country code)",
+   "fieldname": "twilio_phone_number",
+   "fieldtype": "Data",
+   "label": "Twilio Phone Number"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.sms_provider == 'Termii'",
+   "fieldname": "section_break_termii",
+   "fieldtype": "Section Break",
+   "label": "Termii Settings"
+  },
+  {
+   "fieldname": "termii_settings_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval:doc.sms_provider == 'Termii'",
+   "fieldname": "termii_api_key",
+   "fieldtype": "Password",
+   "label": "Termii API Key"
+  },
+  {
+   "depends_on": "eval:doc.sms_provider == 'Termii'",
+   "fieldname": "termii_sender_id",
+   "fieldtype": "Data",
+   "label": "Termii Sender ID"
+  },
+  {
+   "fieldname": "column_break_termii",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "generic",
+   "depends_on": "eval:doc.sms_provider == 'Termii'",
+   "fieldname": "termii_channel",
+   "fieldtype": "Select",
+   "label": "Termii Channel",
+   "options": "generic\ndnd\nwhatsapp"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.sms_provider == \"Africa's Talking\"",
+   "fieldname": "section_break_africastalking",
+   "fieldtype": "Section Break",
+   "label": "Africa's Talking Settings"
+  },
+  {
+   "fieldname": "africastalking_settings_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval:doc.sms_provider == \"Africa's Talking\"",
+   "fieldname": "africastalking_username",
+   "fieldtype": "Data",
+   "label": "Africa's Talking Username"
+  },
+  {
+   "depends_on": "eval:doc.sms_provider == \"Africa's Talking\"",
+   "fieldname": "africastalking_api_key",
+   "fieldtype": "Password",
+   "label": "Africa's Talking API Key"
+  },
+  {
+   "fieldname": "column_break_africastalking",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.sms_provider == \"Africa's Talking\"",
+   "fieldname": "africastalking_sender_id",
+   "fieldtype": "Data",
+   "label": "Africa's Talking Sender ID"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_whatsapp",
+   "fieldtype": "Section Break",
+   "label": "WhatsApp Settings"
+  },
+  {
+   "fieldname": "whatsapp_settings_section",
+   "fieldtype": "Tab Break",
+   "label": "WhatsApp"
+  },
+  {
+   "default": "0",
+   "fieldname": "whatsapp_notifications_enabled",
+   "fieldtype": "Check",
+   "label": "Enable WhatsApp Notifications"
+  },
+  {
+   "depends_on": "eval:doc.whatsapp_notifications_enabled",
+   "description": "Select your WhatsApp service provider",
+   "fieldname": "whatsapp_provider",
+   "fieldtype": "Select",
+   "label": "WhatsApp Provider",
+   "options": "\nTwilio\n360Dialog\nWati\nMeta Business API\nCustom API"
+  },
+  {
+   "fieldname": "column_break_whatsapp_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.whatsapp_notifications_enabled",
+   "fieldname": "section_break_whatsapp_providers",
+   "fieldtype": "Section Break",
+   "label": "WhatsApp Provider Configuration"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.whatsapp_provider == 'Twilio'",
+   "fieldname": "twilio_whatsapp_section",
+   "fieldtype": "Section Break",
+   "label": "Twilio WhatsApp Settings"
+  },
+  {
+   "depends_on": "eval:doc.whatsapp_provider == 'Twilio'",
+   "description": "Your Twilio WhatsApp number (format: whatsapp:+1234567890)",
+   "fieldname": "twilio_whatsapp_number",
+   "fieldtype": "Data",
+   "label": "Twilio WhatsApp Number"
+  },
+  {
+   "fieldname": "column_break_twilio_wa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.whatsapp_provider == 'Twilio'",
+   "fieldname": "twilio_whatsapp_account_sid",
+   "fieldtype": "Data",
+   "label": "Twilio Account SID"
+  },
+  {
+   "depends_on": "eval:doc.whatsapp_provider == 'Twilio'",
+   "fieldname": "twilio_whatsapp_auth_token",
+   "fieldtype": "Password",
+   "label": "Twilio Auth Token"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.whatsapp_provider == '360Dialog'",
+   "fieldname": "section_break_360dialog",
+   "fieldtype": "Section Break",
+   "label": "360Dialog Settings"
+  },
+  {
+   "fieldname": "dialog_360_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval:doc.whatsapp_provider == '360Dialog'",
+   "fieldname": "dialog_360_api_key",
+   "fieldtype": "Password",
+   "label": "360Dialog API Key"
+  },
+  {
+   "depends_on": "eval:doc.whatsapp_provider == '360Dialog'",
+   "fieldname": "dialog_360_client_id",
+   "fieldtype": "Data",
+   "label": "360Dialog Client ID"
+  },
+  {
+   "fieldname": "column_break_360dialog",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.whatsapp_provider == '360Dialog'",
+   "fieldname": "dialog_360_namespace",
+   "fieldtype": "Data",
+   "label": "360Dialog Namespace"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.whatsapp_provider == 'Wati'",
+   "fieldname": "section_break_wati",
+   "fieldtype": "Section Break",
+   "label": "Wati Settings"
+  },
+  {
+   "fieldname": "wati_settings_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval:doc.whatsapp_provider == 'Wati'",
+   "fieldname": "wati_api_key",
+   "fieldtype": "Password",
+   "label": "Wati API Key"
+  },
+  {
+   "depends_on": "eval:doc.whatsapp_provider == 'Wati'",
+   "description": "Your Wati API endpoint URL",
+   "fieldname": "wati_api_endpoint",
+   "fieldtype": "Data",
+   "label": "Wati API Endpoint"
+  },
+  {
+   "fieldname": "column_break_wati",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.whatsapp_provider == 'Wati'",
+   "fieldname": "wati_phone_number",
+   "fieldtype": "Data",
+   "label": "Wati Phone Number"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_push",
+   "fieldtype": "Section Break",
+   "label": "Push Notification Settings"
+  },
+  {
+   "fieldname": "push_notification_section",
+   "fieldtype": "Tab Break",
+   "label": "Push Notifications"
+  },
+  {
+   "default": "0",
+   "fieldname": "push_notifications_enabled",
+   "fieldtype": "Check",
+   "label": "Enable Push Notifications"
+  },
+  {
+   "depends_on": "eval:doc.push_notifications_enabled",
+   "fieldname": "push_provider",
+   "fieldtype": "Select",
+   "label": "Push Notification Provider",
+   "options": "\nFirebase (FCM)\nOneSignal"
+  },
+  {
+   "fieldname": "column_break_push_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.push_notifications_enabled && doc.push_provider == 'Firebase (FCM)'",
+   "fieldname": "firebase_server_key",
+   "fieldtype": "Password",
+   "label": "Firebase Server Key"
+  },
+  {
+   "depends_on": "eval:doc.push_notifications_enabled && doc.push_provider == 'Firebase (FCM)'",
+   "fieldname": "firebase_project_id",
+   "fieldtype": "Data",
+   "label": "Firebase Project ID"
+  },
+  {
+   "depends_on": "eval:doc.push_notifications_enabled && doc.push_provider == 'OneSignal'",
+   "fieldname": "onesignal_app_id",
+   "fieldtype": "Data",
+   "label": "OneSignal App ID"
+  },
+  {
+   "depends_on": "eval:doc.push_notifications_enabled && doc.push_provider == 'OneSignal'",
+   "fieldname": "onesignal_api_key",
+   "fieldtype": "Password",
+   "label": "OneSignal REST API Key"
+  },
+  {
+   "fieldname": "birthday_settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Birthday Settings"
+  },
+  {
+   "fieldname": "birthday_message_section",
+   "fieldtype": "Section Break",
+   "label": "Birthday Message Configuration"
+  },
+  {
+   "default": "0",
+   "description": "If checked, use custom templates below. Otherwise, system uses default birthday message",
+   "fieldname": "send_message_from_template",
+   "fieldtype": "Check",
+   "label": "Use Custom Birthday Template"
+  },
+  {
+   "default": "1",
+   "description": "Automatically send birthday wishes daily via scheduler",
+   "fieldname": "auto_send_birthday_wishes",
+   "fieldtype": "Check",
+   "label": "Auto Send Birthday Wishes"
+  },
+  {
+   "fieldname": "column_break_birthday1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "08:00:00",
+   "description": "Time to send birthday wishes (24-hour format)",
+   "fieldname": "birthday_wish_time",
+   "fieldtype": "Time",
+   "label": "Birthday Wish Send Time"
+  },
+  {
+   "fieldname": "birthday_channels_section",
+   "fieldtype": "Section Break",
+   "label": "Birthday Message Channels"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.send_message_from_template==1",
+   "fieldname": "birthday_template_section",
+   "fieldtype": "Section Break",
+   "label": "Custom Birthday Templates"
+  },
+  {
+   "depends_on": "eval:doc.send_message_from_template==1",
+   "description": "HTML template for email birthday messages. Available placeholders: {first_name}, {full_name}, {salutation}, {church_name}, {branch}",
+   "fieldname": "birthday_message_template_html",
+   "fieldtype": "Text Editor",
+   "label": "Birthday Message Template (HTML/Email)"
+  },
+  {
+   "depends_on": "eval:doc.send_message_from_template==1",
+   "description": "Plain text template for SMS and WhatsApp. Use same placeholders: {first_name}, {full_name}, {salutation}, {church_name}, {branch}",
+   "fieldname": "birthday_message_template_plain",
+   "fieldtype": "Small Text",
+   "label": "Birthday Message Template (Plain Text)"
+  },
+  {
+   "depends_on": "eval:doc.send_message_from_template==1",
+   "fieldname": "birthday_template_help",
+   "fieldtype": "HTML",
+   "label": "Template Help",
+   "options": "<div style=\"padding: 15px; background: #e8f4fd; border-left: 4px solid #2196f3; border-radius: 4px; margin: 10px 0;\"><h4 style=\"margin-top: 0; color: #1976d2;\">\ud83d\udcdd Available Placeholders:</h4><ul style=\"margin: 10px 0; padding-left: 20px;\"><li><code>{first_name}</code> - Member's first name</li><li><code>{full_name}</code> - Member's full name</li><li><code>{salutation}</code> - Mr./Mrs./Miss/Dr., etc.</li><li><code>{church_name}</code> - Your church name from settings</li><li><code>{branch}</code> - Member's branch</li></ul><p style=\"margin: 10px 0; color: #555;\"><strong>Example:</strong> Dear {salutation} {first_name}, Happy Birthday from {church_name}!</p></div>"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_advanced",
+   "fieldtype": "Section Break",
+   "label": "Advanced Settings"
+  },
+  {
+   "fieldname": "advanced_settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Advanced"
+  },
+  {
+   "default": "1",
+   "description": "Separate accounting entries for each branch",
+   "fieldname": "enable_branch_wise_accounting",
+   "fieldtype": "Check",
+   "label": "Enable Branch-wise Accounting"
+  },
+  {
+   "default": "1",
+   "description": "Track all changes to financial documents",
+   "fieldname": "enable_audit_trail",
+   "fieldtype": "Check",
+   "label": "Enable Audit Trail"
+  },
+  {
+   "fieldname": "column_break_advanced_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Automatically backup church data",
+   "fieldname": "auto_backup_enabled",
+   "fieldtype": "Check",
+   "label": "Enable Auto Backup"
+  },
+  {
+   "default": "7",
+   "description": "Number of years to retain historical data",
+   "fieldname": "data_retention_years",
+   "fieldtype": "Int",
+   "label": "Data Retention Period (Years)"
+  },
+  {
+   "fieldname": "weekly_services_tab",
+   "fieldtype": "Tab Break",
+   "label": "Weekly Services"
+  },
+  {
+   "fieldname": "weekly_services",
+   "fieldtype": "Table",
+   "label": "Weekly Services",
+   "options": "Weekly Services"
+  },
+  {
+   "fieldname": "member_grouping_section",
+   "fieldtype": "Section Break",
+   "label": "Member Grouping"
+  },
+  {
+   "fieldname": "member_group_rules",
+   "fieldtype": "Table",
+   "label": "Member Group Rules",
+   "options": "Member Group Rule"
+  },
+  {
+   "fieldname": "demographic_group_rules",
+   "fieldtype": "Table",
+   "label": "Demographic Group Rules",
+   "options": "Demographic Group Rule"
+  },
+  {
+   "fieldname": "default_accounts_tab",
+   "fieldtype": "Tab Break",
+   "label": "Default Accounts"
+  },
+  {
+   "fieldname": "default_accounts",
+   "fieldtype": "Table",
+   "label": "Default Accounts",
+   "options": "Default Accounts"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "email_notification_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Email Notification Settings"
+  },
+  {
+   "description": "Default email addresses for offering sheet reports",
+   "fieldname": "offering_report_recipients",
+   "fieldtype": "Table",
+   "label": "Default Offering Report Recipients",
+   "options": "Email Recipient"
+  },
+  {
+   "fieldname": "column_break_bum1r",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "documentation_url": "Automatically email offering sheets when auto-created on Sundays",
+   "fieldname": "auto_email_offering_sheets",
+   "fieldtype": "Check",
+   "label": "Auto Email Offering Sheets"
+  },
+  {
+   "default": "Offering Sheet - {branch} ({date_from} to {date_to})",
+   "description": "Use {branch}, {date_from}, {date_to}, {month} as placeholders",
+   "fieldname": "email_subject_template",
+   "fieldtype": "Data",
+   "label": "Email Subject Template"
+  },
+  {
+   "default": "0",
+   "fieldname": "auto_submit_attendance",
+   "fieldtype": "Check",
+   "label": "Auto Submit Attendance"
+  },
+  {
+   "depends_on": "auto_submit_attendance",
+   "fieldname": "auto_submit_attendance_time",
+   "fieldtype": "Time",
+   "label": "Auto Submit Attendance Time",
+   "mandatory_depends_on": "auto_submit_attendance"
+  },
+  {
+   "fieldname": "smart_attendance_tab",
+   "fieldtype": "Tab Break",
+   "label": "Smart Attendance"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "smart_attendance_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Smart Attendance Settings"
+  },
+  {
+   "default": "0",
+   "description": "Enable automated attendance marking methods",
+   "fieldname": "enable_smart_attendance",
+   "fieldtype": "Check",
+   "label": "Enable Smart Attendance"
+  },
+  {
+   "default": "30",
+   "description": "How many minutes before service can members check in?",
+   "fieldname": "attendance_check_in_window",
+   "fieldtype": "Int",
+   "label": "Check-in Window (Minutes Before Service)"
+  },
+  {
+   "default": "30",
+   "description": "How many minutes before service can members check in?",
+   "fieldname": "attendance_check_in_window_after",
+   "fieldtype": "Int",
+   "label": "Check-in Window (Minutes After Service Start)"
+  },
+  {
+   "depends_on": "eval:doc.enable_smart_attendance==1",
+   "fieldname": "qr_code_attendance_section",
+   "fieldtype": "Section Break",
+   "label": "QR Code Attendance"
+  },
+  {
+   "default": "1",
+   "description": "Display dynamic QR code on screen for attendance",
+   "fieldname": "enable_qr_attendance",
+   "fieldtype": "Check",
+   "label": "Enable QR Code Check-in"
+  },
+  {
+   "default": "5 Minutes",
+   "description": "How often should QR code change during service?",
+   "fieldname": "qr_refresh_interval",
+   "fieldtype": "Select",
+   "label": "QR Code Refresh Interval",
+   "options": "\n5 Minutes\n10 Minutes\n15 Minutes\n30 Minutes\nOnce Per Service"
+  },
+  {
+   "fieldname": "column_break_wpccf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "documentation_url": "Open this URL on display screens to show QR code",
+   "fieldname": "qr_display_url",
+   "fieldtype": "Data",
+   "label": "QR Display URL"
+  },
+  {
+   "default": "Member Scans Service QR",
+   "description": "How members use QR codes to check in",
+   "fieldname": "qr_check_in_method",
+   "fieldtype": "Select",
+   "label": "QR Check-in Method",
+   "options": "\nMember Scans Personal QR\nMember Scans Service QR\nBoth Methods"
+  },
+  {
+   "depends_on": "eval:doc.enable_smart_attendance==1",
+   "fieldname": "section_break_wifi",
+   "fieldtype": "Section Break",
+   "label": "WiFi Attendance"
+  },
+  {
+   "default": "0",
+   "description": "Automatically mark attendance when members connect to church WiFi",
+   "fieldname": "enable_wifi_attendance",
+   "fieldtype": "Check",
+   "label": "Enable WiFi Auto Check-in"
+  },
+  {
+   "description": "WiFi network name members connect to",
+   "fieldname": "wifi_ssid",
+   "fieldtype": "Data",
+   "label": "Church WiFi SSID"
+  },
+  {
+   "description": "URL to WiFi controller for device detection",
+   "fieldname": "wifi_controller_url",
+   "fieldtype": "Data",
+   "label": "WiFi Controller API URL"
+  },
+  {
+   "fieldname": "column_break_s9wcp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "API key for WiFi controller authentication",
+   "fieldname": "wifi_api_key",
+   "fieldtype": "Password",
+   "label": "WiFi Controller API Key"
+  },
+  {
+   "fieldname": "wifi_captive_portal_url",
+   "fieldtype": "Data",
+   "label": "Captive Portal URL"
+  },
+  {
+   "default": "0",
+   "fieldname": "wifi_require_confirmation",
+   "fieldtype": "Check",
+   "label": "Require Confirmation After WiFi Detection"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_whatsapp_attendance",
+   "fieldtype": "Check",
+   "label": "Enable WhatsApp Check-in"
+  },
+  {
+   "fieldname": "whatsapp_business_number",
+   "fieldtype": "Data",
+   "label": "WhatsApp Business Number"
+  },
+  {
+   "fieldname": "whatsapp_api_token",
+   "fieldtype": "Password",
+   "label": "WhatsApp API Token"
+  },
+  {
+   "fieldname": "column_break_un4je",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Daily Code Required",
+   "fieldname": "whatsapp_verification_method",
+   "fieldtype": "Select",
+   "label": "WhatsApp Verification Method",
+   "options": "\nLocation Share Required\nDaily Code Required\nWiFi + WhatsApp Combo\nTime Window Only"
+  },
+  {
+   "default": "Present",
+   "fieldname": "whatsapp_check_in_keyword",
+   "fieldtype": "Data",
+   "label": "Check-in Keyword"
+  },
+  {
+   "default": "1",
+   "fieldname": "whatsapp_require_location",
+   "fieldtype": "Check",
+   "label": "Require Location Share"
+  },
+  {
+   "depends_on": "eval:doc.enable_smart_attendance==1",
+   "fieldname": "section_break_location",
+   "fieldtype": "Section Break",
+   "label": "Location Verification"
+  },
+  {
+   "fieldname": "church_latitude",
+   "fieldtype": "Float",
+   "label": "Church Latitude",
+   "precision": "8"
+  },
+  {
+   "fieldname": "church_longitude",
+   "fieldtype": "Float",
+   "label": "Church Longitude",
+   "precision": "8"
+  },
+  {
+   "fieldname": "column_break_z9nga",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "100",
+   "fieldname": "location_radius",
+   "fieldtype": "Int",
+   "label": "Check-in Radius (Meters)"
+  },
+  {
+   "fieldname": "get_current_location",
+   "fieldtype": "Button",
+   "label": "Get Current Location"
+  },
+  {
+   "depends_on": "eval:doc.enable_smart_attendance==1",
+   "fieldname": "section_break_security",
+   "fieldtype": "Section Break",
+   "label": "Security & Fraud Prevention"
+  },
+  {
+   "default": "1",
+   "depends_on": "eval:doc.enable_smart_attendance==1",
+   "fieldname": "enable_fraud_detection",
+   "fieldtype": "Check",
+   "label": "nable Fraud Detection"
+  },
+  {
+   "default": "1",
+   "fieldname": "max_check_ins_per_service",
+   "fieldtype": "Int",
+   "label": "Max Check-ins Per Service Per Member"
+  },
+  {
+   "fieldname": "column_break_wrzxl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "block_remote_check_ins",
+   "fieldtype": "Check",
+   "label": "Block Remote Check-ins"
+  },
+  {
+   "default": "1",
+   "fieldname": "notify_admin_on_fraud",
+   "fieldtype": "Check",
+   "label": "Notify Admin on Suspicious Activity"
+  },
+  {
+   "depends_on": "eval:doc.enable_smart_attendance==1",
+   "fieldname": "section_break_notification",
+   "fieldtype": "Section Break",
+   "label": "Confirmation Notifications"
+  },
+  {
+   "default": "1",
+   "fieldname": "send_check_in_confirmation",
+   "fieldtype": "Int",
+   "label": "Send Check-in Confirmation"
+  },
+  {
+   "default": "WhatsApp",
+   "fieldname": "confirmation_method",
+   "fieldtype": "Select",
+   "label": "Confirmation Method",
+   "options": "\nWhatsApp\nSMS\nEmail\nIn-App Notification"
+  },
+  {
+   "fieldname": "column_break_hk4kx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Attendance confirmed for {service_name} on {date}. God bless you!\"",
+   "fieldname": "confirmation_message",
+   "fieldtype": "Small Text",
+   "label": "Confirmation Message Template"
+  },
+  {
+   "fieldname": "member_follow_up_section",
+   "fieldtype": "Section Break",
+   "label": "Member Follow Up"
+  },
+  {
+   "default": "0",
+   "description": "Automatically create weekly visitation assignments for counsellors and follow-up coordinators",
+   "fieldname": "create_weekly_visitation_sheet",
+   "fieldtype": "Check",
+   "label": "Create Weekly Visitation Assignments"
+  },
+  {
+   "fieldname": "column_break_sggjg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "20",
+   "fieldname": "service_gap_minutes",
+   "fieldtype": "Int",
+   "label": "Service gap (in mins)"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-03-21 21:04:49.167735",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Church Settings",
+ "naming_rule": "Set by user",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

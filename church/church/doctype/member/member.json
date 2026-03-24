@@ -2,61 +2,159 @@
  "actions": [],
  "allow_rename": 1,
  "autoname": "naming_series:",
- "creation": "2024-11-24 14:34:48.371242",
- "default_view": "List",
+ "creation": "2026-01-27 21:13:02.783328",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "member_detail_section",
+  "photo",
   "naming_series",
+  "type",
+  "column_break_photo",
+  "demographic_group",
+  "member_status",
+  "date_of_joining",
+  "column_break_mnfov",
+  "member_qr_code",
+  "portal_session_token",
+  "portal_session_expiry",
+  "personal_qr_code",
+  "basic_information_section",
   "salutation",
   "first_name",
-  "column_break_3gubc",
-  "last_name",
   "middle_name",
-  "column_break_rnomb",
-  "type",
+  "last_name",
+  "column_break_basic",
   "full_name",
-  "date_of_joining",
-  "personal_information_section",
-  "mobile_phone",
-  "date_of_birth",
-  "column_break_ll1ja",
-  "marital_staus",
   "gender",
+  "date_of_birth",
+  "age",
+  "column_break_category",
+  "category",
+  "marital_status",
   "occupation",
-  "column_break_czer9",
+  "contact_information_section",
+  "mobile_phone",
+  "phone_no",
+  "alternative_phone",
+  "whatsapp_number",
+  "column_break_contact",
+  "email",
+  "column_break_address",
   "address",
-  "section_section",
+  "city",
+  "state",
+  "linkage_section",
+  "branch",
+  "parish",
+  "area",
+  "column_break_linkage1",
+  "zone",
+  "province",
+  "column_break_linkage2",
+  "region",
+  "roles_and_responsibilities_section",
   "designation",
   "is_a_worker",
+  "column_break_jjjk4",
   "is_a_pastor",
-  "column_break_f2qxg",
-  "parish",
-  "province",
-  "column_break_851gb",
-  "state",
+  "is_hod",
+  "is_cancellor",
+  "column_break_roles",
+  "is_follow_up_cordinator",
+  "is_men_president",
+  "is_teenager_president",
+  "member_department_tab",
+  "department_section",
+  "departments",
+  "department_count",
   "family_tab",
-  "detail_section",
+  "family_details_section",
   "family",
-  "pastor_information_tab"
+  "sunday_school_tab",
+  "sunday_school_information_section",
+  "sunday_school_class",
+  "sunday_school_class_category",
+  "column_break_ss1",
+  "teacher_name",
+  "ss_teacher_phone",
+  "teacher_email",
+  "column_break_ss2",
+  "assistant_teacher",
+  "assistance_phone",
+  "ass_teacher_email",
+  "pastoral_care_tab",
+  "pastoral_information_section",
+  "admin_tab",
+  "administrative_notes_section",
+  "cc",
+  "attendance_tab",
+  "qr_token",
+  "qr_code_image"
  ],
  "fields": [
   {
    "fieldname": "member_detail_section",
    "fieldtype": "Section Break",
-   "label": "Member Detail"
+   "label": "Member Overview"
+  },
+  {
+   "fieldname": "photo",
+   "fieldtype": "Attach Image",
+   "label": "Photo"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Member ID",
+   "options": "MEM-.ID.-.####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_photo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Active",
+   "fieldname": "member_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Member Status",
+   "options": "Active\nInactive\nLeft\nTransferred",
+   "reqd": 1
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Membership Type",
+   "options": "\nPermanent\nVisiting\nVisitor\nLeader\nDeacon\nElder\nPastor"
+  },
+  {
+   "fieldname": "date_of_joining",
+   "fieldtype": "Date",
+   "label": "Date of Joining"
+  },
+  {
+   "fieldname": "basic_information_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "salutation",
+   "fieldtype": "Link",
+   "label": "Salutation",
+   "options": "Salutation"
   },
   {
    "fieldname": "first_name",
    "fieldtype": "Data",
-   "label": "First Name"
-  },
-  {
-   "fieldname": "last_name",
-   "fieldtype": "Data",
-   "label": "Last Name"
+   "in_list_view": 1,
+   "label": "First Name",
+   "reqd": 1
   },
   {
    "fieldname": "middle_name",
@@ -64,63 +162,32 @@
    "label": "Middle Name"
   },
   {
-   "fieldname": "column_break_3gubc",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "parish",
+   "fieldname": "last_name",
    "fieldtype": "Data",
-   "label": "Parish"
+   "label": "Last Name",
+   "reqd": 1
   },
   {
-   "fieldname": "province",
-   "fieldtype": "Data",
-   "label": "Province"
-  },
-  {
-   "fieldname": "state",
-   "fieldtype": "Data",
-   "label": "State"
-  },
-  {
-   "fieldname": "column_break_czer9",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "address",
-   "fieldtype": "Small Text",
-   "label": "Address",
-   "max_height": "100px",
-   "width": "200px"
-  },
-  {
-   "fieldname": "mobile_phone",
-   "fieldtype": "Phone",
-   "label": "Mobile Phone"
-  },
-  {
-   "fieldname": "type",
-   "fieldtype": "Select",
-   "label": "Membership Type",
-   "options": "Visiting\nPermanent"
-  },
-  {
-   "fieldname": "section_section",
-   "fieldtype": "Section Break",
-   "label": "Section"
-  },
-  {
-   "fieldname": "column_break_f2qxg",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "column_break_851gb",
+   "fieldname": "column_break_basic",
    "fieldtype": "Column Break"
   },
   {
    "fieldname": "full_name",
    "fieldtype": "Data",
-   "label": "Full Name"
+   "in_global_search": 1,
+   "in_standard_filter": 1,
+   "label": "Full Name",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Gender",
+   "options": "Gender",
+   "reqd": 1
   },
   {
    "fieldname": "date_of_birth",
@@ -128,26 +195,137 @@
    "label": "Date of Birth"
   },
   {
-   "fieldname": "family_tab",
-   "fieldtype": "Tab Break",
-   "label": "Family"
+   "fieldname": "age",
+   "fieldtype": "Int",
+   "label": "Age",
+   "read_only": 1
   },
   {
-   "fieldname": "detail_section",
-   "fieldtype": "Section Break",
-   "label": "Detail"
+   "fieldname": "column_break_category",
+   "fieldtype": "Column Break"
   },
   {
-   "fieldname": "family",
-   "fieldtype": "Table",
-   "label": "Family",
-   "options": "Family"
-  },
-  {
-   "fieldname": "marital_staus",
+   "fieldname": "category",
    "fieldtype": "Select",
-   "label": "Marital Staus",
-   "options": "Single\nMarried\nWidow\nNot Applicable"
+   "in_standard_filter": 1,
+   "label": "Age Category",
+   "options": "\nChild\nTeenager\nYouth\nAdult\nElder",
+   "read_only": 1
+  },
+  {
+   "fieldname": "marital_status",
+   "fieldtype": "Select",
+   "label": "Marital Status",
+   "options": "\nSingle\nMarried\nWidow\nWidower\nDivorced"
+  },
+  {
+   "fieldname": "occupation",
+   "fieldtype": "Data",
+   "label": "Occupation"
+  },
+  {
+   "fieldname": "contact_information_section",
+   "fieldtype": "Section Break",
+   "label": "Contact Information"
+  },
+  {
+   "fieldname": "mobile_phone",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Mobile Phone",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "alternative_phone",
+   "fieldtype": "Data",
+   "label": "Alternative Phone",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "column_break_contact",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "column_break_address",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Small Text",
+   "label": "Residential Address"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State/Province"
+  },
+  {
+   "fieldname": "linkage_section",
+   "fieldtype": "Section Break",
+   "label": "Church Hierarchy"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Branch",
+   "options": "Branch"
+  },
+  {
+   "fieldname": "parish",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Parish",
+   "options": "Parish",
+   "reqd": 1
+  },
+  {
+   "fieldname": "area",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Area",
+   "options": "Area"
+  },
+  {
+   "fieldname": "column_break_linkage1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "zone",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Zone",
+   "options": "Zone"
+  },
+  {
+   "fieldname": "province",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Province",
+   "options": "Province"
+  },
+  {
+   "fieldname": "column_break_linkage2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "region",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Region",
+   "options": "Region"
+  },
+  {
+   "fieldname": "roles_and_responsibilities_section",
+   "fieldtype": "Section Break",
+   "label": "Ministry Roles"
   },
   {
    "default": "0",
@@ -156,71 +334,267 @@
    "label": "Is a Worker"
   },
   {
-   "fieldname": "designation",
-   "fieldtype": "Link",
-   "label": "Designation",
-   "options": "Designation"
-  },
-  {
-   "fieldname": "occupation",
-   "fieldtype": "Data",
-   "label": "Occupation"
-  },
-  {
-   "fieldname": "date_of_joining",
-   "fieldtype": "Date",
-   "label": "Date of Joining"
-  },
-  {
-   "fieldname": "column_break_rnomb",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "personal_information_section",
-   "fieldtype": "Section Break",
-   "label": "Personal Information"
-  },
-  {
-   "fieldname": "column_break_ll1ja",
-   "fieldtype": "Column Break"
-  },
-  {
    "default": "0",
    "fieldname": "is_a_pastor",
    "fieldtype": "Check",
    "label": "Is a Pastor"
   },
   {
-   "fieldname": "gender",
+   "default": "0",
+   "fieldname": "is_hod",
+   "fieldtype": "Check",
+   "label": "Is Head of Department"
+  },
+  {
+   "fieldname": "column_break_roles",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.is_a_worker || doc.is_a_pastor || doc.is_hod",
+   "fieldname": "designation",
    "fieldtype": "Link",
-   "label": "Gender",
-   "options": "Gender"
+   "label": "Designation",
+   "options": "Designation"
   },
   {
-   "fieldname": "naming_series",
-   "fieldtype": "Select",
-   "label": "Naming Series",
-   "options": "MEM-.ID.-.####"
-  },
-  {
-   "fieldname": "pastor_information_tab",
+   "fieldname": "family_tab",
    "fieldtype": "Tab Break",
-   "label": "Pastor Information"
+   "label": "Family"
   },
   {
-   "fieldname": "salutation",
+   "fieldname": "family_details_section",
+   "fieldtype": "Section Break",
+   "label": "Family Members"
+  },
+  {
+   "fieldname": "family",
+   "fieldtype": "Table",
+   "label": "Family",
+   "options": "Family"
+  },
+  {
+   "fieldname": "sunday_school_tab",
+   "fieldtype": "Tab Break",
+   "label": "Sunday School"
+  },
+  {
+   "fieldname": "sunday_school_information_section",
+   "fieldtype": "Section Break",
+   "label": "Sunday School Details"
+  },
+  {
+   "fieldname": "sunday_school_class",
    "fieldtype": "Link",
-   "label": "Salutation",
-   "options": "Salutation"
+   "label": "Sunday School Class",
+   "options": "Sunday School Class"
+  },
+  {
+   "fetch_from": "sunday_school_class.sunday_school_class_category",
+   "fieldname": "sunday_school_class_category",
+   "fieldtype": "Data",
+   "label": "Class Category",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ss1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "sunday_school_class.teacher_name",
+   "fieldname": "teacher_name",
+   "fieldtype": "Data",
+   "label": "Teacher Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "sunday_school_class.phone_no",
+   "fieldname": "ss_teacher_phone",
+   "fieldtype": "Data",
+   "label": "Teacher Phone",
+   "options": "Phone",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "sunday_school_class.email",
+   "fieldname": "teacher_email",
+   "fieldtype": "Data",
+   "label": "Teacher Email",
+   "options": "Email",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ss2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "sunday_school_class.assistant_teacher_name",
+   "fieldname": "assistant_teacher",
+   "fieldtype": "Data",
+   "label": "Assistant Teacher",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "sunday_school_class.assistant_teacher_phone_no",
+   "fieldname": "assistance_phone",
+   "fieldtype": "Data",
+   "label": "Assistant Phone",
+   "options": "Phone",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "sunday_school_class.assistant_teacher_email",
+   "fieldname": "ass_teacher_email",
+   "fieldtype": "Data",
+   "label": "Assistant Email",
+   "options": "Email",
+   "read_only": 1
+  },
+  {
+   "fieldname": "pastoral_care_tab",
+   "fieldtype": "Tab Break",
+   "label": "Pastoral Care"
+  },
+  {
+   "fieldname": "pastoral_information_section",
+   "fieldtype": "Section Break",
+   "label": "Pastoral Information"
+  },
+  {
+   "fieldname": "admin_tab",
+   "fieldtype": "Tab Break",
+   "label": "Admin"
+  },
+  {
+   "fieldname": "administrative_notes_section",
+   "fieldtype": "Section Break",
+   "label": "Administrative Notes"
+  },
+  {
+   "fieldname": "cc",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_cancellor",
+   "fieldtype": "Check",
+   "label": "Is Counsellor"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_follow_up_cordinator",
+   "fieldtype": "Check",
+   "label": "Is Follow-up Coordinator"
+  },
+  {
+   "fieldname": "demographic_group",
+   "fieldtype": "Select",
+   "label": "Demographic Group",
+   "options": "\nMen\nWomen\nYouth\nTeens\nChildren"
+  },
+  {
+   "fieldname": "column_break_jjjk4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.is_a_worker == 1 || doc.is_hod == 1",
+   "fieldname": "member_department_tab",
+   "fieldtype": "Tab Break",
+   "label": "Member Department"
+  },
+  {
+   "fieldname": "department_section",
+   "fieldtype": "Section Break",
+   "label": "Department"
+  },
+  {
+   "fieldname": "department_count",
+   "fieldtype": "Int",
+   "label": "Department Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "departments",
+   "fieldtype": "Table",
+   "label": "Departments",
+   "options": "Member Department"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "column_break_mnfov",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "member_qr_code",
+   "fieldtype": "Small Text",
+   "label": "QR Code",
+   "max_height": "90px"
+  },
+  {
+   "fieldname": "whatsapp_number",
+   "fieldtype": "Data",
+   "label": "Whats App Number",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "personal_qr_code",
+   "fieldtype": "Data",
+   "label": "Personal QR Code"
+  },
+  {
+   "fieldname": "attendance_tab",
+   "fieldtype": "Tab Break",
+   "label": "Attendance"
+  },
+  {
+   "fieldname": "qr_token",
+   "fieldtype": "Data",
+   "label": "QR Token"
+  },
+  {
+   "fieldname": "qr_code_image",
+   "fieldtype": "Attach Image",
+   "label": "QR Code Image"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_men_president",
+   "fieldtype": "Check",
+   "label": "Is Men President"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_teenager_president",
+   "fieldtype": "Check",
+   "label": "Is Teenager President"
+  },
+  {
+   "fieldname": "portal_session_token",
+   "fieldtype": "Data",
+   "label": "Portal Session Token"
+  },
+  {
+   "fieldname": "portal_session_expiry",
+   "fieldtype": "Datetime",
+   "label": "Portal Session Expiry"
+  },
+  {
+   "fieldname": "phone_no",
+   "fieldtype": "Phone",
+   "label": "Phone No"
   }
  ],
+ "image_field": "photo",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-12-15 21:35:52.314202",
+ "modified": "2026-03-15 18:02:13.267348",
  "modified_by": "Administrator",
  "module": "church",
  "name": "Member",
- "name_case": "Title Case",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
@@ -237,9 +611,11 @@
    "write": 1
   }
  ],
+ "quick_entry": 1,
  "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
- "title_field": "full_name"
+ "title_field": "full_name",
+ "track_changes": 1
 }

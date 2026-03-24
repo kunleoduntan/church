@@ -2,13 +2,11 @@
  "actions": [],
  "allow_rename": 1,
  "autoname": "naming_series:",
- "creation": "2024-11-25 10:33:53.612016",
- "default_view": "List",
+ "creation": "2026-01-28 15:19:44.384639",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "tithe_batch_update_section",
   "naming_series",
   "reporting_date",
   "start_date",
@@ -20,55 +18,115 @@
   "column_break_c3tdd",
   "bank_gl",
   "currency",
+  "default_exchange_rate",
   "column_break_tmeaw",
   "description",
+  "tithe_batch_update_section",
   "tithes_payment_section",
   "tithe_transaction_entry",
+  "section_break_import",
+  "import_template_button",
+  "column_break_import",
+  "import_excel_button",
   "section_break_glwxq",
+  "total_transactions",
   "column_break_fawlt",
-  "column_break_yygqx",
   "total_for_workers",
-  "column_break_1pxmu",
+  "column_break_yygqx",
   "total_for_members",
-  "column_break_cs4jx",
+  "column_break_1pxmu",
   "amount_paid",
+  "receipt_generation_section",
+  "receipt_status",
+  "column_break_receipt",
+  "receipts_created",
+  "receipts_failed",
+  "column_break_receipt2",
+  "last_receipt_generation",
+  "generation_log",
   "amended_from"
  ],
  "fields": [
   {
-   "fieldname": "month",
-   "fieldtype": "Data",
-   "label": "Month"
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "TBU-.YYYY.-.MM.-.####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "reporting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Reporting Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "End Date",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_aw7at",
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "member_id.parish",
+   "fieldname": "month",
+   "fieldtype": "Data",
+   "label": "Month",
+   "read_only": 1
+  },
+  {
    "fieldname": "branch",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Branch",
    "options": "Branch",
    "reqd": 1
   },
   {
-   "fieldname": "currency",
+   "fieldname": "designated_bank_acct",
    "fieldtype": "Link",
-   "label": "Currency",
-   "options": "Currency"
+   "in_list_view": 1,
+   "label": "Designated Bank Account",
+   "options": "Bank Account",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_c3tdd",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "designated_bank_acct",
+   "fetch_from": "designated_bank_acct.account",
+   "fieldname": "bank_gl",
    "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Designated Bank Acct",
-   "options": "Bank Account",
+   "label": "Bank GL Account",
+   "options": "Account",
+   "read_only": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
    "reqd": 1
+  },
+  {
+   "default": "1.0",
+   "fieldname": "default_exchange_rate",
+   "fieldtype": "Float",
+   "label": "Default Exchange Rate",
+   "precision": "6"
   },
   {
    "fieldname": "column_break_tmeaw",
@@ -77,58 +135,17 @@
   {
    "fieldname": "description",
    "fieldtype": "Small Text",
-   "label": "Description",
-   "max_height": "105px",
-   "width": "250px"
+   "label": "Description"
+  },
+  {
+   "fieldname": "tithe_batch_update_section",
+   "fieldtype": "Section Break",
+   "label": "Batch Information"
   },
   {
    "fieldname": "tithes_payment_section",
    "fieldtype": "Section Break",
-   "label": "Tithes Payment"
-  },
-  {
-   "fieldname": "section_break_glwxq",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "column_break_yygqx",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "column_break_1pxmu",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "column_break_cs4jx",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "amount_paid",
-   "fieldtype": "Float",
-   "in_filter": 1,
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Total Amount",
-   "precision": "2",
-   "read_only": 1
-  },
-  {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Tithe Batch Update",
-   "print_hide": 1,
-   "read_only": 1
-  },
-  {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Tithe Batch Update",
-   "print_hide": 1,
-   "read_only": 1
+   "label": "Tithe Transactions"
   },
   {
    "fieldname": "tithe_transaction_entry",
@@ -137,33 +154,34 @@
    "options": "Tithe Transaction Entry"
   },
   {
-   "fieldname": "bank_gl",
-   "fieldtype": "Data",
-   "label": "Bank GL",
-   "precision": "2"
-  },
-  {
-   "fieldname": "reporting_date",
-   "fieldtype": "Date",
-   "label": "Reporting Date",
-   "reqd": 1
-  },
-  {
-   "fieldname": "start_date",
-   "fieldtype": "Date",
-   "label": "Start Date",
-   "reqd": 1
-  },
-  {
-   "fieldname": "end_date",
-   "fieldtype": "Date",
-   "label": "End Date",
-   "reqd": 1
-  },
-  {
-   "fieldname": "tithe_batch_update_section",
+   "fieldname": "section_break_import",
    "fieldtype": "Section Break",
-   "label": "Tithe Batch Update"
+   "label": "Import Tools"
+  },
+  {
+   "fieldname": "import_template_button",
+   "fieldtype": "Button",
+   "label": "Download Import Template"
+  },
+  {
+   "fieldname": "column_break_import",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "import_excel_button",
+   "fieldtype": "Button",
+   "label": "Import from Excel"
+  },
+  {
+   "fieldname": "section_break_glwxq",
+   "fieldtype": "Section Break",
+   "label": "Summary"
+  },
+  {
+   "fieldname": "total_transactions",
+   "fieldtype": "Int",
+   "label": "Total Transactions",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_fawlt",
@@ -171,34 +189,113 @@
   },
   {
    "fieldname": "total_for_workers",
-   "fieldtype": "Float",
+   "fieldtype": "Currency",
    "in_list_view": 1,
-   "in_standard_filter": 1,
    "label": "Total Workers Tithe",
+   "options": "currency",
    "precision": "2",
    "read_only": 1
+  },
+  {
+   "fieldname": "column_break_yygqx",
+   "fieldtype": "Column Break"
   },
   {
    "fieldname": "total_for_members",
-   "fieldtype": "Float",
+   "fieldtype": "Currency",
    "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Total Member Tithe",
+   "label": "Total Members Tithe",
+   "options": "currency",
    "precision": "2",
    "read_only": 1
   },
   {
-   "fieldname": "naming_series",
+   "fieldname": "column_break_1pxmu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "bold": 1,
+   "fieldname": "amount_paid",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total Amount",
+   "options": "currency",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.docstatus==1",
+   "fieldname": "receipt_generation_section",
+   "fieldtype": "Section Break",
+   "label": "Receipt Generation Status"
+  },
+  {
+   "fieldname": "receipt_status",
    "fieldtype": "Select",
-   "hidden": 1,
-   "label": "Naming Series",
-   "options": "TBU-.DD.-.MM.-.YY.-.####"
+   "label": "Receipt Status",
+   "options": "\nPending\nIn Progress\nCompleted\nPartially Failed\nFailed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_receipt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "receipts_created",
+   "fieldtype": "Int",
+   "label": "Receipts Created",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "receipts_failed",
+   "fieldtype": "Int",
+   "label": "Receipts Failed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_receipt2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_receipt_generation",
+   "fieldtype": "Datetime",
+   "label": "Last Generation Attempt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "generation_log",
+   "fieldtype": "Long Text",
+   "label": "Generation Log",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Tithe Batch Update",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Tithe Batch Update",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-15 14:31:06.734766",
+ "modified": "2026-01-28 21:16:04.760196",
  "modified_by": "Administrator",
  "module": "church",
  "name": "Tithe Batch Update",
@@ -218,7 +315,9 @@
    "write": 1
   }
  ],
+ "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }

@@ -1,0 +1,382 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2025-04-14 17:04:10.688713",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "service_date",
+  "class_name",
+  "naming_series",
+  "service_instance",
+  "column_break_zr1ov",
+  "class_group",
+  "column_break_h4d0f",
+  "branch",
+  "column_break_zxbpc",
+  "teacher_tab",
+  "teacher_detail_section",
+  "teacher",
+  "teacher_name",
+  "salutation",
+  "column_break_byixi",
+  "phone_no",
+  "email",
+  "column_break_uplsx",
+  "start_date",
+  "end_date",
+  "assistant_teacher_tab",
+  "assistant_teacher_detail_section",
+  "assist_teacher_id",
+  "assistant_teacher_name",
+  "column_break_qoyrf",
+  "assistant_teacher_phone_no",
+  "assistant_teacher_email",
+  "column_break_fudmr",
+  "assistant_teacher_start_date",
+  "assistant_teacher_end_date",
+  "attendees_tab",
+  "class_member_section",
+  "get_class_members",
+  "create_receipts",
+  "column_break_e27rp",
+  "mark_ss_attendance",
+  "mark_cs_attendance",
+  "column_break_at5qb",
+  "offering_amount",
+  "ss_time",
+  "column_break_z1d9j",
+  "cs_time",
+  "section_break_syrlq",
+  "children_attendance",
+  "section_break_m08pm",
+  "column_break_l86k3",
+  "total_female",
+  "column_break_iik4l",
+  "total_male",
+  "column_break_cp4dt",
+  "total_count",
+  "column_break_kpita",
+  "total_offering_amount",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "service_date",
+   "fieldtype": "Date",
+   "label": "Service Date"
+  },
+  {
+   "fieldname": "class_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Class Name",
+   "options": "Children Class",
+   "reqd": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series"
+  },
+  {
+   "fieldname": "column_break_zr1ov",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "class_name.age_group",
+   "fieldname": "class_group",
+   "fieldtype": "Data",
+   "label": "Class Group"
+  },
+  {
+   "fieldname": "column_break_h4d0f",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "class_name.branch",
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch"
+  },
+  {
+   "fieldname": "column_break_zxbpc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "teacher_tab",
+   "fieldtype": "Tab Break",
+   "label": "Teacher"
+  },
+  {
+   "fieldname": "teacher_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Teacher Detail"
+  },
+  {
+   "fetch_from": "class_name.teacher",
+   "fieldname": "teacher",
+   "fieldtype": "Link",
+   "label": "Teacher ",
+   "options": "Member"
+  },
+  {
+   "fetch_from": "teacher.full_name",
+   "fieldname": "teacher_name",
+   "fieldtype": "Data",
+   "label": "Teacher Name"
+  },
+  {
+   "fetch_from": "teacher.salutation",
+   "fieldname": "salutation",
+   "fieldtype": "Data",
+   "label": "Salutation"
+  },
+  {
+   "fieldname": "column_break_byixi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "phone_no",
+   "fieldtype": "Phone",
+   "label": "Phone No"
+  },
+  {
+   "fetch_from": "class_name.email",
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fieldname": "column_break_uplsx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date"
+  },
+  {
+   "fieldname": "assistant_teacher_tab",
+   "fieldtype": "Tab Break",
+   "label": "Assistant Teacher"
+  },
+  {
+   "fieldname": "assistant_teacher_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Assistant Teacher Detail"
+  },
+  {
+   "fetch_from": "class_name.assist_teacher_id",
+   "fieldname": "assist_teacher_id",
+   "fieldtype": "Link",
+   "label": "Assist Teacher ID",
+   "options": "Member"
+  },
+  {
+   "fetch_from": "assist_teacher_id.full_name",
+   "fieldname": "assistant_teacher_name",
+   "fieldtype": "Data",
+   "label": "Assistant Teacher Name"
+  },
+  {
+   "fieldname": "column_break_qoyrf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "assistant_teacher_phone_no",
+   "fieldtype": "Phone",
+   "label": "Assistant Teacher Phone No"
+  },
+  {
+   "fetch_from": "class_name.assistant_teacher_email",
+   "fieldname": "assistant_teacher_email",
+   "fieldtype": "Data",
+   "label": "Assistant Teacher Email"
+  },
+  {
+   "fieldname": "column_break_fudmr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "class_name.assistant_teacher_start_date",
+   "fieldname": "assistant_teacher_start_date",
+   "fieldtype": "Date",
+   "label": "Assistant Teacher Start Date"
+  },
+  {
+   "fieldname": "assistant_teacher_end_date",
+   "fieldtype": "Date",
+   "label": "Assistant Teacher End Date"
+  },
+  {
+   "fieldname": "attendees_tab",
+   "fieldtype": "Tab Break",
+   "label": "Attendees"
+  },
+  {
+   "fieldname": "class_member_section",
+   "fieldtype": "Section Break",
+   "label": "Class Member "
+  },
+  {
+   "fieldname": "get_class_members",
+   "fieldtype": "Button",
+   "label": "Get Class Members"
+  },
+  {
+   "default": "0",
+   "fieldname": "create_receipts",
+   "fieldtype": "Check",
+   "label": "Create Receipts"
+  },
+  {
+   "fieldname": "column_break_e27rp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "mark_ss_attendance",
+   "fieldtype": "Check",
+   "label": "Mark SS  Attendance"
+  },
+  {
+   "default": "0",
+   "fieldname": "mark_cs_attendance",
+   "fieldtype": "Check",
+   "label": "Mark CS Attendance"
+  },
+  {
+   "fieldname": "column_break_at5qb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "offering_amount",
+   "fieldtype": "Currency",
+   "label": "Offering Amount"
+  },
+  {
+   "depends_on": "mark_ss_attendance",
+   "fieldname": "ss_time",
+   "fieldtype": "Time",
+   "label": "SS Time"
+  },
+  {
+   "fieldname": "column_break_z1d9j",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "mark_cs_attendance",
+   "fieldname": "cs_time",
+   "fieldtype": "Time",
+   "label": "CS Time"
+  },
+  {
+   "fieldname": "section_break_syrlq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "children_attendance",
+   "fieldtype": "Table",
+   "label": "Children Attendance",
+   "options": "Children Attendance"
+  },
+  {
+   "fieldname": "section_break_m08pm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_l86k3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_female",
+   "fieldtype": "Int",
+   "label": "Total Female"
+  },
+  {
+   "fieldname": "column_break_iik4l",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_male",
+   "fieldtype": "Int",
+   "label": "Total Male"
+  },
+  {
+   "fieldname": "column_break_cp4dt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_count",
+   "fieldtype": "Int",
+   "label": "Total Count"
+  },
+  {
+   "fieldname": "column_break_kpita",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_offering_amount",
+   "fieldtype": "Currency",
+   "label": "Total Offering Amount"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Children Class Attendance",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "description": "Auto-linked based on service date and branch",
+   "fieldname": "service_instance",
+   "fieldtype": "Link",
+   "label": "Service Instance",
+   "options": "Service Instance"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-01-31 02:45:49.350027",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Children Class Attendance",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "class_name",
+ "track_changes": 1
+}

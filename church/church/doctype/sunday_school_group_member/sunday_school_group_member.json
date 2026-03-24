@@ -9,12 +9,14 @@
   "general_information_section",
   "member_id",
   "full_name",
+  "date_of_birth",
   "column_break_zr1ov",
   "age",
-  "class_name",
-  "date_of_birth",
   "gender",
   "column_break_4sbyl",
+  "class_name",
+  "sunday_school_class_category",
+  "column_break_bh8gs",
   "branch",
   "class_full_description",
   "personal_information_section",
@@ -25,6 +27,7 @@
   "date_of_joining",
   "column_break_cccc9",
   "date_of_promotion",
+  "demographic_group",
   "teacher_detail_section",
   "salutation",
   "column_break_1gcqa",
@@ -39,8 +42,7 @@
    "in_standard_filter": 1,
    "label": "Member ID",
    "options": "Member",
-   "reqd": 1,
-   "unique": 1
+   "reqd": 1
   },
   {
    "fetch_from": "member_id.full_name",
@@ -56,6 +58,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "member_id.sunday_school_class",
    "fieldname": "class_name",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -75,6 +78,8 @@
    "label": "Personal Information"
   },
   {
+   "fetch_from": "member_id.mobile_phone",
+   "fetch_if_empty": 1,
    "fieldname": "phone_no",
    "fieldtype": "Phone",
    "in_list_view": 1,
@@ -85,6 +90,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "member_id.email",
    "fieldname": "email",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -95,6 +101,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "member_id.date_of_joining",
    "fieldname": "date_of_joining",
    "fieldtype": "Date",
    "in_list_view": 1,
@@ -135,6 +142,8 @@
    "label": "General Information"
   },
   {
+   "fetch_from": "member_id.branch",
+   "fetch_if_empty": 1,
    "fieldname": "branch",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -156,12 +165,16 @@
    "label": "Other Information"
   },
   {
+   "fetch_from": "member_id.date_of_birth",
+   "fetch_if_empty": 1,
    "fieldname": "date_of_birth",
    "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Date of Birth"
   },
   {
+   "fetch_from": "member_id.age",
+   "fetch_if_empty": 1,
    "fieldname": "age",
    "fieldtype": "Int",
    "in_list_view": 1,
@@ -171,15 +184,32 @@
   },
   {
    "fetch_from": "member_id.gender",
+   "fetch_if_empty": 1,
    "fieldname": "gender",
    "fieldtype": "Data",
    "label": "Gender"
+  },
+  {
+   "fieldname": "column_break_bh8gs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sunday_school_class_category",
+   "fieldtype": "Data",
+   "label": "Sunday School Class Category"
+  },
+  {
+   "fetch_from": "member_id.demographic_group",
+   "fieldname": "demographic_group",
+   "fieldtype": "Select",
+   "label": "Demographic Group",
+   "options": "\nMen\nWomen\nYouth\nTeens\nChildren"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-12-02 19:15:24.507574",
+ "modified": "2026-01-31 13:03:53.628271",
  "modified_by": "Administrator",
  "module": "church",
  "name": "Sunday School Group Member",

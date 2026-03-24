@@ -1,0 +1,293 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2025-04-10 09:40:55.165682",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "naming_series",
+  "audience_group",
+  "filter",
+  "sent",
+  "column_break_1odh4",
+  "sunday_school_class",
+  "gender",
+  "branch",
+  "marital_status",
+  "member_status",
+  "subject",
+  "message_type",
+  "include_attachments",
+  "column_break_i2t1z",
+  "message_purpose",
+  "is_test_email",
+  "column_break_ymfbn",
+  "schedule",
+  "schedule_time",
+  "test_email",
+  "test_phone_number",
+  "audience_section",
+  "email_recipients",
+  "total_subscribers",
+  "message_tab",
+  "option",
+  "column_break_gk5hf",
+  "whatsapp_image_url",
+  "column_break_4je1m",
+  "section_break_xxr3n",
+  "message_body",
+  "message_tx_html",
+  "whatsapp_message_body",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "audience_group",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Audience Group",
+   "options": "\nMember\nCustomer\nContact\nSupplier\nEmployee\nChurch Department",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1odh4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Subject",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "schedule",
+   "fieldtype": "Check",
+   "label": "Schedule"
+  },
+  {
+   "fieldname": "column_break_i2t1z",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "schedule",
+   "fieldname": "schedule_time",
+   "fieldtype": "Datetime",
+   "label": "Schedule Time",
+   "mandatory_depends_on": "schedule"
+  },
+  {
+   "fieldname": "column_break_ymfbn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "message_purpose",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Message Purpose",
+   "max_height": "105px",
+   "reqd": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "audience_section",
+   "fieldtype": "Section Break",
+   "label": "Audience"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Broadcast",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "email_recipients",
+   "fieldtype": "Table",
+   "label": "Email Recipients",
+   "options": "Email Recipients",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_subscribers",
+   "fieldtype": "Int",
+   "label": "Total Subscribers"
+  },
+  {
+   "fieldname": "message_tab",
+   "fieldtype": "Tab Break",
+   "label": "Message"
+  },
+  {
+   "depends_on": "eval:doc.message_type == \"SMS\" || doc.option == \"Text\"",
+   "fieldname": "message_body",
+   "fieldtype": "Text Editor",
+   "label": "Message Body"
+  },
+  {
+   "fieldname": "message_type",
+   "fieldtype": "Select",
+   "label": "Message Type",
+   "options": "\nEmail\nWhatsApp\nSMS",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.audience_group == \"Member\"",
+   "fieldname": "filter",
+   "fieldtype": "Select",
+   "label": "Filter",
+   "options": "\nPastors\nWorkers\nSunday School Class\nHODs\nTeenagers\nYouth\nAdults\nElders\nGender\nMarital Status\nBranch\nMember Status\nMen\nWomen"
+  },
+  {
+   "depends_on": "eval:doc.filter == \"Sunday School Class\"",
+   "fieldname": "sunday_school_class",
+   "fieldtype": "Link",
+   "label": "Sunday School Class",
+   "options": "Sunday School Class"
+  },
+  {
+   "depends_on": "eval:doc.filter == \"Gender\"",
+   "fieldname": "gender",
+   "fieldtype": "Link",
+   "label": "Gender",
+   "options": "Gender"
+  },
+  {
+   "depends_on": "eval:doc.filter == \"Marital Status\"",
+   "fieldname": "marital_status",
+   "fieldtype": "Select",
+   "label": "Marital Status",
+   "options": "\nSingle\nMarried\nWidow\nWidower"
+  },
+  {
+   "depends_on": "eval:doc.filter == \"Branch\"",
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch"
+  },
+  {
+   "depends_on": "eval:doc.filter == \"Member Status\"",
+   "fieldname": "member_status",
+   "fieldtype": "Select",
+   "label": "Member Status",
+   "options": "\nActive\nInactive"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "BRC-.DD.-.MM.-.YY.-.####"
+  },
+  {
+   "default": "0",
+   "fieldname": "sent",
+   "fieldtype": "Check",
+   "label": "Email Sent"
+  },
+  {
+   "depends_on": "eval:doc.message_type == \"Email\" && doc.option == \"HTML\"",
+   "fieldname": "message_tx_html",
+   "fieldtype": "HTML Editor",
+   "label": "Message (Tx HTML)"
+  },
+  {
+   "fieldname": "section_break_xxr3n",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "option",
+   "fieldtype": "Select",
+   "label": "Format",
+   "options": "\nHTML\nText"
+  },
+  {
+   "fieldname": "column_break_gk5hf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.message_type == \"Email\" && doc.is_test_email == 1",
+   "fieldname": "test_email",
+   "fieldtype": "Data",
+   "label": "Test Email"
+  },
+  {
+   "default": "0",
+   "fieldname": "include_attachments",
+   "fieldtype": "Check",
+   "label": "Include Attacments"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_test_email",
+   "fieldtype": "Check",
+   "label": " Is Test"
+  },
+  {
+   "depends_on": "eval:doc.message_type == \"WhatsApp\" ",
+   "fieldname": "whatsapp_message_body",
+   "fieldtype": "HTML Editor",
+   "label": "WhatsApp Message Body"
+  },
+  {
+   "fieldname": "column_break_4je1m",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.message_type == \"WhatsApp\" && doc.is_test_email == 1",
+   "fieldname": "test_phone_number",
+   "fieldtype": "Phone",
+   "label": "Test Phone Number",
+   "options": "Phone"
+  },
+  {
+   "depends_on": "eval:doc.message_type == \"WhatsApp\"",
+   "fieldname": "whatsapp_image_url",
+   "fieldtype": "Data",
+   "label": "WhatsApp Image URL"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-06-20 10:28:31.386703",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Broadcast",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

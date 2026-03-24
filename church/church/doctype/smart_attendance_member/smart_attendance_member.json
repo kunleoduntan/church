@@ -1,0 +1,178 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "prompt",
+ "creation": "2026-02-04 06:09:01.436349",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "smart_check_in_section",
+  "member",
+  "personal_qr_code",
+  "generate_qr_code",
+  "column_break_qr",
+  "qr_code_image",
+  "section_break_wifi_devices",
+  "registered_devices",
+  "section_break_check_in_prefs",
+  "enable_wifi_auto_check_in",
+  "enable_whatsapp_check_in",
+  "column_break_prefs",
+  "consent_location_tracking",
+  "consent_device_tracking",
+  "section_break_stats",
+  "last_check_in_time",
+  "last_check_in_method",
+  "column_break_stats",
+  "total_smart_check_ins",
+  "suspicious_check_ins"
+ ],
+ "fields": [
+  {
+   "collapsible": 1,
+   "fieldname": "smart_check_in_section",
+   "fieldtype": "Section Break",
+   "label": "Smart Check-in"
+  },
+  {
+   "fieldname": "member",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Member",
+   "options": "Member",
+   "reqd": 1
+  },
+  {
+   "fieldname": "personal_qr_code",
+   "fieldtype": "Data",
+   "label": "Personal QR Code ID",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "generate_qr_code",
+   "fieldtype": "Button",
+   "label": "Generate QR Code"
+  },
+  {
+   "fieldname": "column_break_qr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "qr_code_image",
+   "fieldtype": "Attach Image",
+   "label": "QR Code Image",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_wifi_devices",
+   "fieldtype": "Section Break",
+   "label": "Registered Devices"
+  },
+  {
+   "fieldname": "registered_devices",
+   "fieldtype": "Table",
+   "label": "Devices",
+   "options": "Member Device"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_check_in_prefs",
+   "fieldtype": "Section Break",
+   "label": "Check-in Preferences"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_wifi_auto_check_in",
+   "fieldtype": "Check",
+   "label": "Enable WiFi Auto Check-in"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_whatsapp_check_in",
+   "fieldtype": "Check",
+   "label": "Enable WhatsApp Check-in"
+  },
+  {
+   "fieldname": "column_break_prefs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "consent_location_tracking",
+   "fieldtype": "Check",
+   "label": "Consent to Location Tracking"
+  },
+  {
+   "default": "0",
+   "fieldname": "consent_device_tracking",
+   "fieldtype": "Check",
+   "label": "Consent to Device Tracking"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_stats",
+   "fieldtype": "Section Break",
+   "label": "Check-in Statistics"
+  },
+  {
+   "fieldname": "last_check_in_time",
+   "fieldtype": "Datetime",
+   "label": "Last Check-in",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_check_in_method",
+   "fieldtype": "Data",
+   "label": "Last Check-in Method",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_stats",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_smart_check_ins",
+   "fieldtype": "Int",
+   "label": "Total Smart Check-ins",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "suspicious_check_ins",
+   "fieldtype": "Int",
+   "label": "Flagged Check-ins",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-04 06:16:48.870547",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Smart Attendance Member",
+ "naming_rule": "Set by user",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

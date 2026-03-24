@@ -1,0 +1,503 @@
+{
+ "charts": [
+  {
+   "chart_name": "Church Attendance Analysis",
+   "label": "Church Attendance Analysis"
+  }
+ ],
+ "content": "[{\"id\":\"Lo6obm8Gff\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"fzB0s4j3PA\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Church Attendance Analysis\",\"col\":12}},{\"id\":\"lDgRTHbrgw\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Church Attendance\",\"col\":3}},{\"id\":\"gckYiEddVm\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Visitor\",\"col\":3}},{\"id\":\"wStAv9TW7O\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Member Profile\",\"col\":3}},{\"id\":\"KGCzSBFRHF\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Member Tithe Record\",\"col\":3}},{\"id\":\"4OgsT9GOTT\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Anonymous Tithe\",\"col\":3}},{\"id\":\"C5Mg7Ji2cB\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tithe Batch Update\",\"col\":3}},{\"id\":\"jL3IAt60P4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Vow\",\"col\":3}},{\"id\":\"ppQ26AfiZR\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Offering Sheet\",\"col\":3}},{\"id\":\"4Er35ZyE9z\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"KbFOVEi9zR\",\"type\":\"card\",\"data\":{\"card_name\":\"Setup\",\"col\":4}},{\"id\":\"B-8IH9VL13\",\"type\":\"card\",\"data\":{\"card_name\":\"Administration\",\"col\":4}},{\"id\":\"EgpJLkC330\",\"type\":\"card\",\"data\":{\"card_name\":\"Attendance\",\"col\":4}},{\"id\":\"Rl1MTIluGb\",\"type\":\"card\",\"data\":{\"card_name\":\"Collections\",\"col\":4}},{\"id\":\"Hk7aGaH4hC\",\"type\":\"card\",\"data\":{\"card_name\":\"Events & Programme\",\"col\":4}},{\"id\":\"2fgWEcDh_F\",\"type\":\"card\",\"data\":{\"card_name\":\"Membership\",\"col\":4}}]",
+ "creation": "2025-04-05 10:04:40.025554",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "both",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Church",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Setup",
+   "link_count": 7,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Member",
+   "link_count": 0,
+   "link_to": "Member",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Church Department",
+   "link_count": 0,
+   "link_to": "Church Department",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Follow up Activity",
+   "link_count": 0,
+   "link_to": "Follow up Activity",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Offering Type",
+   "link_count": 0,
+   "link_to": "Offering Type",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Offering Type",
+   "link_count": 0,
+   "link_to": "Offering Type",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Follow Up Method",
+   "link_count": 0,
+   "link_to": "Follow Up Method",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Relationship",
+   "link_count": 0,
+   "link_to": "Relationship",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Attendance",
+   "link_count": 6,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sunday School Attendance",
+   "link_count": 0,
+   "link_to": "Sunday School Attendance",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sunday Service Attendance",
+   "link_count": 0,
+   "link_to": "Sunday Service Attendance",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Children Class Attendance",
+   "link_count": 0,
+   "link_to": "Children Class Attendance",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sunday School Offering and Attendance",
+   "link_count": 0,
+   "link_to": "Sunday School Offering and Attendance",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Attendance Sheet",
+   "link_count": 0,
+   "link_to": "Attendance Sheet",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Attendance Record",
+   "link_count": 0,
+   "link_to": "Attendance Record",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Collections",
+   "link_count": 6,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Receipts",
+   "link_count": 0,
+   "link_to": "Receipts",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Offering Sheet",
+   "link_count": 0,
+   "link_to": "Offering Sheet",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Member Tithe Record",
+   "link_count": 0,
+   "link_to": "Member Tithe Record",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Vow",
+   "link_count": 0,
+   "link_to": "Vow",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tithe Batch Update",
+   "link_count": 0,
+   "link_to": "Tithe Batch Update",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Anonymous Tithes Batch Update",
+   "link_count": 0,
+   "link_to": "Anonymous Tithes Batch Update",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Events & Programme",
+   "link_count": 4,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Church Service",
+   "link_count": 0,
+   "link_to": "Church Service",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Church Event Calendar",
+   "link_count": 0,
+   "link_to": "Church Event Calendar",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Church Event",
+   "link_count": 0,
+   "link_to": "Church Event",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Programme",
+   "link_count": 0,
+   "link_to": "Programme",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Membership",
+   "link_count": 4,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Children Class",
+   "link_count": 0,
+   "link_to": "Children Class",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Children Class Attendance",
+   "link_count": 0,
+   "link_to": "Children Class Attendance",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Church Event",
+   "link_count": 0,
+   "link_to": "Church Event",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Church Event Calendar",
+   "link_count": 0,
+   "link_to": "Church Event Calendar",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Administration",
+   "link_count": 8,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Church Service",
+   "link_count": 0,
+   "link_to": "Church Service",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Broadcast",
+   "link_count": 0,
+   "link_to": "Broadcast",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Offering Type",
+   "link_count": 0,
+   "link_to": "Offering Type",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "eRequest",
+   "link_count": 0,
+   "link_to": "eRequest",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Health Insurance Manager",
+   "link_count": 0,
+   "link_to": "Health Insurance Manager",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Maintenance Request",
+   "link_count": 0,
+   "link_to": "Maintenance Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "HMO Plan",
+   "link_count": 0,
+   "link_to": "HMO Plan",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Programme",
+   "link_count": 0,
+   "link_to": "Programme",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2025-12-20 16:33:54.854500",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Church",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 6.0,
+ "shortcuts": [
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Church Attendance",
+   "link_to": "Attendance Sheet",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Yellow",
+   "doc_view": "List",
+   "label": "Visitor",
+   "link_to": "Visitor",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Red",
+   "doc_view": "List",
+   "label": "Member Profile",
+   "link_to": "Member",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "List",
+   "label": "Member Tithe Record",
+   "link_to": "Member Tithe Record",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Cyan",
+   "doc_view": "List",
+   "label": "Anonymous Tithe",
+   "link_to": "Anonymous Tithes Batch Update",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Pink",
+   "doc_view": "List",
+   "label": "Tithe Batch Update",
+   "link_to": "Tithe Batch Update",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Offering Sheet",
+   "link_to": "Offering Sheet",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "List",
+   "label": "Vow",
+   "link_to": "Vow",
+   "stats_filter": "[]",
+   "type": "DocType"
+  }
+ ],
+ "title": "Church"
+}

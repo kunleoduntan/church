@@ -1,0 +1,299 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:class_name",
+ "creation": "2025-04-13 18:46:28.339090",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "class_name",
+  "age_group",
+  "class_desc",
+  "branch",
+  "column_break_zr1ov",
+  "promotion_age",
+  "next_class_group",
+  "value_of_asset",
+  "column_break_h4d0f",
+  "note",
+  "teacher_tab",
+  "teacher_detail_section",
+  "teacher",
+  "teacher_name",
+  "salutation",
+  "column_break_byixi",
+  "phone_no",
+  "email",
+  "column_break_uplsx",
+  "start_date",
+  "end_date",
+  "assistant_teacher_detail_section",
+  "assist_teacher_id",
+  "assistant_teacher_name",
+  "column_break_qoyrf",
+  "assistant_teacher_phone_no",
+  "assistant_teacher_email",
+  "column_break_fudmr",
+  "assistant_teacher_start_date",
+  "assistant_teacher_end_date",
+  "members_tab",
+  "class_member_section",
+  "children_class_member",
+  "member_count",
+  "assets_tab",
+  "children_class_assets",
+  "ready_for_next_class_tab",
+  "children_due_for_promotion_section",
+  "slated_promotion"
+ ],
+ "fields": [
+  {
+   "fieldname": "class_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Class Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "age_group",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Class Group",
+   "options": "Age 00 - 05\nAge 06 - 12"
+  },
+  {
+   "fieldname": "class_desc",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Class Desc"
+  },
+  {
+   "fieldname": "column_break_zr1ov",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "promotion_age",
+   "fieldtype": "Int",
+   "label": "Promotion Age"
+  },
+  {
+   "fieldname": "next_class_group",
+   "fieldtype": "Link",
+   "label": "Next Class Group",
+   "options": "Children Class"
+  },
+  {
+   "fieldname": "column_break_h4d0f",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Branch",
+   "options": "Branch"
+  },
+  {
+   "fieldname": "value_of_asset",
+   "fieldtype": "Currency",
+   "label": "Value of Asset",
+   "options": "Age 00 - 05\nAge 06 - 12"
+  },
+  {
+   "fieldname": "note",
+   "fieldtype": "Small Text",
+   "label": "Note",
+   "max_height": "100px"
+  },
+  {
+   "fieldname": "teacher_tab",
+   "fieldtype": "Tab Break",
+   "label": "Teachers"
+  },
+  {
+   "fieldname": "teacher_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Teacher Detail"
+  },
+  {
+   "fieldname": "teacher",
+   "fieldtype": "Link",
+   "label": "Teacher ",
+   "options": "Member",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "teacher.full_name",
+   "fieldname": "teacher_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Teacher Name"
+  },
+  {
+   "fetch_from": "teacher.salutation",
+   "fieldname": "salutation",
+   "fieldtype": "Data",
+   "label": "Salutation"
+  },
+  {
+   "fieldname": "column_break_byixi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "teacher.mobile_phone",
+   "fetch_if_empty": 1,
+   "fieldname": "phone_no",
+   "fieldtype": "Phone",
+   "label": "Phone No"
+  },
+  {
+   "fetch_from": "teacher.email",
+   "fetch_if_empty": 1,
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fieldname": "column_break_uplsx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date"
+  },
+  {
+   "fieldname": "assistant_teacher_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Assistant Teacher Detail"
+  },
+  {
+   "fieldname": "assist_teacher_id",
+   "fieldtype": "Link",
+   "label": "Assist Teacher ID",
+   "options": "Member",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "assist_teacher_id.full_name",
+   "fieldname": "assistant_teacher_name",
+   "fieldtype": "Data",
+   "label": "Assistant Teacher Name"
+  },
+  {
+   "fieldname": "column_break_qoyrf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "assist_teacher_id.mobile_phone",
+   "fetch_if_empty": 1,
+   "fieldname": "assistant_teacher_phone_no",
+   "fieldtype": "Phone",
+   "label": "Assistant Teacher Phone No"
+  },
+  {
+   "fetch_from": "assist_teacher_id.email",
+   "fieldname": "assistant_teacher_email",
+   "fieldtype": "Data",
+   "label": "Assistant Teacher Email"
+  },
+  {
+   "fieldname": "column_break_fudmr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "assistant_teacher_start_date",
+   "fieldtype": "Date",
+   "label": "Assistant Teacher Start Date"
+  },
+  {
+   "fieldname": "assistant_teacher_end_date",
+   "fieldtype": "Date",
+   "label": "Assistant Teacher End Date"
+  },
+  {
+   "fieldname": "members_tab",
+   "fieldtype": "Tab Break",
+   "label": "Members"
+  },
+  {
+   "fieldname": "class_member_section",
+   "fieldtype": "Section Break",
+   "label": "Class Member "
+  },
+  {
+   "fieldname": "children_class_member",
+   "fieldtype": "Table",
+   "label": "Children Class Member",
+   "options": "Children Class Member"
+  },
+  {
+   "fieldname": "member_count",
+   "fieldtype": "Int",
+   "label": "Member Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "assets_tab",
+   "fieldtype": "Tab Break",
+   "label": "Assets"
+  },
+  {
+   "fieldname": "children_class_assets",
+   "fieldtype": "Table",
+   "label": "Children Class Assets",
+   "options": "Children Class Assets"
+  },
+  {
+   "fieldname": "ready_for_next_class_tab",
+   "fieldtype": "Tab Break",
+   "label": "Ready for Next Class"
+  },
+  {
+   "fieldname": "children_due_for_promotion_section",
+   "fieldtype": "Section Break",
+   "label": "Children Due for promotion"
+  },
+  {
+   "fieldname": "slated_promotion",
+   "fieldtype": "Table",
+   "label": "Slated Promotion",
+   "options": "Slated Promotion"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-01-31 10:40:30.668470",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Children Class",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "class_name"
+}

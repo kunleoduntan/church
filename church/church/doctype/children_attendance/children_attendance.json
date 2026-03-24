@@ -1,0 +1,223 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-04-14 16:57:09.343174",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "general_information_section",
+  "child_id",
+  "full_name",
+  "column_break_zr1ov",
+  "gender",
+  "column_break_4sbyl",
+  "class_name",
+  "class_group",
+  "column_break_bh8gs",
+  "branch",
+  "class_full_description",
+  "personal_information_section",
+  "phone_no",
+  "column_break_byixi",
+  "email",
+  "column_break_h4d0f",
+  "date_of_joining",
+  "column_break_cccc9",
+  "age",
+  "teacher_detail_section",
+  "salutation",
+  "column_break_1gcqa",
+  "teacher_name",
+  "attendance_and_offering_section",
+  "amount",
+  "column_break_naxfs",
+  "present",
+  "column_break_n8cq4",
+  "column_break_ekqgr"
+ ],
+ "fields": [
+  {
+   "fieldname": "general_information_section",
+   "fieldtype": "Section Break",
+   "label": "General Information"
+  },
+  {
+   "fieldname": "child_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Child ID",
+   "options": "Member",
+   "reqd": 1
+  },
+  {
+   "fetch_if_empty": 1,
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "column_break_zr1ov",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "member_id.gender",
+   "fieldname": "gender",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Gender"
+  },
+  {
+   "fieldname": "column_break_4sbyl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "class_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Class Name",
+   "options": "Children Class"
+  },
+  {
+   "fetch_from": "class_name.age_group",
+   "fieldname": "class_group",
+   "fieldtype": "Data",
+   "label": "Class Group"
+  },
+  {
+   "fieldname": "column_break_bh8gs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Branch",
+   "options": "Branch"
+  },
+  {
+   "fieldname": "class_full_description",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Class Full Description",
+   "max_height": "105px",
+   "width": "200px"
+  },
+  {
+   "fieldname": "personal_information_section",
+   "fieldtype": "Section Break",
+   "label": "Personal Information"
+  },
+  {
+   "fetch_from": "member_id.mobile_phone",
+   "fetch_if_empty": 1,
+   "fieldname": "phone_no",
+   "fieldtype": "Phone",
+   "in_list_view": 1,
+   "label": "Phone No"
+  },
+  {
+   "fieldname": "column_break_byixi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "member_id.email",
+   "fetch_if_empty": 1,
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Email"
+  },
+  {
+   "fieldname": "column_break_h4d0f",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "member_id.date_of_joining",
+   "fieldname": "date_of_joining",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date of Joining"
+  },
+  {
+   "fieldname": "column_break_cccc9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "member_id.age",
+   "fetch_if_empty": 1,
+   "fieldname": "age",
+   "fieldtype": "Int",
+   "label": "Age"
+  },
+  {
+   "fieldname": "teacher_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Teacher Detail"
+  },
+  {
+   "fetch_from": "teacher.salutaion",
+   "fieldname": "salutation",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Salutation"
+  },
+  {
+   "fieldname": "column_break_1gcqa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "teacher.full_name",
+   "fieldname": "teacher_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Teacher Name"
+  },
+  {
+   "fieldname": "attendance_and_offering_section",
+   "fieldtype": "Section Break",
+   "label": "Attendance and Offering"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount"
+  },
+  {
+   "fieldname": "column_break_naxfs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "present",
+   "fieldtype": "Check",
+   "label": "Present"
+  },
+  {
+   "fieldname": "column_break_n8cq4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ekqgr",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-01-31 00:26:24.835328",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Children Attendance",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

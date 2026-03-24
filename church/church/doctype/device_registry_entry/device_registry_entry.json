@@ -1,0 +1,149 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-12-09 09:44:33.177001",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "device_alias",
+  "device_label",
+  "column_break_1",
+  "device_category",
+  "is_active",
+  "section_break_1",
+  "mac_address_encrypted",
+  "mac_address_hash",
+  "column_break_2",
+  "encryption_method",
+  "last_seen",
+  "section_break_2",
+  "ip_address_last_known",
+  "device_metadata",
+  "column_break_3",
+  "registration_timestamp",
+  "registered_by"
+ ],
+ "fields": [
+  {
+   "description": "System-generated unique alias (e.g., DEV-ABC123)",
+   "fieldname": "device_alias",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Device Alias",
+   "reqd": 1
+  },
+  {
+   "description": "User-friendly name (e.g., 'John's iPhone')",
+   "fieldname": "device_label",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Device Name"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Mobile",
+   "fieldname": "device_category",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Device Type",
+   "options": "Mobile\nTablet\nLaptop\nDesktop\nWearable\nOther"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Active"
+  },
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break",
+   "label": "Security Information"
+  },
+  {
+   "fieldname": "mac_address_encrypted",
+   "fieldtype": "Password",
+   "hidden": 1,
+   "label": "MAC Address (Encrypted)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "mac_address_hash",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "MAC Hash",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "AES-256",
+   "fieldname": "encryption_method",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Encryption Method",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_seen",
+   "fieldtype": "Datetime",
+   "label": "Last Seen",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break",
+   "label": "Additional Details"
+  },
+  {
+   "fieldname": "ip_address_last_known",
+   "fieldtype": "Data",
+   "label": "Last Known IP",
+   "read_only": 1
+  },
+  {
+   "description": "Browser, OS, etc.",
+   "fieldname": "device_metadata",
+   "fieldtype": "Small Text",
+   "label": "Device Info",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "registration_timestamp",
+   "fieldtype": "Datetime",
+   "label": "Registered On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "registered_by",
+   "fieldtype": "Link",
+   "label": "Registered By",
+   "options": "User",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-12-09 09:44:33.177001",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Device Registry Entry",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

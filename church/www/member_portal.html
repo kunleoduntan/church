@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Member Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #faf8f5;
+  --surface:   #ffffff;
+  --surface2:  #f5f0ea;
+  --surface3:  #ede5d8;
+  --border:    #e2d9cc;
+  --primary:   #2d1f0e;
+  --gold:      #c9821a;
+  --gold-lt:   #f0c870;
+  --gold-bg:   #fdf6e7;
+  --teal:      #1a6b5c;
+  --teal-lt:   #e6f4f1;
+  --rose:      #b84a3c;
+  --rose-lt:   #fdecea;
+  --ink:       #1a1208;
+  --muted:     #7a6b55;
+  --text:      #2d1f0e;
+  --info:      #1a4d6b;
+  --shadow-sm: 0 1px 3px rgba(45,31,14,.08);
+  --shadow:    0 4px 16px rgba(45,31,14,.10);
+  --shadow-lg: 0 12px 40px rgba(45,31,14,.14);
+  --radius:    12px;
+  --font-head: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: var(--font-body); min-height: 100vh; display: flex; overflow-x: hidden; }
+
+/* ── Login overlay ── */
+#login-overlay {
+  position: fixed; inset: 0; z-index: 10000;
+  background: linear-gradient(135deg, var(--primary) 0%, #3a2510 60%, #1a4d3a 100%);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+}
+#login-overlay::before {
+  content: '✟';
+  position: absolute; font-size: 320px; color: rgba(255,255,255,.03);
+  font-family: serif; pointer-events: none; user-select: none;
+  top: 50%; left: 50%; transform: translate(-50%,-54%);
+}
+.login-card {
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 44px 40px;
+  width: min(440px, 96vw);
+  box-shadow: var(--shadow-lg);
+  border-top: 4px solid var(--gold);
+  position: relative; z-index: 1;
+  animation: loginIn .35s cubic-bezier(.22,1,.36,1);
+}
+@keyframes loginIn {
+  from { opacity:0; transform: translateY(24px) scale(.97); }
+  to   { opacity:1; transform: translateY(0) scale(1); }
+}
+.login-logo {
+  text-align: center; margin-bottom: 28px;
+}
+.login-logo .cross-icon {
+  width: 60px; height: 60px; margin: 0 auto 12px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; box-shadow: 0 4px 16px rgba(201,130,26,.3);
+}
+.login-logo h1 {
+  font-family: var(--font-head); font-size: 22px; font-weight: 700;
+  color: var(--ink); margin-bottom: 4px;
+}
+.login-logo p { font-size: 13px; color: var(--muted); }
+
+.login-tabs {
+  display: flex; background: var(--surface2); border-radius: 8px;
+  padding: 3px; margin-bottom: 24px; gap: 3px;
+}
+.login-tab {
+  flex: 1; text-align: center; padding: 8px 4px;
+  font-size: 12px; font-weight: 600; cursor: pointer;
+  border-radius: 6px; color: var(--muted); transition: all .15s;
+}
+.login-tab.active {
+  background: var(--surface); color: var(--gold);
+  box-shadow: var(--shadow-sm);
+}
+
+.login-field { margin-bottom: 16px; }
+.login-field label {
+  display: block; font-size: 12px; color: var(--muted);
+  font-weight: 500; margin-bottom: 7px;
+}
+.login-field input {
+  width: 100%; background: var(--surface);
+  border: 1.5px solid var(--border); border-radius: 8px;
+  padding: 11px 14px; font-size: 14px; font-family: var(--font-body);
+  color: var(--text); outline: none; transition: border-color .15s;
+}
+.login-field input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,130,26,.12);
+}
+.login-hint {
+  font-size: 11px; color: var(--muted); margin-top: 5px; line-height: 1.5;
+}
+.login-hint b { color: var(--gold); }
+
+.login-btn {
+  width: 100%; padding: 13px; border-radius: 9px;
+  background: linear-gradient(135deg, var(--gold), #a86d14);
+  color: #fff; font-size: 15px; font-weight: 600;
+  font-family: var(--font-body); border: none; cursor: pointer;
+  transition: opacity .15s; margin-top: 8px;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.login-btn:hover { opacity: .9; }
+.login-btn:disabled { opacity: .55; cursor: not-allowed; }
+
+.login-error {
+  background: var(--rose-lt); border: 1px solid #f5c5c0;
+  border-radius: 8px; padding: 10px 14px;
+  font-size: 13px; color: var(--rose); margin-bottom: 16px;
+  display: none; line-height: 1.5;
+}
+.login-footer {
+  text-align: center; margin-top: 20px;
+  font-size: 12px; color: var(--muted); line-height: 1.6;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  width: 260px; min-height: 100vh; background: var(--primary);
+  display: flex; flex-direction: column;
+  position: fixed; left: 0; top: 0; bottom: 0; z-index: 100;
+  box-shadow: 4px 0 24px rgba(0,0,0,.2);
+}
+.sidebar-brand { padding: 28px 24px 20px; border-bottom: 1px solid rgba(255,255,255,.1); }
+.brand-logo { display: flex; align-items: center; gap: 12px; }
+.brand-icon {
+  width: 40px; height: 40px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+  border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px;
+}
+.brand-text { font-family: var(--font-head); font-size: 17px; font-weight: 600; color: #fff; letter-spacing: -0.3px; }
+.brand-sub { font-size: 11px; color: rgba(255,255,255,.5); margin-top: 2px; }
+.sidebar-member { padding: 20px 24px; border-bottom: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; gap: 12px; }
+.member-avatar {
+  width: 46px; height: 46px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), #8b5a1a);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-head); font-weight: 700; font-size: 17px;
+  color: #fff; flex-shrink: 0; overflow: hidden; border: 2px solid rgba(201,130,26,.4);
+}
+.member-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.member-info h4 { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 2px; }
+.member-info p { font-size: 11px; color: rgba(255,255,255,.5); }
+.sidebar-nav { flex: 1; padding: 16px 12px; overflow-y: auto; }
+.nav-section { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,.35); padding: 16px 12px 8px; font-weight: 600; }
+.nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: 8px; cursor: pointer;
+  font-size: 13px; color: rgba(255,255,255,.7);
+  transition: all .15s; margin-bottom: 2px;
+}
+.nav-item:hover { background: rgba(255,255,255,.08); color: #fff; }
+.nav-item.active { background: linear-gradient(135deg, rgba(201,130,26,.3), rgba(201,130,26,.15)); color: var(--gold-lt); border: 1px solid rgba(201,130,26,.3); }
+.nav-item .icon { font-size: 16px; width: 22px; text-align: center; flex-shrink: 0; }
+.nav-badge { margin-left: auto; background: var(--rose); color: #fff; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 10px; }
+.sidebar-footer { padding: 16px 24px; border-top: 1px solid rgba(255,255,255,.1); }
+.logout-btn { display: flex; align-items: center; gap: 8px; font-size: 12px; color: rgba(255,255,255,.4); cursor: pointer; transition: color .15s; padding: 6px 0; }
+.logout-btn:hover { color: rgba(255,255,255,.8); }
+
+/* ── Main ── */
+.main { margin-left: 260px; flex: 1; display: flex; flex-direction: column; min-height: 100vh; }
+.topbar { padding: 18px 36px; border-bottom: 1px solid var(--border); background: var(--surface); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; box-shadow: var(--shadow-sm); }
+.topbar-title { font-family: var(--font-head); font-size: 20px; font-weight: 600; color: var(--ink); }
+.topbar-actions { display: flex; gap: 10px; align-items: center; }
+.btn { padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; border: none; font-family: var(--font-body); transition: all .15s; display: inline-flex; align-items: center; gap: 7px; }
+.btn-gold { background: var(--gold); color: #fff; }
+.btn-gold:hover { background: #a86d14; }
+.btn-outline { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+.btn-teal { background: var(--teal); color: #fff; }
+.btn-teal:hover { background: #155047; }
+.btn-danger-soft { background: var(--rose-lt); color: var(--rose); border: 1px solid #f5c5c0; }
+.btn:disabled { opacity: .55; cursor: not-allowed; }
+.btn-sm { padding: 5px 12px; font-size: 12px; }
+.content { padding: 32px 36px; flex: 1; }
+.panel { display: none; animation: fadeUp .25s ease; }
+.panel.active { display: block; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.portal-loading { display: flex; align-items: center; justify-content: center; min-height: 60vh; flex-direction: column; gap: 16px; }
+.spinner { width: 42px; height: 42px; border-radius: 50%; border: 3px solid var(--border); border-top-color: var(--gold); animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-sm); overflow: hidden; }
+.card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+.card-title { font-family: var(--font-head); font-size: 15px; font-weight: 600; color: var(--ink); display: flex; align-items: center; gap: 8px; }
+.card-body { padding: 20px; }
+.stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 28px; }
+.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; position: relative; overflow: hidden; transition: box-shadow .2s; }
+.stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.stat-gold::before  { background: var(--gold); }
+.stat-teal::before  { background: var(--teal); }
+.stat-rose::before  { background: var(--rose); }
+.stat-info::before  { background: var(--info); }
+.stat-card:hover { box-shadow: var(--shadow); }
+.stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: .8px; color: var(--muted); margin-bottom: 10px; font-weight: 600; }
+.stat-value { font-family: var(--font-head); font-size: 30px; font-weight: 700; line-height: 1; margin-bottom: 6px; }
+.stat-sub { font-size: 12px; color: var(--muted); }
+.welcome-banner { background: linear-gradient(135deg, var(--primary) 0%, #4a2f12 100%); border-radius: var(--radius); padding: 32px 36px; margin-bottom: 28px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: space-between; }
+.welcome-banner::before { content: '✟'; position: absolute; right: 48px; top: 50%; transform: translateY(-50%); font-size: 140px; color: rgba(255,255,255,.04); font-family: serif; pointer-events: none; }
+.welcome-text h2 { font-family: var(--font-head); font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 6px; line-height: 1.2; }
+.welcome-text p { font-size: 14px; color: rgba(255,255,255,.6); }
+.welcome-date { text-align: right; }
+.date-big { font-family: var(--font-head); font-size: 44px; font-weight: 700; color: var(--gold-lt); line-height: 1; }
+.date-sub { font-size: 12px; color: rgba(255,255,255,.5); margin-top: 4px; }
+.pill { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+.pill-green  { background: #e6f4f0; color: var(--teal); }
+.pill-yellow { background: var(--gold-bg); color: var(--gold); }
+.pill-red    { background: var(--rose-lt); color: var(--rose); }
+.pill-blue   { background: #e8f0f8; color: var(--info); }
+.pill-grey   { background: var(--surface2); color: var(--muted); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th { font-size: 11px; text-transform: uppercase; letter-spacing: .6px; color: var(--muted); font-weight: 600; padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); background: var(--surface2); }
+.data-table td { padding: 12px 16px; font-size: 13px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: var(--surface2); }
+.att-dot { width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; }
+.progress-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--teal), #2a9d8f); transition: width .5s ease; }
+.event-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; margin-bottom: 12px; transition: all .2s; cursor: pointer; display: flex; gap: 16px; }
+.event-card:hover { border-color: var(--gold); box-shadow: var(--shadow); }
+.event-date-box { width: 54px; flex-shrink: 0; background: var(--gold-bg); border: 1px solid var(--gold-lt); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8px 4px; }
+.event-day { font-family: var(--font-head); font-size: 22px; font-weight: 700; color: var(--gold); line-height: 1; }
+.event-month { font-size: 10px; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); margin-top: 2px; }
+.event-body { flex: 1; }
+.event-name { font-weight: 600; font-size: 14px; color: var(--ink); margin-bottom: 4px; }
+.event-meta { font-size: 12px; color: var(--muted); display: flex; gap: 14px; flex-wrap: wrap; }
+.event-actions { display: flex; align-items: flex-start; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px; }
+.form-group { display: flex; flex-direction: column; gap: 7px; }
+.form-label { font-size: 12px; color: var(--muted); font-weight: 500; }
+.form-input { background: var(--surface); border: 1px solid var(--border); border-radius: 7px; padding: 10px 13px; color: var(--text); font-size: 14px; font-family: var(--font-body); transition: border-color .15s; outline: none; width: 100%; }
+.form-input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,130,26,.1); }
+textarea.form-input { resize: vertical; min-height: 90px; }
+.form-check { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.form-check input { accent-color: var(--gold); width: 16px; height: 16px; }
+.prayer-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 10px; transition: all .2s; }
+.prayer-card.urgent { border-left: 3px solid var(--rose); }
+.prayer-card:hover { box-shadow: var(--shadow-sm); }
+.prayer-title { font-weight: 600; font-size: 14px; color: var(--ink); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+.prayer-meta { font-size: 12px; color: var(--muted); display: flex; gap: 14px; }
+.ss-info-card { background: linear-gradient(135deg, var(--teal), #155047); border-radius: var(--radius); padding: 28px; color: #fff; position: relative; overflow: hidden; }
+.ss-info-card::after { content: '📖'; position: absolute; right: 24px; bottom: 16px; font-size: 64px; opacity: .15; pointer-events: none; }
+.ss-teacher-row { display: flex; gap: 14px; align-items: center; background: rgba(255,255,255,.1); border-radius: 8px; padding: 14px; margin-top: 16px; }
+.ss-teacher-av { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,.2); display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-weight: 700; color: #fff; font-size: 15px; flex-shrink: 0; }
+.ss-teacher-info h5 { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 2px; }
+.ss-teacher-info p { font-size: 11px; color: rgba(255,255,255,.65); }
+.tabs { display: flex; gap: 4px; background: var(--surface2); border-radius: 8px; padding: 4px; margin-bottom: 24px; }
+.tab { padding: 8px 16px; font-size: 13px; font-weight: 500; cursor: pointer; border-radius: 6px; color: var(--muted); transition: all .15s; white-space: nowrap; }
+.tab:hover { color: var(--text); }
+.tab.active { background: var(--surface); color: var(--gold); font-weight: 600; box-shadow: var(--shadow-sm); }
+.profile-photo-wrap { position: relative; display: inline-block; margin-bottom: 20px; }
+.profile-photo { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--border); background: var(--surface2); display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-size: 32px; font-weight: 700; color: var(--muted); }
+.profile-photo-btn { position: absolute; bottom: 2px; right: 2px; background: var(--gold); border-radius: 50%; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: 12px; cursor: pointer; border: 2px solid #fff; }
+.qr-wrap img { width: 140px; height: 140px; border-radius: 8px; }
+.service-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; transition: border-color .2s; }
+.service-card:hover { border-color: var(--gold); }
+.service-left { display: flex; align-items: center; gap: 14px; }
+.service-icon { width: 42px; height: 42px; background: var(--gold-bg); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.service-name { font-weight: 600; font-size: 14px; color: var(--ink); margin-bottom: 3px; }
+.service-meta { font-size: 12px; color: var(--muted); }
+.pledge-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 12px; }
+.pledge-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+.pledge-prog { font-weight: 600; font-size: 14px; color: var(--ink); }
+.pledge-amount { font-family: var(--font-head); font-size: 20px; font-weight: 700; color: var(--gold); }
+.pledge-progress-row { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+.verse-banner { background: linear-gradient(135deg, var(--gold-bg), #fff9ed); border: 1px solid var(--gold-lt); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 24px; display: flex; align-items: flex-start; gap: 14px; }
+.verse-icon { font-size: 24px; margin-top: 2px; flex-shrink: 0; }
+.verse-text { font-family: var(--font-head); font-size: 15px; color: var(--gold); font-style: italic; line-height: 1.6; }
+.verse-ref { font-size: 12px; color: var(--muted); margin-top: 4px; font-style: normal; }
+.empty-state { text-align: center; padding: 48px 24px; color: var(--muted); }
+.empty-state .empty-icon { font-size: 48px; margin-bottom: 16px; opacity: .5; }
+.empty-state p { font-size: 14px; }
+#portal-toast { display: none; position: fixed; bottom: 28px; right: 24px; z-index: 9999; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 20px; font-size: 13px; box-shadow: var(--shadow-lg); max-width: 340px; line-height: 1.5; font-family: var(--font-body); animation: slideUp .2s ease; }
+@keyframes slideUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+#modal-overlay { display: none; position: fixed; inset: 0; background: rgba(45,31,14,.5); z-index: 8000; align-items: center; justify-content: center; backdrop-filter: blur(2px); }
+#modal-box { background: var(--surface); border-radius: 16px; padding: 32px; width: min(540px, 94vw); max-height: 90vh; overflow-y: auto; position: relative; box-shadow: var(--shadow-lg); border-top: 3px solid var(--gold); }
+.modal-close { position: absolute; top: 16px; right: 18px; background: none; border: none; font-size: 20px; cursor: pointer; color: var(--muted); line-height: 1; }
+.modal-close:hover { color: var(--ink); }
+.modal-title { font-family: var(--font-head); font-size: 20px; font-weight: 600; margin-bottom: 24px; color: var(--ink); }
+@media (max-width: 900px) {
+  .sidebar { transform: translateX(-100%); transition: transform .3s; }
+  .sidebar.open { transform: translateX(0); }
+  .main { margin-left: 0; }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .two-col { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Boot data injected by get_context() -->
+<div id="portal-boot" data-boot="{{ boot | e }}" style="display:none"></div>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     LOGIN OVERLAY
+     Shown on page load if no valid portal_sid cookie exists.
+     Calls church.api.member_portal_api.portal_login — no ERPNext user needed.
+════════════════════════════════════════════════════════════════════════ -->
+<div id="login-overlay">
+  <div class="login-card">
+
+    <div class="login-logo">
+      <div class="cross-icon">✟</div>
+      <h1 id="login-church-name">Member Portal</h1>
+      <p>Sign in to access your church profile</p>
+    </div>
+
+    <div id="login-error" class="login-error"></div>
+
+    <!-- Credential tabs -->
+    <div class="login-tabs">
+      <div class="login-tab active" id="tab-qr"   onclick="window.switchLoginTab('qr')">QR Token</div>
+      <div class="login-tab"        id="tab-dob"  onclick="window.switchLoginTab('dob')">Date of Birth</div>
+    </div>
+
+    <!-- Email -->
+    <div class="login-field">
+      <label>Email Address</label>
+      <input type="email" id="login-email" placeholder="your@email.com" autocomplete="email">
+    </div>
+
+    <!-- QR token panel -->
+    <div id="panel-qr">
+      <div class="login-field">
+        <label>QR Token</label>
+        <input type="text" id="login-qr" placeholder="Paste your QR token here…" autocomplete="off" spellcheck="false">
+        <div class="login-hint">
+          Your QR token is printed on your <b>attendance QR card</b> or can be found in the
+          church office. It looks like: <b>a3f9c-82b1d-…</b>
+        </div>
+      </div>
+    </div>
+
+    <!-- Date of birth panel (fallback) -->
+    <div id="panel-dob" style="display:none">
+      <div class="login-field">
+        <label>Date of Birth</label>
+        <input type="date" id="login-dob" autocomplete="bday">
+        <div class="login-hint">
+          Use this if you haven't received your QR code yet. Enter your date of birth exactly as
+          registered with the church.
+        </div>
+      </div>
+    </div>
+
+    <button class="login-btn" id="login-btn" onclick="window.doLogin()">
+      <span>🙏</span> Sign In
+    </button>
+
+    <div class="login-footer">
+      Don't have an account? Contact the church office.<br>
+      Your membership number or QR code is your key.
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SIDEBAR
+════════════════════════════════════════════════════════════════════════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-logo">
+      <div class="brand-icon">✟</div>
+      <div>
+        <div class="brand-text" id="church-name">Member Portal</div>
+        <div class="brand-sub"  id="church-abbr">Loading…</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar-member">
+    <div class="member-avatar" id="sidebar-avatar">…</div>
+    <div class="member-info">
+      <h4 id="sidebar-name">Loading…</h4>
+      <p  id="sidebar-branch">—</p>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <div class="nav-section">Overview</div>
+    <div class="nav-item active" data-panel="dashboard"><span class="icon">🏠</span> Dashboard</div>
+    <div class="nav-section">My Church Life</div>
+    <div class="nav-item" data-panel="profile"><span class="icon">👤</span> My Profile</div>
+    <div class="nav-item" data-panel="attendance"><span class="icon">📋</span> Attendance</div>
+    <div class="nav-item" data-panel="giving"><span class="icon">💰</span> Giving &amp; Tithes</div>
+    <div class="nav-item" data-panel="pledges"><span class="icon">🤝</span> Pledges</div>
+    <div class="nav-section">Get Involved</div>
+    <div class="nav-item" data-panel="events"><span class="icon">🎉</span> Events</div>
+    <div class="nav-item" data-panel="sunday-school"><span class="icon">📖</span> Sunday School</div>
+    <div class="nav-item" data-panel="prayer">
+      <span class="icon">🙏</span> Prayer Requests
+      <span class="nav-badge" id="prayer-badge" style="display:none">!</span>
+    </div>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="logout-btn" onclick="window.doLogout()"><span>⬅</span> Sign Out</div>
+  </div>
+</aside>
+
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     MAIN
+════════════════════════════════════════════════════════════════════════ -->
+<main class="main">
+  <div class="topbar">
+    <div class="topbar-title" id="topbar-title">Good morning 👋</div>
+    <div class="topbar-actions">
+      <button class="btn btn-outline btn-sm" data-panel="prayer">🙏 Prayer Request</button>
+      <button class="btn btn-gold   btn-sm" data-panel="events">📅 View Events</button>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- Loading -->
+    <div id="portal-loading" class="portal-loading">
+      <div class="spinner"></div>
+      <p style="color:var(--muted);font-size:14px">Loading your portal…</p>
+    </div>
+
+    <!-- ════ DASHBOARD ════ -->
+    <div id="panel-dashboard" class="panel" style="display:none">
+      <div class="welcome-banner">
+        <div class="welcome-text">
+          <h2 id="welcome-h2">Welcome back</h2>
+          <p  id="welcome-sub">Member since — · Branch —</p>
+        </div>
+        <div class="welcome-date">
+          <div class="date-big" id="date-day">—</div>
+          <div class="date-sub" id="date-label">—</div>
+        </div>
+      </div>
+      <div class="verse-banner">
+        <div class="verse-icon">📜</div>
+        <div>
+          <div class="verse-text">"For where two or three gather in my name, there am I with them."</div>
+          <div class="verse-ref">— Matthew 18:20</div>
+        </div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-card stat-gold">
+          <div class="stat-label">Services Attended</div>
+          <div class="stat-value" style="color:var(--gold)" id="stat-attended">—</div>
+          <div class="stat-sub" id="stat-att-pct">— attendance rate</div>
+        </div>
+        <div class="stat-card stat-teal">
+          <div class="stat-label">Total Giving (LCY)</div>
+          <div class="stat-value" style="color:var(--teal)" id="stat-giving">—</div>
+          <div class="stat-sub">Tithes &amp; Offerings</div>
+        </div>
+        <div class="stat-card stat-info">
+          <div class="stat-label">Active Pledges</div>
+          <div class="stat-value" style="color:var(--info)" id="stat-pledges">—</div>
+          <div class="stat-sub" id="stat-pledge-bal">Outstanding balance</div>
+        </div>
+        <div class="stat-card stat-rose">
+          <div class="stat-label">Upcoming Events</div>
+          <div class="stat-value" style="color:var(--rose)" id="stat-events">—</div>
+          <div class="stat-sub">Registered / Available</div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">📋 Recent Attendance</div>
+            <button class="btn btn-outline btn-sm" data-panel="attendance">View All →</button>
+          </div>
+          <div class="card-body" style="padding:0">
+            <table class="data-table">
+              <thead><tr><th>Date</th><th>Service</th><th>Status</th></tr></thead>
+              <tbody id="dash-att-body">
+                <tr><td colspan="3" style="text-align:center;color:var(--muted);padding:24px">Loading…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">🎉 Upcoming Events</div>
+            <button class="btn btn-outline btn-sm" data-panel="events">View All →</button>
+          </div>
+          <div class="card-body" id="dash-events-body" style="padding:12px">
+            <p style="color:var(--muted);font-size:13px;text-align:center;padding:16px">Loading…</p>
+          </div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="card">
+          <div class="card-header"><div class="card-title">⛪ Next Services</div></div>
+          <div id="dash-services-body" style="padding:12px 16px"></div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">🙏 My Prayers</div>
+            <button class="btn btn-gold btn-sm" data-panel="prayer">+ New</button>
+          </div>
+          <div id="dash-prayers-body" style="padding:12px 16px"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ PROFILE ════ -->
+    <div id="panel-profile" class="panel" style="display:none">
+      <div class="two-col">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">👤 My Profile</div>
+            <button class="btn btn-gold btn-sm" onclick="window.saveProfile()">Save Changes</button>
+          </div>
+          <div class="card-body">
+            <div style="display:flex;align-items:center;gap:20px;margin-bottom:24px">
+              <div class="profile-photo-wrap">
+                <div class="profile-photo" id="profile-photo-el">?</div>
+                <div class="profile-photo-btn" title="Change photo">📷</div>
+              </div>
+              <div>
+                <div style="font-family:var(--font-head);font-size:20px;font-weight:600" id="profile-fullname">—</div>
+                <div style="font-size:12px;color:var(--muted);margin-top:4px" id="profile-id-label">Member ID —</div>
+                <span class="pill pill-green" style="margin-top:6px;display:inline-block" id="profile-status-pill">Active</span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">Mobile Phone</label><input class="form-input" id="p-mobile" type="tel" placeholder="+234…"></div>
+              <div class="form-group"><label class="form-label">WhatsApp Number</label><input class="form-input" id="p-whatsapp" type="tel" placeholder="+234…"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">Occupation</label><input class="form-input" id="p-occupation" type="text"></div>
+              <div class="form-group"><label class="form-label">City</label><input class="form-input" id="p-city" type="text"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">State / Province</label><input class="form-input" id="p-state" type="text"></div>
+            </div>
+            <div class="form-group"><label class="form-label">Residential Address</label><textarea class="form-input" id="p-address" rows="2"></textarea></div>
+          </div>
+        </div>
+        <div>
+          <div class="card" style="margin-bottom:20px">
+            <div class="card-header"><div class="card-title">ℹ️ Church Details</div></div>
+            <div class="card-body"><table class="data-table"><tbody id="profile-details-table"></tbody></table></div>
+          </div>
+          <div class="card">
+            <div class="card-body" style="text-align:center">
+              <div style="font-family:var(--font-head);font-size:14px;font-weight:600;margin-bottom:12px;color:var(--ink)">My QR Code</div>
+              <div id="qr-display"><p style="color:var(--muted);font-size:12px">No QR code assigned yet.</p></div>
+              <p style="font-size:11px;color:var(--muted);margin-top:10px">Present at service for attendance check-in</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ ATTENDANCE ════ -->
+    <div id="panel-attendance" class="panel" style="display:none">
+      <div class="two-col" style="align-items:start">
+        <div>
+          <div class="stats-row" style="grid-template-columns:1fr 1fr 1fr;margin-bottom:20px">
+            <div class="stat-card stat-gold"><div class="stat-label">Total</div><div class="stat-value" style="color:var(--gold)" id="att-total">0</div></div>
+            <div class="stat-card stat-teal"><div class="stat-label">Present</div><div class="stat-value" style="color:var(--teal)" id="att-present">0</div></div>
+            <div class="stat-card stat-rose"><div class="stat-label">Rate</div><div class="stat-value" style="color:var(--rose)" id="att-pct">0%</div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div class="card-title">📋 Attendance History</div></div>
+            <div class="card-body" style="padding:0">
+              <table class="data-table">
+                <thead><tr><th>Date</th><th>Service</th><th>Branch</th><th>Status</th></tr></thead>
+                <tbody id="att-full-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">📅 Recent Pattern</div></div>
+          <div class="card-body">
+            <p style="font-size:12px;color:var(--muted);margin-bottom:12px">Last 20 services — green = present</p>
+            <div id="att-dots" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px"></div>
+            <div style="display:flex;gap:14px;font-size:11px;color:var(--muted)">
+              <span><span style="display:inline-block;width:10px;height:10px;vertical-align:middle;border-radius:2px;background:var(--teal)"></span> Present</span>
+              <span><span style="display:inline-block;width:10px;height:10px;vertical-align:middle;border-radius:2px;background:var(--border)"></span> Absent</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ GIVING ════ -->
+    <div id="panel-giving" class="panel" style="display:none">
+      <div class="two-col">
+        <div>
+          <div class="card" style="margin-bottom:20px">
+            <div class="card-header">
+              <div class="card-title">💰 Giving Summary</div>
+              <button class="btn btn-teal btn-sm" onclick="window.downloadStatement()">⬇ Statement</button>
+            </div>
+            <div class="card-body">
+              <div style="font-family:var(--font-head);font-size:36px;font-weight:700;color:var(--teal);margin-bottom:4px" id="giving-total">₦0</div>
+              <div style="font-size:12px;color:var(--muted)" id="giving-synced">Last synced: —</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div class="card-title">📄 Payment History</div></div>
+            <div class="card-body" style="padding:0">
+              <table class="data-table">
+                <thead><tr><th>Date</th><th>Receipt</th><th>Amount</th><th>Notes</th></tr></thead>
+                <tbody id="giving-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">🤝 Active Pledges</div></div>
+          <div class="card-body" id="giving-pledges-body"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ PLEDGES ════ -->
+    <div id="panel-pledges" class="panel" style="display:none">
+      <div id="pledges-body"></div>
+    </div>
+
+    <!-- ════ EVENTS ════ -->
+    <div id="panel-events" class="panel" style="display:none">
+      <div class="tabs">
+        <div class="tab active" data-subtab="ev-upcoming">Upcoming Events</div>
+        <div class="tab"        data-subtab="ev-registered">My Registrations</div>
+        <div class="tab"        data-subtab="ev-services">Services</div>
+      </div>
+      <div id="ev-upcoming"   class="panel active" style="display:block"><div id="events-list-body"></div></div>
+      <div id="ev-registered" class="panel" style="display:none">
+        <div class="card"><div class="card-body" style="padding:0">
+          <table class="data-table">
+            <thead><tr><th>Event</th><th>Date Registered</th><th>Status</th><th>Payment</th></tr></thead>
+            <tbody id="registrations-tbody"></tbody>
+          </table>
+        </div></div>
+      </div>
+      <div id="ev-services" class="panel" style="display:none"><div id="services-list-body"></div></div>
+    </div>
+
+    <!-- ════ SUNDAY SCHOOL ════ -->
+    <div id="panel-sunday-school" class="panel" style="display:none">
+      <div id="ss-body"></div>
+    </div>
+
+    <!-- ════ PRAYER ════ -->
+    <div id="panel-prayer" class="panel" style="display:none">
+      <div class="two-col">
+        <div class="card">
+          <div class="card-header"><div class="card-title">🙏 Submit Prayer Request</div></div>
+          <div class="card-body">
+            <div class="form-group" style="margin-bottom:16px">
+              <label class="form-label">Category</label>
+              <select class="form-input" id="pray-category">
+                <option>General</option><option>Health &amp; Healing</option>
+                <option>Financial Breakthrough</option><option>Family &amp; Relationships</option>
+                <option>Career &amp; Education</option><option>Spiritual Growth</option>
+                <option>Protection</option><option>Guidance</option>
+                <option>Thanksgiving</option><option>Other</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom:16px">
+              <label class="form-label">Prayer Title</label>
+              <input class="form-input" id="pray-title" type="text" placeholder="Brief title for your request…">
+            </div>
+            <div class="form-group" style="margin-bottom:16px">
+              <label class="form-label">Your Request</label>
+              <textarea class="form-input" id="pray-body" rows="4" placeholder="Share your heart with us…"></textarea>
+            </div>
+            <div style="display:flex;gap:20px;margin-bottom:20px">
+              <label class="form-check"><input type="checkbox" id="pray-anonymous"> Keep Anonymous</label>
+              <label class="form-check"><input type="checkbox" id="pray-urgent"> Urgent Request 🔴</label>
+            </div>
+            <button class="btn btn-gold" onclick="window.submitPrayer()" id="pray-btn">🙏 Submit Prayer</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">My Prayer Requests</div></div>
+          <div id="prayers-list-body" style="padding:12px 16px"></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</main>
+
+<!-- Generic modal -->
+<div id="modal-overlay" onclick="if(event.target===this)window.closeModal()">
+  <div id="modal-box">
+    <button class="modal-close" onclick="window.closeModal()">✕</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="portal-toast"></div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════════════════════════════════ -->
+<script>
+'use strict';
+
+(function() {
+  // ── Globals ──────────────────────────────────────────────────────────────────
+  let DATA = null;
+
+  const TITLES = {
+    dashboard:       'Dashboard',
+    profile:         'My Profile',
+    attendance:      'My Attendance',
+    giving:          'Giving & Tithes',
+    pledges:         'My Pledges',
+    events:          'Events & Services',
+    'sunday-school': 'Sunday School',
+    prayer:          'Prayer Requests',
+  };
+
+  // ── Toast ─────────────────────────────────────────────────────────────────────
+  function toast(msg, type='success') {
+    const t = document.getElementById('portal-toast');
+    const icons = { success:'✅ ', error:'❌ ', info:'ℹ️ ', warn:'⚠️ ' };
+    t.innerHTML = (icons[type]||'') + msg;
+    t.style.display = 'block';
+    t.style.borderLeft = '4px solid ' + (
+      {success:'var(--teal)',error:'var(--rose)',warn:'var(--gold)',info:'var(--info)'}[type] || 'var(--gold)'
+    );
+    clearTimeout(t._t);
+    t._t = setTimeout(() => t.style.display='none', 4500);
+  }
+
+  // ── UPDATED API function using GET with URL parameters ──────────────────────
+  async function api(method, args={}) {
+    // Build URL with query parameters
+    const params = new URLSearchParams();
+    if (args) {
+      Object.entries(args).forEach(([k, v]) => {
+        if (v !== null && v !== undefined) {
+          params.append(k, typeof v === 'object' ? JSON.stringify(v) : v);
+        }
+      });
+    }
+    
+    let url = '/api/method/' + method;
+    if (params.toString()) url += '?' + params.toString();
+
+    let r;
+    try {
+      // CRITICAL FIX: For login endpoint, don't send credentials
+      // This prevents the server from trying to authenticate with existing sessions
+      const fetchOptions = {
+        method: 'GET',
+      };
+      
+      // Only add credentials for non-login endpoints
+      if (!method.includes('portal_login')) {
+        fetchOptions.credentials = 'same-origin';
+      }
+      
+      r = await fetch(url, fetchOptions);
+    } catch(netErr) {
+      throw new Error('Network error — check your connection.');
+    }
+
+    let raw;
+    try { raw = await r.text(); } catch(e) { throw new Error('Could not read server response.'); }
+
+    const trimmed = raw.trimStart();
+    if (trimmed.startsWith('<')) {
+      const m = trimmed.match(/<title[^>]*>(.*?)<\/title>/i);
+      throw new Error('Server error: ' + (m ? m[1].trim() : 'HTTP ' + r.status));
+    }
+
+    let d;
+    try { d = JSON.parse(raw); } catch(e) { throw new Error('Non-JSON response: ' + raw.slice(0,120)); }
+
+    // Handle 401 differently based on endpoint
+    if (r.status === 401) {
+      if (method.includes('portal_login')) {
+        // Login endpoint returned 401 - invalid credentials
+        throw new Error('Invalid email or credential. Please try again.');
+      } else {
+        // Other endpoints - session expired
+        showLogin();
+        throw new Error('Session expired. Please log in again.');
+      }
+    }
+
+    if (d.exc || d._server_messages) {
+      let msg = d._server_messages || d.exc || 'Server error';
+      try { msg = JSON.parse(JSON.parse(msg)[0]).message; } catch(e) {
+        try { msg = JSON.parse(msg)[0]; } catch(e2) {
+          msg = String(msg).replace(/<[^>]+>/g,'').trim().split('\n').filter(Boolean).slice(-3).join(' | ');
+        }
+      }
+      throw new Error(msg);
+    }
+    return d.message !== undefined ? d.message : null;
+  }
+
+  // ── Format helpers ────────────────────────────────────────────────────────────
+  function fmt_currency(n, sym='₦') {
+    return sym + Number(n||0).toLocaleString('en-NG', {minimumFractionDigits:0, maximumFractionDigits:0});
+  }
+  function fmt_date(d) {
+    if (!d) return '—';
+    return new Date(d).toLocaleDateString('en-NG', {day:'numeric', month:'short', year:'numeric'});
+  }
+  function initials(name) {
+    return (name||'?').trim().split(/\s+/).slice(0,2).map(w=>w[0]).join('').toUpperCase();
+  }
+  function greet() {
+    const h = new Date().getHours();
+    return h<12 ? 'Good morning' : h<17 ? 'Good afternoon' : 'Good evening';
+  }
+  function pill(text, cls) { return `<span class="pill ${cls}">${text}</span>`; }
+  function pillForStatus(s) {
+    const m = {Active:'pill-green',Present:'pill-green',Registered:'pill-green',Completed:'pill-blue',
+      Absent:'pill-red',Cancelled:'pill-red','No Show':'pill-red',
+      Pending:'pill-yellow','Being Prayed For':'pill-yellow',Inactive:'pill-grey'};
+    return pill(s, m[s]||'pill-grey');
+  }
+
+  // ── Navigation ────────────────────────────────────────────────────────────────
+  function nav(name, el) {
+    document.querySelectorAll('.panel').forEach(p => { p.style.display='none'; p.classList.remove('active'); });
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    const panel = document.getElementById('panel-'+name);
+    if (panel) { panel.style.display='block'; panel.classList.add('active'); }
+    if (el) el.classList.add('active');
+    else {
+      document.querySelectorAll('.nav-item').forEach(n => {
+        if (n.getAttribute('data-panel') === name) n.classList.add('active');
+      });
+    }
+    document.getElementById('topbar-title').textContent = TITLES[name] || name;
+  }
+
+  function switchSub(id, el) {
+    const parent = el.closest('.panel');
+    if (!parent) return;
+    parent.querySelectorAll(':scope > .panel').forEach(p => { p.style.display='none'; p.classList.remove('active'); });
+    parent.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    const target = document.getElementById(id);
+    if (target) { target.style.display='block'; target.classList.add('active'); }
+    el.classList.add('active');
+  }
+
+  // ── Login overlay ─────────────────────────────────────────────────────────────
+  function showLogin() {
+    document.getElementById('login-overlay').style.display = 'flex';
+    document.getElementById('login-error').style.display   = 'none';
+    document.getElementById('login-email').value           = '';
+    document.getElementById('login-qr').value              = '';
+    document.getElementById('login-dob').value             = '';
+  }
+  function hideLogin() {
+    document.getElementById('login-overlay').style.display = 'none';
+  }
+
+  function switchLoginTab(tab) {
+    document.getElementById('panel-qr').style.display  = tab==='qr'  ? 'block' : 'none';
+    document.getElementById('panel-dob').style.display = tab==='dob' ? 'block' : 'none';
+    document.getElementById('tab-qr').classList.toggle('active',  tab==='qr');
+    document.getElementById('tab-dob').classList.toggle('active', tab==='dob');
+  }
+
+  async function doLogin() {
+    const btn   = document.getElementById('login-btn');
+    const errEl = document.getElementById('login-error');
+    errEl.style.display = 'none';
+
+    const email = document.getElementById('login-email').value.trim();
+    const isQR  = document.getElementById('panel-qr').style.display !== 'none';
+    const cred  = isQR
+      ? document.getElementById('login-qr').value.trim()
+      : document.getElementById('login-dob').value.trim();
+
+    if (!email) { errEl.textContent='Please enter your email address.'; errEl.style.display='block'; return; }
+    if (!cred)  { errEl.textContent=isQR?'Please enter your QR token.':'Please select your date of birth.'; errEl.style.display='block'; return; }
+
+    btn.disabled=true; btn.innerHTML='<span style="display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite"></span> Signing in…';
+
+    try {
+      const res = await api('church.api.member_portal_api.portal_login', { email, credential: cred });
+      hideLogin();
+      toast(res.message, 'success');
+      await loadPortalData();
+    } catch(e) {
+      errEl.textContent = e.message;
+      errEl.style.display = 'block';
+    } finally {
+      btn.disabled=false;
+      btn.innerHTML='<span>🙏</span> Sign In';
+    }
+  }
+
+  async function doLogout() {
+    try { await api('church.api.member_portal_api.portal_logout'); } catch(e) {}
+    DATA = null;
+    // Reset UI
+    document.getElementById('portal-loading').style.display='flex';
+    document.getElementById('portal-loading').innerHTML='<div class="spinner"></div><p style="color:var(--muted);font-size:14px">Loading your portal…</p>';
+    document.querySelectorAll('.panel').forEach(p => { p.style.display='none'; p.classList.remove('active'); });
+    showLogin();
+  }
+
+  // ── Populate all panels from API data ─────────────────────────────────────────
+  function populate(data) {
+    DATA = data;
+    const { member, church, attendance, giving, pledges, events, services, sunday_school, prayers, registrations } = data;
+
+    // Church branding
+    document.getElementById('church-name').textContent = church.name || 'Member Portal';
+    document.getElementById('church-abbr').textContent = church.abbreviation || '';
+    document.getElementById('login-church-name').textContent = church.name || 'Member Portal';
+
+    // Sidebar member
+    document.getElementById('sidebar-name').textContent   = member.full_name;
+    document.getElementById('sidebar-branch').textContent = (member.branch||'') + (member.demographic_group ? ' · '+member.demographic_group : '');
+    const av = document.getElementById('sidebar-avatar');
+    av.innerHTML = member.photo ? `<img src="${member.photo}" alt="">` : initials(member.full_name);
+
+    // Topbar
+    const firstName = member.first_name || member.full_name;
+    document.getElementById('topbar-title').textContent = greet() + ', ' + firstName + ' 👋';
+    document.getElementById('welcome-h2').textContent   = 'Welcome back, ' + firstName;
+    document.getElementById('welcome-sub').textContent  = 'Member since ' + fmt_date(member.date_of_joining) + ' · ' + (member.branch||'');
+
+    const now = new Date();
+    document.getElementById('date-day').textContent   = now.getDate();
+    document.getElementById('date-label').textContent = now.toLocaleDateString('en-NG',{month:'long',year:'numeric',weekday:'long'});
+
+    // Stats
+    document.getElementById('stat-attended').textContent  = attendance.present;
+    document.getElementById('stat-att-pct').textContent   = attendance.pct + '% attendance rate';
+    document.getElementById('stat-giving').textContent    = fmt_currency(giving.total_paid);
+    document.getElementById('stat-pledges').textContent   = pledges.length;
+    const totalBal = pledges.reduce((s,p)=>s+(p.balance||0),0);
+    document.getElementById('stat-pledge-bal').textContent = fmt_currency(totalBal) + ' outstanding';
+    document.getElementById('stat-events').textContent    = events.length;
+
+    // Dashboard attendance
+    document.getElementById('dash-att-body').innerHTML = attendance.recent.length
+      ? attendance.recent.slice(0,8).map(r =>
+          `<tr><td>${fmt_date(r.service_date)}</td><td>${r.service_type||'—'}</td><td>${pillForStatus(r.present?'Present':'Absent')}</td></tr>`
+        ).join('')
+      : `<tr><td colspan="3" style="text-align:center;color:var(--muted);padding:24px">No attendance records yet</td></tr>`;
+
+    // Dashboard events
+    document.getElementById('dash-events-body').innerHTML = events.length
+      ? events.slice(0,3).map(e=>renderEventCard(e,true)).join('')
+      : `<div class="empty-state"><div class="empty-icon">🎉</div><p>No upcoming events</p></div>`;
+
+    // Dashboard services
+    document.getElementById('dash-services-body').innerHTML = services.length
+      ? services.slice(0,3).map(s=>renderServiceCard(s)).join('')
+      : `<div style="padding:16px;color:var(--muted);font-size:13px;text-align:center">No upcoming services</div>`;
+
+    // Dashboard prayers
+    document.getElementById('dash-prayers-body').innerHTML = prayers.length
+      ? prayers.slice(0,3).map(p=>renderPrayerCard(p)).join('')
+      : `<div style="padding:16px;text-align:center"><p style="color:var(--muted);font-size:13px;margin-bottom:12px">No prayer requests yet</p><button class="btn btn-gold btn-sm" data-panel="prayer">🙏 Submit Prayer</button></div>`;
+
+    // Profile
+    document.getElementById('profile-fullname').textContent    = member.full_name;
+    document.getElementById('profile-id-label').textContent    = 'Member ID: ' + member.id;
+    document.getElementById('profile-status-pill').textContent = member.member_status || 'Active';
+    document.getElementById('p-mobile').value    = member.mobile_phone    || '';
+    document.getElementById('p-whatsapp').value  = member.whatsapp_number || '';
+    document.getElementById('p-occupation').value= member.occupation      || '';
+    document.getElementById('p-city').value      = member.city            || '';
+    document.getElementById('p-state').value     = member.state           || '';
+    document.getElementById('p-address').value   = member.address         || '';
+    const pPhoto = document.getElementById('profile-photo-el');
+    pPhoto.innerHTML = member.photo ? `<img src="${member.photo}" style="width:100%;height:100%;border-radius:50%;object-fit:cover">` : initials(member.full_name);
+    if (member.qr_code_image) {
+      document.getElementById('qr-display').innerHTML = `<img src="${member.qr_code_image}" style="width:140px;height:140px;border-radius:8px">`;
+    }
+    document.getElementById('profile-details-table').innerHTML = [
+      ['Branch',member.branch],['Parish',member.parish],['Zone',member.zone||'—'],
+      ['Gender',member.gender],['Age',member.age||'—'],
+      ['Demographic Group',member.demographic_group||'—'],
+      ['Membership Type',member.type||'—'],
+      ['Date of Joining',fmt_date(member.date_of_joining)],
+      ['Sunday School Class',member.sunday_school_class||'—'],
+    ].map(([k,v])=>`<tr><td style="font-weight:500;color:var(--muted);width:42%">${k}</td><td>${v||'—'}</td></tr>`).join('');
+
+    // Attendance panel
+    document.getElementById('att-total').textContent   = attendance.total;
+    document.getElementById('att-present').textContent = attendance.present;
+    document.getElementById('att-pct').textContent     = attendance.pct + '%';
+    document.getElementById('att-full-body').innerHTML = attendance.recent.map(r =>
+      `<tr><td>${fmt_date(r.service_date)}</td><td>${r.service_type||'—'}</td><td>${r.branch||'—'}</td><td>${pillForStatus(r.present?'Present':'Absent')}</td></tr>`
+    ).join('') || `<tr><td colspan="4" style="text-align:center;color:var(--muted);padding:24px">No records</td></tr>`;
+    document.getElementById('att-dots').innerHTML = attendance.recent.slice(0,20).map(r =>
+      `<div title="${fmt_date(r.service_date)} — ${r.present?'Present':'Absent'}" style="width:20px;height:20px;border-radius:4px;background:${r.present?'var(--teal)':'var(--border)'};cursor:default;transition:transform .1s" onmouseover="this.style.transform='scale(1.3)'" onmouseout="this.style.transform='scale(1)'"></div>`
+    ).join('');
+
+    // Giving panel
+    document.getElementById('giving-total').textContent  = fmt_currency(giving.total_paid);
+    document.getElementById('giving-synced').textContent = 'Last synced: ' + fmt_date(giving.last_synced);
+    document.getElementById('giving-tbody').innerHTML = giving.payments.map(p =>
+      `<tr><td>${fmt_date(p.date)}</td><td style="font-size:11px;color:var(--muted)">${p.receipt_no||'—'}</td><td style="font-weight:600;color:var(--teal)">${fmt_currency(p.amount_paid)}</td><td style="font-size:12px;color:var(--muted)">${p.other_details||'—'}</td></tr>`
+    ).join('') || `<tr><td colspan="4" style="text-align:center;color:var(--muted);padding:24px">No payment records</td></tr>`;
+    document.getElementById('giving-pledges-body').innerHTML = pledges.filter(p=>p.balance>0).map(p=>renderPledgeCard(p)).join('')
+      || `<div class="empty-state"><div class="empty-icon">🤝</div><p>No active pledges</p></div>`;
+
+    // Pledges panel
+    document.getElementById('pledges-body').innerHTML = pledges.map(p=>renderPledgeCard(p)).join('')
+      || `<div class="empty-state"><div class="empty-icon">🤝</div><p>No pledges found</p></div>`;
+
+    // Events panel
+    document.getElementById('events-list-body').innerHTML = events.map(e=>renderEventCard(e,false)).join('')
+      || `<div class="empty-state"><div class="empty-icon">🎉</div><p>No upcoming events</p></div>`;
+    document.getElementById('registrations-tbody').innerHTML = registrations.map(r =>
+      `<tr><td style="font-weight:500">${r.event_name||r.event}</td><td>${fmt_date(r.registration_date)}</td><td>${pillForStatus(r.status)}</td><td>${pillForStatus(r.payment_status||'Not Required')}</td></tr>`
+    ).join('') || `<tr><td colspan="4" style="text-align:center;color:var(--muted);padding:24px">No registrations</td></tr>`;
+    document.getElementById('services-list-body').innerHTML = services.map(s=>renderServiceCard(s)).join('')
+      || `<div class="empty-state"><div class="empty-icon">⛪</div><p>No upcoming services</p></div>`;
+
+    // Sunday school panel
+    const ssBody = document.getElementById('ss-body');
+    if (sunday_school) {
+      ssBody.innerHTML = `
+        <div class="ss-info-card" style="margin-bottom:24px">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.5);margin-bottom:8px">My Sunday School Class</div>
+          <div style="font-family:var(--font-head);font-size:24px;font-weight:700;color:#fff;margin-bottom:4px">${sunday_school.name||'—'}</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.6)">Category: ${sunday_school.sunday_school_class_category||'—'}</div>
+          <div class="ss-teacher-row">
+            <div class="ss-teacher-av">${initials(sunday_school.teacher_name||'?')}</div>
+            <div class="ss-teacher-info"><h5>${sunday_school.teacher_name||'—'}</h5><p>Class Teacher · ${sunday_school.phone_no||''}</p></div>
+          </div>
+          ${sunday_school.assistant_teacher_name ? `
+          <div class="ss-teacher-row" style="margin-top:8px">
+            <div class="ss-teacher-av">${initials(sunday_school.assistant_teacher_name)}</div>
+            <div class="ss-teacher-info"><h5>${sunday_school.assistant_teacher_name}</h5><p>Assistant Teacher</p></div>
+          </div>` : ''}
+        </div>`;
+    } else {
+      ssBody.innerHTML = `<div class="empty-state"><div class="empty-icon">📖</div><p>No Sunday School class assigned yet.<br>Please contact your branch for class placement.</p></div>`;
+    }
+
+    // Prayer panel
+    document.getElementById('prayers-list-body').innerHTML = prayers.map(p=>renderPrayerCard(p)).join('')
+      || `<div style="padding:16px;text-align:center;color:var(--muted);font-size:13px">No prayer requests yet</div>`;
+  }
+
+  // ── Render sub-components ─────────────────────────────────────────────────────
+  function renderEventCard(e, compact) {
+    const d   = new Date(e.start_date);
+    const reg = DATA && DATA.registrations.some(r=>r.event===e.name);
+    return `
+      <div class="event-card">
+        <div class="event-date-box">
+          <div class="event-day">${d.getDate()}</div>
+          <div class="event-month">${d.toLocaleDateString('en',{month:'short'})}</div>
+        </div>
+        <div class="event-body">
+          <div class="event-name">${e.event_name}</div>
+          <div class="event-meta">
+            <span>📍 ${e.venue||'TBC'}</span>
+            <span>🕐 ${e.start_time||''}</span>
+            ${e.event_type?`<span>🏷 ${e.event_type}</span>`:''}
+            ${e.registration_fee?`<span>₦${Number(e.registration_fee).toLocaleString()}</span>`:''}
+          </div>
+          ${e.event_theme&&!compact?`<div style="font-size:12px;color:var(--gold);margin-top:6px;font-style:italic">"${e.event_theme}"</div>`:''}
+        </div>
+        <div class="event-actions">
+          ${reg ? `<span class="pill pill-green">Registered ✓</span>`
+                 : `<button class="btn btn-gold btn-sm" onclick="window.registerEvent('${e.name}','${e.event_name.replace(/'/g,"\\'")}')">Register</button>`}
+        </div>
+      </div>`;
+  }
+
+  function renderServiceCard(s) {
+    return `
+      <div class="service-card">
+        <div class="service-left">
+          <div class="service-icon">⛪</div>
+          <div>
+            <div class="service-name">${s.service_name||s.name}</div>
+            <div class="service-meta">${fmt_date(s.service_date)} · ${s.service_time||''} · ${s.branch||''}</div>
+            ${s.sermon_title?`<div style="font-size:11px;color:var(--gold);margin-top:3px">📜 ${s.sermon_title}</div>`:''}
+          </div>
+        </div>
+        <div>${pillForStatus(s.status||'Scheduled')}</div>
+      </div>`;
+  }
+
+  function renderPledgeCard(p) {
+    const pct = p.amount ? Math.min(100, Math.round(((p.amount-p.balance)/p.amount)*100)) : 0;
+    return `
+      <div class="pledge-card">
+        <div class="pledge-header">
+          <div>
+            <div class="pledge-prog">${p.programme||'Pledge'}</div>
+            <div style="font-size:12px;color:var(--muted)">${fmt_date(p.pledge_date)} · Due ${fmt_date(p.closing_date)}</div>
+          </div>
+          <div class="pledge-amount">${fmt_currency(p.amount)}</div>
+        </div>
+        <div class="pledge-progress-row">
+          <span>Paid: ${fmt_currency(p.amount_paid)}</span>
+          <span>Balance: <strong style="color:var(--rose)">${fmt_currency(p.balance)}</strong></span>
+          <span>${pct}% complete</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
+      </div>`;
+  }
+
+  function renderPrayerCard(p) {
+    return `
+      <div class="prayer-card ${p.is_urgent?'urgent':''}">
+        <div class="prayer-title">${p.is_urgent?'🔴 ':'🙏 '}${p.prayer_title} ${pillForStatus(p.status)}</div>
+        <div class="prayer-meta">
+          <span>${p.category||'General'}</span>
+          <span>${fmt_date(p.creation)}</span>
+          ${p.is_anonymous?'<span style="color:var(--muted)">Anonymous</span>':''}
+        </div>
+      </div>`;
+  }
+
+  // ── Actions ───────────────────────────────────────────────────────────────────
+  async function submitPrayer() {
+    const btn   = document.getElementById('pray-btn');
+    const title = document.getElementById('pray-title').value.trim();
+    const body  = document.getElementById('pray-body').value.trim();
+    const cat   = document.getElementById('pray-category').value;
+    const anon  = document.getElementById('pray-anonymous').checked ? 1 : 0;
+    const urgent= document.getElementById('pray-urgent').checked    ? 1 : 0;
+    if (!title) { toast('Please enter a prayer title','warn'); return; }
+    if (!body)  { toast('Please describe your request','warn');  return; }
+    btn.disabled=true; btn.textContent='⏳ Submitting…';
+    try {
+      const res = await api('church.api.member_portal_api.submit_prayer_request',
+        { prayer_title:title, prayer_body:body, category:cat, is_anonymous:anon, is_urgent:urgent });
+      toast(res.message,'success');
+      document.getElementById('pray-title').value='';
+      document.getElementById('pray-body').value='';
+      document.getElementById('pray-anonymous').checked=false;
+      document.getElementById('pray-urgent').checked=false;
+      await loadPortalData();
+    } catch(e) { toast(e.message,'error'); }
+    finally { btn.disabled=false; btn.innerHTML='🙏 Submit Prayer'; }
+  }
+
+  async function registerEvent(eventId, eventName) {
+    if (!confirm(`Register for "${eventName}"?`)) return;
+    try {
+      const res = await api('church.api.member_portal_api.register_for_event', { event_id: eventId });
+      toast(res.message,'success');
+      await loadPortalData();
+    } catch(e) { toast(e.message,'error'); }
+  }
+
+  async function saveProfile() {
+    const btn = document.querySelector('.btn-gold[onclick="window.saveProfile()"]');
+    btn.disabled=true; btn.textContent='⏳ Saving…';
+    try {
+      const res = await api('church.api.member_portal_api.update_profile', {
+        mobile_phone:    document.getElementById('p-mobile').value,
+        whatsapp_number: document.getElementById('p-whatsapp').value,
+        occupation:      document.getElementById('p-occupation').value,
+        city:            document.getElementById('p-city').value,
+        state:           document.getElementById('p-state').value,
+        address:         document.getElementById('p-address').value,
+      });
+      toast(res.message,'success');
+    } catch(e) { toast(e.message,'error'); }
+    finally { btn.disabled=false; btn.textContent='Save Changes'; }
+  }
+
+  async function downloadStatement() {
+    try {
+      const res = await api('church.api.member_portal_api.get_giving_statement', {});
+      if (!res.payments.length) { toast('No giving records for statement','warn'); return; }
+      const rows = res.payments.map(p =>
+        `<tr><td>${fmt_date(p.date)}</td><td>${p.receipt_no||'—'}</td><td style="text-align:right;font-weight:600">₦${Number(p.amount_paid).toLocaleString()}</td><td>${p.other_details||''}</td></tr>`
+      ).join('');
+      const html = `<!DOCTYPE html><html><head><title>Giving Statement</title>
+        <style>body{font-family:sans-serif;padding:32px;color:#222}h2{color:#1a6b5c}table{width:100%;border-collapse:collapse;margin-top:20px}th,td{border:1px solid #ddd;padding:10px;font-size:13px}th{background:#f5f5f5;text-align:left}tfoot td{font-weight:700;border-top:2px solid #222}</style></head>
+        <body><h2>${res.church.name}</h2><p>Giving Statement for <strong>${res.member.full_name}</strong> (${res.member.id}) · Branch: ${res.member.branch||'—'}</p>
+        <table><thead><tr><th>Date</th><th>Receipt</th><th>Amount</th><th>Notes</th></tr></thead>
+        <tbody>${rows}</tbody>
+        <tfoot><tr><td colspan="2">Total</td><td style="text-align:right">₦${Number(res.total).toLocaleString()}</td><td></td></tr></tfoot></table>
+        <p style="margin-top:24px;font-size:12px;color:#888">Printed: ${new Date().toLocaleString()}</p></body></html>`;
+      const w = window.open('','_blank'); w.document.write(html); w.document.close(); w.print();
+    } catch(e) { toast(e.message,'error'); }
+  }
+
+  function openModal(html) {
+    document.getElementById('modal-body').innerHTML = html;
+    document.getElementById('modal-overlay').style.display = 'flex';
+  }
+  function closeModal() {
+    document.getElementById('modal-overlay').style.display = 'none';
+  }
+
+  // ── Boot ──────────────────────────────────────────────────────────────────────
+  async function loadPortalData() {
+    document.getElementById('portal-loading').style.display='flex';
+    document.getElementById('portal-loading').innerHTML='<div class="spinner"></div><p style="color:var(--muted);font-size:14px">Loading your portal…</p>';
+    document.querySelectorAll('.panel').forEach(p=>{ p.style.display='none'; p.classList.remove('active'); });
+
+    try {
+      const data = await api('church.api.member_portal_api.get_portal_boot');
+      populate(data);
+      document.getElementById('portal-loading').style.display='none';
+      nav('dashboard', document.querySelector('.nav-item.active'));
+    } catch(e) {
+      // If session error, show login
+      if (e.message.includes('Session expired')) {
+        showLogin();
+      } else {
+        document.getElementById('portal-loading').innerHTML = `
+          <div style="max-width:560px;margin:0 auto;padding:40px 24px">
+            <div style="font-size:40px;text-align:center;margin-bottom:20px">⚠️</div>
+            <div style="background:var(--rose-lt);border:1px solid #f5c5c0;border-radius:10px;padding:20px;margin-bottom:16px">
+              <div style="font-weight:600;color:var(--rose);margin-bottom:8px;font-size:14px">Portal failed to load</div>
+              <div style="font-size:13px;color:var(--text);line-height:1.6;word-break:break-word">${e.message}</div>
+            </div>
+            <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:16px;font-size:12px;color:var(--muted);line-height:1.8">
+              <strong style="color:var(--text);display:block;margin-bottom:6px">Steps to fix:</strong>
+              1. Ensure your backend API methods exist with allow_guest=True<br>
+              2. Check that Member doctype has portal_session_token field<br>
+              3. Run <code style="background:#fff;padding:1px 5px;border-radius:3px">bench restart</code>
+            </div>
+            <div style="text-align:center;margin-top:24px">
+              <button class="btn btn-gold" onclick="location.reload()">↻ Retry</button>
+            </div>
+          </div>`;
+      }
+    }
+  }
+
+  // Event listeners setup
+  document.addEventListener('DOMContentLoaded', async () => {
+    // Handle navigation clicks
+    document.querySelectorAll('.nav-item[data-panel]').forEach(function(item) {
+      item.addEventListener('click', function(e) {
+        var panelName = this.getAttribute('data-panel');
+        nav(panelName, this);
+      });
+    });
+
+    // Handle "View All" buttons
+    document.querySelectorAll('[data-panel]').forEach(function(btn) {
+      if (btn.classList.contains('nav-item')) return;
+      btn.addEventListener('click', function(e) {
+        var panelName = this.getAttribute('data-panel');
+        nav(panelName, null);
+      });
+    });
+
+    // Handle sub-tabs
+    document.querySelectorAll('[data-subtab]').forEach(function(tab) {
+      tab.addEventListener('click', function(e) {
+        var subtabId = this.getAttribute('data-subtab');
+        switchSub(subtabId, this);
+      });
+    });
+
+    // Enter key triggers login
+    ['login-email','login-qr','login-dob'].forEach(id => {
+      document.getElementById(id).addEventListener('keydown', e => { if (e.key==='Enter') doLogin(); });
+    });
+
+    // Modal overlay click
+    document.getElementById('modal-overlay').addEventListener('click', function(e) { 
+      if (e.target === this) closeModal(); 
+    });
+
+    // Initially show login - don't try to load any data
+    showLogin();
+  });
+
+  // Expose functions to global scope with window prefix for onclick handlers
+  window.nav = nav;
+  window.switchSub = switchSub;
+  window.switchLoginTab = switchLoginTab;
+  window.doLogin = doLogin;
+  window.doLogout = doLogout;
+  window.submitPrayer = submitPrayer;
+  window.registerEvent = registerEvent;
+  window.saveProfile = saveProfile;
+  window.downloadStatement = downloadStatement;
+  window.openModal = openModal;
+  window.closeModal = closeModal;
+})();
+</script>
+</body>
+</html>

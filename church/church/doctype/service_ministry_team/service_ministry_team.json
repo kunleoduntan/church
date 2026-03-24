@@ -1,0 +1,112 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-01-29 12:11:43.193436",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "member",
+  "full_name",
+  "column_break_1",
+  "phone",
+  "email",
+  "column_break_2",
+  "ministry_role",
+  "responsibility",
+  "section_break_details",
+  "is_primary_contact",
+  "column_break_3",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "member",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Member",
+   "options": "Member",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "member.full_name",
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "member.mobile_phone",
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Phone",
+   "options": "Phone",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "member.email",
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ministry_role",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Ministry Role",
+   "options": "Minister/Pastor\nAssistant Pastor\nWorship Leader\nChoir Director\nMusic Director\nInstrumentalist\nPraise Team Lead\nUsher Coordinator\nHead Usher\nUsher\nProtocol Officer\nMedia Director\nSound Engineer\nCamera Operator\nLivestream Coordinator\nChildren's Coordinator\nSunday School Teacher\nIntercessor\nPrayer Coordinator\nAltar Worker\nSanctuary Keeper\nOffering Counter\nSecretary\nAnnouncer\nDoor Keeper\nSecurity\nParking Coordinator\nFirst Aid\nAccountant\nOther",
+   "reqd": 1
+  },
+  {
+   "fieldname": "responsibility",
+   "fieldtype": "Small Text",
+   "label": "Responsibility/Duty Description"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_details",
+   "fieldtype": "Section Break",
+   "label": "Additional Details"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_primary_contact",
+   "fieldtype": "Check",
+   "label": "Is Primary Contact for This Role"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-01-29 16:37:10.555865",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Service Ministry Team",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

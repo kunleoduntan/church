@@ -1,0 +1,149 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-05 21:37:04.588139",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "member_id",
+  "full_name",
+  "salutation",
+  "column_break_r1apx",
+  "mobile_phone",
+  "email",
+  "whatsapp_number",
+  "column_break_pztyf",
+  "gender",
+  "demographic_group",
+  "present",
+  "notification_sent",
+  "service_type",
+  "is_visitor",
+  "visitor_source"
+ ],
+ "fields": [
+  {
+   "fieldname": "member_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Member",
+   "options": "Member",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fetch_from": "member_id.full_name",
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "member_id.salutation",
+   "fieldname": "salutation",
+   "fieldtype": "Data",
+   "label": "Salutation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_r1apx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "member_id.mobile_phone",
+   "fieldname": "mobile_phone",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Mobile No",
+   "options": "Phone",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "member_id.email",
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Email",
+   "options": "Email",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "member_id.whatsapp_number",
+   "fieldname": "whatsapp_number",
+   "fieldtype": "Data",
+   "label": "WhatsApp",
+   "options": "Phone",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_pztyf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "member_id.gender",
+   "fieldname": "gender",
+   "fieldtype": "Link",
+   "label": "Gender",
+   "options": "Gender",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "member_id.demographic_group",
+   "fieldname": "demographic_group",
+   "fieldtype": "Data",
+   "label": "Demographic Group",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "present",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Present"
+  },
+  {
+   "default": "0",
+   "fieldname": "notification_sent",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Notified",
+   "read_only": 1
+  },
+  {
+   "fieldname": "service_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Service Type",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_visitor",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Visitor"
+  },
+  {
+   "fieldname": "visitor_source",
+   "fieldtype": "Select",
+   "label": "Visitor Source",
+   "options": "\nInvited by Member\nWalk-in\nOnline Event\nCommunity Outreach\nOther"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-03-07 09:00:11.925561",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Attendance Marking Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

@@ -1,0 +1,285 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-12-09 10:12:27.305930",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "person_details_section",
+  "person_registry",
+  "person_name",
+  "column_break_1",
+  "registry_type",
+  "organization_unit",
+  "attendance_details_section",
+  "attendance_date",
+  "presence_status",
+  "column_break_2",
+  "primary_detection_method",
+  "checkpoint_location",
+  "timing_section",
+  "check_in_time",
+  "check_out_time",
+  "column_break_3",
+  "total_duration_minutes",
+  "is_overtime",
+  "event_tracking_section",
+  "event_reference",
+  "service_reference",
+  "column_break_4",
+  "shift_assignment",
+  "remarks_section",
+  "attendance_remarks",
+  "column_break_5",
+  "approval_status",
+  "approved_by",
+  "analytics_section",
+  "late_arrival",
+  "early_departure",
+  "column_break_6",
+  "consecutive_days_present",
+  "monthly_attendance_rate",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "person_details_section",
+   "fieldtype": "Section Break",
+   "label": "Person Details"
+  },
+  {
+   "fieldname": "person_registry",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Person",
+   "options": "Person Registry",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "person_registry.full_name",
+   "fieldname": "person_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Person Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "person_registry.registry_type",
+   "fieldname": "registry_type",
+   "fieldtype": "Data",
+   "label": "Registry Type",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "person_registry.organization_unit",
+   "fieldname": "organization_unit",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Organization Unit",
+   "options": "Organization Unit",
+   "read_only": 1
+  },
+  {
+   "fieldname": "attendance_details_section",
+   "fieldtype": "Section Break",
+   "label": "Attendance Details"
+  },
+  {
+   "bold": 1,
+   "fieldname": "attendance_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Attendance Date",
+   "reqd": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "presence_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Present\nAbsent\nHalf Day\nOn Leave\nWork From Home\nLate",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "primary_detection_method",
+   "fieldtype": "Select",
+   "label": "Primary Detection Method",
+   "options": "QR Code Scan\nMAC Detection\nManual Entry\nCaptive Portal\nNFC Card\nBiometric",
+   "read_only": 1
+  },
+  {
+   "fieldname": "checkpoint_location",
+   "fieldtype": "Link",
+   "label": "Location",
+   "options": "Checkpoint Location"
+  },
+  {
+   "fieldname": "timing_section",
+   "fieldtype": "Section Break",
+   "label": "Timing"
+  },
+  {
+   "fieldname": "check_in_time",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Check-In Time"
+  },
+  {
+   "fieldname": "check_out_time",
+   "fieldtype": "Time",
+   "label": "Check-Out Time"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_duration_minutes",
+   "fieldtype": "Int",
+   "label": "Total Duration (Minutes)",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_overtime",
+   "fieldtype": "Check",
+   "label": "Overtime"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "event_tracking_section",
+   "fieldtype": "Section Break",
+   "label": "Event/Service Tracking"
+  },
+  {
+   "fieldname": "event_reference",
+   "fieldtype": "Link",
+   "label": "Event",
+   "options": "Event"
+  },
+  {
+   "fieldname": "service_reference",
+   "fieldtype": "Link",
+   "label": "Service/Session",
+   "options": "Church Service"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shift_assignment",
+   "fieldtype": "Link",
+   "label": "Shift",
+   "options": "Shift Type"
+  },
+  {
+   "fieldname": "remarks_section",
+   "fieldtype": "Section Break",
+   "label": "Remarks & Approval"
+  },
+  {
+   "fieldname": "attendance_remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Approved",
+   "fieldname": "approval_status",
+   "fieldtype": "Select",
+   "label": "Approval Status",
+   "options": "Approved\nPending\nRejected"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "User"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "analytics_section",
+   "fieldtype": "Section Break",
+   "label": "Analytics"
+  },
+  {
+   "default": "0",
+   "fieldname": "late_arrival",
+   "fieldtype": "Check",
+   "label": "Late Arrival"
+  },
+  {
+   "default": "0",
+   "fieldname": "early_departure",
+   "fieldtype": "Check",
+   "label": "Early Departure"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "consecutive_days_present",
+   "fieldtype": "Int",
+   "label": "Consecutive Days Present",
+   "read_only": 1
+  },
+  {
+   "fieldname": "monthly_attendance_rate",
+   "fieldtype": "Percent",
+   "label": "Monthly Attendance %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Daily Presence Record",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-12-09 15:49:05.774814",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Daily Presence Record",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

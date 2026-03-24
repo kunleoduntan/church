@@ -1,0 +1,448 @@
+{
+ "actions": [],
+ "allow_events_in_timeline": 1,
+ "allow_rename": 1,
+ "autoname": "field:service_name",
+ "creation": "2026-01-29 12:27:58.666655",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_information_section",
+  "service_name",
+  "service_type",
+  "status",
+  "column_break_basic",
+  "ministry",
+  "service_category",
+  "is_default_service",
+  "column_break_pybrx",
+  "branch",
+  "schedule_section",
+  "is_recurring",
+  "recurrence_pattern",
+  "day_of_week",
+  "column_break_schedule",
+  "service_time",
+  "duration_minutes",
+  "column_break_freq",
+  "frequency",
+  "week_of_month",
+  "section_break_location",
+  "venue",
+  "column_break_venue",
+  "address",
+  "capacity",
+  "section_break_service_order",
+  "service_description",
+  "service_order_template",
+  "ministry_team_section",
+  "ministry_team",
+  "section_break_leadership",
+  "default_minister",
+  "default_worship_leader",
+  "column_break_leadership",
+  "default_choir",
+  "default_ushering_team",
+  "section_break_settings",
+  "enable_attendance_tracking",
+  "enable_offering_collection",
+  "column_break_settings",
+  "enable_live_streaming",
+  "livestream_url",
+  "visitor_tracking_section",
+  "auto_track_visitors",
+  "visitor_follow_up_enabled",
+  "column_break_visitor",
+  "default_follow_up_coordinator",
+  "section_break_service_visitors",
+  "service_visitors",
+  "section_break_occurrence",
+  "next_service_date",
+  "last_service_date",
+  "column_break_occurrence",
+  "total_occurrences",
+  "average_attendance",
+  "section_break_notes",
+  "notes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_information_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "service_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Service Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "service_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Service Type",
+   "options": "Sunday Service\nMid-Week Service\nPrayer Meeting\nBible Study\nEvening Service\nYouth Service\nChildren's Service\nWorkers' Meeting\nCorporate Prayer\nFasting & Prayer\nAll-Night Service\nSpecial Service",
+   "reqd": 1
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Active\nSuspended\nDiscontinued",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ministry",
+   "fieldtype": "Link",
+   "label": "Organizing Ministry",
+   "options": "Ministry"
+  },
+  {
+   "fieldname": "service_category",
+   "fieldtype": "Select",
+   "label": "Service Category",
+   "options": "Main Service\nDepartmental Service\nCell/Home Service\nSpecial Programme"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_default_service",
+   "fieldtype": "Check",
+   "label": "Is Default Sunday Service"
+  },
+  {
+   "fieldname": "schedule_section",
+   "fieldtype": "Section Break",
+   "label": "Schedule & Recurrence"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_recurring",
+   "fieldtype": "Check",
+   "label": "Is Recurring Service"
+  },
+  {
+   "depends_on": "eval:doc.is_recurring==1",
+   "fieldname": "recurrence_pattern",
+   "fieldtype": "Select",
+   "label": "Recurrence Pattern",
+   "options": "Weekly\nBi-Weekly\nMonthly\nCustom"
+  },
+  {
+   "depends_on": "eval:doc.is_recurring==1",
+   "fieldname": "day_of_week",
+   "fieldtype": "Select",
+   "label": "Day of Week",
+   "options": "Sunday\nMonday\nTuesday\nWednesday\nThursday\nFriday\nSaturday"
+  },
+  {
+   "fieldname": "column_break_schedule",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "service_time",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Service Time",
+   "reqd": 1
+  },
+  {
+   "default": "120",
+   "fieldname": "duration_minutes",
+   "fieldtype": "Int",
+   "label": "Duration (Minutes)"
+  },
+  {
+   "fieldname": "column_break_freq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.recurrence_pattern=='Monthly'",
+   "fieldname": "frequency",
+   "fieldtype": "Select",
+   "label": "Frequency",
+   "options": "Every Week\n1st Week Only\n2nd Week Only\n3rd Week Only\n4th Week Only\n5th Week Only\n1st & 3rd Week\n2nd & 4th Week"
+  },
+  {
+   "depends_on": "eval:doc.recurrence_pattern=='Monthly'",
+   "fieldname": "week_of_month",
+   "fieldtype": "Select",
+   "label": "Week of Month",
+   "options": "First\nSecond\nThird\nFourth\nLast"
+  },
+  {
+   "fieldname": "section_break_location",
+   "fieldtype": "Section Break",
+   "label": "Location & Venue"
+  },
+  {
+   "fetch_from": "branch.venue",
+   "fieldname": "venue",
+   "fieldtype": "Data",
+   "label": "Venue"
+  },
+  {
+   "fieldname": "column_break_venue",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "branch.full_address",
+   "fieldname": "address",
+   "fieldtype": "Small Text",
+   "label": "Full Address"
+  },
+  {
+   "fieldname": "capacity",
+   "fieldtype": "Int",
+   "label": "Seating Capacity"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_service_order",
+   "fieldtype": "Section Break",
+   "label": "Service Details"
+  },
+  {
+   "fieldname": "service_description",
+   "fieldtype": "Small Text",
+   "label": "Service Description"
+  },
+  {
+   "fieldname": "service_order_template",
+   "fieldtype": "Text Editor",
+   "label": "Service Order Template"
+  },
+  {
+   "fieldname": "ministry_team_section",
+   "fieldtype": "Section Break",
+   "label": "Ministry Team & Responsibilities"
+  },
+  {
+   "fieldname": "ministry_team",
+   "fieldtype": "Table",
+   "label": "Ministry Team Members",
+   "options": "Service Ministry Team"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_leadership",
+   "fieldtype": "Section Break",
+   "label": "Default Leadership"
+  },
+  {
+   "fieldname": "default_minister",
+   "fieldtype": "Link",
+   "label": "Default Minister/Pastor",
+   "options": "Member"
+  },
+  {
+   "fieldname": "default_worship_leader",
+   "fieldtype": "Link",
+   "label": "Default Worship Leader",
+   "options": "Member"
+  },
+  {
+   "fieldname": "column_break_leadership",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "default_choir",
+   "fieldtype": "Link",
+   "label": "Default Choir",
+   "options": "Ministry"
+  },
+  {
+   "fieldname": "default_ushering_team",
+   "fieldtype": "Link",
+   "label": "Default Ushering Team",
+   "options": "Ministry"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_settings",
+   "fieldtype": "Section Break",
+   "label": "Service Settings"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_attendance_tracking",
+   "fieldtype": "Check",
+   "label": "Enable Attendance Tracking"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_offering_collection",
+   "fieldtype": "Check",
+   "label": "Enable Offering Collection"
+  },
+  {
+   "fieldname": "column_break_settings",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_live_streaming",
+   "fieldtype": "Check",
+   "label": "Enable Live Streaming"
+  },
+  {
+   "depends_on": "eval:doc.enable_live_streaming==1",
+   "fieldname": "livestream_url",
+   "fieldtype": "Data",
+   "label": "Livestream URL"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "visitor_tracking_section",
+   "fieldtype": "Section Break",
+   "label": "Visitor Tracking Settings"
+  },
+  {
+   "default": "1",
+   "fieldname": "auto_track_visitors",
+   "fieldtype": "Check",
+   "label": "Auto-Track Visitors for This Service"
+  },
+  {
+   "default": "1",
+   "fieldname": "visitor_follow_up_enabled",
+   "fieldtype": "Check",
+   "label": "Enable Visitor Follow-up"
+  },
+  {
+   "fieldname": "column_break_visitor",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.visitor_follow_up_enabled==1",
+   "fieldname": "default_follow_up_coordinator",
+   "fieldtype": "Link",
+   "label": "Default Follow-up Coordinator",
+   "options": "Member"
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "eval:doc.auto_track_visitors==1",
+   "fieldname": "section_break_service_visitors",
+   "fieldtype": "Section Break",
+   "label": "Visitor Tracking (All Services)"
+  },
+  {
+   "fieldname": "service_visitors",
+   "fieldtype": "Table",
+   "label": "All Visitors Across Services",
+   "options": "Service Visitor",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "eval:doc.is_recurring==1",
+   "fieldname": "section_break_occurrence",
+   "fieldtype": "Section Break",
+   "label": "Service Statistics"
+  },
+  {
+   "fieldname": "next_service_date",
+   "fieldtype": "Date",
+   "label": "Next Service Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_service_date",
+   "fieldtype": "Date",
+   "label": "Last Service Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_occurrence",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_occurrences",
+   "fieldtype": "Int",
+   "label": "Total Occurrences Held",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "average_attendance",
+   "fieldtype": "Int",
+   "label": "Average Attendance",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_notes",
+   "fieldtype": "Section Break",
+   "label": "Additional Information"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text Editor",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Church Service",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_pybrx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-03-22 18:11:41.949288",
+ "modified_by": "Administrator",
+ "module": "church",
+ "name": "Church Service",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "search_fields": "service_name",
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "service_name",
+ "track_changes": 1
+}
